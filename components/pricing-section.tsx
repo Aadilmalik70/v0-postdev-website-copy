@@ -1,5 +1,9 @@
+"use client"
+
+import { useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { User, Users, Building } from "lucide-react"
+import { useGSAP, gsap } from "./gsap-provider"
 
 const tiers = [
   {
@@ -21,55 +25,116 @@ const tiers = [
 ]
 
 export function PricingSection() {
-  return (
-    <section id="pricing" className="py-32 px-6">
-      <div className="max-w-5xl mx-auto text-center">
-        <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
-          Early access = unfair advantage.
-        </h2>
-        <p className="text-lg text-muted-foreground mb-16 max-w-2xl mx-auto leading-relaxed">
-          In early access, we're working closely with a small group of teams. They get better output. We get better
-          product. <span className="text-accent font-medium">Everyone wins.</span>
-        </p>
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
+  const tiersRef = useRef<HTMLDivElement>(null)
+  const ctaRef = useRef<HTMLDivElement>(null)
 
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
+  useGSAP(() => {
+    // Heading
+    gsap.fromTo(
+      headingRef.current,
+      { opacity: 0, y: 60 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: headingRef.current,
+          start: "top 85%",
+          end: "top 55%",
+          scrub: 1,
+        },
+      },
+    )
+
+    // Tiers stagger from bottom
+    const tierItems = tiersRef.current?.querySelectorAll(".tier-item")
+    if (tierItems) {
+      gsap.fromTo(
+        tierItems,
+        { opacity: 0, y: 80 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: tiersRef.current,
+            start: "top 80%",
+            end: "top 45%",
+            scrub: 1,
+          },
+        },
+      )
+    }
+
+    // CTA
+    gsap.fromTo(
+      ctaRef.current,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ctaRef.current,
+          start: "top 90%",
+          end: "top 70%",
+          scrub: 1,
+        },
+      },
+    )
+  }, [])
+
+  return (
+    <section ref={sectionRef} id="pricing" className="py-32 md:py-40 px-6 bg-[#000000]">
+      <div className="max-w-5xl mx-auto">
+        <div ref={headingRef} className="mb-16 md:mb-20">
+          <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#ececec] mb-6 tracking-[-0.02em]">
+            Early access
+          </h2>
+          <p className="text-[#888888] text-base md:text-lg max-w-2xl">
+            In early access, we're working closely with a small group of teams. They get better output. We get better
+            product. Everyone wins.
+          </p>
+        </div>
+
+        <div ref={tiersRef} className="grid md:grid-cols-3 gap-3 mb-16">
           {tiers.map((tier, index) => (
             <div
               key={index}
-              className={`relative p-8 rounded-2xl border transition-all ${
-                tier.featured
-                  ? "border-primary bg-gradient-to-b from-primary/10 to-transparent shadow-[0_0_40px_rgba(255,59,48,0.15)]"
-                  : "border-border bg-card hover:border-accent/30"
+              className={`tier-item relative bg-[#141414] rounded-2xl p-8 md:p-10 group hover:bg-[#1a1a1a] transition-colors duration-300 ${
+                tier.featured ? "ring-1 ring-[#ff3b30]/30" : ""
               }`}
             >
               {tier.featured && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-xs font-mono font-bold rounded-full">
+                <span className="absolute -top-3 left-6 px-3 py-1 bg-[#ff3b30] text-[#ececec] text-xs font-mono rounded-full">
                   POPULAR
                 </span>
               )}
 
-              <div
-                className={`w-14 h-14 rounded-xl mx-auto mb-6 flex items-center justify-center ${
-                  tier.featured ? "bg-primary/20" : "bg-accent/10"
-                }`}
-              >
-                <tier.icon className={`w-7 h-7 ${tier.featured ? "text-primary" : "text-accent"}`} />
-              </div>
+              <tier.icon className="w-10 h-10 text-[#ececec] stroke-[1.5] mb-12" strokeWidth={1.5} />
 
-              <h3 className="font-display text-2xl font-bold text-foreground mb-2">{tier.name}</h3>
-              <p className="text-muted-foreground mb-6">{tier.description}</p>
+              <h3 className="text-2xl font-medium text-[#ececec] mb-3">{tier.name}</h3>
+              <p className="text-[#888888] font-light mb-8">{tier.description}</p>
 
-              <p className="text-sm text-muted-foreground font-mono">Pricing coming soon</p>
+              <p className="text-sm text-[#555555] font-mono">Pricing coming soon</p>
             </div>
           ))}
         </div>
 
-        <Button
-          size="lg"
-          className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-6 text-lg shadow-[0_0_30px_rgba(255,59,48,0.4)] hover:shadow-[0_0_50px_rgba(255,59,48,0.6)] transition-all"
-        >
-          Apply for early access
-        </Button>
+        <div ref={ctaRef} className="text-center">
+          <Button
+            size="lg"
+            className="bg-[#ff3b30] hover:bg-[#ff3b30]/90 text-[#ececec] font-medium px-10 py-6 text-base rounded-full transition-all duration-300"
+          >
+            Apply for early access
+          </Button>
+        </div>
       </div>
     </section>
   )

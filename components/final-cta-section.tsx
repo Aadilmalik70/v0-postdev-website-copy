@@ -1,32 +1,54 @@
+"use client"
+
+import { useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import { useGSAP, gsap } from "./gsap-provider"
 
 export function FinalCtaSection() {
-  return (
-    <section className="py-32 px-6 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[200px] pointer-events-none" />
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 tracking-tight">
+  useGSAP(() => {
+    gsap.fromTo(
+      contentRef.current,
+      { opacity: 0, y: 80 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: "top 85%",
+          end: "top 50%",
+          scrub: 1,
+        },
+      },
+    )
+  }, [])
+
+  return (
+    <section ref={sectionRef} className="py-40 md:py-56 px-6 bg-[#000000]">
+      <div ref={contentRef} className="max-w-4xl mx-auto text-center">
+        <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#ececec] mb-10 tracking-[-0.02em] leading-[1.05]">
           Still coding UI by hand?
         </h2>
 
-        <p className="text-lg md:text-xl text-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-          The shift is already happening. Teams using <span className="text-accent font-semibold">POSTDEV</span> ship
-          faster, stress less, and spend time on what actually matters — building product, not rebuilding pixels.
+        <p className="text-lg md:text-xl text-[#888888] mb-14 max-w-2xl mx-auto leading-relaxed font-light">
+          The shift is already happening. Teams using <span className="text-[#ececec]">POSTDEV</span> ship faster,
+          stress less, and spend time on what actually matters — building product, not rebuilding pixels.
         </p>
 
         <Button
           size="lg"
-          className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-7 text-xl shadow-[0_0_40px_rgba(255,59,48,0.5)] hover:shadow-[0_0_60px_rgba(255,59,48,0.7)] transition-all group"
+          className="bg-[#ff3b30] hover:bg-[#ff3b30]/90 text-[#ececec] font-medium px-12 py-7 text-lg rounded-full transition-all duration-300 group"
         >
           Claim your spot
-          <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
         </Button>
 
-        <p className="mt-8 text-sm text-muted-foreground font-mono max-w-md mx-auto">
+        <p className="mt-10 text-sm text-[#555555] font-mono max-w-md mx-auto">
           Early access is intentionally limited. We're building with a few teams, not for everyone.
         </p>
       </div>

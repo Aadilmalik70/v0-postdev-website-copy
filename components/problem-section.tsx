@@ -1,40 +1,120 @@
-import { X } from "lucide-react"
+"use client"
 
-const problems = [
-  "Designers ship. Developers rebuild from scratch.",
-  "Every sprint burns days on UI — not features.",
-  "Redesigns mean starting over. Again.",
-  "Your best engineers are stuck in CSS purgatory.",
+import { useRef } from "react"
+import { Repeat, Clock, Layers, RefreshCw, Frown } from "lucide-react"
+import { useGSAP, gsap } from "./gsap-provider"
+
+const painPoints = [
+  {
+    icon: Repeat,
+    text: "Designers ship beautiful files. Developers rebuild the same thing from scratch.",
+  },
+  {
+    icon: Clock,
+    text: "Sprints get burned on UI, not features.",
+  },
+  {
+    icon: Layers,
+    text: "Every redesign means redoing the same work again.",
+  },
+  {
+    icon: RefreshCw,
+    text: "The 'design → handoff → rebuild' loop never ends.",
+  },
+  {
+    icon: Frown,
+    text: "Manual UI coding steals time from architecture and logic.",
+  },
 ]
 
 export function ProblemSection() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
+  const cardsRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    gsap.fromTo(
+      headingRef.current,
+      { opacity: 0, y: 80, filter: "blur(10px)" },
+      {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 1.2,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: headingRef.current,
+          start: "top 85%",
+          end: "top 50%",
+          scrub: 1,
+        },
+      },
+    )
+
+    const cards = cardsRef.current?.querySelectorAll(".pain-card")
+    if (cards) {
+      gsap.fromTo(
+        cards,
+        {
+          opacity: 0,
+          scale: 0.8,
+          rotateX: 15,
+          filter: "blur(8px)",
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          rotateX: 0,
+          filter: "blur(0px)",
+          duration: 1,
+          stagger: 0.12,
+          ease: "back.out(1.2)",
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 80%",
+            end: "top 30%",
+            scrub: 1,
+          },
+        },
+      )
+    }
+  }, [])
+
   return (
-    <section className="py-32 px-6 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
-
-      <div className="max-w-4xl mx-auto relative z-10">
-        <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-16 tracking-tight text-balance">
-          You're not a pixel pusher.
-          <br />
-          <span className="text-muted-foreground">So why are you acting like one?</span>
-        </h2>
-
-        <div className="space-y-6 mb-16">
-          {problems.map((problem, index) => (
-            <div key={index} className="flex items-start gap-4 group">
-              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
-                <X className="w-4 h-4 text-primary" />
-              </span>
-              <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">{problem}</p>
-            </div>
-          ))}
+    <section ref={sectionRef} className="py-32 md:py-40 px-6 bg-[#000000]" style={{ perspective: "1000px" }}>
+      <div className="max-w-6xl mx-auto">
+        <div ref={headingRef} className="mb-16 md:mb-20">
+          <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#ececec] mb-6 tracking-[-0.02em]">
+            Pain Points
+          </h2>
+          <p className="text-[#888888] text-base md:text-lg max-w-xl">
+            You weren't hired to rebuild Figma screens by hand.
+          </p>
         </div>
 
-        <div className="border-l-4 border-accent pl-6 py-2">
-          <p className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-2">
-            The handoff loop is dead.
-          </p>
-          <p className="text-xl text-accent font-mono">Your Figma file is your frontend now.</p>
+        {/* Bento Grid */}
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {painPoints.slice(0, 3).map((item, index) => (
+            <div
+              key={index}
+              className="pain-card bg-[#141414] rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between group hover:bg-[#1a1a1a] transition-all duration-500 hover:scale-[1.02]"
+            >
+              <item.icon className="w-10 h-10 text-[#ececec] stroke-[1.5]" strokeWidth={1.5} />
+              <p className="text-[#ececec] text-base md:text-lg font-light leading-relaxed mt-auto">{item.text}</p>
+            </div>
+          ))}
+
+          {painPoints.slice(3, 5).map((item, index) => (
+            <div
+              key={index + 3}
+              className={`pain-card bg-[#141414] rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between group hover:bg-[#1a1a1a] transition-all duration-500 hover:scale-[1.02] ${
+                index === 0 ? "md:col-span-1" : "md:col-span-2"
+              }`}
+            >
+              <item.icon className="w-10 h-10 text-[#ececec] stroke-[1.5]" strokeWidth={1.5} />
+              <p className="text-[#ececec] text-base md:text-lg font-light leading-relaxed mt-auto">{item.text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
