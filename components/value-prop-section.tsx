@@ -1,35 +1,44 @@
 "use client"
 
 import { useRef } from "react"
-import { FileCode2, RefreshCw, Blocks } from "lucide-react"
+import { Eye, Brain, Code2, CheckCircle } from "lucide-react"
 import { useGSAP, gsap } from "./gsap-provider"
 
 const valueProps = [
   {
-    icon: FileCode2,
-    title: "Figma in. React out.",
+    icon: Eye,
+    title: "Reads your design like a senior engineer",
     points: [
-      "Paste a link. That's it.",
-      "POSTDEV reads layout, tokens, hierarchy.",
-      "You get clean React + TypeScript + Tailwind.",
+      "Layout, spacing, hierarchy, tokens — understood.",
+      "Pulls structure directly from Figma.",
+      "No manual annotation needed.",
     ],
   },
   {
-    icon: RefreshCw,
-    title: "Self-healing code",
+    icon: Code2,
+    title: "Generates real production code",
     points: [
-      "Runs in a sandbox. Catches its own errors.",
-      "Auto-corrects until pixel-perfect.",
+      "React + TypeScript + Tailwind output.",
+      "Not AI hallucination — structure you can ship and scale.",
+      "Wired to a runnable project scaffold.",
+    ],
+  },
+  {
+    icon: Brain,
+    title: "Tests itself in a sandbox",
+    points: [
+      "Builds, renders, inspects automatically.",
+      "Visual similarity validation against your design.",
       "No babysitting. No debugging AI output.",
     ],
   },
   {
-    icon: Blocks,
-    title: "Production-grade. Not a demo.",
+    icon: CheckCircle,
+    title: "Fixes its own mistakes",
     points: [
-      "Real components. Real architecture.",
-      "Slots into your design system.",
-      "Ready for your API, your logic, your stack.",
+      "Pixel mismatch? Internal logic runs again.",
+      "Repeats until indistinguishable from your Figma.",
+      "Auto-corrects until pixel-perfect.",
     ],
   },
 ]
@@ -40,7 +49,6 @@ export function ValuePropSection() {
   const cardsRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    // Heading animation
     gsap.fromTo(
       headingRef.current,
       { opacity: 0, y: 60 },
@@ -58,7 +66,6 @@ export function ValuePropSection() {
       },
     )
 
-    // Cards stagger from bottom
     const cards = cardsRef.current?.querySelectorAll(".value-card")
     if (cards) {
       gsap.fromTo(
@@ -86,29 +93,32 @@ export function ValuePropSection() {
       <div className="max-w-6xl mx-auto">
         <div ref={headingRef} className="mb-16 md:mb-20">
           <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#ececec] mb-6 tracking-[-0.02em]">
-            The Solution
+            What POSTDEV Does
           </h2>
           <p className="text-[#888888] text-base md:text-lg max-w-xl">
-            Static design to live UI — in minutes, not sprints.
+            This isn't an "AI Helper." It's your autonomous frontend engineer.
           </p>
         </div>
 
-        <div ref={cardsRef} className="grid md:grid-cols-3 gap-3">
+        <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
           {valueProps.map((prop, index) => (
             <div
               key={index}
               className="value-card bg-[#141414] rounded-2xl p-8 md:p-10 group hover:bg-[#1a1a1a] transition-colors duration-300"
             >
+              {/* Step number */}
+              <div className="text-xs text-[#888888] font-mono mb-6 tracking-widest">0{index + 1}</div>
+
               {/* Icon */}
-              <prop.icon className="w-10 h-10 text-[#ececec] stroke-[1.5] mb-12" strokeWidth={1.5} />
+              <prop.icon className="w-10 h-10 text-[#ececec] stroke-[1.5] mb-8" strokeWidth={1.5} />
 
               {/* Title */}
-              <h3 className="text-xl md:text-2xl font-medium text-[#ececec] mb-6">{prop.title}</h3>
+              <h3 className="text-lg md:text-xl font-medium text-[#ececec] mb-6">{prop.title}</h3>
 
               {/* Points */}
               <ul className="space-y-3">
                 {prop.points.map((point, pointIndex) => (
-                  <li key={pointIndex} className="text-[#888888] text-sm md:text-base font-light leading-relaxed">
+                  <li key={pointIndex} className="text-[#888888] text-sm font-light leading-relaxed">
                     {point}
                   </li>
                 ))}

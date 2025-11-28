@@ -1,40 +1,24 @@
 "use client"
 
 import { useRef } from "react"
-import { Eye, Brain, Code2, CheckCircle } from "lucide-react"
 import { useGSAP, gsap } from "./gsap-provider"
 
-const steps = [
-  {
-    icon: Eye,
-    label: "Extract",
-    description: "Pulls structure, hierarchy, and design tokens directly from Figma.",
-  },
-  {
-    icon: Brain,
-    label: "Model",
-    description: "Builds an internal layout representation — understands your UI like a senior dev would.",
-  },
-  {
-    icon: Code2,
-    label: "Generate",
-    description: "Outputs clean React + Tailwind, wired to a runnable project scaffold.",
-  },
-  {
-    icon: CheckCircle,
-    label: "Validate",
-    description: "Renders, compares, corrects. Loops until the output matches the original design.",
-  },
+const techFeatures = [
+  "React + TypeScript output",
+  "TailwindCSS utility classes",
+  "Reusable components",
+  "Sandbox build + live preview",
+  "Visual similarity validation",
+  "CLI + IDE workflows",
 ]
 
 export function HowItWorksSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
-  const stepsRef = useRef<HTMLDivElement>(null)
+  const listRef = useRef<HTMLDivElement>(null)
   const footerRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    // Heading
     gsap.fromTo(
       headingRef.current,
       { opacity: 0, y: 60 },
@@ -52,29 +36,27 @@ export function HowItWorksSection() {
       },
     )
 
-    // Steps stagger from bottom
-    const stepItems = stepsRef.current?.querySelectorAll(".step-item")
-    if (stepItems) {
+    const items = listRef.current?.querySelectorAll(".tech-item")
+    if (items) {
       gsap.fromTo(
-        stepItems,
-        { opacity: 0, y: 80 },
+        items,
+        { opacity: 0, x: -50 },
         {
           opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.12,
+          x: 0,
+          duration: 0.6,
+          stagger: 0.1,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: stepsRef.current,
+            trigger: listRef.current,
             start: "top 80%",
-            end: "top 35%",
+            end: "top 40%",
             scrub: 1,
           },
         },
       )
     }
 
-    // Footer
     gsap.fromTo(
       footerRef.current,
       { opacity: 0, y: 50 },
@@ -98,39 +80,28 @@ export function HowItWorksSection() {
       <div className="max-w-6xl mx-auto">
         <div ref={headingRef} className="mb-16 md:mb-20">
           <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#ececec] mb-6 tracking-[-0.02em]">
-            Under the hood
+            Under the Hood
           </h2>
-          <p className="text-[#888888] text-base md:text-lg max-w-xl">
-            How POSTDEV transforms your designs into production code.
-          </p>
+          <p className="text-[#888888] text-base md:text-lg max-w-xl">All without opening a code editor first.</p>
         </div>
 
-        <div ref={stepsRef} className="grid grid-cols-1 md:grid-cols-4 gap-3 mb-20">
-          {steps.map((step, index) => (
+        <div ref={listRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
+          {techFeatures.map((feature, index) => (
             <div
               key={index}
-              className="step-item bg-[#141414] rounded-2xl p-8 md:p-10 group hover:bg-[#1a1a1a] transition-colors duration-300"
+              className="tech-item flex items-center gap-4 p-6 bg-[#141414] rounded-xl group hover:bg-[#1a1a1a] transition-colors duration-300"
             >
-              {/* Step Number */}
-              <div className="text-xs text-[#888888] font-mono mb-8 tracking-widest">0{index + 1}</div>
-
-              {/* Icon */}
-              <step.icon className="w-10 h-10 text-[#ececec] stroke-[1.5] mb-8" strokeWidth={1.5} />
-
-              {/* Label */}
-              <h3 className="text-xl font-medium text-[#ececec] mb-4">{step.label}</h3>
-
-              {/* Description */}
-              <p className="text-[#888888] text-sm font-light leading-relaxed">{step.description}</p>
+              <span className="text-[#ff3b30] font-mono text-sm">✓</span>
+              <span className="text-[#ececec] text-base md:text-lg font-light">{feature}</span>
             </div>
           ))}
         </div>
 
         {/* Footer message */}
         <div ref={footerRef} className="text-center max-w-3xl mx-auto">
-          <p className="text-[#888888] text-base mb-4">Not another "AI code assistant" —</p>
           <p className="text-xl md:text-2xl text-[#ececec] font-light">
-            an autonomous agent that builds, tests, and ships UI.
+            Not another "AI code assistant" —<br />
+            <span className="text-[#888888]">an autonomous agent that builds, tests, and ships UI.</span>
           </p>
         </div>
       </div>

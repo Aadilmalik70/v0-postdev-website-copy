@@ -7,27 +7,27 @@ import { useGSAP, gsap } from "./gsap-provider"
 const outcomes = [
   {
     icon: Zap,
-    text: "UI compiled, not coded — ship 10x faster.",
+    text: "Design → POSTDEV → production. One step. No friction. No bottleneck.",
   },
   {
     icon: Rocket,
-    text: "More features shipped, fewer frontend bottlenecks.",
+    text: "What used to require developers, deadlines, reviews, rebuilds — now requires a Figma URL.",
   },
   {
     icon: Clock,
-    text: "Sprints spent on logic, not pixel-pushing.",
+    text: "Engineering time is too valuable to waste on layout recreation.",
   },
   {
     icon: Target,
-    text: "Design → Production in one step.",
+    text: "An agent that builds, validates, and improves itself — without asking.",
   },
   {
     icon: Users,
-    text: "Your team focuses on what matters.",
+    text: "Not an 'AI Helper.' A replacement for the repetitive part of frontend engineering.",
   },
   {
     icon: TrendingUp,
-    text: "A workflow that finally matches how fast you think.",
+    text: "Teams waste weeks turning Figma files into usable frontend code. POSTDEV turns that into minutes.",
   },
 ]
 
@@ -89,10 +89,13 @@ export function OutcomesSection() {
       <div className="max-w-6xl mx-auto">
         <h2
           ref={headingRef}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#0a0a0a] mb-16 md:mb-20 tracking-[-0.02em]"
+          className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#0a0a0a] mb-6 tracking-[-0.02em]"
         >
-          Outcomes
+          The Shift
         </h2>
+        <p className="text-[#666666] text-base md:text-lg mb-16 md:mb-20 max-w-xl">
+          Stop rewriting what's already been designed.
+        </p>
 
         <div
           ref={cardsRef}

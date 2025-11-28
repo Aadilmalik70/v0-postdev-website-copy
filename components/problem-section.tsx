@@ -7,23 +7,23 @@ import { useGSAP, gsap } from "./gsap-provider"
 const painPoints = [
   {
     icon: Repeat,
-    text: "Designers ship beautiful files. Developers rebuild the same thing from scratch.",
+    text: "You didn't become a developer to rebuild the same pixel-perfect layouts over and over again.",
   },
   {
     icon: Clock,
-    text: "Sprints get burned on UI, not features.",
+    text: "The sprint isn't blocked by backend — it's blocked by UI replication.",
   },
   {
     icon: Layers,
-    text: "Every redesign means redoing the same work again.",
+    text: "Designs get 'final update v4.2' and your code becomes instantly outdated.",
   },
   {
     icon: RefreshCw,
-    text: "The 'design → handoff → rebuild' loop never ends.",
+    text: "You spend more time aligning buttons than writing product logic.",
   },
   {
     icon: Frown,
-    text: "Manual UI coding steals time from architecture and logic.",
+    text: "Every redesign? A rerun of the same invisible work no one appreciates.",
   },
 ]
 
@@ -88,7 +88,7 @@ export function ProblemSection() {
             Pain Points
           </h2>
           <p className="text-[#888888] text-base md:text-lg max-w-xl">
-            You weren't hired to rebuild Figma screens by hand.
+            If this hits a nerve… you're in the right place.
           </p>
         </div>
 
@@ -116,6 +116,10 @@ export function ProblemSection() {
             </div>
           ))}
         </div>
+
+        <p className="text-center text-[#ff3b30] text-lg md:text-xl mt-12 font-light">
+          It's not engineering. It's repetition.
+        </p>
       </div>
     </section>
   )

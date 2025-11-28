@@ -7,18 +7,18 @@ import { useGSAP, gsap } from "./gsap-provider"
 const personas = [
   {
     icon: Rocket,
-    title: "Founders & product teams",
-    quote: "You want to ship UI fast without hiring a huge frontend team.",
+    title: "Founder / Product Leader",
+    quote: "If we ship twice as fast, we win.",
   },
   {
     icon: Code,
-    title: "Engineers",
-    quote: "You'd rather focus on logic, performance, and architecture — not CSS pixel nudging.",
+    title: "Engineer",
+    quote: "Finally — I can focus on architecture, not CSS arguments.",
   },
   {
     icon: Building2,
-    title: "Agencies & studios",
-    quote: "You deliver many screens a month and every handoff burns hours of dev time.",
+    title: "Agency / Studio",
+    quote: "More delivery. Less payroll. Higher margins.",
   },
 ]
 
@@ -28,7 +28,6 @@ export function WhoItsForSection() {
   const personasRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    // Heading
     gsap.fromTo(
       headingRef.current,
       { opacity: 0, y: 60 },
@@ -46,7 +45,6 @@ export function WhoItsForSection() {
       },
     )
 
-    // Personas stagger from bottom
     const personaItems = personasRef.current?.querySelectorAll(".persona-item")
     if (personaItems) {
       gsap.fromTo(
@@ -74,10 +72,10 @@ export function WhoItsForSection() {
       <div className="max-w-6xl mx-auto">
         <div ref={headingRef} className="mb-16 md:mb-20">
           <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#ececec] mb-6 tracking-[-0.02em]">
-            Built for you
+            Who It's For
           </h2>
           <p className="text-[#888888] text-base md:text-lg max-w-xl">
-            If this sounds like you, POSTDEV was built for you.
+            If this feels like the future — that's because it is.
           </p>
         </div>
 
@@ -93,8 +91,7 @@ export function WhoItsForSection() {
               {/* Title */}
               <h3 className="text-xl md:text-2xl font-medium text-[#ececec] mb-6">{persona.title}</h3>
 
-              {/* Quote */}
-              <p className="text-[#888888] text-base font-light leading-relaxed">"{persona.quote}"</p>
+              <p className="text-[#ff3b30] text-lg font-light leading-relaxed italic">"{persona.quote}"</p>
             </div>
           ))}
         </div>

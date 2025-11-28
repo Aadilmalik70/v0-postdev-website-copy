@@ -7,7 +7,8 @@ import { ChevronDown } from "lucide-react"
 const features = [
   {
     title: "React + TypeScript Output",
-    description: "Production-ready React components with full TypeScript support, Vite-ready project structure.",
+    description:
+      "Production-ready React components with full TypeScript support. Not AI hallucination — structure you can ship and scale.",
     number: "01",
   },
   {
@@ -17,22 +18,26 @@ const features = [
   },
   {
     title: "Reusable Components",
-    description: "Buttons, cards, forms, layout blocks — all extracted as reusable, composable components.",
+    description:
+      "Buttons, cards, forms, layout blocks — all extracted as reusable, composable components that slot into your design system.",
     number: "03",
   },
   {
     title: "Sandbox Build & Preview",
-    description: "Code is built, rendered, and visually compared to the original design automatically.",
+    description:
+      "Code is built, rendered, and visually compared to the original design automatically. No babysitting required.",
     number: "04",
   },
   {
-    title: "Visual Similarity Check",
-    description: "POSTDEV validates output against your design. If it drifts, it corrects and retries.",
+    title: "Visual Similarity Validation",
+    description:
+      "POSTDEV validates output against your design. Pixel mismatch? Internal logic runs again. Repeats until pixel-perfect.",
     number: "05",
   },
   {
     title: "CLI + IDE Integrations",
-    description: "CLI ready now. VSCode + Figma integrations coming soon for seamless workflow.",
+    description:
+      "CLI ready now. VSCode + Figma integrations coming soon for seamless workflow — all without opening a code editor first.",
     number: "06",
   },
 ]
