@@ -78,8 +78,8 @@
 @theme inline {
   --font-sans: "Inter", "Inter Fallback", sans-serif;
   --font-mono: "JetBrains Mono", "JetBrains Mono Fallback", monospace;
-  --font-display: "Space Grotesk", "Space Grotesk Fallback", sans-serif;
-  --font-serif: "Playfair Display", "Georgia", serif;
+  --font-display: "Lexend", "Lexend Fallback", sans-serif;
+  --font-serif: "Manrope", "Georgia", serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
