@@ -1,33 +1,20 @@
 "use client"
 
 import { useRef } from "react"
-import { Zap, Rocket, Clock, Target, Users, TrendingUp } from "lucide-react"
 import { useGSAP, gsap } from "./gsap-provider"
 
 const outcomes = [
   {
-    icon: Zap,
-    text: "Design → POSTDEV → production. One step. No friction. No bottleneck.",
+    metric: "10–20x",
+    text: "Ship UI faster",
   },
   {
-    icon: Rocket,
-    text: "What used to require developers, deadlines, reviews, rebuilds — now requires a Figma URL.",
+    metric: "↓",
+    text: "Reduce frontend headcount pressure",
   },
   {
-    icon: Clock,
-    text: "Engineering time is too valuable to waste on layout recreation.",
-  },
-  {
-    icon: Target,
-    text: "An agent that builds, validates, and improves itself — without asking.",
-  },
-  {
-    icon: Users,
-    text: "Not an 'AI Helper.' A replacement for the repetitive part of frontend engineering.",
-  },
-  {
-    icon: TrendingUp,
-    text: "Teams waste weeks turning Figma files into usable frontend code. POSTDEV turns that into minutes.",
+    metric: "Minutes",
+    text: "Turn designs into code — not sprints",
   },
 ]
 
@@ -87,30 +74,45 @@ export function OutcomesSection() {
   return (
     <section ref={sectionRef} className="py-32 md:py-40 px-6 bg-[#f5f5f5]" style={{ perspective: "1200px" }}>
       <div className="max-w-6xl mx-auto">
+        <p className="text-[#ff3b30] text-sm md:text-base font-mono mb-4 uppercase tracking-widest">
+          A silent shift already started.
+        </p>
         <h2
           ref={headingRef}
           className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#0a0a0a] mb-6 tracking-[-0.02em]"
         >
           The Shift
         </h2>
-        <p className="text-[#666666] text-base md:text-lg mb-16 md:mb-20 max-w-xl">
-          Stop rewriting what's already been designed.
-        </p>
+        <p className="text-[#666666] text-base md:text-lg mb-16 md:mb-20 max-w-xl">Teams using POSTDEV now:</p>
 
-        <div
-          ref={cardsRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#e0e0e0] rounded-2xl overflow-hidden"
-          style={{ transformStyle: "preserve-3d" }}
-        >
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ transformStyle: "preserve-3d" }}>
           {outcomes.map((item, index) => (
-            <div
-              key={index}
-              className="outcome-card bg-[#ffffff] p-8 md:p-10 min-h-[200px] flex flex-col group hover:bg-[#fafafa] transition-all duration-500"
-            >
-              <item.icon className="w-10 h-10 text-[#0a0a0a] stroke-[1.5] mb-8" strokeWidth={1.5} />
-              <p className="text-[#0a0a0a] text-base md:text-lg font-light leading-relaxed mt-auto">{item.text}</p>
+            <div key={index} className="outcome-card relative group">
+              {/* Gradient border effect */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#ff3b30]/20 via-transparent to-[#6b38ff]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative bg-[#ffffff] border border-[#e0e0e0] rounded-3xl p-10 md:p-12 min-h-[280px] flex flex-col justify-between group-hover:border-[#ff3b30]/30 transition-all duration-500">
+                {/* Large metric */}
+                <span className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#ff3b30] to-[#6b38ff] bg-clip-text text-transparent">
+                  {item.metric}
+                </span>
+
+                {/* Description */}
+                <p className="text-[#0a0a0a] text-xl md:text-2xl font-light leading-relaxed mt-auto">{item.text}</p>
+              </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-20 text-center">
+          <p className="text-[#666666] text-lg md:text-xl font-light mb-4">
+            Soon, manually coding UI will feel archaic — like slicing PSDs in 2009.
+          </p>
+          <p className="text-[#0a0a0a] text-xl md:text-2xl font-medium max-w-2xl mx-auto">
+            The future doesn't need more developers typing HTML.
+            <br />
+            It needs developers shipping product.
+          </p>
         </div>
       </div>
     </section>

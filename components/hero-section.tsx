@@ -29,7 +29,6 @@ export function HeroSection() {
     <>
       <section ref={containerRef} className="relative min-h-screen flex items-center justify-center pt-20 bg-[#000000]">
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          {/* Badge */}
           <div
             ref={badgeRef}
             className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#333333] bg-[#141414] mb-12"
@@ -38,7 +37,9 @@ export function HeroSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff3b30] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff3b30]"></span>
             </span>
-            <span className="text-xs font-mono text-[#888888] uppercase tracking-widest">Only a few seats left</span>
+            <span className="text-xs font-mono text-[#888888] uppercase tracking-widest">
+              Only 0.7% of teams will build like this
+            </span>
           </div>
 
           {/* Main Headline */}
@@ -50,30 +51,31 @@ export function HeroSection() {
           </h1>
 
           <p ref={subtitleRef} className="text-2xl md:text-4xl font-light text-[#ececec] mb-6 tracking-tight">
-            The AI Frontend Engineer.
+            Your First AI Frontend Engineer.
           </p>
 
           <div ref={descRef} className="max-w-2xl mx-auto mb-14">
             <p className="text-xl md:text-2xl text-[#888888] mb-4">
-              Design is shipped. Code follows — <span className="text-[#ececec]">automatically.</span>
+              Design is already finished.
+              <br />
+              Now your code writes itself.
             </p>
             <p className="text-base md:text-lg text-[#666666] leading-relaxed">
-              Paste a Figma link. POSTDEV does the rest.
+              Paste a Figma link → Get production-ready React + Tailwind.
               <br />
-              Not snippets. Not templates.
+              Not snippets. Not mock code.
               <br />
-              <span className="text-[#ececec]">A real working React + Tailwind codebase.</span>
+              <span className="text-[#ececec]">A real working frontend — tested, corrected, and ready.</span>
             </p>
           </div>
 
-          {/* CTAs */}
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
             <Button
               size="lg"
               onClick={() => setIsModalOpen(true)}
-              className="bg-[#ff3b30] hover:bg-[#ff3b30]/90 text-[#ececec] font-medium px-10 py-6 text-base rounded-full transition-all duration-300"
+              className="bg-[#ff3b30] hover:bg-[#ff3b30]/90 text-[#ececec] font-medium px-10 py-6 text-base rounded-full transition-all duration-300 animate-pulse hover:animate-none"
             >
-              Apply for Early Access
+              Apply — seats closing soon
             </Button>
             <Button
               size="lg"
@@ -81,11 +83,11 @@ export function HeroSection() {
               className="text-[#888888] hover:text-[#ececec] hover:bg-transparent px-8 py-6 text-base group"
             >
               <Play className="w-4 h-4 mr-2" />
-              See it in action
+              Watch the 47-second demo
             </Button>
           </div>
 
-          <p className="text-sm text-[#555555] font-mono">For teams who refuse to rebuild what's already designed.</p>
+          <p className="text-sm text-[#555555] font-mono">The rest will get left behind.</p>
         </div>
       </section>
 

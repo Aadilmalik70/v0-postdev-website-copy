@@ -34,31 +34,30 @@ export function FinalCtaSection() {
     <>
       <section ref={sectionRef} className="py-40 md:py-56 px-6 bg-[#000000]">
         <div ref={contentRef} className="max-w-4xl mx-auto text-center">
-          <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#ececec] mb-10 tracking-[-0.02em] leading-[1.05]">
-            The Question
+          <p className="text-[#ff3b30] text-sm md:text-base font-mono mb-6 uppercase tracking-widest">Ask yourself:</p>
+
+          <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl font-normal text-[#ececec] mb-10 tracking-[-0.02em] leading-[1.1]">
+            Are you still okay writing UI by hand —
+            <br />
+            <span className="text-[#888888]">or do you want your first</span>
+            <br />
+            <span className="text-[#ff3b30]">autonomous frontend engineer?</span>
           </h2>
 
-          <p className="text-xl md:text-2xl text-[#888888] mb-6 max-w-3xl mx-auto leading-relaxed font-light">
-            Are you still okay writing UI from scratch —<br />
-            or do you want your first <span className="text-[#ececec]">autonomous frontend engineer?</span>
-          </p>
-
           <p className="text-lg md:text-xl text-[#666666] mb-14 max-w-2xl mx-auto leading-relaxed font-light">
-            Because soon, this won't be optional — it will be expected.
+            Because soon, this won't be optional.
+            <br />
+            It'll be expected.
           </p>
 
           <Button
             size="lg"
             onClick={() => setIsModalOpen(true)}
-            className="bg-[#ff3b30] hover:bg-[#ff3b30]/90 text-[#ececec] font-medium px-12 py-7 text-lg rounded-full transition-all duration-300 group"
+            className="bg-[#ff3b30] hover:bg-[#ff3b30]/90 text-[#ececec] font-medium px-12 py-7 text-lg rounded-full transition-all duration-300 group animate-pulse hover:animate-none"
           >
-            Apply for Early Access
+            Join Early Access — Before It's Gone
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
           </Button>
-
-          <p className="mt-10 text-sm text-[#555555] font-mono max-w-md mx-auto">
-            Spots are disappearing — the ones who move first get the edge.
-          </p>
         </div>
       </section>
 
