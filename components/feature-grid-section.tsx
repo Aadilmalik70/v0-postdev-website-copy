@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react"
 import { useGSAP } from "./gsap-provider"
+import { ChevronDown } from "lucide-react"
 
 const features = [
   {
@@ -62,14 +63,12 @@ export function FeatureGridSection() {
 
     const rows = listRef.current?.querySelectorAll(".feature-row")
     if (rows && rows.length > 0) {
-      // Set initial state
       gsapInstance.set(rows, {
         opacity: 0,
         y: 80,
         scale: 0.9,
       })
 
-      // Create staggered animation
       ScrollTriggerPlugin.create({
         trigger: listRef.current,
         start: "top 80%",
@@ -86,13 +85,12 @@ export function FeatureGridSection() {
         once: true,
       })
     }
-
-    console.log("[v0] FeatureGridSection GSAP initialized, rows found:", rows?.length)
   }, [])
 
   return (
     <section ref={sectionRef} className="py-32 md:py-40 px-6 bg-[#000000] relative overflow-hidden">
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-l from-[#0f766e]/30 via-[#0d9488]/20 to-transparent rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[700px] bg-gradient-to-l from-[#0f766e]/20 via-[#0d9488]/10 to-transparent rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute right-20 top-1/3 w-[300px] h-[400px] bg-gradient-to-bl from-[#5eead4]/10 to-transparent rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative">
         {/* Header with two columns like Figma */}
@@ -111,35 +109,62 @@ export function FeatureGridSection() {
           </div>
         </div>
 
-        <div ref={listRef} className="flex flex-col gap-2">
+        <div ref={listRef} className="flex flex-col gap-3">
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`feature-row border border-[#222222] rounded-xl overflow-hidden transition-all duration-500 cursor-pointer group ${
-                activeIndex === index ? "bg-[#0a0a0a]" : "bg-transparent hover:bg-[#0a0a0a]/50"
+              className={`feature-row relative rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer group ${
+                activeIndex === index
+                  ? "bg-[#111111] border border-[#2a2a2a]"
+                  : "bg-[#0a0a0a]/50 border border-[#1a1a1a] hover:border-[#252525] hover:bg-[#0f0f0f]"
               }`}
               onClick={() => setActiveIndex(activeIndex === index ? null : index)}
             >
+              {/* Active indicator line */}
+              <div
+                className={`absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#5eead4] to-[#0d9488] transition-opacity duration-300 ${
+                  activeIndex === index ? "opacity-100" : "opacity-0"
+                }`}
+              />
+
               <div className="flex items-center justify-between p-6 md:p-8">
-                <h3
-                  className={`text-lg md:text-xl font-light transition-colors duration-300 ${
-                    activeIndex === index ? "text-[#5eead4]" : "text-[#ececec]"
+                <div className="flex items-center gap-6">
+                  {/* Number badge */}
+                  <span
+                    className={`text-xs font-mono px-2.5 py-1 rounded-md transition-colors duration-300 ${
+                      activeIndex === index ? "bg-[#5eead4]/10 text-[#5eead4]" : "bg-[#1a1a1a] text-[#555555]"
+                    }`}
+                  >
+                    {feature.number}
+                  </span>
+                  <h3
+                    className={`text-lg md:text-xl font-light transition-colors duration-300 ${
+                      activeIndex === index ? "text-[#ececec]" : "text-[#999999] group-hover:text-[#cccccc]"
+                    }`}
+                  >
+                    {feature.title}
+                  </h3>
+                </div>
+
+                {/* Chevron indicator */}
+                <ChevronDown
+                  className={`w-5 h-5 transition-all duration-300 ${
+                    activeIndex === index ? "text-[#5eead4] rotate-180" : "text-[#444444] group-hover:text-[#666666]"
                   }`}
-                >
-                  {feature.title}
-                </h3>
-                <span className="text-[#555555] text-sm md:text-base font-mono">{feature.number}</span>
+                />
               </div>
 
               {/* Expandable description */}
               <div
-                className={`overflow-hidden transition-all duration-500 ease-out ${
-                  activeIndex === index ? "max-h-32 opacity-100" : "max-h-0 opacity-0"
+                className={`grid transition-all duration-500 ease-out ${
+                  activeIndex === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                 }`}
               >
-                <p className="px-6 md:px-8 pb-6 md:pb-8 text-[#888888] text-sm md:text-base font-light leading-relaxed">
-                  {feature.description}
-                </p>
+                <div className="overflow-hidden">
+                  <p className="px-6 md:px-8 pb-6 md:pb-8 pl-[4.5rem] md:pl-[5.5rem] text-[#777777] text-sm md:text-base font-light leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
