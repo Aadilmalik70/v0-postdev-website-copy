@@ -1,119 +1,76 @@
 "use client"
 
-import { useRef } from "react"
-import { useGSAP, gsap } from "./gsap-provider"
+import { motion } from "motion/react"
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards"
 
-const outcomes = [
-  {
-    metric: "10–20x",
-    text: "Ship UI faster",
-  },
-  {
-    metric: "↓",
-    text: "Reduce frontend headcount pressure",
-  },
-  {
-    metric: "Minutes",
-    text: "Turn designs into code — not sprints",
-  },
+const metrics = [
+  { value: "3-5x", label: "Organic traffic growth", sublabel: "within 90 days" },
+  { value: "24/7", label: "Continuous monitoring", sublabel: "never sleeps" },
+  { value: "<$2/day", label: "Total cost", sublabel: "vs $200/day for an agency" },
+]
+
+const testimonials = [
+  { quote: "Our organic traffic tripled in 2 months. The agent found issues we'd missed for years.", name: "Sarah K.", title: "Founder, SaaS Startup" },
+  { quote: "Replaced our $4K/month SEO agency. Better results, fraction of the cost.", name: "Mike T.", title: "E-commerce Owner" },
+  { quote: "The GEO optimization got us cited in Perplexity within weeks. Game changer.", name: "Alex R.", title: "Content Creator" },
+  { quote: "Set it up in 5 minutes. First fixes pushed within an hour. Unreal.", name: "James L.", title: "Indie Hacker" },
 ]
 
 export function OutcomesSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const headingRef = useRef<HTMLHeadingElement>(null)
-  const cardsRef = useRef<HTMLDivElement>(null)
-
-  useGSAP(() => {
-    gsap.fromTo(
-      headingRef.current,
-      { opacity: 0, x: -100, filter: "blur(10px)" },
-      {
-        opacity: 1,
-        x: 0,
-        filter: "blur(0px)",
-        duration: 1.2,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-          end: "top 50%",
-          scrub: 1,
-        },
-      },
-    )
-
-    const cards = cardsRef.current?.querySelectorAll(".outcome-card")
-    if (cards) {
-      gsap.fromTo(
-        cards,
-        {
-          opacity: 0,
-          rotateY: -45,
-          x: -50,
-          filter: "blur(5px)",
-        },
-        {
-          opacity: 1,
-          rotateY: 0,
-          x: 0,
-          filter: "blur(0px)",
-          duration: 1,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: cardsRef.current,
-            start: "top 80%",
-            end: "top 30%",
-            scrub: 1,
-          },
-        },
-      )
-    }
-  }, [])
-
   return (
-    <section ref={sectionRef} className="py-32 md:py-40 px-6 bg-[#f5f5f5]" style={{ perspective: "1200px" }}>
-      <div className="max-w-6xl mx-auto">
-        <p className="text-[#ff3b30] text-sm md:text-base font-mono mb-4 uppercase tracking-widest">
-          A silent shift already started.
-        </p>
-        <h2
-          ref={headingRef}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#0a0a0a] mb-6 tracking-[-0.02em]"
+    <section className="py-28 md:py-36 relative overflow-hidden">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#020a04] to-[#000000]" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          The Shift
-        </h2>
-        <p className="text-[#666666] text-base md:text-lg mb-16 md:mb-20 max-w-xl">Teams using POSTDEV now:</p>
+          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">Results</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
+            Results that compound.
+          </h2>
+          <p className="text-[#8a8a8a] text-base md:text-lg max-w-lg mx-auto">
+            Every fix builds on the last. Every post strengthens the next. Your site gets stronger every week.
+          </p>
+        </motion.div>
 
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ transformStyle: "preserve-3d" }}>
-          {outcomes.map((item, index) => (
-            <div key={index} className="outcome-card relative group">
-              {/* Gradient border effect */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#ff3b30]/20 via-transparent to-[#6b38ff]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              <div className="relative bg-[#ffffff] border border-[#e0e0e0] rounded-3xl p-10 md:p-12 min-h-[280px] flex flex-col justify-between group-hover:border-[#ff3b30]/30 transition-all duration-500">
-                {/* Large metric */}
-                <span className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#ff3b30] to-[#6b38ff] bg-clip-text text-transparent">
-                  {item.metric}
+        {/* Metrics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+          {metrics.map((metric, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative group text-center p-8 rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a]/50 backdrop-blur-sm"
+            >
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative">
+                <span className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                  {metric.value}
                 </span>
-
-                {/* Description */}
-                <p className="text-[#0a0a0a] text-xl md:text-2xl font-light leading-relaxed mt-auto">{item.text}</p>
+                <p className="text-[#ececec] text-base font-medium mt-3">{metric.label}</p>
+                <p className="text-[#666666] text-sm mt-1">{metric.sublabel}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="mt-20 text-center">
-          <p className="text-[#666666] text-lg md:text-xl font-light mb-4">
-            Soon, manually coding UI will feel archaic — like slicing PSDs in 2009.
-          </p>
-          <p className="text-[#0a0a0a] text-xl md:text-2xl font-medium max-w-2xl mx-auto">
-            The future doesn't need more developers typing HTML.
-            <br />
-            It needs developers shipping product.
-          </p>
-        </div>
+        {/* Testimonials strip */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <InfiniteMovingCards items={testimonials} speed="slow" />
+        </motion.div>
       </div>
     </section>
   )

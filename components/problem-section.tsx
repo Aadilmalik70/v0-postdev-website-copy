@@ -1,113 +1,52 @@
 "use client"
 
-import { useRef } from "react"
-import { useGSAP, gsap } from "./gsap-provider"
+import { motion } from "motion/react"
 
 const painPoints = [
-  {
-    text: "Designers create pixel-perfect screens → devs rebuild them from scratch.",
-  },
-  {
-    text: "Sprint planning gets eaten by spacing, alignment, layout hell.",
-  },
-  {
-    text: "Every redesign = the same repetitive work nobody wants to do.",
-  },
-  {
-    text: "Your engineering budget burns on translation, not innovation.",
-  },
+  { stat: "$5K+", text: "Average monthly SEO agency cost", subtext: "For work an AI can do better" },
+  { stat: "15hrs", text: "Weekly manual SEO work", subtext: "Keyword research, fixes, content, reporting" },
+  { stat: "60%", text: "Searches end without a click", subtext: "AI answers steal your traffic" },
+  { stat: "0", text: "Hours most founders have for SEO", subtext: "So it just... doesn't get done" },
 ]
 
 export function ProblemSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const headingRef = useRef<HTMLDivElement>(null)
-  const cardsRef = useRef<HTMLDivElement>(null)
-
-  useGSAP(() => {
-    gsap.fromTo(
-      headingRef.current,
-      { opacity: 0, y: 80, filter: "blur(10px)" },
-      {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        duration: 1.2,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-          end: "top 50%",
-          scrub: 1,
-        },
-      },
-    )
-
-    const cards = cardsRef.current?.querySelectorAll(".pain-card")
-    if (cards) {
-      gsap.fromTo(
-        cards,
-        {
-          opacity: 0,
-          scale: 0.8,
-          rotateX: 15,
-          filter: "blur(8px)",
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          rotateX: 0,
-          filter: "blur(0px)",
-          duration: 1,
-          stagger: 0.12,
-          ease: "back.out(1.2)",
-          scrollTrigger: {
-            trigger: cardsRef.current,
-            start: "top 80%",
-            end: "top 30%",
-            scrub: 1,
-          },
-        },
-      )
-    }
-  }, [])
-
   return (
-    <section ref={sectionRef} className="py-32 md:py-40 px-6 bg-[#000000]" style={{ perspective: "1000px" }}>
+    <section className="py-28 md:py-36 px-6 relative">
       <div className="max-w-6xl mx-auto">
-        <div ref={headingRef} className="mb-16 md:mb-20">
-          <p className="text-[#ff3b30] text-sm md:text-base font-mono mb-4 uppercase tracking-widest">
-            If this makes your chest feel tight — good.
-          </p>
-          <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#ececec] mb-6 tracking-[-0.02em]">
-            Pain Points
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">The problem</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
+            SEO is broken for small teams.
           </h2>
-          <p className="text-[#888888] text-base md:text-lg max-w-xl">
-            It means you're still building UI the slow way.
+          <p className="text-[#8a8a8a] text-base md:text-lg max-w-lg">
+            You can&apos;t afford an agency. You don&apos;t have the hours. Meanwhile, AI search is eating your traffic.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Pain Points Grid */}
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {painPoints.map((item, index) => (
-            <div
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {painPoints.map((point, index) => (
+            <motion.div
               key={index}
-              className="pain-card bg-[#141414] rounded-2xl p-8 md:p-10 min-h-[160px] flex items-start gap-4 group hover:bg-[#1a1a1a] transition-all duration-500 hover:scale-[1.02]"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a] p-6 hover:border-[#2a2a2a] transition-colors duration-300"
             >
-              <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-1">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 2L16 16M16 2L2 16" stroke="#ff3b30" strokeWidth="2.5" strokeLinecap="round" />
-                </svg>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative">
+                <span className="text-3xl md:text-4xl font-bold text-[#ececec] block mb-2">{point.stat}</span>
+                <p className="text-sm font-medium text-[#cccccc] mb-1">{point.text}</p>
+                <p className="text-xs text-[#666666]">{point.subtext}</p>
               </div>
-              <p className="text-[#ececec] text-base md:text-lg font-light leading-relaxed">{item.text}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <p className="text-[#888888] text-lg md:text-xl font-light mb-2">This isn't engineering.</p>
-          <p className="text-[#ff3b30] text-xl md:text-2xl font-medium">
-            This is expensive copy-paste labor disguised as development.
-          </p>
         </div>
       </div>
     </section>

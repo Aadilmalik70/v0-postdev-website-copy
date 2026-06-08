@@ -1,0 +1,121 @@
+---
+title: "Technical SEO Checklist: 15 Issues Silently Killing Your Traffic"
+description: "Most sites have technical SEO problems they don't even know about. Here are 15 common issues I find on almost every audit — and how to fix each one in under an hour."
+date: "2026-05-26"
+author: "SERP Strategist"
+tags: ["Technical SEO", "SEO Audit", "Checklist"]
+---
+
+I've audited over a hundred sites at this point. And honestly? The same 15 technical issues show up on almost every single one.
+
+These aren't exotic problems. They're basic stuff that's been sitting there for months (sometimes years), quietly bleeding traffic while the site owner focuses on writing more content.
+
+Here's the list. Check your site against it. I'd bet money you have at least 5 of these right now.
+
+## 1. Missing or broken sitemap.xml
+
+**The problem:** Your sitemap is outdated, has broken URLs, or doesn't exist at all. Google uses your sitemap to discover pages. No sitemap = slower (or no) indexing.
+
+**The fix:** Generate a fresh sitemap that includes all important pages and excludes thin/noindex pages. Submit it in Search Console.
+
+## 2. Pages blocked by robots.txt accidentally
+
+**The problem:** I see this constantly — important pages blocked because someone added a broad disallow rule during development and forgot to remove it.
+
+**The fix:** Check your robots.txt right now. Make sure you're not blocking `/blog/`, `/products/`, or any important directory. Use Search Console's URL Inspection tool to verify.
+
+## 3. Missing or duplicate title tags
+
+**The problem:** Pages with no title tag, or worse — multiple pages sharing the same title. Google uses title tags as a primary ranking signal.
+
+**The fix:** Every page needs a unique, descriptive title tag under 60 characters that includes your target keyword.
+
+## 4. Missing meta descriptions
+
+**The problem:** No meta description = Google picks a random snippet from your page. It might not be flattering.
+
+**The fix:** Write compelling meta descriptions under 155 characters for every page. Include a value proposition and a reason to click.
+
+## 5. Broken internal links (404s)
+
+**The problem:** You deleted or moved a page but forgot to update the links pointing to it. Every 404 is a dead end for both users and Google's crawler.
+
+**The fix:** Run a crawl, find all 404s, and either fix the links or add 301 redirects.
+
+## 6. Missing alt text on images
+
+**The problem:** Images without alt text are invisible to search engines. You're missing out on image search traffic and accessibility.
+
+**The fix:** Add descriptive alt text to every image. Not keyword-stuffed garbage — actually describe what's in the image.
+
+## 7. No HTTPS (or mixed content)
+
+**The problem:** If your site still has HTTP pages or loads some resources over HTTP, Google considers it less trustworthy.
+
+**The fix:** Ensure everything loads over HTTPS. Check for mixed content warnings in Chrome DevTools.
+
+## 8. Slow server response time (TTFB)
+
+**The problem:** If your server takes more than 600ms to respond, everything else on your page will be slow too.
+
+**The fix:** Upgrade your hosting, enable server-side caching, or put a CDN in front of your site. Cloudflare's free tier alone fixes this for most sites.
+
+## 9. No canonical tags
+
+**The problem:** Without canonical tags, Google might index the wrong version of your pages (www vs non-www, HTTP vs HTTPS, with vs without trailing slashes).
+
+**The fix:** Add `<link rel="canonical" href="...">` to every page pointing to the preferred URL version.
+
+## 10. Orphan pages (no internal links)
+
+**The problem:** Pages that exist but aren't linked from anywhere on your site. Google can't find them through crawling.
+
+**The fix:** Ensure every important page has at least 2-3 internal links pointing to it from related content.
+
+## 11. Redirect chains
+
+**The problem:** Page A redirects to B, which redirects to C, which redirects to D. Each hop loses a little authority and slows things down.
+
+**The fix:** Update all redirects to point directly to the final destination. No chains longer than 1 hop.
+
+## 12. Missing structured data (schema markup)
+
+**The problem:** No JSON-LD schema means Google has to guess what your content is about. You miss out on rich snippets and AI citations.
+
+**The fix:** Add Organization schema to your homepage, Article schema to blog posts, FAQ schema where relevant, and Product schema to commercial pages.
+
+## 13. Thin content pages
+
+**The problem:** Pages with barely any content (under 300 words) that exist just because someone made them at some point. They dilute your site's quality.
+
+**The fix:** Either flesh them out with real content, merge them with related pages, or noindex them if they serve no SEO purpose.
+
+## 14. Mobile usability issues
+
+**The problem:** Text too small, buttons too close together, content wider than the screen. Google's mobile-first indexing means mobile issues = desktop ranking issues too.
+
+**The fix:** Test every page type on mobile. Fix viewport issues, font sizes, and tap targets. Search Console has a Mobile Usability report that flags the worst offenders.
+
+## 15. No hreflang for international content
+
+**The problem:** If you have content in multiple languages or for multiple countries, without hreflang tags Google might show the wrong version to users.
+
+**The fix:** Add proper hreflang tags to indicate which version is for which audience. If you only target one language/country, you can skip this one.
+
+## How to prioritize
+
+Don't try to fix all 15 at once. Here's my priority order:
+
+1. **Fix items 1-5 first** — These directly impact whether Google can find and rank your content.
+2. **Then items 6-10** — These improve how well Google understands your content.
+3. **Finally items 11-15** — These are optimizations that matter at scale.
+
+## The honest truth
+
+90% of sites I audit have these same issues. The difference between sites that rank and sites that don't? The ones that rank actually fixed them.
+
+Technical SEO isn't glamorous. Nobody tweets about fixing their canonical tags. But it's the foundation everything else sits on. Skip it, and your content and link building efforts are working at half capacity.
+
+---
+
+*Don't want to check these manually? [Get a free audit](/) — our AI agent scans your entire site and finds every technical issue in minutes, not hours.*

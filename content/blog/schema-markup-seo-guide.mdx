@@ -1,0 +1,199 @@
+---
+title: "Schema Markup for SEO: The Complete Guide to Structured Data in 2026"
+description: "Learn how to implement JSON-LD schema markup to get rich snippets, boost rankings, and appear in AI search results. Includes code examples for Article, FAQ, HowTo, and Organization schema."
+date: "2026-06-06"
+author: "SERP Strategist"
+tags: ["Technical SEO", "Schema Markup", "Structured Data"]
+---
+
+Schema markup is the single most underused SEO technique. Only 33% of websites use it — yet it directly impacts:
+
+- **Rich snippets** (stars, FAQs, prices in search results)
+- **AI search citations** (ChatGPT, Perplexity prefer structured content)
+- **Click-through rates** (rich results get 58% more clicks)
+
+Here's how to implement it properly.
+
+## What is Schema Markup?
+
+Schema markup is structured data you add to your HTML that tells search engines exactly what your content means. It uses the [schema.org](https://schema.org) vocabulary.
+
+The most common format is **JSON-LD** — a script tag in your page's `<head>`:
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Your Article Title",
+  "author": { "@type": "Person", "name": "Author Name" },
+  "datePublished": "2026-06-06"
+}
+</script>
+```
+
+## The 6 Schema Types Every Site Needs
+
+### 1. Organization Schema (Homepage)
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Your Company",
+  "url": "https://yoursite.com",
+  "logo": "https://yoursite.com/logo.png",
+  "sameAs": [
+    "https://twitter.com/yourcompany",
+    "https://linkedin.com/company/yourcompany"
+  ],
+  "description": "One-line description of what you do"
+}
+```
+
+**Why:** Establishes your brand entity for Google Knowledge Panel and AI search.
+
+### 2. Article Schema (Blog Posts)
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Your Post Title",
+  "description": "Post description",
+  "author": {
+    "@type": "Person",
+    "name": "Author Name",
+    "url": "https://yoursite.com/about"
+  },
+  "datePublished": "2026-06-06",
+  "dateModified": "2026-06-06",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Your Company"
+  }
+}
+```
+
+**Why:** Gets your articles into Google News, Discover, and AI citations.
+
+### 3. FAQ Schema (Any Page with Questions)
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is schema markup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Schema markup is structured data that helps search engines understand your content."
+      }
+    }
+  ]
+}
+```
+
+**Why:** Directly appears in search results as expandable FAQs. AI engines pull from this heavily.
+
+### 4. HowTo Schema (Tutorials & Guides)
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Add Schema Markup",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Choose your schema type",
+      "text": "Identify which schema types are relevant to your page."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Generate the JSON-LD",
+      "text": "Use a schema generator or write the JSON manually."
+    }
+  ]
+}
+```
+
+**Why:** Shows step-by-step instructions directly in search results.
+
+### 5. BreadcrumbList Schema (Navigation)
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://yoursite.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://yoursite.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "This Post" }
+  ]
+}
+```
+
+**Why:** Improves site structure signals and shows breadcrumbs in search results.
+
+### 6. Product/Service Schema (Commercial Pages)
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "SERP Strategist Pro",
+  "description": "AI SEO agent for autonomous growth",
+  "offers": {
+    "@type": "Offer",
+    "price": "99",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  }
+}
+```
+
+**Why:** Shows pricing and availability directly in search results.
+
+## Common Schema Mistakes
+
+1. **Using Microdata instead of JSON-LD** — Google recommends JSON-LD. Use it.
+2. **Missing required fields** — Use [Google's Rich Results Test](https://search.google.com/test/rich-results) to validate.
+3. **Schema that doesn't match visible content** — Google penalizes misleading schema.
+4. **Only adding schema to the homepage** — Every page should have relevant schema.
+5. **Not updating `dateModified`** — Freshness signals matter for AI engines.
+
+## How to Validate Your Schema
+
+1. **Google Rich Results Test** — [search.google.com/test/rich-results](https://search.google.com/test/rich-results)
+2. **Schema.org Validator** — [validator.schema.org](https://validator.schema.org)
+3. **SERP Strategist Audit** — Automatically checks schema on every page and fixes gaps
+
+## Schema's Impact on AI Search (GEO)
+
+This is the part most people miss: **AI search engines use schema markup as a primary signal for citations.**
+
+When ChatGPT or Perplexity answers a question, they prefer sources with:
+- Clear FAQ schema (easy to extract answers)
+- Article schema with author credentials
+- HowTo schema for process-based queries
+
+Adding schema doesn't just help Google — it makes your content AI-friendly.
+
+## Automating Schema Markup
+
+Manually adding schema to every page is tedious. An AI SEO agent can:
+
+1. Analyze each page's content type
+2. Generate the appropriate schema automatically
+3. Inject it into the page `<head>`
+4. Validate with Google's Rich Results API
+5. Update `dateModified` on content changes
+
+This is exactly what SERP Strategist does — no manual JSON-LD writing required.
+
+---
+
+*Want schema markup added to every page on your site automatically? [Start your free audit](/) and let our AI agent handle it.*

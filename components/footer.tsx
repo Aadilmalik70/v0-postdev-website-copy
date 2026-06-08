@@ -1,50 +1,70 @@
-"use client"
+import Link from "next/link"
 
-import { useRef } from "react"
-import { useGSAP, gsap } from "./gsap-provider"
+const footerLinks = {
+  Product: [
+    { label: "Features", href: "#features" },
+    { label: "How it works", href: "#how-it-works" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "Blog", href: "/blog" },
+    { label: "FAQ", href: "/faq" },
+  ],
+  Company: [
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ],
+  Legal: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms & Conditions", href: "/terms" },
+    { label: "Cookie Policy", href: "/cookies" },
+    { label: "Disclaimer", href: "/disclaimer" },
+  ],
+}
 
 export function Footer() {
-  const footerRef = useRef<HTMLDivElement>(null)
-
-  useGSAP(() => {
-    gsap.fromTo(
-      footerRef.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: "top 95%",
-          end: "top 80%",
-          scrub: 1,
-        },
-      },
-    )
-  }, [])
-
   return (
-    <footer ref={footerRef} className="py-12 px-6 border-t border-[#1a1a1a] bg-[#000000]">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-4">
-          <span className="font-serif text-xl tracking-tight text-[#ececec]">
-            POST<span className="text-[#ff3b30]">DEV</span>
-          </span>
-          <span className="text-[#555555] text-sm font-mono">© {new Date().getFullYear()}</span>
+    <footer className="border-t border-[#1a1a1a] bg-[#000000]">
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-1">
+            <Link href="/" className="inline-block mb-4">
+              <span className="text-lg font-bold tracking-tight text-[#ececec]">
+                SERP<span className="text-emerald-400">.</span>
+              </span>
+            </Link>
+            <p className="text-sm text-[#666666] leading-relaxed max-w-[200px]">
+              Autonomous AI agent for SEO &amp; GEO growth. Ranks your site while you sleep.
+            </p>
+          </div>
+
+          {/* Link columns */}
+          {Object.entries(footerLinks).map(([category, links]) => (
+            <div key={category}>
+              <h4 className="text-xs font-semibold text-[#888888] uppercase tracking-wider mb-4">{category}</h4>
+              <ul className="space-y-2.5">
+                {links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-[#666666] hover:text-[#ececec] transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <div className="flex items-center gap-6">
-          <a href="#" className="text-sm text-[#888888] hover:text-[#ececec] transition-colors duration-300">
-            Privacy
-          </a>
-          <a href="#" className="text-sm text-[#888888] hover:text-[#ececec] transition-colors duration-300">
-            Terms
-          </a>
-          <a href="#" className="text-sm text-[#888888] hover:text-[#ececec] transition-colors duration-300">
-            Twitter
-          </a>
+        {/* Bottom bar */}
+        <div className="border-t border-[#1a1a1a] mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-[#444444]">
+            &copy; {new Date().getFullYear()} SERP Strategist. All rights reserved.
+          </p>
+          <p className="text-xs text-[#444444]">
+            Built with AI · Powered by AI · Grows with AI
+          </p>
         </div>
       </div>
     </footer>

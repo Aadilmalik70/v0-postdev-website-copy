@@ -1,120 +1,66 @@
 "use client"
 
-import { useRef } from "react"
-import { Rocket, Code, Building2, Brain } from "lucide-react"
-import { useGSAP, gsap } from "./gsap-provider"
+import { motion } from "motion/react"
+import { Rocket, Code, Store, Globe } from "lucide-react"
 
 const personas = [
-  {
-    icon: Rocket,
-    title: "Founder",
-    trait: "who wants speed > headcount",
-  },
-  {
-    icon: Code,
-    title: "Engineer",
-    trait: "tired of pixel-nudging",
-  },
-  {
-    icon: Building2,
-    title: "Agency",
-    trait: "bleeding hours in handoff chaos",
-  },
-  {
-    icon: Brain,
-    title: "Builder",
-    trait: "who believes engineering time should build logic — not recreate UI",
-  },
+  { icon: Rocket, title: "Founders", trait: "who want organic growth without hiring an SEO team" },
+  { icon: Code, title: "Developers", trait: "who built a great product but get zero search traffic" },
+  { icon: Store, title: "Small businesses", trait: "competing against brands with 100x their budget" },
+  { icon: Globe, title: "Content creators", trait: "who want to be found on Google AND AI search" },
 ]
 
 export function WhoItsForSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const headingRef = useRef<HTMLDivElement>(null)
-  const personasRef = useRef<HTMLDivElement>(null)
-
-  useGSAP(() => {
-    gsap.fromTo(
-      headingRef.current,
-      { opacity: 0, y: 60 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-          end: "top 55%",
-          scrub: 1,
-        },
-      },
-    )
-
-    const personaItems = personasRef.current?.querySelectorAll(".persona-item")
-    if (personaItems) {
-      gsap.fromTo(
-        personaItems,
-        { opacity: 0, y: 80 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: personasRef.current,
-            start: "top 80%",
-            end: "top 40%",
-            scrub: 1,
-          },
-        },
-      )
-    }
-  }, [])
-
   return (
-    <section ref={sectionRef} className="py-32 md:py-40 px-6 bg-[#000000]">
-      <div className="max-w-6xl mx-auto">
-        <div ref={headingRef} className="mb-16 md:mb-20">
-          <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#ececec] mb-6 tracking-[-0.02em]">
-            You belong here if:
+    <section className="py-28 md:py-36 px-6 relative overflow-hidden">
+      <div className="absolute right-0 top-1/3 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">Who it&apos;s for</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight">
+            Built for builders.
           </h2>
-        </div>
+        </motion.div>
 
-        <div ref={personasRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {personas.map((persona, index) => (
-            <div
+            <motion.div
               key={index}
-              className="persona-item bg-[#141414] rounded-2xl p-8 md:p-10 group hover:bg-[#1a1a1a] transition-colors duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="group flex items-start gap-4 p-6 rounded-xl border border-[#1a1a1a] bg-[#0a0a0a]/50 hover:border-[#2a2a2a] hover:bg-[#0a0a0a] transition-all duration-300"
             >
-              <div className="w-8 h-8 rounded-full bg-[#5eead4]/10 flex items-center justify-center mb-6">
-                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M1 6L5 10L13 1"
-                    stroke="#5eead4"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#141414] border border-[#222222] flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
+                <persona.icon className="w-5 h-5 text-[#888888] group-hover:text-emerald-400 transition-colors" strokeWidth={1.5} />
               </div>
-
-              {/* Icon */}
-              <persona.icon className="w-10 h-10 text-[#ececec] stroke-[1.5] mb-8" strokeWidth={1.5} />
-
-              {/* Title */}
-              <h3 className="text-xl md:text-2xl font-medium text-[#ececec] mb-4">You're a {persona.title}</h3>
-
-              <p className="text-[#888888] text-base font-light leading-relaxed">{persona.trait}</p>
-            </div>
+              <div>
+                <h3 className="text-base font-semibold text-[#ececec] mb-1">{persona.title}</h3>
+                <p className="text-sm text-[#888888] leading-relaxed">{persona.trait}</p>
+              </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="mt-16 text-center border border-[#222222] rounded-2xl p-8 md:p-12 bg-[#0a0a0a]">
-          <p className="text-[#888888] text-lg md:text-xl font-light mb-4">If you read that and thought:</p>
-          <p className="text-[#ff3b30] text-2xl md:text-3xl font-medium italic mb-4">"Finally."</p>
-          <p className="text-[#ececec] text-lg md:text-xl">Then POSTDEV was built for you.</p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-10 text-center p-8 rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a]/50"
+        >
+          <p className="text-[#888888] text-base mb-2">If you ever thought:</p>
+          <p className="text-xl md:text-2xl font-medium text-emerald-400 italic">&quot;I wish SEO just handled itself.&quot;</p>
+          <p className="text-[#ececec] text-base mt-2">Now it does.</p>
+        </motion.div>
       </div>
     </section>
   )

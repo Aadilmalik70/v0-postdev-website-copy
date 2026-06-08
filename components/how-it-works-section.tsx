@@ -1,108 +1,70 @@
 "use client"
 
-import { useRef } from "react"
-import { useGSAP, gsap } from "./gsap-provider"
+import { motion } from "motion/react"
 
-const techFeatures = [
-  "React + TypeScript output",
-  "TailwindCSS utility classes",
-  "Reusable components",
-  "Sandbox build + live preview",
-  "Visual similarity validation",
-  "CLI + IDE workflows",
+const steps = [
+  { number: "01", title: "Connect", description: "Add your domain. Our agent crawls your entire site in minutes.", highlight: "2-minute setup" },
+  { number: "02", title: "Audit", description: "AI identifies every SEO & GEO issue — ranked by traffic impact, not severity theater.", highlight: "40+ issue types" },
+  { number: "03", title: "Fix", description: "Agent pushes fixes directly to your codebase or CMS. Meta tags, schema, internal links — done.", highlight: "Autonomous execution" },
+  { number: "04", title: "Create", description: "Generates and publishes content targeting your keyword gaps. Optimized for Google + AI search.", highlight: "4-12 posts/month" },
+  { number: "05", title: "Monitor", description: "Tracks rankings, traffic, and AI citations daily. Adjusts strategy based on what's moving.", highlight: "Daily updates" },
 ]
 
 export function HowItWorksSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const headingRef = useRef<HTMLDivElement>(null)
-  const listRef = useRef<HTMLDivElement>(null)
-  const footerRef = useRef<HTMLDivElement>(null)
-
-  useGSAP(() => {
-    gsap.fromTo(
-      headingRef.current,
-      { opacity: 0, y: 60 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-          end: "top 55%",
-          scrub: 1,
-        },
-      },
-    )
-
-    const items = listRef.current?.querySelectorAll(".tech-item")
-    if (items) {
-      gsap.fromTo(
-        items,
-        { opacity: 0, x: -50 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: listRef.current,
-            start: "top 80%",
-            end: "top 40%",
-            scrub: 1,
-          },
-        },
-      )
-    }
-
-    gsap.fromTo(
-      footerRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: "top 90%",
-          end: "top 70%",
-          scrub: 1,
-        },
-      },
-    )
-  }, [])
-
   return (
-    <section ref={sectionRef} id="how-it-works" className="py-32 md:py-40 px-6 bg-[#000000]">
-      <div className="max-w-6xl mx-auto">
-        <div ref={headingRef} className="mb-16 md:mb-20">
-          <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-[#ececec] mb-6 tracking-[-0.02em]">
-            Under the Hood
+    <section id="how-it-works" className="py-28 md:py-36 px-6 relative">
+      {/* Subtle side glow */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[300px] h-[500px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">How it works</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
+            Five steps. Zero manual work.
           </h2>
-          <p className="text-[#888888] text-base md:text-lg max-w-xl">All without opening a code editor first.</p>
-        </div>
-
-        <div ref={listRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
-          {techFeatures.map((feature, index) => (
-            <div
-              key={index}
-              className="tech-item flex items-center gap-4 p-6 bg-[#141414] rounded-xl group hover:bg-[#1a1a1a] transition-colors duration-300"
-            >
-              <span className="text-[#ff3b30] font-mono text-sm">✓</span>
-              <span className="text-[#ececec] text-base md:text-lg font-light">{feature}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer message */}
-        <div ref={footerRef} className="text-center max-w-3xl mx-auto">
-          <p className="text-xl md:text-2xl text-[#ececec] font-light">
-            Not another "AI code assistant" —<br />
-            <span className="text-[#888888]">an autonomous agent that builds, tests, and ships UI.</span>
+          <p className="text-[#8a8a8a] text-base md:text-lg max-w-lg">
+            Set it up once. The agent handles everything after that.
           </p>
+        </motion.div>
+
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-emerald-500/50 via-emerald-500/20 to-transparent" />
+
+          <div className="space-y-8">
+            {steps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative flex gap-6 group"
+              >
+                {/* Dot */}
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#0a0a0a] border-2 border-[#222222] group-hover:border-emerald-500/50 flex items-center justify-center transition-colors duration-300 z-10">
+                  <span className="text-xs font-mono text-[#666666] group-hover:text-emerald-400 transition-colors">{step.number}</span>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 pb-8">
+                  <div className="flex items-center gap-3 mb-1.5">
+                    <h3 className="text-xl font-semibold text-[#ececec]">{step.title}</h3>
+                    <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      {step.highlight}
+                    </span>
+                  </div>
+                  <p className="text-[#888888] text-base leading-relaxed">{step.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
