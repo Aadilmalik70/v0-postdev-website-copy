@@ -1,0 +1,47 @@
+# SERP Strategist — AI SEO & GEO Agent
+
+> Autonomous AI agent that continuously improves website SEO and GEO performance. Finds issues, fixes them, creates content, and monitors rankings 24/7.
+
+## What we do
+
+SERP Strategist is an AI agent that:
+- Crawls websites and detects 40+ SEO issue types automatically
+- Fixes technical SEO autonomously: meta tags, schema markup, canonical URLs, internal linking, sitemap
+- Optimizes for GEO (Generative Engine Optimization) — structured data for citations in ChatGPT, Perplexity, and Google AI Overviews
+- Creates and publishes SEO-optimized blog content targeting keyword gaps
+- Monitors keyword rankings, organic traffic, and AI citations daily
+- Adapts strategy based on what's working
+
+## Who we serve
+
+Founders, developers, and small businesses who want agency-level SEO execution without hiring an agency.
+
+## Pricing
+
+- **Free**: Full site audit, issue prioritization, GEO readiness score — 1 site, no fixes
+- **Growth**: $49/month — autonomous fixes + 4 blog posts/month + ranking monitoring — 1 site
+- **Pro**: $99/month — full automation + GEO optimization + 12 blog posts/month + competitor tracking — 3 sites
+
+All paid plans include a 14-day free trial. Cancel anytime.
+
+## Key resources
+
+- Homepage: https://serpstrategists.com
+- Pricing: https://serpstrategists.com/pricing
+- Blog: https://serpstrategists.com/blog
+- GEO Guide: https://serpstrategists.com/blog/what-is-geo-optimization
+- AI SEO vs Agency: https://serpstrategists.com/blog/ai-seo-agent-vs-agency
+- FAQ: https://serpstrategists.com/faq
+
+## Key concepts we cover
+
+- GEO (Generative Engine Optimization)
+- AEO (Answer Engine Optimization)
+- AI Overviews optimization
+- Schema markup and JSON-LD
+- Core Web Vitals
+- Internal linking strategy
+- Keyword cannibalization
+- Technical SEO audits
+- Perplexity AI citation optimization
+- E-E-A-T signals
