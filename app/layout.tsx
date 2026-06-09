@@ -33,6 +33,27 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "SERP Strategist",
+              url: "https://serpstrategists.com",
+              description: "Autonomous AI agent for SEO and GEO growth. Finds issues, fixes them, creates content, and monitors rankings 24/7.",
+              sameAs: [],
+              offers: {
+                "@type": "AggregateOffer",
+                lowPrice: "0",
+                highPrice: "99",
+                priceCurrency: "USD",
+              },
+            }),
+          }}
+        />
+      </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <GoogleAnalytics />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>

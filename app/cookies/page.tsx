@@ -9,10 +9,13 @@ export const metadata: Metadata = {
     "Understand how SERP Strategist uses cookies and how you can manage your preferences.",
 };
 
+const jsonLd = {"@context":"https://schema.org","@type":"WebPage","name":"Cookie Policy","url":"https://serpstrategists.com/cookies"};
+
 export default function CookiesPage() {
   return (
     <main className="min-h-screen bg-[#000000]">
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-3xl mx-auto px-6 py-32">
         <Link
           href="/"

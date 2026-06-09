@@ -9,10 +9,13 @@ export const metadata: Metadata = {
     "Learn about SERP Strategist — the AI-powered SEO platform built to make autonomous search growth accessible to everyone.",
 };
 
+const jsonLd = {"@context":"https://schema.org","@type":"AboutPage","name":"About SERP Strategist","description":"Learn about our mission to make autonomous SEO accessible to everyone.","url":"https://serpstrategists.com/about","mainEntity":{"@type":"Organization","name":"SERP Strategist","url":"https://serpstrategists.com"}};
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#000000]">
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-3xl mx-auto px-6 py-32">
         <Link
           href="/"

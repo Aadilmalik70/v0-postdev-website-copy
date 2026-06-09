@@ -9,10 +9,13 @@ export const metadata: Metadata = {
     "Important disclaimers regarding the use of SERP Strategist and its services.",
 };
 
+const jsonLd = {"@context":"https://schema.org","@type":"WebPage","name":"Disclaimer","url":"https://serpstrategists.com/disclaimer"};
+
 export default function DisclaimerPage() {
   return (
     <main className="min-h-screen bg-[#000000]">
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-3xl mx-auto px-6 py-32">
         <Link
           href="/"

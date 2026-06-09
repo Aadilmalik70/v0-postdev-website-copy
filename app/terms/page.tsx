@@ -9,10 +9,13 @@ export const metadata: Metadata = {
     "Terms and conditions governing your use of the SERP Strategist platform.",
 };
 
+const jsonLd = {"@context":"https://schema.org","@type":"WebPage","name":"Terms and Conditions","url":"https://serpstrategists.com/terms"};
+
 export default function TermsPage() {
   return (
     <main className="min-h-screen bg-[#000000]">
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-3xl mx-auto px-6 py-32">
         <Link
           href="/"

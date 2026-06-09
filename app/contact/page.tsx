@@ -9,10 +9,13 @@ export const metadata: Metadata = {
     "Get in touch with the SERP Strategist team. We'd love to hear from you.",
 };
 
+const jsonLd = {"@context":"https://schema.org","@type":"ContactPage","name":"Contact SERP Strategist","url":"https://serpstrategists.com/contact","mainEntity":{"@type":"Organization","name":"SERP Strategist","email":"hello@serpstrategists.com"}};
+
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[#000000]">
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-3xl mx-auto px-6 py-32">
         <Link
           href="/"

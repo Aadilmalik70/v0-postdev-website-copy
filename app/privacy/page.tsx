@@ -9,10 +9,13 @@ export const metadata: Metadata = {
     "Learn how SERP Strategist collects, uses, and protects your personal data.",
 };
 
+const jsonLd = {"@context":"https://schema.org","@type":"WebPage","name":"Privacy Policy","url":"https://serpstrategists.com/privacy"};
+
 export default function PrivacyPage() {
   return (
     <main className="min-h-screen bg-[#000000]">
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-3xl mx-auto px-6 py-32">
         <Link
           href="/"

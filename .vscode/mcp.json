@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "librecrawl": {
+      "command": "node",
+      "args": ["c:/Users/DELL 2/Desktop/Projects/serpstrategist-website/mcp-server/index.js"],
+      "env": {
+        "LIBRECRAWL_URL": "http://127.0.0.1:5080"
+      },
+      "description": "LibreCrawl MCP — crawl sites, get SEO issues, export data, check schema"
+    }
+  }
+}

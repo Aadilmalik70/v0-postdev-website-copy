@@ -17,8 +17,22 @@ import { Footer } from "@/components/footer"
 import { UrgencyBanner } from "@/components/urgency-banner"
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "SERP Strategist",
+    url: "https://serpstrategists.com",
+    description: "Autonomous AI agent that ranks your website on Google and AI search engines.",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://serpstrategists.com/blog?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  }
+
   return (
     <main className="min-h-screen bg-[#000000]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <HeroSection />
       <LogoCloudSection />
