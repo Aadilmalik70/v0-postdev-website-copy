@@ -31,6 +31,28 @@ export default function BlogPage() {
           </p>
         </div>
 
+        <section className="mb-12 border border-[#1a1a1a] rounded-2xl p-8 bg-[#0a0a0a]">
+          <p className="text-[#22c55e] text-xs font-mono uppercase tracking-[0.2em] mb-3">Featured cluster</p>
+          <h2 className="text-2xl md:text-3xl font-medium text-[#ececec] mb-3">AI SEO tools and competitive benchmarking</h2>
+          <p className="text-[#888888] text-base leading-relaxed mb-5 max-w-3xl">
+            Start with the broad tools comparison, then move into the narrower SERP analyzer, pricing, and methodology guides if you are building a commercial SEO software stack.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/blog/top-seo-analysis-tools-2025-best-seo-ai-tool" className="text-sm font-mono px-4 py-2 rounded-full border border-[#22c55e]/30 text-[#ececec] hover:bg-[#111111]">
+              Top AI SEO analysis tools
+            </Link>
+            <Link href="/blog/best-serp-analyzer-tools-2026" className="text-sm font-mono px-4 py-2 rounded-full border border-[#222222] text-[#888888] hover:border-[#22c55e]/30 hover:text-[#ececec]">
+              Best SERP analyzer tools
+            </Link>
+            <Link href="/blog/ai-seo-tools-pricing-comparison-2026" className="text-sm font-mono px-4 py-2 rounded-full border border-[#222222] text-[#888888] hover:border-[#22c55e]/30 hover:text-[#ececec]">
+              Pricing comparison
+            </Link>
+            <Link href="/blog/how-to-do-seo-competitive-benchmarking-2026" className="text-sm font-mono px-4 py-2 rounded-full border border-[#222222] text-[#888888] hover:border-[#22c55e]/30 hover:text-[#ececec]">
+              Benchmarking method
+            </Link>
+          </div>
+        </section>
+
         {posts.length === 0 ? (
           <div className="text-center py-20 border border-[#222222] rounded-2xl bg-[#0a0a0a]">
             <p className="text-[#888888] text-lg">Posts coming soon.</p>
