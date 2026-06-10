@@ -34,6 +34,10 @@ export function buildSeoTitle(title: string, suffix = SITE_NAME): string {
     return truncateAtWordBoundary(normalizedTitle, SEO_TITLE_MAX)
   }
 
+   if (normalizedTitle.toLowerCase().includes(normalizedSuffix.toLowerCase())) {
+    return truncateAtWordBoundary(normalizedTitle, SEO_TITLE_MAX)
+  }
+
   const suffixText = ` | ${normalizedSuffix}`
   const fullTitle = `${normalizedTitle}${suffixText}`
 
