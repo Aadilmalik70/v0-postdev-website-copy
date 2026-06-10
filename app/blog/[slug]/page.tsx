@@ -4,6 +4,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { MDXContent } from "./mdx-content"
 import { Navbar } from "@/components/navbar"
+import { buildMarketingMetadata, buildCanonicalUrl } from "@/lib/site-seo"
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -19,23 +20,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(slug)
   if (!post) return {}
 
-  return {
-    title: `${post.title} — SERP Strategist Blog`,
+  return buildMarketingMetadata({
+    title: `${post.title} | SERP Strategist Blog`,
     description: post.description,
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: "article",
-      publishedTime: post.date,
-      authors: [post.author],
-      tags: post.tags,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.description,
-    },
-  }
+    pathname: `/blog/${slug}`,
+    type: "article",
+    publishedTime: post.date,
+    authors: [post.author],
+    tags: post.tags,
+  })
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -46,10 +39,14 @@ export default async function BlogPostPage({ params }: Props) {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
+    url: buildCanonicalUrl(`/blog/${slug}`),
+    mainEntityOfPage: buildCanonicalUrl(`/blog/${slug}`),
     datePublished: post.date,
+    dateModified: post.date,
+    keywords: post.tags.join(", "),
     author: {
       "@type": "Organization",
       name: post.author,
@@ -59,6 +56,7 @@ export default async function BlogPostPage({ params }: Props) {
       name: "SERP Strategist",
       url: "https://serpstrategists.com",
     },
+    image: post.image ? buildCanonicalUrl(post.image) : undefined,
   }
 
   return (

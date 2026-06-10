@@ -2,12 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { buildMarketingMetadata } from "@/lib/site-seo";
 
-export const metadata: Metadata = {
-  title: "About — SERP Strategist",
+export const metadata: Metadata = buildMarketingMetadata({
+  title: "About SERP Strategist | AI SEO Agent Company",
   description:
-    "Learn about SERP Strategist — the AI-powered SEO platform built to make autonomous search growth accessible to everyone.",
-};
+    "Learn how SERP Strategist is building an AI SEO agent that replaces manual audits, fixes, and SEO busywork with autonomous execution.",
+  pathname: "/about",
+});
 
 const jsonLd = {"@context":"https://schema.org","@type":"AboutPage","name":"About SERP Strategist","description":"Learn about our mission to make autonomous SEO accessible to everyone.","url":"https://serpstrategists.com/about","mainEntity":{"@type":"Organization","name":"SERP Strategist","url":"https://serpstrategists.com"}};
 

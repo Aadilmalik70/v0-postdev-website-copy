@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
 import { LogoCloudSection } from "@/components/logo-cloud-section"
@@ -15,6 +16,28 @@ import { FaqSection } from "@/components/faq-section"
 import { FinalCtaSection } from "@/components/final-cta-section"
 import { Footer } from "@/components/footer"
 import { UrgencyBanner } from "@/components/urgency-banner"
+import { buildCanonicalUrl, getHomepageSeoCopy } from "@/lib/site-seo"
+
+const homepageSeoCopy = getHomepageSeoCopy()
+
+export const metadata: Metadata = {
+  title: homepageSeoCopy.title,
+  description: homepageSeoCopy.description,
+  alternates: {
+    canonical: buildCanonicalUrl("/"),
+  },
+  openGraph: {
+    title: homepageSeoCopy.openGraphTitle,
+    description: homepageSeoCopy.openGraphDescription,
+    type: "website",
+    url: buildCanonicalUrl("/"),
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: homepageSeoCopy.twitterTitle,
+    description: homepageSeoCopy.twitterDescription,
+  },
+}
 
 export default function Home() {
   const jsonLd = {
@@ -22,7 +45,7 @@ export default function Home() {
     "@type": "WebSite",
     name: "SERP Strategist",
     url: "https://serpstrategists.com",
-    description: "Autonomous AI agent that ranks your website on Google and AI search engines.",
+    description: homepageSeoCopy.description,
     potentialAction: {
       "@type": "SearchAction",
       target: "https://serpstrategists.com/blog?q={search_term_string}",

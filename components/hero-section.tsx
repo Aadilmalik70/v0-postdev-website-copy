@@ -7,6 +7,9 @@ import { FlipWords } from "@/components/ui/flip-words"
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect"
 import { ArrowRight } from "lucide-react"
 import { EarlyAccessModal } from "./early-access-modal"
+import { getHomepageSeoCopy } from "@/lib/site-seo"
+
+const homepageSeoCopy = getHomepageSeoCopy()
 
 export function HeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -45,12 +48,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#f0f0f0] mb-6 leading-[1.1]"
           >
-            Rank higher on{" "}
-            <br className="hidden sm:block" />
-            <FlipWords
-              words={["Google", "ChatGPT", "Perplexity", "Gemini"]}
-              className="text-emerald-400"
-            />
+            {homepageSeoCopy.h1}
           </motion.h1>
 
           {/* Subtitle */}
@@ -61,7 +59,7 @@ export function HeroSection() {
             className="max-w-2xl mx-auto mb-10"
           >
             <TextGenerateEffect
-              words="An AI agent that finds SEO issues, fixes them, creates content, and monitors your rankings — autonomously, 24/7."
+              words={homepageSeoCopy.subtitle}
               className="text-lg md:text-xl text-[#888888] leading-relaxed"
             />
           </motion.div>

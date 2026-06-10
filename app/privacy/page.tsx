@@ -2,12 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { buildMarketingMetadata } from "@/lib/site-seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy — SERP Strategist",
+export const metadata: Metadata = buildMarketingMetadata({
+  title: "Privacy Policy | SERP Strategist",
   description:
-    "Learn how SERP Strategist collects, uses, and protects your personal data.",
-};
+    "Learn how SERP Strategist collects, uses, stores, and protects your data across its AI SEO agent platform.",
+  pathname: "/privacy",
+});
 
 const jsonLd = {"@context":"https://schema.org","@type":"WebPage","name":"Privacy Policy","url":"https://serpstrategists.com/privacy"};
 

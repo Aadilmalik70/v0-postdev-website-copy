@@ -2,12 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { buildMarketingMetadata } from "@/lib/site-seo";
 
-export const metadata: Metadata = {
-  title: "Cookie Policy — SERP Strategist",
+export const metadata: Metadata = buildMarketingMetadata({
+  title: "Cookie Policy | SERP Strategist",
   description:
-    "Understand how SERP Strategist uses cookies and how you can manage your preferences.",
-};
+    "Understand how SERP Strategist uses cookies, analytics, and consent preferences across its website and platform.",
+  pathname: "/cookies",
+});
 
 const jsonLd = {"@context":"https://schema.org","@type":"WebPage","name":"Cookie Policy","url":"https://serpstrategists.com/cookies"};
 

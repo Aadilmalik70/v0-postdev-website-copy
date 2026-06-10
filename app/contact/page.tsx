@@ -2,12 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { buildMarketingMetadata } from "@/lib/site-seo";
 
-export const metadata: Metadata = {
-  title: "Contact — SERP Strategist",
+export const metadata: Metadata = buildMarketingMetadata({
+  title: "Contact SERP Strategist | AI SEO Agent Team",
   description:
-    "Get in touch with the SERP Strategist team. We'd love to hear from you.",
-};
+    "Contact the SERP Strategist team for support, partnerships, and questions about autonomous SEO and GEO workflows.",
+  pathname: "/contact",
+});
 
 const jsonLd = {"@context":"https://schema.org","@type":"ContactPage","name":"Contact SERP Strategist","url":"https://serpstrategists.com/contact","mainEntity":{"@type":"Organization","name":"SERP Strategist","email":"hello@serpstrategists.com"}};
 

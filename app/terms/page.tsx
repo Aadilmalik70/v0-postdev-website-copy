@@ -2,12 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { buildMarketingMetadata } from "@/lib/site-seo";
 
-export const metadata: Metadata = {
-  title: "Terms & Conditions — SERP Strategist",
+export const metadata: Metadata = buildMarketingMetadata({
+  title: "Terms and Conditions | SERP Strategist",
   description:
-    "Terms and conditions governing your use of the SERP Strategist platform.",
-};
+    "Review the terms and conditions governing your use of the SERP Strategist AI SEO agent platform.",
+  pathname: "/terms",
+});
 
 const jsonLd = {"@context":"https://schema.org","@type":"WebPage","name":"Terms and Conditions","url":"https://serpstrategists.com/terms"};
 

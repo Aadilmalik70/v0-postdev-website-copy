@@ -2,12 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { buildMarketingMetadata } from "@/lib/site-seo";
 
-export const metadata: Metadata = {
-  title: "Disclaimer — SERP Strategist",
+export const metadata: Metadata = buildMarketingMetadata({
+  title: "Disclaimer | SERP Strategist",
   description:
-    "Important disclaimers regarding the use of SERP Strategist and its services.",
-};
+    "Important disclaimers about rankings, third-party tools, AI-generated recommendations, and use of SERP Strategist services.",
+  pathname: "/disclaimer",
+});
 
 const jsonLd = {"@context":"https://schema.org","@type":"WebPage","name":"Disclaimer","url":"https://serpstrategists.com/disclaimer"};
 

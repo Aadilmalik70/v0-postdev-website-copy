@@ -3,26 +3,28 @@ import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { GoogleAnalytics } from "@/components/google-analytics"
+import { SITE_NAME, SITE_URL } from "@/lib/site-seo"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" })
 
 export const metadata: Metadata = {
-  title: "SERP Strategist — AI SEO & GEO Agent That Ranks Your Site Autonomously",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_NAME,
   description:
-    "Autonomous AI agent that continuously improves your website's SEO and GEO performance. Finds issues, fixes them, creates content, and monitors rankings — 24/7.",
+    "AI SEO agent that audits your site, fixes technical issues, publishes content, and tracks organic growth without manual busywork.",
   keywords: ["AI SEO tool", "autonomous SEO", "GEO optimization", "AI search ranking", "automated SEO agent"],
   openGraph: {
-    title: "SERP Strategist — AI Agent That Ranks Your Site",
-    description: "Stop doing SEO manually. Let an AI agent grow your organic traffic 24/7.",
+    title: SITE_NAME,
+    description: "AI SEO agent that audits your site, fixes technical issues, publishes content, and tracks organic growth without manual busywork.",
     type: "website",
-    url: "https://serpstrategists.com",
+    url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "SERP Strategist — AI SEO & GEO Agent",
-    description: "Autonomous AI agent for SEO and GEO growth.",
+    title: SITE_NAME,
+    description: "AI SEO agent that audits your site, fixes technical issues, publishes content, and tracks organic growth without manual busywork.",
   },
 }
 
