@@ -3,10 +3,14 @@ import type { Metadata } from "next"
 export const SITE_NAME = "SERP Strategist"
 export const SITE_URL = "https://serpstrategists.com"
 const SEO_TITLE_MAX = 60
-const SEO_DESCRIPTION_MAX = 155
+const SEO_DESCRIPTION_MAX = 150
 
 function normalizeSeoText(value: string): string {
-  return value.replace(/\s+/g, " ").trim()
+  return value
+    .replace(/\.\.\./g, "…")
+    .replace(/'/g, "’")
+    .replace(/\s+/g, " ")
+    .trim()
 }
 
 function truncateAtWordBoundary(value: string, maxLength: number): string {
