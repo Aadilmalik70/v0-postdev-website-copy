@@ -61,16 +61,16 @@ export function buildCanonicalUrl(pathname: string): string {
 
 export function getHomepageSeoCopy() {
   return {
-    title: "AI SEO Agent Software for Audits and Fixes | SERP Strategist",
+    title: "AI SEO Agent for Audits, Fixes, and Growth | SERP Strategist",
     description:
-      "AI SEO agent software that audits your site, fixes technical issues, publishes content, and tracks organic growth without manual busywork.",
+      "SERP Strategist gives small teams one AI SEO workflow to audit, fix, publish, and monitor without agency overhead or manual grind.",
     h1: "One AI SEO agent that audits, fixes, publishes, and monitors your site.",
     subtitle:
       "SERP Strategist gives small teams a full SEO workflow without the agency price tag or the manual grind.",
-    openGraphTitle: "AI SEO Agent Software for Audits and Fixes",
-    openGraphDescription: "Stop juggling audits, fixes, and content calendars. Let one AI SEO agent software workflow drive organic growth 24/7.",
-    twitterTitle: "AI SEO Agent Software for Audits and Fixes",
-    twitterDescription: "Audit, fix, publish, and monitor SEO from one autonomous AI SEO agent.",
+    openGraphTitle: "AI SEO Agent for Audits, Fixes, and Growth",
+    openGraphDescription: "One AI SEO workflow to audit, fix, publish, and monitor your site without agency overhead or manual grind.",
+    twitterTitle: "AI SEO Agent for Audits, Fixes, and Growth",
+    twitterDescription: "One AI SEO workflow to audit, fix, publish, and monitor your site without agency overhead.",
   }
 }
 
