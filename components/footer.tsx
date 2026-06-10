@@ -33,7 +33,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-[#666666] leading-relaxed max-w-[200px]">
-              Autonomous AI agent for SEO &amp; GEO growth. Ranks your site while you sleep.
+              SERP Strategist helps teams audit, fix, and grow organic traffic with less manual work.
             </p>
           </div>
 
@@ -66,6 +66,7 @@ export function Footer() {
             Built with AI · Powered by AI · Grows with AI
           </p>
         </div>
+        <p className="text-xs text-[#444444] mt-4">Early access pricing: lock in $49/month before launch</p>
       </div>
     </footer>
   )

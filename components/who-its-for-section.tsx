@@ -4,10 +4,10 @@ import { motion } from "motion/react"
 import { Rocket, Code, Store, Globe } from "lucide-react"
 
 const personas = [
-  { icon: Rocket, title: "Founders", trait: "who want organic growth without hiring an SEO team" },
-  { icon: Code, title: "Developers", trait: "who built a great product but get zero search traffic" },
-  { icon: Store, title: "Small businesses", trait: "competing against brands with 100x their budget" },
-  { icon: Globe, title: "Content creators", trait: "who want to be found on Google AND AI search" },
+  { icon: Rocket, title: "Founders", trait: "who want organic growth without hiring a full SEO team" },
+  { icon: Code, title: "Developers", trait: "who built a great product but still have zero search traffic" },
+  { icon: Store, title: "Small businesses", trait: "who are competing against brands with 100x the budget" },
+  { icon: Globe, title: "Content creators", trait: "who want to be discovered on Google and in AI search" },
 ]
 
 export function WhoItsForSection() {
@@ -57,9 +57,9 @@ export function WhoItsForSection() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-10 text-center p-8 rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a]/50"
         >
-          <p className="text-[#888888] text-base mb-2">If you ever thought:</p>
+          <p className="text-[#888888] text-base mb-2">If you have ever thought:</p>
           <p className="text-xl md:text-2xl font-medium text-emerald-400 italic">&quot;I wish SEO just handled itself.&quot;</p>
-          <p className="text-[#ececec] text-base mt-2">Now it does.</p>
+          <p className="text-[#ececec] text-base mt-2">This is the product.</p>
         </motion.div>
       </div>
     </section>

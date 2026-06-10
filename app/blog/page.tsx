@@ -11,6 +11,8 @@ export const metadata: Metadata = buildMarketingMetadata({
   pathname: "/blog",
 })
 
+const POSTS_PER_CLUSTER = 2
+
 export default function BlogPage() {
   const posts = getAllPosts()
   const clusters = groupPostsByCluster(posts)
@@ -27,7 +29,7 @@ export default function BlogPage() {
             Blog
           </h1>
           <p className="text-[#888888] text-lg">
-            Clustered guides on GEO, technical SEO systems, and content strategy.
+            Browse the latest posts from each cluster without loading the full archive in one pass.
           </p>
         </div>
 
@@ -73,13 +75,20 @@ export default function BlogPage() {
 
             {clusters.map((cluster) => (
               <section key={cluster.id} id={cluster.id} className="scroll-mt-28">
-                <div className="mb-6">
-                  <h2 className="text-2xl md:text-3xl font-medium text-[#ececec] mb-2">{cluster.title}</h2>
-                  <p className="text-[#888888] text-base">{cluster.description}</p>
+                <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-medium text-[#ececec] mb-2">{cluster.title}</h2>
+                    <p className="text-[#888888] text-base">{cluster.description}</p>
+                  </div>
+                  {cluster.posts.length > POSTS_PER_CLUSTER ? (
+                    <p className="text-xs font-mono text-[#666666]">
+                      Showing {POSTS_PER_CLUSTER} of {cluster.posts.length} posts in this cluster.
+                    </p>
+                  ) : null}
                 </div>
 
                 <div className="space-y-6">
-                  {cluster.posts.map((post) => (
+                  {cluster.posts.slice(0, POSTS_PER_CLUSTER).map((post) => (
                     <Link
                       key={post.slug}
                       href={`/blog/${post.slug}`}

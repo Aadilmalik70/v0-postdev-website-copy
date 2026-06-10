@@ -24,8 +24,8 @@ export function ProblemSection() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
             SEO is broken for small teams.
           </h2>
-          <p className="text-[#8a8a8a] text-base md:text-lg max-w-lg">
-            You can&apos;t afford an agency. You don&apos;t have the hours. Meanwhile, AI search is eating your traffic.
+          <p className="text-[#8a8a8a] text-base md:text-lg max-w-2xl">
+            Agencies are expensive, the manual workload never ends, and AI search is quietly stealing clicks before your pages get a chance. The result is simple: the work gets delayed, or it does not get done at all.
           </p>
         </motion.div>
 

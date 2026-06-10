@@ -42,7 +42,7 @@ export function Navbar() {
             onClick={() => setIsModalOpen(true)}
             className="bg-emerald-500 hover:bg-emerald-400 text-black font-medium px-5 rounded-full text-xs"
           >
-            Get Started Free
+            Start Free Audit
           </Button>
         </div>
       </FloatingNavbar>

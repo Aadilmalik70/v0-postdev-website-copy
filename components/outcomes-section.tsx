@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "motion/react"
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards"
 
 const metrics = [
   { value: "3-5x", label: "Organic traffic growth", sublabel: "within 90 days" },
@@ -11,9 +10,9 @@ const metrics = [
 
 const testimonials = [
   { quote: "Our organic traffic tripled in 2 months. The agent found issues we'd missed for years.", name: "Sarah K.", title: "Founder, SaaS Startup" },
-  { quote: "Replaced our $4K/month SEO agency. Better results, fraction of the cost.", name: "Mike T.", title: "E-commerce Owner" },
-  { quote: "The GEO optimization got us cited in Perplexity within weeks. Game changer.", name: "Alex R.", title: "Content Creator" },
-  { quote: "Set it up in 5 minutes. First fixes pushed within an hour. Unreal.", name: "James L.", title: "Indie Hacker" },
+  { quote: "We replaced our $4K/month agency and got better results for a fraction of the cost.", name: "Mike T.", title: "E-commerce Owner" },
+  { quote: "The GEO optimization got us cited in Perplexity within weeks.", name: "Alex R.", title: "Content Creator" },
+  { quote: "Setup took 5 minutes, and the first fixes shipped within an hour.", name: "James L.", title: "Indie Hacker" },
 ]
 
 export function OutcomesSection() {
@@ -34,8 +33,8 @@ export function OutcomesSection() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
             Results that compound.
           </h2>
-          <p className="text-[#8a8a8a] text-base md:text-lg max-w-lg mx-auto">
-            Every fix builds on the last. Every post strengthens the next. Your site gets stronger every week.
+          <p className="text-[#8a8a8a] text-base md:text-lg max-w-3xl mx-auto">
+            Every fix makes the next one easier. Every post gives the next page a better starting point. The site improves week after week instead of drifting in place.
           </p>
         </motion.div>
 
@@ -62,15 +61,22 @@ export function OutcomesSection() {
           ))}
         </div>
 
-        {/* Testimonials strip */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <InfiniteMovingCards items={testimonials} speed="slow" />
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a] p-6"
+            >
+              <p className="text-[#d0d0d0] text-base leading-relaxed mb-4">&ldquo;{testimonial.quote}&rdquo;</p>
+              <p className="text-sm text-[#ececec] font-medium">{testimonial.name}</p>
+              <p className="text-xs text-[#666666] mt-1">{testimonial.title}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   )

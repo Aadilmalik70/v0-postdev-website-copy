@@ -4,21 +4,21 @@ import { motion } from "motion/react"
 import { X, Check } from "lucide-react"
 
 const beforeItems = [
-  "Spending 15+ hours/week on SEO manually",
-  "Paying $5K/month for an agency that sends reports",
-  "Issues pile up silently — you don't even know",
-  "Blog hasn't been updated in 3 months",
-  "No idea how AI search engines see your content",
-  "Rankings slowly declining and you're not sure why",
+  "15+ hours a week spent on SEO manually",
+  "A $5K/month agency that mostly sends reports",
+  "Issues piling up quietly in the background",
+  "A blog that goes stale for months",
+  "No clear view into AI search visibility",
+  "Rankings slipping without a clear reason",
 ]
 
 const afterItems = [
-  "Agent works 24/7 — zero manual hours needed",
-  "Same execution for $49/month instead of $5K",
-  "Every issue detected and fixed within hours",
-  "4-12 fresh posts published monthly, automatically",
-  "Optimized for ChatGPT, Perplexity, and Gemini citations",
-  "Rankings tracked daily with automatic adjustments",
+  "The agent works 24/7 with zero manual hours",
+  "The same execution for $49/month instead of $5K",
+  "Issues detected and fixed within hours",
+  "4-12 fresh posts published automatically each month",
+  "Built for ChatGPT, Perplexity, and Gemini citations",
+  "Daily rank tracking with automatic adjustments",
 ]
 
 export function ComparisonSection() {

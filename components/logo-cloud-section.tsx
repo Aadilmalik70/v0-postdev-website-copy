@@ -45,7 +45,7 @@ export function LogoCloudSection() {
           transition={{ duration: 0.6 }}
           className="text-center text-2xl md:text-3xl font-medium text-[#666666] mb-3"
         >
-          Works with your existing stack
+          Works with the stack you already have.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
@@ -54,7 +54,7 @@ export function LogoCloudSection() {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="text-center text-sm text-[#444444] mb-14"
         >
-          Connects to any site with a GitHub repo or CMS API
+          Connect a GitHub repo or CMS API and let the agent work across WordPress, Shopify, Next.js, or Webflow without forcing a rebuild.
         </motion.p>
 
         {/* Animated logo row */}

@@ -23,10 +23,10 @@ export function FinalCtaSection() {
             transition={{ duration: 0.6 }}
           >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-6">
-            Your competitors aren&apos;t waiting.
+            Your competitors are not waiting.
           </h2>
           <p className="text-[#8a8a8a] text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-              Every day without SEO is organic traffic you&apos;re handing to someone else. The agent starts working the moment you connect.
+              Every day without SEO is traffic you are handing to someone else. Connect the site, let the agent find the gaps, and start fixing what is holding growth back.
             </p>
 
             <Button

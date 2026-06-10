@@ -3,11 +3,11 @@
 import { motion } from "motion/react"
 
 const steps = [
-  { number: "01", title: "Connect", description: "Add your domain. Our agent crawls your entire site in minutes.", highlight: "2-minute setup" },
-  { number: "02", title: "Audit", description: "AI identifies every SEO & GEO issue — ranked by traffic impact, not severity theater.", highlight: "40+ issue types" },
-  { number: "03", title: "Fix", description: "Agent pushes fixes directly to your codebase or CMS. Meta tags, schema, internal links — done.", highlight: "Autonomous execution" },
-  { number: "04", title: "Create", description: "Generates and publishes content targeting your keyword gaps. Optimized for Google + AI search.", highlight: "4-12 posts/month" },
-  { number: "05", title: "Monitor", description: "Tracks rankings, traffic, and AI citations daily. Adjusts strategy based on what's moving.", highlight: "Daily updates" },
+  { number: "01", title: "Connect", description: "Add your domain and let the agent crawl the full site in minutes.", highlight: "2-minute setup" },
+  { number: "02", title: "Audit", description: "Get every SEO and GEO issue ranked by traffic impact, not by busywork.", highlight: "40+ issue types" },
+  { number: "03", title: "Fix", description: "Let the agent push approved fixes directly into your codebase or CMS.", highlight: "Approved workflows" },
+  { number: "04", title: "Create", description: "Generate and publish content that targets the exact keyword gaps you are missing.", highlight: "4-12 posts/month" },
+  { number: "05", title: "Monitor", description: "Track rankings, traffic, and AI citations daily, then adjust automatically when something moves.", highlight: "Daily updates" },
 ]
 
 export function HowItWorksSection() {

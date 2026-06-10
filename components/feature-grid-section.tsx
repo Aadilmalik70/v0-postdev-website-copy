@@ -18,7 +18,7 @@ const capabilities = [
 
 export function FeatureGridSection() {
   return (
-    <section className="py-28 md:py-36 px-6 relative overflow-hidden">
+    <section id="features" className="py-28 md:py-36 px-6 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#020205] to-[#000000]" />
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[600px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -33,13 +33,13 @@ export function FeatureGridSection() {
           <div>
             <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">Full stack</p>
             <h2 className="text-4xl md:text-5xl font-bold text-[#ececec] tracking-tight mb-4">
-              Everything an SEO agency does.
+              Everything an SEO agency does, automated by AI.
             </h2>
             <p className="text-[#888888] text-lg leading-relaxed mb-2">
-              Automated by AI. For the price of a coffee per day.
+              Traditional Google SEO and next-gen AI search optimization in one agent.
             </p>
             <p className="text-[#666666] text-base">
-              Both traditional Google SEO and next-gen AI search optimization (GEO) — in one agent.
+              For the price of a coffee per day.
             </p>
           </div>
 

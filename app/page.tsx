@@ -6,16 +6,15 @@ import { ProblemSection } from "@/components/problem-section"
 import { ProductDemoSection } from "@/components/product-demo-section"
 import { OutcomesSection } from "@/components/outcomes-section"
 import { ComparisonSection } from "@/components/comparison-section"
-import { ValuePropSection } from "@/components/value-prop-section"
 import { BentoGridSection } from "@/components/bento-grid-section"
 import { HowItWorksSection } from "@/components/how-it-works-section"
 import { WhoItsForSection } from "@/components/who-its-for-section"
 import { FeatureGridSection } from "@/components/feature-grid-section"
-import { PricingSection } from "@/components/pricing-section"
-import { FaqSection } from "@/components/faq-section"
 import { FinalCtaSection } from "@/components/final-cta-section"
 import { Footer } from "@/components/footer"
 import { UrgencyBanner } from "@/components/urgency-banner"
+import { HomepagePricingTeaser } from "@/components/homepage-pricing-teaser"
+import { HomepageFaqTeaser } from "@/components/homepage-faq-teaser"
 import { buildCanonicalUrl, getHomepageSeoCopy } from "@/lib/site-seo"
 
 const homepageSeoCopy = getHomepageSeoCopy()
@@ -67,8 +66,8 @@ export default function Home() {
       <HowItWorksSection />
       <WhoItsForSection />
       <FeatureGridSection />
-      <PricingSection />
-      <FaqSection />
+      <HomepagePricingTeaser />
+      <HomepageFaqTeaser />
       <FinalCtaSection />
       <Footer />
       <UrgencyBanner />

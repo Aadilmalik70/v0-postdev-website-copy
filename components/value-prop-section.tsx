@@ -47,7 +47,7 @@ export function ValuePropSection() {
             The full SEO loop. Automated.
           </h2>
           <p className="text-[#8a8a8a] text-base md:text-lg max-w-xl mx-auto">
-            Other tools show you problems. This agent fixes them.
+            Those tools show you data. This product turns the data into action and execution.
           </p>
         </motion.div>
 

@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { motion } from "motion/react"
 import { Button } from "@/components/ui/button"
-import { FlipWords } from "@/components/ui/flip-words"
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect"
 import { ArrowRight } from "lucide-react"
 import { EarlyAccessModal } from "./early-access-modal"
@@ -96,7 +95,7 @@ export function HeroSection() {
             transition={{ delay: 1, duration: 0.5 }}
             className="text-xs text-[#555555] mt-8 tracking-wide"
           >
-            Free forever on audit tier · No credit card · Setup in 2 minutes
+            Free forever on audit tier | No credit card | Setup in 2 minutes
           </motion.p>
         </div>
       </section>

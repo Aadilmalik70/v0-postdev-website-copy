@@ -64,9 +64,9 @@ export function getHomepageSeoCopy() {
     title: "AI SEO Agent Software for Audits and Fixes | SERP Strategist",
     description:
       "AI SEO agent software that audits your site, fixes technical issues, publishes content, and tracks organic growth without manual busywork.",
-    h1: "AI SEO Agent Software for Audits, Fixes, and Growth",
+    h1: "One AI SEO agent that audits, fixes, publishes, and monitors your site.",
     subtitle:
-      "One AI SEO agent software workflow to audit your site, fix issues, publish content, and monitor rankings without agency overhead.",
+      "SERP Strategist gives small teams a full SEO workflow without the agency price tag or the manual grind.",
     openGraphTitle: "AI SEO Agent Software for Audits and Fixes",
     openGraphDescription: "Stop juggling audits, fixes, and content calendars. Let one AI SEO agent software workflow drive organic growth 24/7.",
     twitterTitle: "AI SEO Agent Software for Audits and Fixes",
