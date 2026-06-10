@@ -4,7 +4,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { MDXContent } from "./mdx-content"
 import { Navbar } from "@/components/navbar"
-import { buildMarketingMetadata, buildCanonicalUrl } from "@/lib/site-seo"
+import { buildMarketingMetadata, buildCanonicalUrl, buildSeoTitle } from "@/lib/site-seo"
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {}
 
   return buildMarketingMetadata({
-    title: `${post.title} | SERP Strategist Blog`,
+    title: buildSeoTitle(post.title),
     description: post.description,
     pathname: `/blog/${slug}`,
     type: "article",
