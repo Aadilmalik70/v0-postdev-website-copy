@@ -1,52 +1,67 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
+import { Plus } from "lucide-react"
+import { Reveal } from "./gsap-fx"
 
 const faqs = [
-  {
-    question: "What exactly does the agent do?",
-    answer: "It crawls your site, identifies SEO and GEO issues, fixes safe items automatically, creates optimized content, and tracks rankings daily.",
-  },
-  {
-    question: "How is this different from SEMrush or Ahrefs?",
-    answer: "Those tools show you data. This product turns the data into action and execution.",
-  },
-  {
-    question: "Will it break my website?",
-    answer: "No, not if the workflow separates safe automation from changes that need review and approval.",
-  },
-  {
-    question: "How long until I see results?",
-    answer: "Expect quick fixes in days, content gains in weeks, and larger organic gains over 60 to 90 days.",
-  },
+  { question: "What does the operator actually do?", answer: "It runs the Operator Loop on your site: observes rankings, traffic, and AI citations; prioritizes opportunities by impact; plans the work; executes approved fixes and content; measures outcomes; and improves what it does next." },
+  { question: "How is this different from Ahrefs or Semrush plus ChatGPT?", answer: "Those tools give you data and drafts — your team still operates the workflow. SERP Strategists is the operating layer: the data becomes a ranked action queue, and approved work ships into your CMS or codebase." },
+  { question: "What happens if it makes the wrong change?", answer: "Governance is built in. Safe fixes can ship automatically, sensitive changes route through approval gates, every action is logged, and any change can be rolled back." },
+  { question: "How fast will I see proof?", answer: "Technical fixes ship within days of approval, content effects show in weeks, and larger organic and citation gains typically compound over 60 to 90 days — with every shipped action measured against outcomes." },
 ]
 
 export function HomepageFaqTeaser() {
+  const [open, setOpen] = useState<number | null>(0)
+
   return (
-    <section className="py-28 md:py-36 px-6 relative">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">FAQ</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
-            Buying questions, answered fast.
+    <section className="py-24 md:py-32 px-5 md:px-6 bg-surface/50 border-y border-line">
+      <div className="max-w-3xl mx-auto">
+        <Reveal className="text-center mb-12">
+          <p className="eyebrow mb-5 justify-center">FAQ</p>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-[44px] font-semibold text-ink leading-[1.12] mb-5">
+            The questions every buyer asks first.
           </h2>
-          <p className="text-[#8a8a8a] text-base md:text-lg max-w-2xl mx-auto">
-            Keep the homepage focused, then use the dedicated FAQ page for the full set of detailed answers.
+          <p className="text-neutral-600 text-base md:text-lg">
+            Straight answers on autonomy, control, and proof.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="space-y-4">
-          {faqs.map((faq) => (
-            <div key={faq.question} className="rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a] p-6">
-              <h3 className="text-lg font-medium text-[#ececec] mb-2">{faq.question}</h3>
-              <p className="text-sm text-[#888888] leading-relaxed">{faq.answer}</p>
-            </div>
-          ))}
-        </div>
+        <Reveal selector="[data-faq]" stagger={0.07} className="divide-y divide-line border-y border-line">
+          {faqs.map((faq, i) => {
+            const isOpen = open === i
+            return (
+              <div key={faq.question} data-faq>
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between gap-4 py-5 text-left group"
+                  aria-expanded={isOpen}
+                >
+                  <span className="text-[15px] font-medium text-ink group-hover:text-signal-deep transition-colors">{faq.question}</span>
+                  <Plus
+                    className={`w-4 h-4 text-neutral-400 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}
+                    strokeWidth={2}
+                  />
+                </button>
+                <div
+                  className="grid transition-[grid-template-rows] duration-300 ease-out"
+                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                >
+                  <div className="overflow-hidden">
+                    <p className="text-sm text-neutral-600 leading-relaxed pb-5 pr-8">{faq.answer}</p>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </Reveal>
 
-        <div className="text-center mt-8">
-          <Link href="/faq" className="text-sm text-emerald-400 hover:text-emerald-300">
+        <Reveal className="text-center mt-10">
+          <Link href="/faq" className="link-underline text-sm text-ink font-medium">
             Read the full FAQ →
           </Link>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

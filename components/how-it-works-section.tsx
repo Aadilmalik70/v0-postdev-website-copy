@@ -1,70 +1,124 @@
 "use client"
 
-import { motion } from "motion/react"
+import { useRef } from "react"
+import { Eye, Compass, GitBranch, Zap, Activity, RefreshCw } from "lucide-react"
+import { gsap, ScrollTrigger, useGSAP, reducedMotion, Reveal } from "./gsap-fx"
 
-const steps = [
-  { number: "01", title: "Connect", description: "Add your domain and let the agent crawl the full site in minutes.", highlight: "2-minute setup" },
-  { number: "02", title: "Audit", description: "Get every SEO and GEO issue ranked by traffic impact, not by busywork.", highlight: "40+ issue types" },
-  { number: "03", title: "Fix", description: "Let the agent push approved fixes directly into your codebase or CMS.", highlight: "Approved workflows" },
-  { number: "04", title: "Create", description: "Generate and publish content that targets the exact keyword gaps you are missing.", highlight: "4-12 posts/month" },
-  { number: "05", title: "Monitor", description: "Track rankings, traffic, and AI citations daily, then adjust automatically when something moves.", highlight: "Daily updates" },
+const stages = [
+  { icon: Eye, name: "Observe", description: "The operator monitors rankings, traffic, AI answers, citations, and competitor movement across every search surface.", detail: "Google · ChatGPT · Perplexity · Gemini" },
+  { icon: Compass, name: "Prioritize", description: "Opportunities are scored by traffic impact, confidence, and effort — so the queue starts with what matters.", detail: "Impact-ranked queue" },
+  { icon: GitBranch, name: "Plan", description: "Each opportunity becomes an execution plan: the change, the reasoning, and the expected outcome.", detail: "Transparent reasoning" },
+  { icon: Zap, name: "Execute", description: "Approved fixes, schema, internal links, and content updates ship into your CMS or codebase.", detail: "Approval gates · Rollback" },
+  { icon: Activity, name: "Measure", description: "Every shipped action is tracked against rankings, traffic, and citation coverage.", detail: "Outcome per action" },
+  { icon: RefreshCw, name: "Improve", description: "Results feed back into prioritization, so the operator learns which work creates growth.", detail: "Compounding system" },
 ]
 
 export function HowItWorksSection() {
+  const scope = useRef<HTMLDivElement>(null)
+
+  useGSAP(
+    () => {
+      const root = scope.current
+      if (!root) return
+      const line = root.querySelector<SVGLineElement>("[data-loop-line]")
+      const rows = root.querySelectorAll("[data-stage]")
+      const nodes = root.querySelectorAll("[data-node]")
+
+      if (reducedMotion()) {
+        gsap.set(rows, { autoAlpha: 1, y: 0 })
+        gsap.set(nodes, { scale: 1 })
+        return
+      }
+
+      if (line) {
+        const len = 1000
+        gsap.set(line, { strokeDasharray: len, strokeDashoffset: len })
+        gsap.to(line, {
+          strokeDashoffset: 0,
+          ease: "none",
+          scrollTrigger: { trigger: root.querySelector("[data-rail]"), start: "top 70%", end: "bottom 60%", scrub: 0.6 },
+        })
+      }
+
+      rows.forEach((row, i) => {
+        gsap.fromTo(
+          row,
+          { autoAlpha: 0, y: 28 },
+          { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: row, start: "top 84%", once: true } },
+        )
+        const node = nodes[i]
+        if (node) {
+          gsap.fromTo(
+            node,
+            { scale: 0 },
+            { scale: 1, duration: 0.45, ease: "back.out(2.5)", scrollTrigger: { trigger: row, start: "top 84%", once: true } },
+          )
+        }
+      })
+    },
+    { scope },
+  )
+
   return (
-    <section id="how-it-works" className="py-28 md:py-36 px-6 relative">
-      {/* Subtle side glow */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[300px] h-[500px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="relative z-10 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">How it works</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
-            Five steps. Zero manual work.
+    <section id="operator-loop" ref={scope} className="py-24 md:py-32 px-5 md:px-6 bg-surface/50 border-y border-line">
+      <div className="max-w-6xl mx-auto">
+        <Reveal className="mb-16 max-w-2xl">
+          <p className="eyebrow mb-5">The Operator Loop</p>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-[44px] font-semibold text-ink leading-[1.12] mb-5">
+            Observe. Prioritize. Plan. Execute. Measure. Improve.
           </h2>
-          <p className="text-[#8a8a8a] text-base md:text-lg max-w-lg">
-            Set it up once. The agent handles everything after that.
+          <p className="text-neutral-600 text-base md:text-lg leading-relaxed">
+            Search is not a campaign — it is a compounding system. The Operator Loop runs
+            continuously, with your approvals where they matter.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-emerald-500/50 via-emerald-500/20 to-transparent" />
+        <div data-rail className="relative">
+          {/* Scroll-drawn spine */}
+          <svg
+            className="absolute left-[19px] md:left-1/2 md:-translate-x-px top-0 h-full w-px overflow-visible"
+            viewBox="0 0 2 1000"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <line x1="1" y1="0" x2="1" y2="1000" stroke="var(--color-line-strong)" strokeWidth="2" />
+            <line data-loop-line x1="1" y1="0" x2="1" y2="1000" stroke="var(--color-signal)" strokeWidth="2" pathLength={1000} />
+          </svg>
 
-          <div className="space-y-8">
-            {steps.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative flex gap-6 group"
-              >
-                {/* Dot */}
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#0a0a0a] border-2 border-[#222222] group-hover:border-emerald-500/50 flex items-center justify-center transition-colors duration-300 z-10">
-                  <span className="text-xs font-mono text-[#666666] group-hover:text-emerald-400 transition-colors">{step.number}</span>
-                </div>
+          <div className="space-y-10 md:space-y-14">
+            {stages.map((stage, index) => {
+              const left = index % 2 === 0
+              return (
+                <div key={stage.name} className="relative grid md:grid-cols-2 gap-0 md:gap-16 items-start">
+                  {/* Node on the spine */}
+                  <span
+                    data-node
+                    className="absolute left-[12px] md:left-1/2 md:-translate-x-1/2 top-7 w-4 h-4 rounded-full bg-paper border-2 border-signal flex items-center justify-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-signal" />
+                  </span>
 
-                {/* Content */}
-                <div className="flex-1 pb-8">
-                  <div className="flex items-center gap-3 mb-1.5">
-                    <h3 className="text-xl font-semibold text-[#ececec]">{step.title}</h3>
-                    <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                      {step.highlight}
-                    </span>
+                  <div data-stage className={`pl-12 md:pl-0 ${left ? "md:pr-4" : "md:col-start-2 md:pl-4"}`}>
+                    <div className="card-lift rounded-2xl border border-line bg-card p-6 md:p-7">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="w-10 h-10 rounded-xl bg-surface border border-line flex items-center justify-center">
+                          <stage.icon className="w-5 h-5 text-signal" strokeWidth={1.75} />
+                        </div>
+                        <span className="font-mono text-[10px] text-neutral-400">{String(index + 1).padStart(2, "0")} / 06</span>
+                      </div>
+                      <h3 className="font-display text-xl font-semibold text-ink mb-2">{stage.name}</h3>
+                      <p className="text-sm text-neutral-600 leading-relaxed mb-3.5">{stage.description}</p>
+                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-systeal">{stage.detail}</span>
+                    </div>
                   </div>
-                  <p className="text-[#888888] text-base leading-relaxed">{step.description}</p>
                 </div>
-              </motion.div>
-            ))}
+              )
+            })}
           </div>
+
+          <Reveal className="mt-12 text-center">
+            <p className="font-mono text-[11px] text-neutral-400">↻ Improve feeds Observe. The loop never stops compounding.</p>
+          </Reveal>
         </div>
       </div>
     </section>

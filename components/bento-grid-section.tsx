@@ -1,96 +1,43 @@
 "use client"
 
-import { motion } from "motion/react"
-import { Search, Wrench, FileText, BarChart3, Link2, Shield } from "lucide-react"
+import { Search, Compass, Zap, FileText, Network, ShieldCheck } from "lucide-react"
+import { Reveal } from "./gsap-fx"
 
-const features = [
-  {
-    icon: Search,
-    title: "Deep Site Audit",
-    description: "Crawls every page. Finds 40+ issue types including broken links, missing meta, thin content, and schema gaps.",
-    className: "md:col-span-2 md:row-span-1",
-    gradient: "from-emerald-500/10 to-emerald-500/5",
-  },
-  {
-    icon: Shield,
-    title: "GEO Optimization",
-    description: "Structures content for AI search citation. Schema, entities, FAQ markup — automatically.",
-    className: "md:col-span-1 md:row-span-2",
-    gradient: "from-violet-500/10 to-violet-500/5",
-  },
-  {
-    icon: Wrench,
-    title: "Auto-Fix Engine",
-    description: "Pushes code fixes directly. Meta tags, canonicals, internal links, schema — no human needed.",
-    className: "md:col-span-1 md:row-span-1",
-    gradient: "from-cyan-500/10 to-cyan-500/5",
-  },
-  {
-    icon: FileText,
-    title: "Content Engine",
-    description: "Writes & publishes blog posts targeting keyword gaps. SEO-optimized for both Google and AI search.",
-    className: "md:col-span-1 md:row-span-1",
-    gradient: "from-amber-500/10 to-amber-500/5",
-  },
-  {
-    icon: Link2,
-    title: "Internal Linking",
-    description: "Builds topic clusters automatically. Finds orphan pages and connects them.",
-    className: "md:col-span-1 md:row-span-1",
-    gradient: "from-rose-500/10 to-rose-500/5",
-  },
-  {
-    icon: BarChart3,
-    title: "Rank Tracking",
-    description: "Daily keyword monitoring. Traffic trends. AI citation tracking across ChatGPT, Perplexity, Gemini.",
-    className: "md:col-span-2 md:row-span-1",
-    gradient: "from-emerald-500/10 to-cyan-500/5",
-  },
+const modules = [
+  { icon: Search, title: "SERP Intelligence", description: "Performance, rankings, AI visibility, and competitor signals across Google, ChatGPT, Perplexity, and Gemini — one source graph.", className: "md:col-span-2", accent: "text-systeal", chip: "bg-systeal/8" },
+  { icon: ShieldCheck, title: "SERP Control", description: "Governed autonomy: permissions, approval gates, audit logs, and rollback. Safe fixes ship automatically, sensitive changes route to you.", className: "md:row-span-2", accent: "text-trust", chip: "bg-trust/8" },
+  { icon: Compass, title: "SERP Planner", description: "Every opportunity scored by impact, confidence, and effort — so the queue starts with what moves traffic.", className: "", accent: "text-opviolet", chip: "bg-opviolet/8" },
+  { icon: Zap, title: "SERP Executor", description: "Ships technical fixes, schema, canonicals, metadata, and internal links into your CMS or codebase.", className: "", accent: "text-signal", chip: "bg-signal/8" },
+  { icon: FileText, title: "SERP Content", description: "Briefs, refreshes, and publishing workflows governed by your brand voice — built for usefulness, not volume.", className: "", accent: "text-opportunity", chip: "bg-opportunity/8" },
+  { icon: Network, title: "SERP Citations", description: "Tracks how AI systems cite your brand, finds source gaps, and recommends the work that wins answer coverage.", className: "md:col-span-2", accent: "text-coral", chip: "bg-coral/8" },
 ]
 
 export function BentoGridSection() {
   return (
-    <section className="py-28 md:py-36 px-6 relative overflow-hidden">
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/3 rounded-full blur-[150px] pointer-events-none" />
-
-      <div className="relative z-10 max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">Capabilities</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
-            One agent. Full-stack SEO.
+    <section id="modules" className="py-24 md:py-32 px-5 md:px-6">
+      <div className="max-w-6xl mx-auto">
+        <Reveal className="mb-14 max-w-2xl">
+          <p className="eyebrow mb-5">Modules</p>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-[44px] font-semibold text-ink leading-[1.12] mb-5">
+            One operator. Six modules. One loop.
           </h2>
-          <p className="text-[#8a8a8a] text-base md:text-lg max-w-lg mx-auto">
-            Everything an SEO team does — automated, 24/7, at a fraction of the cost.
+          <p className="text-neutral-600 text-base md:text-lg leading-relaxed">
+            Each module handles one job in the loop — together they replace the stitched-up stack of
+            tools, spreadsheets, and reporting cycles.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className={`group relative rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a] p-6 hover:border-[#2a2a2a] transition-all duration-300 ${feature.className}`}
-            >
-              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              <div className="relative">
-                <div className="w-9 h-9 rounded-lg bg-[#141414] border border-[#222222] flex items-center justify-center mb-4 group-hover:border-emerald-500/30 transition-colors">
-                  <feature.icon className="w-4.5 h-4.5 text-[#888888] group-hover:text-emerald-400 transition-colors" strokeWidth={1.5} />
-                </div>
-                <h3 className="text-base font-semibold text-[#ececec] mb-2">{feature.title}</h3>
-                <p className="text-sm text-[#888888] leading-relaxed">{feature.description}</p>
+        <Reveal selector="[data-mod]" stagger={0.08} className="grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-fr">
+          {modules.map((mod) => (
+            <div key={mod.title} data-mod className={`card-lift group rounded-2xl border border-line bg-card p-7 ${mod.className}`}>
+              <div className={`w-11 h-11 rounded-xl ${mod.chip} flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-105`}>
+                <mod.icon className={`w-5 h-5 ${mod.accent}`} strokeWidth={1.75} />
               </div>
-            </motion.div>
+              <h3 className="font-display text-lg font-semibold text-ink mb-2">{mod.title}</h3>
+              <p className="text-sm text-neutral-600 leading-relaxed">{mod.description}</p>
+            </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

@@ -1,95 +1,68 @@
 "use client"
 
-import { motion } from "motion/react"
 import { X, Check } from "lucide-react"
+import { Reveal } from "./gsap-fx"
 
-const beforeItems = [
-  "15+ hours a week spent on SEO manually",
-  "A $5K/month agency that mostly sends reports",
-  "Issues piling up quietly in the background",
-  "A blog that goes stale for months",
-  "No clear view into AI search visibility",
-  "Rankings slipping without a clear reason",
+const oldWorld = [
+  "Buy tools, then stitch them together",
+  "Pull reports and build spreadsheets",
+  "Write briefs and assign the work",
+  "Wait on developers and writers",
+  "Check rankings weeks later",
+  "Repeat the cycle every quarter",
 ]
 
-const afterItems = [
-  "The agent works 24/7 with zero manual hours",
-  "The same execution for $49/month instead of $5K",
-  "Issues detected and fixed within hours",
-  "4-12 fresh posts published automatically each month",
-  "Built for ChatGPT, Perplexity, and Gemini citations",
-  "Daily rank tracking with automatic adjustments",
+const newWorld = [
+  "Deploy the operator and connect your site",
+  "Opportunities arrive ranked by impact",
+  "Approve high-impact actions in one queue",
+  "Fixes and content ship into your CMS or repo",
+  "Every action is measured against outcomes",
+  "The loop learns and improves each week",
 ]
 
 export function ComparisonSection() {
   return (
-    <section className="py-28 md:py-36 px-6 relative">
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">The difference</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
-            Before vs. After
+    <section className="py-24 md:py-32 px-5 md:px-6 bg-surface/50 border-y border-line">
+      <div className="max-w-6xl mx-auto">
+        <Reveal className="text-center mb-14 max-w-2xl mx-auto">
+          <p className="eyebrow mb-5 justify-center">The shift</p>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-[44px] font-semibold text-ink leading-[1.12] mb-5">
+            Stop operating tools. Deploy an operator.
           </h2>
-          <p className="text-[#8a8a8a] text-base md:text-lg">
-            What changes when an AI agent handles your SEO.
+          <p className="text-neutral-600 text-base md:text-lg">
+            The old model sold tools to specialists. The operator model ships outcomes for teams.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Before */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="rounded-2xl border border-red-500/10 bg-red-500/[0.02] p-6 md:p-8"
-          >
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center">
-                <X className="w-3.5 h-3.5 text-red-400" strokeWidth={2.5} />
-              </div>
-              <h3 className="text-sm font-semibold text-red-400 uppercase tracking-wider">Without SERP Strategist</h3>
-            </div>
-            <ul className="space-y-3.5">
-              {beforeItems.map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-[#8a8a8a]">
-                  <X className="w-4 h-4 text-red-400/60 flex-shrink-0 mt-0.5" strokeWidth={2} />
+        <Reveal selector="[data-panel]" stagger={0.12} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div data-panel className="rounded-2xl border border-line bg-card p-7 md:p-9">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-400 mb-7">The manual operating model</p>
+            <ul className="space-y-4">
+              {oldWorld.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-neutral-600">
+                  <X className="w-4 h-4 text-coral/60 mt-0.5 shrink-0" strokeWidth={2} />
                   {item}
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* After */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.02] p-6 md:p-8"
-          >
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center">
-                <Check className="w-3.5 h-3.5 text-emerald-400" strokeWidth={2.5} />
-              </div>
-              <h3 className="text-sm font-semibold text-emerald-400 uppercase tracking-wider">With SERP Strategist</h3>
-            </div>
-            <ul className="space-y-3.5">
-              {afterItems.map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-[#c8c8c8]">
-                  <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" strokeWidth={2} />
+          <div data-panel className="rounded-2xl border-2 border-ink bg-card p-7 md:p-9 relative">
+            <span className="absolute -top-3 left-7 font-mono text-[10px] uppercase tracking-[0.14em] bg-ink text-warmwhite rounded-full px-3 py-1">
+              With SERP Operator
+            </span>
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-signal mb-7 mt-1">The operating layer</p>
+            <ul className="space-y-4">
+              {newWorld.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-ink">
+                  <Check className="w-4 h-4 text-signal mt-0.5 shrink-0" strokeWidth={2.25} />
                   {item}
                 </li>
               ))}
             </ul>
-          </motion.div>
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   )

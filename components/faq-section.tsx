@@ -52,8 +52,8 @@ export function FaqSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">FAQ</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
+          <p className="text-signal text-sm font-medium tracking-wide uppercase mb-3">FAQ</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-ink mb-4">
             Questions? Answered.
           </h2>
         </motion.div>
@@ -66,16 +66,16 @@ export function FaqSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="rounded-xl border border-[#1a1a1a] bg-[#0a0a0a] overflow-hidden"
+              className="rounded-xl border border-line bg-card overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full flex items-center justify-between p-5 text-left hover:bg-[#0f0f0f] transition-colors"
               >
-                <span className="text-sm font-medium text-[#ececec] pr-4">{faq.q}</span>
+                <span className="text-sm font-medium text-ink pr-4">{faq.q}</span>
                 <ChevronDown
-                  className={`w-4 h-4 text-[#666666] flex-shrink-0 transition-transform duration-200 ${
-                    openIndex === index ? "rotate-180 text-emerald-400" : ""
+                  className={`w-4 h-4 text-neutral-600 flex-shrink-0 transition-transform duration-200 ${
+                    openIndex === index ? "rotate-180 text-signal" : ""
                   }`}
                 />
               </button>
@@ -88,7 +88,7 @@ export function FaqSection() {
                     transition={{ duration: 0.2, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="px-5 pb-5 text-sm text-[#888888] leading-relaxed">
+                    <p className="px-5 pb-5 text-sm text-neutral-600 leading-relaxed">
                       {faq.a}
                     </p>
                   </motion.div>

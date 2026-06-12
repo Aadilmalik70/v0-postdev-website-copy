@@ -42,7 +42,7 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "SERP Strategist",
+    name: "SERP Strategists",
     url: "https://serpstrategists.com",
     description: homepageSeoCopy.description,
     potentialAction: {
@@ -53,7 +53,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-[#000000]">
+    <main className="min-h-screen bg-paper">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <HeroSection />

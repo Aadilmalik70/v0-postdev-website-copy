@@ -5,8 +5,8 @@ import { motion } from "motion/react"
 
 export function GridBackground({ children, className }: { children?: React.ReactNode; className?: string }) {
   return (
-    <div className={cn("relative w-full bg-[#000000] bg-grid-white/[0.02]", className)}>
-      <div className="absolute pointer-events-none inset-0 bg-[#000000] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+    <div className={cn("relative w-full bg-paper bg-grid-white/[0.02]", className)}>
+      <div className="absolute pointer-events-none inset-0 bg-paper [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       {children}
     </div>
   )
@@ -14,8 +14,8 @@ export function GridBackground({ children, className }: { children?: React.React
 
 export function DotBackground({ children, className }: { children?: React.ReactNode; className?: string }) {
   return (
-    <div className={cn("relative w-full bg-[#000000] bg-dot-white/[0.15]", className)}>
-      <div className="absolute pointer-events-none inset-0 bg-[#000000] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+    <div className={cn("relative w-full bg-paper bg-dot-white/[0.15]", className)}>
+      <div className="absolute pointer-events-none inset-0 bg-paper [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       {children}
     </div>
   )
@@ -24,7 +24,7 @@ export function DotBackground({ children, className }: { children?: React.ReactN
 export function GlowingBorder({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={cn("relative group", className)}>
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl opacity-0 group-hover:opacity-20 blur transition duration-500" />
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-signal to-systeal rounded-2xl opacity-0 group-hover:opacity-20 blur transition duration-500" />
       <div className="relative">{children}</div>
     </div>
   )

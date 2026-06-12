@@ -9,13 +9,13 @@ const features = [
     icon: Search,
     title: "Crawl & Audit",
     description: "Deep-crawls every page. Finds broken links, missing meta, schema gaps, thin content, and 40+ other issues automatically.",
-    color: "from-emerald-500/10 to-emerald-500/5",
+    color: "from-signal/10 to-signal/5",
   },
   {
     icon: Wrench,
     title: "Fix Autonomously",
     description: "Pushes code fixes directly — meta tags, schema markup, internal links, canonical URLs. No tickets, no waiting.",
-    color: "from-cyan-500/10 to-cyan-500/5",
+    color: "from-systeal/10 to-systeal/5",
   },
   {
     icon: FileText,
@@ -42,11 +42,11 @@ export function ValuePropSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">What it does</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
+          <p className="text-signal text-sm font-medium tracking-wide uppercase mb-3">What it does</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-ink mb-4">
             The full SEO loop. Automated.
           </h2>
-          <p className="text-[#8a8a8a] text-base md:text-lg max-w-xl mx-auto">
+          <p className="text-neutral-600 text-base md:text-lg max-w-xl mx-auto">
             Those tools show you data. This product turns the data into action and execution.
           </p>
         </motion.div>
@@ -60,14 +60,14 @@ export function ValuePropSection() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <WobbleCard containerClassName={`border border-[#1a1a1a] bg-gradient-to-br ${feature.color} bg-[#0a0a0a] min-h-[200px]`}>
+              <WobbleCard containerClassName={`border border-line bg-gradient-to-br ${feature.color} bg-card min-h-[200px]`}>
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#141414] border border-[#222222] flex items-center justify-center">
-                    <feature.icon className="w-5 h-5 text-emerald-400" strokeWidth={1.5} />
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-surface border border-line flex items-center justify-center">
+                    <feature.icon className="w-5 h-5 text-signal" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#ececec] mb-2">{feature.title}</h3>
-                    <p className="text-sm text-[#888888] leading-relaxed">{feature.description}</p>
+                    <h3 className="text-lg font-semibold text-ink mb-2">{feature.title}</h3>
+                    <p className="text-sm text-neutral-600 leading-relaxed">{feature.description}</p>
                   </div>
                 </div>
               </WobbleCard>

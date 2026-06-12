@@ -4,83 +4,107 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* POSTDEV dark futuristic palette */
+/* SERP Strategists — Operator design system v2
+   Warm-white editorial surface, graphite ink, signal green as a *signal*.
+   Dark graphite reserved for console insert panels. */
 :root {
-  --background: #000000;
-  --foreground: #ececec;
-  --card: #141414;
-  --card-foreground: #ececec;
-  --popover: #141414;
-  --popover-foreground: #ececec;
-  --primary: #22c55e;
-  --primary-foreground: #ececec;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #ececec;
-  --muted: #1a1a1a;
-  --muted-foreground: #888888;
-  --accent: #06b6d4;
-  --accent-foreground: #ececec;
-  --destructive: #22c55e;
-  --destructive-foreground: #ececec;
-  --border: #222222;
-  --input: #1a1a1a;
-  --ring: #06b6d4;
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --background: #fafaf7;          /* Neutral 50 — warm paper */
+  --foreground: #0d1110;          /* Graphite ink */
+  --card: #ffffff;
+  --card-foreground: #0d1110;
+  --popover: #ffffff;
+  --popover-foreground: #0d1110;
+  --primary: #0d1110;             /* ink buttons */
+  --primary-foreground: #fafaf7;
+  --secondary: #f1f2ed;           /* Neutral 100 */
+  --secondary-foreground: #0d1110;
+  --muted: #f1f2ed;
+  --muted-foreground: #5d665f;    /* Neutral 600 */
+  --accent: #009b63;
+  --accent-foreground: #fafaf7;
+  --destructive: #d8442e;
+  --destructive-foreground: #fafaf7;
+  --border: #e3e5dd;
+  --input: #ffffff;
+  --ring: #009b63;
+  --chart-1: #009b63;
+  --chart-2: #128a7f;
+  --chart-3: #2563eb;
+  --chart-4: #b97d14;
+  --chart-5: #6d4fe0;
   --radius: 0.75rem;
-  --sidebar: #000000;
-  --sidebar-foreground: #ececec;
-  --sidebar-primary: #22c55e;
-  --sidebar-primary-foreground: #ececec;
-  --sidebar-accent: #06b6d4;
-  --sidebar-accent-foreground: #ececec;
-  --sidebar-border: #222222;
-  --sidebar-ring: #06b6d4;
+  --sidebar: #fafaf7;
+  --sidebar-foreground: #0d1110;
+  --sidebar-primary: #0d1110;
+  --sidebar-primary-foreground: #fafaf7;
+  --sidebar-accent: #009b63;
+  --sidebar-accent-foreground: #fafaf7;
+  --sidebar-border: #e3e5dd;
+  --sidebar-ring: #009b63;
 }
 
 .dark {
-  --background: #000000;
-  --foreground: #ececec;
-  --card: #141414;
-  --card-foreground: #ececec;
-  --popover: #141414;
-  --popover-foreground: #ececec;
-  --primary: #22c55e;
-  --primary-foreground: #ececec;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #ececec;
-  --muted: #1a1a1a;
-  --muted-foreground: #888888;
-  --accent: #06b6d4;
-  --accent-foreground: #ececec;
-  --destructive: #22c55e;
-  --destructive-foreground: #ececec;
-  --border: #222222;
-  --input: #1a1a1a;
-  --ring: #06b6d4;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: #000000;
-  --sidebar-foreground: #ececec;
-  --sidebar-primary: #22c55e;
-  --sidebar-primary-foreground: #ececec;
-  --sidebar-accent: #06b6d4;
-  --sidebar-accent-foreground: #ececec;
-  --sidebar-border: #222222;
-  --sidebar-ring: #06b6d4;
+  --background: #070908;
+  --foreground: #f5f7f2;
+  --card: #0d1110;
+  --card-foreground: #f5f7f2;
+  --popover: #0d1110;
+  --popover-foreground: #f5f7f2;
+  --primary: #00d084;
+  --primary-foreground: #070908;
+  --secondary: #111612;
+  --secondary-foreground: #f5f7f2;
+  --muted: #111612;
+  --muted-foreground: #999f95;
+  --accent: #20d6c7;
+  --accent-foreground: #070908;
+  --destructive: #ff5c5c;
+  --destructive-foreground: #f5f7f2;
+  --border: #202622;
+  --input: #111612;
+  --ring: #00d084;
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), "Inter", sans-serif;
-  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
-  --font-display: var(--font-space-grotesk), "Space Grotesk", sans-serif;
-  --font-serif: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-sans: var(--font-geist-sans), "Geist", "Inter", sans-serif;
+  --font-mono: var(--font-geist-mono), "Geist Mono", "IBM Plex Mono", monospace;
+  --font-display: "Instrument Sans", var(--font-geist-sans), sans-serif;
+  --font-serif: "Instrument Sans", var(--font-geist-sans), sans-serif;
+
+  /* Brand palette tokens — light-surface text variants + bright variants for dark inserts */
+  --color-ink: #0d1110;
+  --color-paper: #fafaf7;
+  --color-surface: #f1f2ed;
+  --color-line: #e3e5dd;
+  --color-line-strong: #ccd0c5;
+  --color-graphite-950: #070908;
+  --color-graphite-900: #0d1110;
+  --color-graphite-800: #161b18;
+  --color-graphite-line: #232a26;
+  --color-signal: #009b63;          /* legible green on light */
+  --color-signal-deep: #007a4f;
+  --color-signal-bright: #00d084;   /* dots, dark inserts */
+  --color-systeal: #0f8a80;
+  --color-systeal-bright: #20d6c7;
+  --color-trust: #2563eb;
+  --color-trust-bright: #3b82f6;
+  --color-opviolet: #6d4fe0;
+  --color-opviolet-bright: #7c5cff;
+  --color-opportunity: #a86f0d;
+  --color-opportunity-bright: #f5b84b;
+  --color-coral: #d8442e;
+  --color-coral-bright: #ff6b5e;
+  --color-pending: #8a93a3;
+  --color-warmwhite: #f5f7f2;
+  --color-neutral-50: #fafaf7;
+  --color-neutral-100: #f1f2ed;
+  --color-neutral-200: #daddd5;
+  --color-neutral-400: #999f95;
+  --color-neutral-600: #5d665f;
+  --color-neutral-800: #202622;
+  --color-neutral-900: #111612;
+  --color-neutral-950: #070908;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -123,21 +147,179 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "ss01" on, "cv05" on;
+  }
+  ::selection {
+    background: rgba(0, 208, 132, 0.22);
   }
 }
 
-/* Grid background utility for Aceternity components */
-.bg-grid-white\/\[0\.02\] {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none' stroke='rgba(255,255,255,0.02)' stroke-width='1'/%3E%3C/svg%3E");
-}
-
-/* Custom utility for display font */
+/* ————— Display type ————— */
 .font-display {
   font-family: var(--font-display);
+  letter-spacing: 0;
 }
 
-.font-serif {
-  font-family: var(--font-serif);
+/* ————— Micro-interactions ————— */
+
+/* Link underline that grows from the left */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  padding-bottom: 2px;
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Ink CTA button */
+.btn-ink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-ink);
+  color: var(--color-warmwhite);
+  border-radius: 999px;
+  font-weight: 500;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-ink:hover {
+  background: #1c2420;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px -10px rgba(13, 17, 16, 0.45);
+}
+.btn-ink:active {
+  transform: translateY(0) scale(0.985);
+}
+.btn-ink .btn-arrow {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-ink:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Quiet outline button */
+.btn-quiet {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-ink);
+  background: transparent;
+  border-radius: 999px;
+  font-weight: 500;
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+}
+.btn-quiet:hover {
+  border-color: var(--color-ink);
+  background: rgba(13, 17, 16, 0.03);
+}
+.btn-quiet:active {
+  transform: scale(0.985);
+}
+
+/* Card hover: lift + ink the border */
+.card-lift {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-line-strong);
+  box-shadow: 0 14px 34px -18px rgba(13, 17, 16, 0.18);
+}
+
+/* Mono eyebrow */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-neutral-600);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 1.25rem;
+  height: 1px;
+  background: var(--color-signal);
+}
+
+/* Headline marker: soft signal underline behind a key phrase */
+.mark-signal {
+  position: relative;
+  white-space: nowrap;
+}
+.mark-signal::after {
+  content: "";
+  position: absolute;
+  left: -0.06em;
+  right: -0.06em;
+  bottom: 0.14em;
+  height: 0.13em;
+  border-radius: 999px;
+  background: rgba(0, 208, 132, 0.28);
+  z-index: -1;
+}
+
+/* ————— Ambient motion ————— */
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.status-pulse {
+  animation: status-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes operator-scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(500%); }
+}
+.operator-scanline {
+  animation: operator-scan 6s linear infinite;
+}
+
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x 38s linear infinite;
+}
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+.marquee-mask:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Dot grid for the hero */
+.dot-grid {
+  background-image: radial-gradient(rgba(13, 17, 16, 0.07) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .operator-scanline,
+  .status-pulse,
+  .marquee-track {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

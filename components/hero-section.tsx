@@ -1,102 +1,123 @@
 "use client"
 
-import { useState } from "react"
-import { motion } from "motion/react"
-import { Button } from "@/components/ui/button"
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect"
-import { ArrowRight } from "lucide-react"
+import { useRef, useState } from "react"
+import { ArrowRight, ShieldCheck } from "lucide-react"
 import { EarlyAccessModal } from "./early-access-modal"
-import { getHomepageSeoCopy } from "@/lib/site-seo"
+import { gsap, useGSAP, reducedMotion, EASE } from "./gsap-fx"
 
-const homepageSeoCopy = getHomepageSeoCopy()
+const queue = [
+  { tag: "Shipped", detail: "Fixed canonical on /pricing", meta: "Auto-approved · Logged · Rollback ready", dot: "bg-signal-bright", text: "text-signal-bright" },
+  { tag: "Review", detail: "Refresh /integrations for AI answers", meta: "Impact 8.4 · Confidence high · Effort low", dot: "bg-opportunity-bright", text: "text-opportunity-bright" },
+  { tag: "Planned", detail: "Internal links for 14 orphan pages", meta: "Impact 7.1 · Plan ready for approval", dot: "bg-opviolet-bright", text: "text-opviolet-bright" },
+  { tag: "Observed", detail: "Competitor in 3 Perplexity prompts", meta: "Source gap found · Action queued", dot: "bg-coral-bright", text: "text-coral-bright" },
+]
 
 export function HeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const scope = useRef<HTMLDivElement>(null)
+
+  useGSAP(
+    () => {
+      const items = scope.current?.querySelectorAll("[data-hero]")
+      const rows = scope.current?.querySelectorAll("[data-queue-row]")
+      if (!items) return
+      if (reducedMotion()) {
+        gsap.set([items, rows ?? []], { autoAlpha: 1, y: 0, x: 0 })
+        return
+      }
+      const tl = gsap.timeline({ defaults: { ease: EASE } })
+      tl.fromTo(items, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.1 })
+      if (rows?.length) {
+        tl.fromTo(rows, { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.6, stagger: 0.1 }, "-=0.5")
+      }
+    },
+    { scope },
+  )
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center justify-center pt-24 pb-20 overflow-hidden">
-        {/* Background grid */}
-        <div className="absolute inset-0 bg-[#000000] bg-grid-white/[0.02]" />
-        <div className="absolute inset-0 bg-[#000000] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      <section ref={scope} className="relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
+        {/* Quiet dot grid, fading out downward */}
+        <div className="absolute inset-x-0 top-0 h-[520px] dot-grid [mask-image:linear-gradient(to_bottom,black,transparent)] pointer-events-none" />
 
-        {/* Glow orb */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="relative max-w-6xl mx-auto px-5 md:px-6 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Editorial column */}
+          <div className="lg:col-span-7">
+            <p data-hero className="eyebrow mb-6">AI Growth Operator · Autonomous search operations</p>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#222222] bg-[#0a0a0a]/80 mb-10"
-          >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
-            </span>
-            <span className="text-xs text-[#888888] tracking-wide">
-              Autonomous AI Agent — Always On
-            </span>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#f0f0f0] mb-6 leading-[1.1]"
-          >
-            {homepageSeoCopy.h1}
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="max-w-2xl mx-auto mb-10"
-          >
-            <TextGenerateEffect
-              words={homepageSeoCopy.subtitle}
-              className="text-lg md:text-xl text-[#888888] leading-relaxed"
-            />
-          </motion.div>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3"
-          >
-            <Button
-              size="lg"
-              onClick={() => setIsModalOpen(true)}
-              className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-8 py-6 text-base rounded-full transition-all duration-200 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30"
+            <h1
+              data-hero
+              className="font-display text-[40px] sm:text-5xl md:text-6xl xl:text-[64px] font-semibold text-ink leading-[1.05] mb-6 text-balance"
             >
-              Start free audit
-              <ArrowRight className="w-4 h-4 ml-1.5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="ghost"
-              className="text-[#888888] hover:text-[#ececec] hover:bg-white/5 px-8 py-6 text-base rounded-full"
-              asChild
-            >
-              <a href="#how-it-works">See how it works</a>
-            </Button>
-          </motion.div>
+              Deploy an AI <span className="mark-signal">Growth Operator</span> for organic search.
+            </h1>
 
-          {/* Social proof line */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.5 }}
-            className="text-xs text-[#555555] mt-8 tracking-wide"
-          >
-            Free forever on audit tier | No credit card | Setup in 2 minutes
-          </motion.p>
+            <p data-hero className="text-base md:text-lg text-neutral-600 leading-relaxed max-w-xl mb-9">
+              It observes your search performance, finds the highest-impact opportunities, executes
+              approved SEO and GEO actions, and improves visibility across Google, ChatGPT,
+              Perplexity, Gemini, and beyond.
+            </p>
+
+            <div data-hero className="flex flex-wrap items-center gap-3 mb-7">
+              <button onClick={() => setIsModalOpen(true)} className="btn-ink px-6 h-12 text-sm">
+                Run Free Growth Audit
+                <ArrowRight className="btn-arrow w-4 h-4" strokeWidth={2} />
+              </button>
+              <a href="#operator-loop" className="btn-quiet px-6 h-12 text-sm">
+                See the Operator Loop
+              </a>
+            </div>
+
+            <p data-hero className="inline-flex items-center gap-2 text-xs text-neutral-400">
+              <ShieldCheck className="w-3.5 h-3.5 text-trust" strokeWidth={1.75} />
+              Governed autonomy. Full logs. Human approval where it matters.
+            </p>
+          </div>
+
+          {/* Console card — the dark instrument on the warm page */}
+          <div data-hero className="lg:col-span-5">
+            <div className="rounded-2xl bg-graphite-950 border border-graphite-line shadow-[0_30px_70px_-30px_rgba(13,17,16,0.5)] overflow-hidden">
+              <div className="relative flex items-center justify-between px-5 py-3.5 border-b border-graphite-line overflow-hidden">
+                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-400">Action queue</span>
+                <span className="inline-flex items-center gap-1.5 text-[10px] px-2.5 py-0.5 rounded-full bg-signal-bright/10 text-signal-bright border border-signal-bright/20">
+                  <span className="status-pulse w-1 h-1 rounded-full bg-signal-bright" />
+                  Operating
+                </span>
+                <span className="operator-scanline absolute bottom-0 left-0 h-px w-1/5 bg-signal-bright/50" />
+              </div>
+
+              <div>
+                {queue.map((item) => (
+                  <div key={item.tag} data-queue-row className="px-5 py-3 border-b border-graphite-800/60 last:border-0 flex items-start gap-3">
+                    <span className={`mt-[7px] w-1.5 h-1.5 rounded-full shrink-0 ${item.dot}`} />
+                    <div className="min-w-0">
+                      <div className="flex items-baseline gap-2 flex-wrap">
+                        <span className={`font-mono text-[10px] uppercase tracking-wide font-medium ${item.text}`}>{item.tag}</span>
+                        <span className="text-[13px] text-neutral-300 leading-snug">{item.detail}</span>
+                      </div>
+                      <p className="font-mono text-[10px] text-neutral-500 mt-0.5">{item.meta}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-3 divide-x divide-graphite-line border-t border-graphite-line">
+                {[
+                  { v: "47", l: "observed", c: "text-systeal-bright" },
+                  { v: "38", l: "shipped", c: "text-signal-bright" },
+                  { v: "+23%", l: "visibility", c: "text-warmwhite" },
+                ].map((s) => (
+                  <div key={s.l} className="px-4 py-3.5">
+                    <p className={`font-mono text-lg font-medium ${s.c}`}>{s.v}</p>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-neutral-500">{s.l}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <p className="font-mono text-[10px] text-neutral-500 text-center mt-3 opacity-60">
+              Live view · app.serpstrategists.com/operator
+            </p>
+          </div>
         </div>
       </section>
 

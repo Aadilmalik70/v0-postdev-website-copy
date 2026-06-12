@@ -1,7 +1,6 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
 import { useEffect, useRef, useState } from "react"
 
 export function FloatingNavbar({
@@ -17,35 +16,44 @@ export function FloatingNavbar({
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      setAtTop(currentScrollY < 50)
-
-      if (currentScrollY < lastScrollY.current) {
+      const y = window.scrollY
+      setAtTop(y < 24)
+      if (y < lastScrollY.current || y < 80) {
         setVisible(true)
-      } else if (currentScrollY > 100 && currentScrollY > lastScrollY.current) {
+      } else if (y > lastScrollY.current) {
         setVisible(false)
       }
-      lastScrollY.current = currentScrollY
+      lastScrollY.current = y
     }
-
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
-    <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+    <header
       className={cn(
-        "fixed top-4 inset-x-0 mx-auto z-50 max-w-4xl px-6 py-3 rounded-full border",
-        atTop
-          ? "bg-transparent border-transparent"
-          : "bg-[#0a0a0a]/80 border-[#1a1a1a] backdrop-blur-lg shadow-lg shadow-black/20",
-        className
+        "fixed top-0 inset-x-0 z-50 transition-all duration-500",
+        visible ? "translate-y-0" : "-translate-y-full",
+        className,
       )}
     >
-      {children}
-    </motion.nav>
+      <div
+        className={cn(
+          "mx-auto max-w-6xl px-5 md:px-6 transition-all duration-500",
+          atTop ? "pt-4" : "pt-2.5",
+        )}
+      >
+        <nav
+          className={cn(
+            "flex items-center h-14 px-5 rounded-2xl border transition-all duration-500",
+            atTop
+              ? "bg-transparent border-transparent"
+              : "bg-paper/85 backdrop-blur-md border-line shadow-[0_8px_30px_-18px_rgba(13,17,16,0.25)]",
+          )}
+        >
+          {children}
+        </nav>
+      </div>
+    </header>
   )
 }

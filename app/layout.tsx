@@ -1,30 +1,38 @@
 import type { Metadata } from "next"
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
+import "@fontsource/instrument-sans/500.css"
+import "@fontsource/instrument-sans/600.css"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { GoogleAnalytics } from "@/components/google-analytics"
 import { SITE_NAME, SITE_URL } from "@/lib/site-seo"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
-const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" })
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_NAME,
   description:
-    "AI SEO agent that audits your site, fixes technical issues, publishes content, and tracks organic growth without manual busywork.",
-  keywords: ["AI SEO tool", "autonomous SEO", "GEO optimization", "AI search ranking", "automated SEO agent"],
+    "SERP Strategists is the AI Growth Operator that observes your search performance, executes approved SEO and GEO actions, and improves visibility across Google and AI search.",
+  keywords: [
+    "AI Growth Operator",
+    "autonomous search operations",
+    "AI SEO",
+    "GEO optimization",
+    "AI visibility",
+    "AI citation tracking",
+  ],
   openGraph: {
     title: SITE_NAME,
-    description: "AI SEO agent that audits your site, fixes technical issues, publishes content, and tracks organic growth without manual busywork.",
+    description:
+      "Deploy an AI Growth Operator for organic search. Observes performance, executes approved SEO and GEO actions, and improves visibility across Google and AI search.",
     type: "website",
     url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_NAME,
-    description: "AI SEO agent that audits your site, fixes technical issues, publishes content, and tracks organic growth without manual busywork.",
+    description:
+      "Deploy an AI Growth Operator for organic search. Governed autonomy, full logs, human approval where it matters.",
   },
 }
 
@@ -42,9 +50,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "SERP Strategist",
+              name: "SERP Strategists",
               url: "https://serpstrategists.com",
-              description: "Autonomous AI agent for SEO and GEO growth. Finds issues, fixes them, creates content, and monitors rankings 24/7.",
+              description:
+                "SERP Strategists is the AI Growth Operator that runs organic growth across Google, AI search, content, and competitors — from opportunity to executed action.",
               sameAs: [],
               offers: {
                 "@type": "AggregateOffer",
@@ -56,9 +65,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+      <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`} suppressHydrationWarning>
         <GoogleAnalytics />
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
           {children}
         </ThemeProvider>
       </body>

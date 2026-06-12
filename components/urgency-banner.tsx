@@ -1,28 +1,38 @@
 "use client"
 
-import { motion } from "motion/react"
-import { Zap } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export function UrgencyBanner() {
+  const [show, setShow] = useState(false)
+  const [dismissed, setDismissed] = useState(false)
+
+  useEffect(() => {
+    const t = setTimeout(() => setShow(true), 2500)
+    return () => clearTimeout(t)
+  }, [])
+
+  if (dismissed) return null
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 2, duration: 0.5 }}
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 px-5 py-2.5 rounded-full bg-[#0a0a0a]/90 border border-emerald-500/20 backdrop-blur-md shadow-lg shadow-emerald-500/5 flex items-center gap-3"
+    <div
+      className={`fixed bottom-5 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ${
+        show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3 pointer-events-none"
+      }`}
     >
-      <div className="flex items-center gap-1.5">
-        <Zap className="w-3.5 h-3.5 text-emerald-400" fill="currentColor" />
-        <span className="text-xs font-medium text-[#ececec]">Early access pricing</span>
+      <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-paper/90 border border-line backdrop-blur-md shadow-[0_12px_32px_-16px_rgba(13,17,16,0.3)]">
+        <span className="flex items-center gap-2">
+          <span className="status-pulse w-1.5 h-1.5 rounded-full bg-signal-bright" />
+          <span className="text-xs font-medium text-ink">Early access open</span>
+        </span>
+        <span className="text-neutral-200">·</span>
+        <span className="text-xs text-neutral-600">Founding pricing from $49/mo</span>
+        <a href="#pricing" className="text-xs font-medium text-signal-deep hover:text-ink transition-colors" aria-label="See pricing">
+          →
+        </a>
+        <button onClick={() => setDismissed(true)} className="text-neutral-400 hover:text-ink transition-colors text-xs ml-1" aria-label="Dismiss">
+          ✕
+        </button>
       </div>
-      <span className="text-[10px] text-[#666666]">·</span>
-      <span className="text-xs text-[#888888]">Lock in $49/mo before launch</span>
-      <a
-        href="#pricing"
-        className="text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors ml-1"
-      >
-        →
-      </a>
-    </motion.div>
+    </div>
   )
 }

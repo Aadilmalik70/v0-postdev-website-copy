@@ -5,52 +5,52 @@ import { Footer } from "@/components/footer";
 import { buildMarketingMetadata } from "@/lib/site-seo";
 
 export const metadata: Metadata = buildMarketingMetadata({
-  title: "Contact SERP Strategist | AI SEO Agent Team",
+  title: "Contact SERP Strategists | AI SEO Agent Team",
   description:
-    "Contact the SERP Strategist team for support, partnerships, and questions about autonomous SEO and GEO workflows.",
+    "Contact the SERP Strategists team for support, partnerships, and questions about autonomous SEO and GEO workflows.",
   pathname: "/contact",
 });
 
-const jsonLd = {"@context":"https://schema.org","@type":"ContactPage","name":"Contact SERP Strategist","url":"https://serpstrategists.com/contact","mainEntity":{"@type":"Organization","name":"SERP Strategist","email":"hello@serpstrategists.com"}};
+const jsonLd = {"@context":"https://schema.org","@type":"ContactPage","name":"Contact SERP Strategists","url":"https://serpstrategists.com/contact","mainEntity":{"@type":"Organization","name":"SERP Strategists","email":"hello@serpstrategists.com"}};
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#000000]">
+    <main className="min-h-screen bg-paper">
       <Navbar />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-3xl mx-auto px-6 py-32">
         <Link
           href="/"
-          className="text-emerald-400 hover:text-emerald-300 text-sm mb-8 inline-block"
+          className="text-signal hover:text-signal text-sm mb-8 inline-block"
         >
           ← Back to home
         </Link>
 
-        <h1 className="text-4xl font-bold text-[#ececec] mb-6">Contact Us</h1>
+        <h1 className="text-4xl font-semibold text-ink mb-6">Contact Us</h1>
 
-        <p className="text-[#888888] leading-relaxed mb-8">
+        <p className="text-neutral-600 leading-relaxed mb-8">
           Have a question, feedback, or partnership inquiry? We&apos;d love to
           hear from you. Our team typically responds within 24 hours.
         </p>
 
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-[#ececec] mb-4">Email</h2>
-          <p className="text-[#888888] leading-relaxed mb-2">
+          <h2 className="text-2xl font-semibold text-ink mb-4">Email</h2>
+          <p className="text-neutral-600 leading-relaxed mb-2">
             For general inquiries, support, or partnerships:
           </p>
           <a
             href="mailto:hello@serpstrategists.com"
-            className="text-emerald-400 hover:text-emerald-300 text-lg font-medium"
+            className="text-signal hover:text-signal text-lg font-medium"
           >
             hello@serpstrategists.com
           </a>
         </section>
 
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-[#ececec] mb-4">
+          <h2 className="text-2xl font-semibold text-ink mb-4">
             Connect With Us
           </h2>
-          <p className="text-[#888888] leading-relaxed mb-4">
+          <p className="text-neutral-600 leading-relaxed mb-4">
             Follow us for product updates, SEO insights, and announcements:
           </p>
           <ul className="space-y-3">
@@ -59,7 +59,7 @@ export default function ContactPage() {
                 href="https://twitter.com/serpstrategist"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-emerald-400 hover:text-emerald-300"
+                className="text-signal hover:text-signal"
               >
                 Twitter / X →
               </a>
@@ -69,7 +69,7 @@ export default function ContactPage() {
                 href="https://linkedin.com/company/serpstrategist"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-emerald-400 hover:text-emerald-300"
+                className="text-signal hover:text-signal"
               >
                 LinkedIn →
               </a>
@@ -79,7 +79,7 @@ export default function ContactPage() {
                 href="https://github.com/serpstrategist"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-emerald-400 hover:text-emerald-300"
+                className="text-signal hover:text-signal"
               >
                 GitHub →
               </a>
@@ -88,15 +88,15 @@ export default function ContactPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-[#ececec] mb-4">
+          <h2 className="text-2xl font-semibold text-ink mb-4">
             Support
           </h2>
-          <p className="text-[#888888] leading-relaxed">
+          <p className="text-neutral-600 leading-relaxed">
             If you&apos;re an existing customer and need technical help, email us
             at{" "}
             <a
               href="mailto:hello@serpstrategists.com"
-              className="text-emerald-400 hover:text-emerald-300"
+              className="text-signal hover:text-signal"
             >
               hello@serpstrategists.com
             </a>{" "}

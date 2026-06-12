@@ -9,9 +9,9 @@ import Script from "next/script";
 
 const faqs = [
   {
-    question: "What is SERP Strategist?",
+    question: "What is SERP Strategists?",
     answer:
-      "SERP Strategist is an AI-powered SEO agent that autonomously monitors, audits, and optimizes your website for search engines. It crawls your site, detects technical and content issues, generates fix plans, and — with your approval — executes changes automatically.",
+      "SERP Strategists is an AI-powered SEO agent that autonomously monitors, audits, and optimizes your website for search engines. It crawls your site, detects technical and content issues, generates fix plans, and — with your approval — executes changes automatically.",
   },
   {
     question: "How does it work?",
@@ -36,12 +36,12 @@ const faqs = [
   {
     question: "What types of sites does it work with?",
     answer:
-      "SERP Strategist works with any website — WordPress, Shopify, Next.js, static sites, custom CMSs, and more. We integrate via GitHub for code-based sites and via API/plugins for platforms like WordPress. If your site is on the public web, we can crawl and analyze it.",
+      "SERP Strategists works with any website — WordPress, Shopify, Next.js, static sites, custom CMSs, and more. We integrate via GitHub for code-based sites and via API/plugins for platforms like WordPress. If your site is on the public web, we can crawl and analyze it.",
   },
   {
     question: "What is GEO (Generative Engine Optimization)?",
     answer:
-      "GEO is the practice of optimizing your content to appear in AI-generated answers — like Google AI Overviews, ChatGPT, and Perplexity. SERP Strategist analyzes how AI models interpret your content and suggests structural improvements to increase your visibility in these new search surfaces.",
+      "GEO is the practice of optimizing your content to appear in AI-generated answers — like Google AI Overviews, ChatGPT, and Perplexity. SERP Strategists analyzes how AI models interpret your content and suggests structural improvements to increase your visibility in these new search surfaces.",
   },
   {
     question: "Can I cancel anytime?",
@@ -51,12 +51,12 @@ const faqs = [
   {
     question: "Do I need technical knowledge to use it?",
     answer:
-      "Not at all. SERP Strategist is designed for non-technical users. The agent explains issues in plain language, and you simply approve or reject suggested fixes. If you are technical, you'll appreciate the detailed logs and direct code-level access.",
+      "Not at all. SERP Strategists is designed for non-technical users. The agent explains issues in plain language, and you simply approve or reject suggested fixes. If you are technical, you'll appreciate the detailed logs and direct code-level access.",
   },
   {
     question: "How is this different from tools like Ahrefs or SEMrush?",
     answer:
-      "Traditional SEO tools show you data and reports — you still have to figure out what to do and implement changes yourself. SERP Strategist is an agent: it doesn't just identify problems, it fixes them. Think of it as the difference between a diagnostic tool and an autonomous mechanic.",
+      "Traditional SEO tools show you data and reports — you still have to figure out what to do and implement changes yourself. SERP Strategists is an agent: it doesn't just identify problems, it fixes them. Think of it as the difference between a diagnostic tool and an autonomous mechanic.",
   },
 ];
 
@@ -75,7 +75,7 @@ const faqJsonLd = {
 
 export function FAQClientPage() {
   return (
-    <main className="min-h-screen bg-[#000000]">
+    <main className="min-h-screen bg-paper">
       <Script
         id="faq-jsonld"
         type="application/ld+json"
@@ -85,20 +85,20 @@ export function FAQClientPage() {
       <div className="max-w-3xl mx-auto px-6 py-32">
         <Link
           href="/"
-          className="text-emerald-400 hover:text-emerald-300 text-sm mb-8 inline-block"
+          className="text-signal hover:text-signal text-sm mb-8 inline-block"
         >
           ← Back to home
         </Link>
 
-        <h1 className="text-4xl font-bold text-[#ececec] mb-4">
+        <h1 className="text-4xl font-semibold text-ink mb-4">
           Frequently Asked Questions
         </h1>
-        <p className="text-[#888888] leading-relaxed mb-10">
-          Everything you need to know about SERP Strategist. Can&apos;t find what
+        <p className="text-neutral-600 leading-relaxed mb-10">
+          Everything you need to know about SERP Strategists. Can&apos;t find what
           you&apos;re looking for?{" "}
           <Link
             href="/contact"
-            className="text-emerald-400 hover:text-emerald-300"
+            className="text-signal hover:text-signal"
           >
             Reach out to us
           </Link>
@@ -110,15 +110,15 @@ export function FAQClientPage() {
             <Accordion.Item
               key={index}
               value={`item-${index}`}
-              className="border border-[#222222] rounded-lg overflow-hidden"
+              className="border border-line rounded-lg overflow-hidden"
             >
               <Accordion.Header>
-                <Accordion.Trigger className="w-full flex items-center justify-between px-5 py-4 text-left text-[#ececec] font-medium hover:bg-[#111111] transition-colors group">
+                <Accordion.Trigger className="w-full flex items-center justify-between px-5 py-4 text-left text-ink font-medium hover:bg-surface transition-colors group">
                   <span>{faq.question}</span>
-                  <ChevronDownIcon className="w-5 h-5 text-[#888888] transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                  <ChevronDownIcon className="w-5 h-5 text-neutral-600 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                 </Accordion.Trigger>
               </Accordion.Header>
-              <Accordion.Content className="px-5 pb-4 text-[#888888] leading-relaxed data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden">
+              <Accordion.Content className="px-5 pb-4 text-neutral-600 leading-relaxed data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden">
                 {faq.answer}
               </Accordion.Content>
             </Accordion.Item>

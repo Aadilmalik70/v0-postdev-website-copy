@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-export const SITE_NAME = "SERP Strategist"
+export const SITE_NAME = "SERP Strategists"
 export const SITE_URL = "https://serpstrategists.com"
 const SEO_TITLE_MAX = 60
 const SEO_DESCRIPTION_MAX = 150
@@ -61,16 +61,16 @@ export function buildCanonicalUrl(pathname: string): string {
 
 export function getHomepageSeoCopy() {
   return {
-    title: "AI SEO Agent for Audits, Fixes, and Growth | SERP Strategist",
+    title: "AI Growth Operator for Organic Search | SERP Strategists",
     description:
-      "SERP Strategist gives small teams one AI SEO workflow to audit, fix, publish, and monitor without agency overhead or manual grind.",
-    h1: "One AI SEO agent that audits, fixes, publishes, and monitors your site.",
+      "SERP Strategists observes your search performance, executes approved SEO and GEO actions, and improves visibility across Google and AI search.",
+    h1: "Deploy an AI Growth Operator for organic search.",
     subtitle:
-      "SERP Strategist gives small teams a full SEO workflow without the agency price tag or the manual grind.",
-    openGraphTitle: "AI SEO Agent for Audits, Fixes, and Growth",
-    openGraphDescription: "One AI SEO workflow to audit, fix, publish, and monitor your site without agency overhead or manual grind.",
-    twitterTitle: "AI SEO Agent for Audits, Fixes, and Growth",
-    twitterDescription: "One AI SEO workflow to audit, fix, publish, and monitor your site without agency overhead.",
+      "SERP Strategists observes your search performance, finds the highest-impact opportunities, executes approved SEO and GEO actions, and improves visibility across Google, ChatGPT, Perplexity, Gemini, and beyond.",
+    openGraphTitle: "Deploy an AI Growth Operator for Organic Search",
+    openGraphDescription: "From opportunity to executed action: SEO, GEO, and AI visibility run as one governed operating loop.",
+    twitterTitle: "Deploy an AI Growth Operator for Organic Search",
+    twitterDescription: "Governed autonomy. Full logs. Human approval where it matters.",
   }
 }
 

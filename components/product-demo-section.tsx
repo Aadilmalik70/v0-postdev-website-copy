@@ -1,99 +1,75 @@
 "use client"
 
-import { motion } from "motion/react"
+import { Reveal, Counter } from "./gsap-fx"
+
+const queueItems = [
+  { action: "Shipped", detail: "Canonical mismatch fixed on /pricing", meta: "Auto-approved · Logged · Rollback available", time: "12 min ago", dot: "bg-signal-bright", text: "text-signal-bright" },
+  { action: "Awaiting review", detail: "Refresh /integrations page for AI answer coverage", meta: "Impact 8.4 · Confidence high · Effort low", time: "26 min ago", dot: "bg-opportunity-bright", text: "text-opportunity-bright" },
+  { action: "Planned", detail: "Build internal link cluster across 14 orphan pages", meta: "Impact 7.1 · Plan ready for approval", time: "48 min ago", dot: "bg-opviolet-bright", text: "text-opviolet-bright" },
+  { action: "Observed", detail: "Competitor cited above you in 3 Perplexity prompts", meta: "Source gap identified · Action queued", time: "2 hr ago", dot: "bg-coral-bright", text: "text-coral-bright" },
+]
 
 export function ProductDemoSection() {
   return (
-    <section className="py-28 md:py-36 px-6 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#010a03] to-[#000000]" />
-
-      <div className="relative z-10 max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">See it in action</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
-            Watch the agent work in one dashboard.
-          </h2>
-          <p className="text-[#8a8a8a] text-base md:text-lg max-w-2xl mx-auto">
-            See issues found, fixes shipped, traffic growth, ranking movement, and live activity without bouncing between tools.
-          </p>
-        </motion.div>
-
-        {/* Macbook-style frame */}
-        <motion.div
-          initial={{ opacity: 0, y: 60, rotateX: 10 }}
-          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative perspective-[1200px]"
-        >
-          {/* Browser chrome */}
-          <div className="rounded-xl border border-[#1a1a1a] bg-[#0a0a0a] shadow-2xl shadow-emerald-500/5 overflow-hidden">
-            {/* Title bar */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-[#1a1a1a] bg-[#050505]">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-                <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
-                <div className="w-3 h-3 rounded-full bg-[#28c840]" />
-              </div>
-              <div className="flex-1 flex justify-center">
-                <div className="px-4 py-1 rounded-md bg-[#111111] border border-[#1a1a1a] text-xs text-[#666666] font-mono">
-                  app.serpstrategists.com/dashboard
-                </div>
-              </div>
+    <section className="py-24 md:py-32 px-5 md:px-6">
+      <div className="max-w-6xl mx-auto">
+        {/* Dark console panel inset on the warm page */}
+        <Reveal>
+          <div className="rounded-3xl bg-graphite-950 border border-graphite-line px-6 py-12 md:px-14 md:py-16 overflow-hidden relative">
+            <div className="max-w-2xl mb-10">
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-signal-bright mb-5">The Operator Console</p>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-[44px] font-semibold text-warmwhite leading-[1.12] mb-5">
+                See what changed, why, and what happened next.
+              </h2>
+              <p className="text-neutral-400 text-base md:text-lg leading-relaxed">
+                Not another dashboard — an action queue. Every action is scored, approved, logged,
+                reviewable, and measurable.
+              </p>
             </div>
 
-            {/* Dashboard content */}
-            <div className="p-6 md:p-8 space-y-6">
-              {/* Top stats row */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                {[
-                  { label: "Issues Found", value: "47", change: "ranked by impact", color: "text-red-400" },
-                  { label: "Issues Fixed", value: "38", change: "shipped this week", color: "text-emerald-400" },
-                  { label: "Organic Growth", value: "+23%", change: "traffic and rankings moving", color: "text-cyan-400" },
-                ].map((stat, i) => (
-                  <div key={i} className="p-4 rounded-lg bg-[#080808] border border-[#151515]">
-                    <p className="text-[10px] uppercase tracking-wider text-[#555555] mb-1">{stat.label}</p>
-                    <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
-                    <p className="text-[10px] text-[#444444] mt-0.5">{stat.change}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Issues list */}
-              <div className="rounded-lg bg-[#080808] border border-[#151515] overflow-hidden">
-                <div className="px-4 py-3 border-b border-[#151515] flex items-center justify-between">
-                  <span className="text-xs font-medium text-[#888888]">Recent Agent Activity</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Live</span>
+            <Reveal selector="[data-stat]" stagger={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
+              {[
+                { value: 47, suffix: "", label: "Opportunities observed", change: "ranked by impact × confidence ÷ effort", color: "text-systeal-bright" },
+                { value: 38, suffix: "", label: "Actions shipped", change: "logged, reviewable, reversible", color: "text-signal-bright" },
+                { value: 23, prefix: "+", suffix: "%", label: "Visibility movement", change: "organic clicks and AI citations, 30 days", color: "text-warmwhite" },
+              ].map((stat) => (
+                <div key={stat.label} data-stat className="p-5 rounded-xl bg-graphite-900 border border-graphite-line">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-600 mb-2">{stat.label}</p>
+                  <p className={`font-mono text-3xl font-medium ${stat.color}`}>
+                    <Counter to={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
+                  </p>
+                  <p className="text-[10px] text-neutral-600 mt-1.5">{stat.change}</p>
                 </div>
-                {[
-                  { action: "Fixed", detail: "Canonical mismatch on /pricing", time: "12 min ago", status: "emerald" },
-                  { action: "Published", detail: "New post targeting an uncovered keyword gap", time: "48 min ago", status: "cyan" },
-                  { action: "Detected", detail: "Internal linking gap across orphan pages", time: "2 hr ago", status: "amber" },
-                ].map((item, i) => (
-                  <div key={i} className="px-4 py-2.5 border-b border-[#0d0d0d] last:border-0 flex items-center gap-3">
-                    <div className={`w-1.5 h-1.5 rounded-full ${
-                      item.status === "emerald" ? "bg-emerald-400" : item.status === "cyan" ? "bg-cyan-400" : "bg-amber-400"
-                    }`} />
-                    <span className={`text-[10px] font-mono uppercase w-16 ${
-                      item.status === "emerald" ? "text-emerald-400" : item.status === "cyan" ? "text-cyan-400" : "text-amber-400"
-                    }`}>{item.action}</span>
-                    <span className="text-xs text-[#aaaaaa] flex-1">{item.detail}</span>
-                    <span className="text-[10px] text-[#444444]">{item.time}</span>
+              ))}
+            </Reveal>
+
+            <div className="rounded-xl bg-graphite-900 border border-graphite-line overflow-hidden">
+              <div className="relative px-5 py-3.5 border-b border-graphite-line flex items-center justify-between overflow-hidden">
+                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-400">Action queue</span>
+                <span className="inline-flex items-center gap-1.5 text-[10px] px-2.5 py-0.5 rounded-full bg-signal-bright/10 text-signal-bright border border-signal-bright/20">
+                  <span className="status-pulse w-1 h-1 rounded-full bg-signal-bright" />
+                  Operating
+                </span>
+                <span className="operator-scanline absolute bottom-0 left-0 h-px w-1/5 bg-signal-bright/40" />
+              </div>
+              <Reveal selector="[data-row]" stagger={0.12} y={0}>
+                {queueItems.map((item) => (
+                  <div key={item.action} data-row className="px-5 py-4 border-b border-graphite-800 last:border-0 flex items-start gap-3 hover:bg-graphite-800/40 transition-colors">
+                    <span className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${item.dot}`} />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-baseline gap-3 flex-wrap">
+                        <span className={`font-mono text-[10px] uppercase tracking-wide ${item.text}`}>{item.action}</span>
+                        <span className="text-[13px] text-neutral-200">{item.detail}</span>
+                      </div>
+                      <p className="font-mono text-[10px] text-neutral-600 mt-1">{item.meta}</p>
+                    </div>
+                    <span className="text-[10px] text-neutral-600 whitespace-nowrap">{item.time}</span>
                   </div>
                 ))}
-              </div>
+              </Reveal>
             </div>
           </div>
-
-          {/* Reflection glow */}
-          <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-3/4 h-20 bg-emerald-500/5 rounded-full blur-3xl" />
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   )

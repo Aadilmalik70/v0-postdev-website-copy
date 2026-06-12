@@ -1,66 +1,49 @@
 "use client"
 
-import { motion } from "motion/react"
-import { Rocket, Code, Store, Globe } from "lucide-react"
+import { Rocket, TrendingUp, Briefcase, Building2 } from "lucide-react"
+import { Reveal } from "./gsap-fx"
 
 const personas = [
-  { icon: Rocket, title: "Founders", trait: "who want organic growth without hiring a full SEO team" },
-  { icon: Code, title: "Developers", trait: "who built a great product but still have zero search traffic" },
-  { icon: Store, title: "Small businesses", trait: "who are competing against brands with 100x the budget" },
-  { icon: Globe, title: "Content creators", trait: "who want to be discovered on Google and in AI search" },
+  { icon: Rocket, title: "Founders", trait: "who need a dependable organic channel without hiring an SEO specialist" },
+  { icon: TrendingUp, title: "Startup growth teams", trait: "who want compounding search leverage without adding headcount" },
+  { icon: Briefcase, title: "Agencies", trait: "who want to ship more client work per operator, with logs to prove it" },
+  { icon: Building2, title: "Marketing leads", trait: "who need AI search visibility before competitors own the answers" },
 ]
 
 export function WhoItsForSection() {
   return (
-    <section className="py-28 md:py-36 px-6 relative overflow-hidden">
-      <div className="absolute right-0 top-1/3 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">Who it&apos;s for</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight">
-            Built for builders.
+    <section className="py-24 md:py-32 px-5 md:px-6">
+      <div className="max-w-6xl mx-auto">
+        <Reveal className="mb-14 max-w-2xl">
+          <p className="eyebrow mb-5">Who it&apos;s for</p>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-[44px] font-semibold text-ink leading-[1.12]">
+            Built for teams without enough specialist capacity.
           </h2>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {personas.map((persona, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="group flex items-start gap-4 p-6 rounded-xl border border-[#1a1a1a] bg-[#0a0a0a]/50 hover:border-[#2a2a2a] hover:bg-[#0a0a0a] transition-all duration-300"
-            >
-              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#141414] border border-[#222222] flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
-                <persona.icon className="w-5 h-5 text-[#888888] group-hover:text-emerald-400 transition-colors" strokeWidth={1.5} />
+        <Reveal selector="[data-persona]" stagger={0.08} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {personas.map((persona) => (
+            <div key={persona.title} data-persona className="card-lift group flex items-start gap-4 p-6 rounded-2xl border border-line bg-card">
+              <div className="shrink-0 w-11 h-11 rounded-xl bg-surface border border-line flex items-center justify-center transition-colors duration-300 group-hover:bg-signal/8">
+                <persona.icon className="w-5 h-5 text-neutral-600 group-hover:text-signal transition-colors duration-300" strokeWidth={1.75} />
               </div>
               <div>
-                <h3 className="text-base font-semibold text-[#ececec] mb-1">{persona.title}</h3>
-                <p className="text-sm text-[#888888] leading-relaxed">{persona.trait}</p>
+                <h3 className="font-display text-base font-semibold text-ink mb-1">{persona.title}</h3>
+                <p className="text-sm text-neutral-600 leading-relaxed">{persona.trait}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </Reveal>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-10 text-center p-8 rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a]/50"
-        >
-          <p className="text-[#888888] text-base mb-2">If you have ever thought:</p>
-          <p className="text-xl md:text-2xl font-medium text-emerald-400 italic">&quot;I wish SEO just handled itself.&quot;</p>
-          <p className="text-[#ececec] text-base mt-2">This is the product.</p>
-        </motion.div>
+        <Reveal className="mt-12">
+          <figure className="max-w-2xl mx-auto text-center">
+            <p className="text-sm text-neutral-400 mb-3">If your team has ever said:</p>
+            <blockquote className="font-display text-2xl md:text-[28px] font-semibold text-ink leading-snug">
+              &ldquo;We know what&apos;s wrong — the work just <span className="mark-signal">never ships</span>.&rdquo;
+            </blockquote>
+            <figcaption className="text-sm text-neutral-600 mt-4">This is the operating layer for that gap.</figcaption>
+          </figure>
+        </Reveal>
       </div>
     </section>
   )

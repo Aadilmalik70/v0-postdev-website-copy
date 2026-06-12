@@ -26,16 +26,16 @@ export function InfiniteMovingCards({
         {[...items, ...items, ...items, ...items].map((item, idx) => (
           <div
             key={idx}
-            className="relative flex-shrink-0 w-[300px] md:w-[350px] rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a] p-6"
+            className="relative flex-shrink-0 w-[300px] md:w-[350px] rounded-2xl border border-line bg-card p-6"
           >
-            <p className="text-sm text-[#aaaaaa] leading-relaxed mb-4">
+            <p className="text-sm text-neutral-600/90 leading-relaxed mb-4">
               &ldquo;{item.quote}&rdquo;
             </p>
             <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500" />
+              <div className="h-8 w-8 rounded-full bg-gradient-to-br from-signal to-systeal" />
               <div>
-                <p className="text-sm font-medium text-[#ececec]">{item.name}</p>
-                <p className="text-xs text-[#666666]">{item.title}</p>
+                <p className="text-sm font-medium text-ink">{item.name}</p>
+                <p className="text-xs text-neutral-600">{item.title}</p>
               </div>
             </div>
           </div>

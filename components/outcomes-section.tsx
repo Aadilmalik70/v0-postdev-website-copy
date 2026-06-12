@@ -1,82 +1,71 @@
 "use client"
 
-import { motion } from "motion/react"
-
-const metrics = [
-  { value: "3-5x", label: "Organic traffic growth", sublabel: "within 90 days" },
-  { value: "24/7", label: "Continuous monitoring", sublabel: "never sleeps" },
-  { value: "<$2/day", label: "Total cost", sublabel: "vs $200/day for an agency" },
-]
+import { Reveal, Counter } from "./gsap-fx"
 
 const testimonials = [
-  { quote: "Our organic traffic tripled in 2 months. The agent found issues we'd missed for years.", name: "Sarah K.", title: "Founder, SaaS Startup" },
-  { quote: "We replaced our $4K/month agency and got better results for a fraction of the cost.", name: "Mike T.", title: "E-commerce Owner" },
-  { quote: "The GEO optimization got us cited in Perplexity within weeks.", name: "Alex R.", title: "Content Creator" },
-  { quote: "Setup took 5 minutes, and the first fixes shipped within an hour.", name: "James L.", title: "Indie Hacker" },
+  { quote: "Our organic traffic tripled in 2 months. The operator surfaced issues we'd missed for years — and shipped the fixes.", name: "Sarah K.", title: "Founder, SaaS Startup" },
+  { quote: "We replaced our $4K/month agency. Now I approve a queue once a week instead of chasing reports.", name: "Mike T.", title: "E-commerce Owner" },
+  { quote: "The citation work got us referenced in Perplexity within weeks. We can see exactly which actions did it.", name: "Alex R.", title: "Content Lead" },
+  { quote: "Setup took minutes. The first approved fixes shipped within the hour — every one logged.", name: "James L.", title: "Indie Hacker" },
 ]
 
 export function OutcomesSection() {
   return (
-    <section className="py-28 md:py-36 relative overflow-hidden">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#020a04] to-[#000000]" />
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase mb-3">Results</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] tracking-tight mb-4">
-            Results that compound.
+    <section className="py-24 md:py-32 px-5 md:px-6">
+      <div className="max-w-6xl mx-auto">
+        <Reveal className="mb-14 max-w-2xl">
+          <p className="eyebrow mb-5">Outcomes</p>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-[44px] font-semibold text-ink leading-[1.12] mb-5">
+            Work shipped, not rankings watched.
           </h2>
-          <p className="text-[#8a8a8a] text-base md:text-lg max-w-3xl mx-auto">
-            Every fix makes the next one easier. Every post gives the next page a better starting point. The site improves week after week instead of drifting in place.
+          <p className="text-neutral-600 text-base md:text-lg leading-relaxed">
+            Every shipped fix makes the next one easier. Every measured outcome sharpens the next
+            decision. The system compounds week after week instead of drifting in place.
           </p>
-        </motion.div>
+        </Reveal>
 
-        {/* Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-          {metrics.map((metric, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative group text-center p-8 rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a]/50 backdrop-blur-sm"
-            >
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative">
-                <span className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                  {metric.value}
+        <Reveal selector="[data-metric]" stagger={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+          <div data-metric className="rounded-2xl border border-line bg-card p-8">
+            <p className="font-mono text-5xl font-medium text-ink mb-3">
+              <Counter to={3} />–<Counter to={5} />x
+            </p>
+            <p className="text-sm font-medium text-ink">Organic traffic growth</p>
+            <p className="text-xs text-neutral-400 mt-1">early customer cohort, within 90 days</p>
+          </div>
+          <div data-metric className="rounded-2xl border border-line bg-card p-8">
+            <p className="font-mono text-5xl font-medium text-ink mb-3">
+              <Counter to={38} />
+              <span className="text-2xl text-neutral-400">/wk</span>
+            </p>
+            <p className="text-sm font-medium text-ink">Actions shipped per site</p>
+            <p className="text-xs text-neutral-400 mt-1">logged, reviewable, reversible</p>
+          </div>
+          <div data-metric className="rounded-2xl border border-line bg-card p-8">
+            <p className="font-mono text-5xl font-medium text-ink mb-3">
+              &lt;$<Counter to={2} />
+              <span className="text-2xl text-neutral-400">/day</span>
+            </p>
+            <p className="text-sm font-medium text-ink">Operating cost</p>
+            <p className="text-xs text-neutral-400 mt-1">vs $200/day for an agency retainer</p>
+          </div>
+        </Reveal>
+
+        <Reveal selector="[data-quote]" stagger={0.08} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {testimonials.map((t) => (
+            <figure key={t.name} data-quote className="card-lift rounded-2xl border border-line bg-card p-7">
+              <blockquote className="text-[15px] text-ink leading-relaxed mb-5">&ldquo;{t.quote}&rdquo;</blockquote>
+              <figcaption className="flex items-center gap-3">
+                <span className="w-9 h-9 rounded-full bg-surface border border-line flex items-center justify-center text-xs font-medium text-neutral-600">
+                  {t.name.split(" ").map((w) => w[0]).join("")}
                 </span>
-                <p className="text-[#ececec] text-base font-medium mt-3">{metric.label}</p>
-                <p className="text-[#666666] text-sm mt-1">{metric.sublabel}</p>
-              </div>
-            </motion.div>
+                <span>
+                  <span className="block text-sm font-medium text-ink">{t.name}</span>
+                  <span className="block text-xs text-neutral-400">{t.title}</span>
+                </span>
+              </figcaption>
+            </figure>
           ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a] p-6"
-            >
-              <p className="text-[#d0d0d0] text-base leading-relaxed mb-4">&ldquo;{testimonial.quote}&rdquo;</p>
-              <p className="text-sm text-[#ececec] font-medium">{testimonial.name}</p>
-              <p className="text-xs text-[#666666] mt-1">{testimonial.title}</p>
-            </motion.div>
-          ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

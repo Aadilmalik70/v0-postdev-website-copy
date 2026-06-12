@@ -43,7 +43,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     title: data.title || slug,
     description: data.description || "",
     date: data.date || new Date().toISOString(),
-    author: data.author || "SERP Strategist",
+    author: data.author || "SERP Strategists",
     tags: data.tags || [],
     readingTime: stats.text,
     content,
