@@ -58,6 +58,15 @@ export function getAllSlugs(): string[] {
     .map((f) => f.replace(/\.mdx$/, ""))
 }
 
+/**
+ * Get related blog posts based on shared tags.
+ * @param currentSlug - The slug of the current post to exclude from results
+ * @param currentTags - Tags of the current post to match against
+ * @param limit - Maximum number of related posts to return
+ * @returns Array of related posts, sorted by relevance (tag matches) then date.
+ *          Falls back to most recent posts if no tag matches found.
+ * @note Depends on getAllPosts() returning date-sorted posts (descending).
+ */
 export function getRelatedPosts(currentSlug: string, currentTags: string[], limit = 3): BlogPost[] {
   // getAllPosts() returns posts sorted by date descending; filter maintains that order
   const allPosts = getAllPosts().filter((post) => post.slug !== currentSlug)

@@ -24,7 +24,7 @@ export function proxy(request: NextRequest) {
 
   // WWW to non-WWW redirect
   if (host === "www.serpstrategists.com") {
-    const redirectUrl = new URL(nextUrl.pathname + nextUrl.search, "https://serpstrategists.com")
+    const redirectUrl = new URL(nextUrl.pathname + nextUrl.search + nextUrl.hash, "https://serpstrategists.com")
     return NextResponse.redirect(redirectUrl, 308)
   }
 
