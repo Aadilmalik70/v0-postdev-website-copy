@@ -59,6 +59,7 @@ export function getAllSlugs(): string[] {
 }
 
 export function getRelatedPosts(currentSlug: string, currentTags: string[], limit = 3): BlogPost[] {
+  // getAllPosts() returns posts sorted by date descending; filter maintains that order
   const allPosts = getAllPosts().filter((post) => post.slug !== currentSlug)
   
   // Score posts by number of matching tags
@@ -81,6 +82,6 @@ export function getRelatedPosts(currentSlug: string, currentTags: string[], limi
     return relevantPosts.slice(0, limit).map((item) => item.post)
   }
   
-  // Fallback to most recent posts if no tag matches
+  // Fallback to most recent posts if no tag matches (getAllPosts() already returns date-sorted posts)
   return allPosts.slice(0, limit)
 }
