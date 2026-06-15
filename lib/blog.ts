@@ -57,3 +57,21 @@ export function getAllSlugs(): string[] {
     .filter((f) => f.endsWith(".mdx"))
     .map((f) => f.replace(/\.mdx$/, ""))
 }
+
+export function getRelatedPosts(currentSlug: string, currentTags: string[], limit = 3): BlogPost[] {
+  const allPosts = getAllPosts().filter((post) => post.slug !== currentSlug)
+  
+  // Score posts by number of matching tags
+  const scoredPosts = allPosts.map((post) => {
+    const matchingTags = post.tags.filter((tag) => currentTags.includes(tag)).length
+    return { post, score: matchingTags }
+  })
+  
+  // Sort by score (descending), then by date (descending)
+  scoredPosts.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score
+    return new Date(b.post.date).getTime() - new Date(a.post.date).getTime()
+  })
+  
+  return scoredPosts.slice(0, limit).map((item) => item.post)
+}

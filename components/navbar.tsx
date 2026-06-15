@@ -9,8 +9,9 @@ import { Menu, X } from "lucide-react"
 const links = [
   { label: "Operator Loop", href: "#operator-loop" },
   { label: "Modules", href: "#modules" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Blog", href: "/blog" },
+  { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
 ]
 

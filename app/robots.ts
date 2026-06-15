@@ -3,7 +3,15 @@ import type { MetadataRoute } from "next"
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/" },
+      { 
+        userAgent: "*", 
+        allow: "/",
+        disallow: [
+          "/admin/",
+          "/blog?search=*",
+          "/blog?*",
+        ]
+      },
       { userAgent: "GPTBot", allow: "/" },
       { userAgent: "ChatGPT-User", allow: "/" },
       { userAgent: "PerplexityBot", allow: "/" },
