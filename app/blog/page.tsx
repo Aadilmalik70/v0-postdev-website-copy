@@ -28,9 +28,21 @@ export default function BlogPage() {
           <h1 className="font-serif text-5xl md:text-7xl font-normal text-ink mb-4 tracking-[-0.02em]">
             Blog
           </h1>
-          <p className="text-neutral-600 text-lg">
-            Browse the latest posts from each cluster without loading the full archive in one pass.
-          </p>
+          <div className="text-neutral-600 text-lg space-y-4 max-w-3xl">
+            <p>
+              Deep dives into AI search optimization, technical SEO systems, and content strategy for compounding organic growth. 
+              Every article is written from hands-on experience building and scaling search visibility across Google, ChatGPT, Perplexity, and emerging AI search engines.
+            </p>
+            <p>
+              Posts are organized into strategic clusters covering GEO (Generative Engine Optimization), technical SEO implementation, 
+              AI search visibility measurement, competitive analysis methodologies, and the evolving landscape of zero-click searches. 
+              Whether you're a founder building your first SEO system or a practitioner optimizing for AI citations, you'll find actionable 
+              frameworks backed by real data.
+            </p>
+            <p className="text-lg">
+              Browse the latest posts from each cluster below, or jump to a specific topic using the cluster navigation.
+            </p>
+          </div>
         </div>
 
         <section className="mb-12 border border-line rounded-2xl p-8 bg-card">
