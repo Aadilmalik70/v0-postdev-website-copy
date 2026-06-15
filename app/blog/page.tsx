@@ -39,7 +39,7 @@ export default function BlogPage() {
               Whether you're a founder building your first SEO system or a practitioner optimizing for AI citations, you'll find actionable 
               frameworks backed by real data.
             </p>
-            <p className="text-base">
+            <p className="text-lg">
               Browse the latest posts from each cluster below, or jump to a specific topic using the cluster navigation.
             </p>
           </div>

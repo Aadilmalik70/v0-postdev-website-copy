@@ -67,11 +67,20 @@ export function getRelatedPosts(currentSlug: string, currentTags: string[], limi
     return { post, score: matchingTags }
   })
   
+  // Filter out posts with no matching tags to ensure relevance
+  const relevantPosts = scoredPosts.filter((item) => item.score > 0)
+  
   // Sort by score (descending), then by date (descending)
-  scoredPosts.sort((a, b) => {
+  relevantPosts.sort((a, b) => {
     if (b.score !== a.score) return b.score - a.score
     return new Date(b.post.date).getTime() - new Date(a.post.date).getTime()
   })
   
-  return scoredPosts.slice(0, limit).map((item) => item.post)
+  // If we have relevant posts, return them; otherwise return recent posts
+  if (relevantPosts.length > 0) {
+    return relevantPosts.slice(0, limit).map((item) => item.post)
+  }
+  
+  // Fallback to most recent posts if no tag matches
+  return allPosts.slice(0, limit)
 }
