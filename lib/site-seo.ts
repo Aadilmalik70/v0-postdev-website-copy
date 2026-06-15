@@ -82,6 +82,7 @@ export function buildMarketingMetadata({
   publishedTime,
   authors,
   tags,
+  noindex = false,
 }: {
   title: string
   description: string
@@ -90,6 +91,7 @@ export function buildMarketingMetadata({
   publishedTime?: string
   authors?: string[]
   tags?: string[]
+  noindex?: boolean
 }): Metadata {
   const url = buildCanonicalUrl(pathname)
   const seoTitle = buildSeoTitle(title)
@@ -101,6 +103,22 @@ export function buildMarketingMetadata({
     alternates: {
       canonical: url,
     },
+    robots: noindex
+      ? {
+          index: false,
+          follow: true,
+        }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+          },
+        },
     openGraph: {
       title: seoTitle,
       description: seoDescription,
