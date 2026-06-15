@@ -5,6 +5,8 @@ import type { Metadata } from "next"
 import { MDXContent } from "./mdx-content"
 import { Navbar } from "@/components/navbar"
 import { buildMarketingMetadata, buildCanonicalUrl } from "@/lib/site-seo"
+import { getArticleSchema, getBreadcrumbSchema, combineSchemas } from "@/lib/schema"
+import { getFAQSchemaForPost, hasFAQSchema } from "@/lib/faq-schemas"
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -37,34 +39,43 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound()
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
+  const postUrl = buildCanonicalUrl(`/blog/${slug}`)
+
+  // Article Schema
+  const articleSchema = getArticleSchema({
     headline: post.title,
     description: post.description,
-    url: buildCanonicalUrl(`/blog/${slug}`),
-    mainEntityOfPage: buildCanonicalUrl(`/blog/${slug}`),
+    url: postUrl,
     datePublished: post.date,
-    dateModified: post.date,
-    keywords: post.tags.join(", "),
-    author: {
-      "@type": "Organization",
-      name: post.author,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "SERP Strategists",
-      url: "https://serpstrategists.com",
-    },
+    dateModified: post.date, // TODO: Add dateModified to frontmatter
+    author: post.author,
     image: post.image ? buildCanonicalUrl(post.image) : undefined,
+    tags: post.tags,
+  })
+
+  // Breadcrumb Schema
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Home", url: buildCanonicalUrl("/") },
+    { name: "Blog", url: buildCanonicalUrl("/blog") },
+    { name: post.title, url: postUrl },
+  ])
+
+  // FAQ Schema (if available for this post)
+  const faqSchema = getFAQSchemaForPost(slug)
+
+  // Combine all schemas
+  const schemas = [articleSchema, breadcrumbSchema]
+  if (faqSchema) {
+    schemas.push(faqSchema)
   }
+  const combinedSchema = combineSchemas(...schemas)
 
   return (
     <main className="min-h-screen bg-paper">
       <Navbar />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(combinedSchema) }}
       />
 
       <article className="max-w-3xl mx-auto px-6 py-32">

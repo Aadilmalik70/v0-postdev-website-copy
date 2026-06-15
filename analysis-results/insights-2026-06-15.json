@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-06-15T18:15:54.738Z",
+  "summary": {},
+  "patterns": {
+    "titles": {
+      "avgLength": null,
+      "hasYearPct": null,
+      "hasBracketsPct": null,
+      "hasNumberPct": null,
+      "hasQuestionPct": null,
+      "hasPowerWordsPct": null,
+      "startsWithKeywordPct": null
+    },
+    "snippets": {
+      "avgLength": null,
+      "hasCallToActionPct": null,
+      "hasNumbersPct": null,
+      "hasBenefitPct": null
+    },
+    "serpFeatures": {
+      "aiOverviewPct": 0,
+      "featuredSnippetPct": 0
+    }
+  },
+  "recommendations": []
+}

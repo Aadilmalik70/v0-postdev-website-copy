@@ -7,6 +7,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { GoogleAnalytics } from "@/components/google-analytics"
 import { SITE_NAME, SITE_URL } from "@/lib/site-seo"
+import { getOrganizationSchema, getWebSiteSchema, combineSchemas } from "@/lib/schema"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -47,21 +48,9 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "SERP Strategists",
-              url: "https://serpstrategists.com",
-              description:
-                "SERP Strategists is the AI Growth Operator that runs organic growth across Google, AI search, content, and competitors — from opportunity to executed action.",
-              sameAs: [],
-              offers: {
-                "@type": "AggregateOffer",
-                lowPrice: "0",
-                highPrice: "99",
-                priceCurrency: "USD",
-              },
-            }),
+            __html: JSON.stringify(
+              combineSchemas(getOrganizationSchema(), getWebSiteSchema())
+            ),
           }}
         />
       </head>
