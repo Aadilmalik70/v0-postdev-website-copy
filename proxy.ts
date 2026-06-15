@@ -9,7 +9,9 @@ const redirects: Record<string, string> = {
   '/en-US': '/',
   '/en': '/',
   
-  // Remove these if pages exist - these are placeholders
+  // Legacy blog posts that no longer exist (verified in content/blog directory)
+  // These pages were identified in GSC as "Crawled - Currently Not Indexed"
+  // Remove these redirects if these blog posts are re-created
   '/blog/ai-content-blueprint-tool-guide': '/blog',
   '/blog/sample-implementation': '/blog',
   '/blog/index-old': '/blog',
