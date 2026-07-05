@@ -25,10 +25,10 @@ export function LogoCloudSection() {
             {[...logos, ...logos].map((item, i) => (
               <div
                 key={item.name + i}
-                className="flex items-center gap-2.5 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300 shrink-0"
+                className="flex items-center gap-2.5 opacity-100 transition-opacity duration-300 shrink-0"
               >
-                <Image src={item.logo} alt={item.name} width={22} height={22} />
-                <span className="text-sm font-medium text-neutral-600">{item.name}</span>
+                <Image src={item.logo} alt={item.name} width={22} height={22} className="brightness-0 opacity-90" />
+                <span className="text-sm font-medium text-neutral-700">{item.name}</span>
               </div>
             ))}
           </div>

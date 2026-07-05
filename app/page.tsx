@@ -15,6 +15,7 @@ import { Footer } from "@/components/footer"
 import { UrgencyBanner } from "@/components/urgency-banner"
 import { HomepagePricingTeaser } from "@/components/homepage-pricing-teaser"
 import { HomepageFaqTeaser } from "@/components/homepage-faq-teaser"
+import { HomepageSupportLinksSection } from "@/components/homepage-support-links-section"
 import { buildCanonicalUrl, getHomepageSeoCopy } from "@/lib/site-seo"
 
 const homepageSeoCopy = getHomepageSeoCopy()
@@ -68,6 +69,7 @@ export default function Home() {
       <FeatureGridSection />
       <HomepagePricingTeaser />
       <HomepageFaqTeaser />
+      <HomepageSupportLinksSection />
       <FinalCtaSection />
       <Footer />
       <UrgencyBanner />

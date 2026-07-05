@@ -1,26 +1,26 @@
-# SERP Strategist — AI SEO & GEO Agent
+# SERP Strategists - AI Growth Operator
 
-> Autonomous AI agent that continuously improves website SEO and GEO performance. Finds issues, fixes them, creates content, and monitors rankings 24/7.
+> Governed AI operator that continuously improves website SEO and GEO performance. It finds issues, ranks opportunities, ships approved work, and monitors results.
 
 ## What we do
 
-SERP Strategist is an AI agent that:
-- Crawls websites and detects 40+ SEO issue types automatically
-- Fixes technical SEO autonomously: meta tags, schema markup, canonical URLs, internal linking, sitemap
-- Optimizes for GEO (Generative Engine Optimization) — structured data for citations in ChatGPT, Perplexity, and Google AI Overviews
-- Creates and publishes SEO-optimized blog content targeting keyword gaps
-- Monitors keyword rankings, organic traffic, and AI citations daily
-- Adapts strategy based on what's working
+SERP Strategists is an AI Growth Operator that:
+- Crawls websites and detects SEO issue types automatically
+- Fixes technical SEO with approval gates, logs, and rollback-ready actions
+- Optimizes for GEO so pages are easier to cite in ChatGPT, Perplexity, Gemini, and Google AI Overviews
+- Creates and publishes SEO-optimized content targeting keyword gaps
+- Tracks rankings, organic traffic, and AI citations over time
+- Learns from shipped work so the next recommendation is better
 
 ## Who we serve
 
-Founders, developers, and small businesses who want agency-level SEO execution without hiring an agency.
+Founders, developers, and small teams who want execution without agency overhead.
 
 ## Pricing
 
-- **Free**: Full site audit, issue prioritization, GEO readiness score — 1 site, no fixes
-- **Growth**: $49/month — autonomous fixes + 4 blog posts/month + ranking monitoring — 1 site
-- **Pro**: $99/month — full automation + GEO optimization + 12 blog posts/month + competitor tracking — 3 sites
+- **Free**: Full site audit, issue prioritization, GEO readiness score - 1 site, no fixes
+- **Growth**: $49/month - governed fixes, content workflows, ranking monitoring - 1 site
+- **Scale**: $99/month - full automation, GEO optimization, competitor tracking - 3 sites
 
 All paid plans include a 14-day free trial. Cancel anytime.
 
@@ -29,7 +29,11 @@ All paid plans include a 14-day free trial. Cancel anytime.
 - Homepage: https://serpstrategists.com
 - Pricing: https://serpstrategists.com/pricing
 - Blog: https://serpstrategists.com/blog
+- Governance: https://serpstrategists.com/governance
+- Integrations: https://serpstrategists.com/integrations
+- Execution demo: https://serpstrategists.com/demo
 - GEO Guide: https://serpstrategists.com/blog/what-is-geo-optimization
+- SERP Competitor Analysis: https://serpstrategists.com/blog/serp-competitor-analysis-guide
 - AI SEO vs Agency: https://serpstrategists.com/blog/ai-seo-agent-vs-agency
 - FAQ: https://serpstrategists.com/faq
 
@@ -44,4 +48,4 @@ All paid plans include a 14-day free trial. Cancel anytime.
 - Keyword cannibalization
 - Technical SEO audits
 - Perplexity AI citation optimization
-- E-E-A-T signals
+- Governed autonomy and approval workflows

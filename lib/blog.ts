@@ -10,6 +10,7 @@ export interface BlogPost {
   title: string
   description: string
   date: string
+  dateModified?: string
   author: string
   tags: string[]
   readingTime: string
@@ -43,11 +44,12 @@ export function getPostBySlug(slug: string): BlogPost | null {
     title: data.title || slug,
     description: data.description || "",
     date: data.date || new Date().toISOString(),
+    dateModified: data.dateModified || undefined,
     author: data.author || "SERP Strategists",
     tags: data.tags || [],
     readingTime: stats.text,
     content,
-    image: data.image || null,
+    image: data.image || undefined,
   }
 }
 

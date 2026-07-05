@@ -11,7 +11,7 @@ const faqs = [
   {
     question: "What is SERP Strategists?",
     answer:
-      "SERP Strategists is an AI-powered SEO agent that autonomously monitors, audits, and optimizes your website for search engines. It crawls your site, detects technical and content issues, generates fix plans, and — with your approval — executes changes automatically.",
+      "SERP Strategists is an AI Growth Operator that monitors, audits, and optimizes your website for search engines. It crawls your site, detects technical and content issues, generates fix plans, and - with your approval - executes changes automatically.",
   },
   {
     question: "How does it work?",
@@ -27,6 +27,11 @@ const faqs = [
     question: "Is it safe? Will it break my site?",
     answer:
       "Safety is our top priority. Every change goes through a governance layer: you set risk thresholds, approve changes before they go live, and can instantly roll back any modification. The agent never makes changes without your explicit approval unless you configure auto-approve for low-risk fixes.",
+  },
+  {
+    question: "How do approvals and rollback work?",
+    answer:
+      "Approved actions are queued with the reasoning, expected impact, and target page or template. If a change needs human review, it waits in the queue until you approve it. If you do not like the result, rollback reverses the change so the site is not stuck with it.",
   },
   {
     question: "How long until I see results?",

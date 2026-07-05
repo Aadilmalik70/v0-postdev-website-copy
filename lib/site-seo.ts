@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-export const SITE_NAME = "SERP Strategist"
+export const SITE_NAME = "SERP Strategists"
 export const SITE_URL = "https://serpstrategists.com"
 const SEO_TITLE_MAX = 60
 const SEO_DESCRIPTION_MAX = 150
@@ -61,16 +61,18 @@ export function buildCanonicalUrl(pathname: string): string {
 
 export function getHomepageSeoCopy() {
   return {
-    title: "AI SEO Agent for Audits, Fixes, and Growth | SERP Strategist",
+    title: "AI Growth Operator for Organic Search | SERP Strategists",
     description:
-      "SERP Strategist gives small teams one AI SEO workflow to audit, fix, publish, and monitor without agency overhead or manual grind.",
-    h1: "One AI SEO agent that audits, fixes, publishes, and monitors your site.",
+      "SERP Strategists is an AI Growth Operator that audits your site, prioritizes fixes, ships approved SEO and GEO work, and tracks organic growth across Google and AI search.",
+    h1: "Deploy an AI Growth Operator for organic search.",
     subtitle:
-      "SERP Strategist gives small teams a full SEO workflow without the agency price tag or the manual grind.",
-    openGraphTitle: "AI SEO Agent for Audits, Fixes, and Growth",
-    openGraphDescription: "One AI SEO workflow to audit, fix, publish, and monitor your site without agency overhead or manual grind.",
-    twitterTitle: "AI SEO Agent for Audits, Fixes, and Growth",
-    twitterDescription: "One AI SEO workflow to audit, fix, publish, and monitor your site without agency overhead.",
+      "It observes search performance, ranks the highest-impact opportunities, executes approved work, and improves visibility without agency overhead.",
+    openGraphTitle: "AI Growth Operator for Organic Search",
+    openGraphDescription:
+      "SERP Strategists observes search performance, prioritizes the highest-impact opportunities, ships approved SEO and GEO work, and improves visibility across Google and AI search.",
+    twitterTitle: "AI Growth Operator for Organic Search",
+    twitterDescription:
+      "Deploy an AI Growth Operator that audits, prioritizes, ships, and measures SEO and GEO work for organic growth.",
   }
 }
 
@@ -80,6 +82,7 @@ export function buildMarketingMetadata({
   pathname,
   type = "website",
   publishedTime,
+  modifiedTime,
   authors,
   tags,
 }: {
@@ -88,6 +91,7 @@ export function buildMarketingMetadata({
   pathname: string
   type?: "website" | "article"
   publishedTime?: string
+  modifiedTime?: string
   authors?: string[]
   tags?: string[]
 }): Metadata {
@@ -107,6 +111,7 @@ export function buildMarketingMetadata({
       url,
       type,
       publishedTime,
+      modifiedTime,
       authors,
       tags,
     },

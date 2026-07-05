@@ -5,9 +5,9 @@ import { Footer } from "@/components/footer";
 import { buildMarketingMetadata } from "@/lib/site-seo";
 
 export const metadata: Metadata = buildMarketingMetadata({
-  title: "About SERP Strategists | AI SEO Agent Company",
+  title: "About SERP Strategists | AI Growth Operator",
   description:
-    "Learn how SERP Strategists is building an AI SEO agent that replaces manual audits, fixes, and SEO busywork with autonomous execution.",
+    "Learn how SERP Strategists is building an AI Growth Operator that replaces manual audits, fixes, and SEO busywork with governed autonomous execution.",
   pathname: "/about",
 });
 

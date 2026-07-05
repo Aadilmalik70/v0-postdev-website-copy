@@ -6,12 +6,21 @@ import { groupPostsByCluster } from "@/lib/blog-taxonomy"
 import { buildMarketingMetadata } from "@/lib/site-seo"
 
 export const metadata: Metadata = buildMarketingMetadata({
-  title: "AI SEO Agent Blog | SERP Strategists",
-  description: "Browse clustered guides on GEO, technical SEO systems, and content strategy for compounding organic growth.",
+  title: "AI SEO and GEO Blog | SERP Strategists",
+  description:
+    "Browse clustered guides on GEO, AI search visibility, technical SEO systems, and content strategy for compounding organic growth.",
   pathname: "/blog",
 })
 
 const POSTS_PER_CLUSTER = 2
+
+function formatBlogDate(date: string) {
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(new Date(date))
+}
 
 export default function BlogPage() {
   const posts = getAllPosts()
@@ -26,17 +35,17 @@ export default function BlogPage() {
             ← Back to home
           </Link>
           <h1 className="font-serif text-5xl md:text-7xl font-normal text-ink mb-4 tracking-[-0.02em]">
-            Blog
+            AI SEO and GEO Blog
           </h1>
           <div className="text-neutral-600 text-lg space-y-4 max-w-3xl">
             <p>
-              Deep dives into AI search optimization, technical SEO systems, and content strategy for compounding organic growth. 
+              Deep dives into AI search optimization, technical SEO systems, and content strategy for compounding organic growth.
               Every article is written from hands-on experience building and scaling search visibility across Google, ChatGPT, Perplexity, and emerging AI search engines.
             </p>
             <p>
-              Posts are organized into strategic clusters covering GEO (Generative Engine Optimization), technical SEO implementation, 
-              AI search visibility measurement, competitive analysis methodologies, and the evolving landscape of zero-click searches. 
-              Whether you're a founder building your first SEO system or a practitioner optimizing for AI citations, you'll find actionable 
+              Posts are organized into strategic clusters covering GEO (Generative Engine Optimization), technical SEO implementation,
+              AI search visibility measurement, competitive analysis methodologies, and the evolving landscape of zero-click searches.
+              Whether you're a founder building your first SEO system or a practitioner optimizing for AI citations, you'll find actionable
               frameworks backed by real data.
             </p>
             <p className="text-lg">
@@ -57,6 +66,9 @@ export default function BlogPage() {
             </Link>
             <Link href="/blog/best-serp-analyzer-tools-2026" className="text-sm font-mono px-4 py-2 rounded-full border border-line text-neutral-600 hover:border-[#00d084]/30 hover:text-ink">
               Best SERP analyzer tools
+            </Link>
+            <Link href="/blog/serp-competitor-analysis-guide" className="text-sm font-mono px-4 py-2 rounded-full border border-line text-neutral-600 hover:border-[#00d084]/30 hover:text-ink">
+              SERP competitor analysis
             </Link>
             <Link href="/blog/ai-seo-tools-pricing-comparison-2026" className="text-sm font-mono px-4 py-2 rounded-full border border-line text-neutral-600 hover:border-[#00d084]/30 hover:text-ink">
               Pricing comparison
@@ -107,11 +119,15 @@ export default function BlogPage() {
                       className="block group"
                     >
                       <article className="border border-line rounded-2xl p-8 bg-card hover:border-[#00d084]/30 hover:bg-surface transition-all duration-300">
-                        <div className="flex items-center gap-3 mb-3">
+                        <div className="flex flex-wrap items-center gap-3 mb-3">
                           <time className="text-xs font-mono text-neutral-600">
-                            {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                            Published {formatBlogDate(post.date)}
                           </time>
-                          <span className="text-neutral-600">·</span>
+                          {post.dateModified && post.dateModified !== post.date ? (
+                            <time className="text-xs font-mono text-neutral-600">
+                              Updated {formatBlogDate(post.dateModified)}
+                            </time>
+                          ) : null}
                           <span className="text-xs font-mono text-neutral-600">{post.readingTime}</span>
                         </div>
 

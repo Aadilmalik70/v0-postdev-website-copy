@@ -5,11 +5,14 @@ const footerLinks = {
     { label: "Modules", href: "#modules" },
     { label: "Operator Loop", href: "#operator-loop" },
     { label: "Pricing", href: "#pricing" },
+    { label: "Integrations", href: "/integrations" },
+    { label: "Execution demo", href: "/demo" },
     { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "/faq" },
   ],
   Company: [
     { label: "About", href: "/about" },
+    { label: "Governance", href: "/governance" },
     { label: "Contact", href: "/contact" },
   ],
   Legal: [

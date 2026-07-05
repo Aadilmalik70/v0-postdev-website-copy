@@ -1,4 +1,4 @@
-# Pricing — SERP Strategist
+# Pricing - SERP Strategists
 
 ## Free
 - Price: $0/month
@@ -10,8 +10,8 @@
 - Price: $49/month (billed monthly)
 - Limits: 1 site
 - Features: Everything in Free, plus:
-  - Autonomous SEO fixes (meta tags, schema, canonical, internal links)
-  - 4 blog posts per month (SEO-optimized, published automatically)
+  - Governed SEO fixes
+  - 4 blog posts per month
   - Daily keyword ranking monitoring
   - Email reports
 - Trial: 14-day free trial
@@ -20,11 +20,21 @@
 - Price: $99/month (billed monthly)
 - Limits: 3 sites
 - Features: Everything in Growth, plus:
-  - GEO optimization (optimizes for ChatGPT, Perplexity, Gemini citations)
+  - GEO optimization for ChatGPT, Perplexity, and Gemini citations
   - 12 blog posts per month
   - Competitor keyword tracking
   - Priority support
 - Trial: 14-day free trial
+
+## Governance
+
+All actions are logged, reviewable, and rollback-ready so teams stay in control.
+
+## Related docs
+
+- Governance: https://serpstrategists.com/governance
+- Integrations: https://serpstrategists.com/integrations
+- Execution demo: https://serpstrategists.com/demo
 
 ## Contact
 

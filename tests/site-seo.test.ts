@@ -12,9 +12,9 @@ test("buildCanonicalUrl normalizes root and nested paths", () => {
 test("homepage SEO copy leads with the primary commercial intent", () => {
   const copy = getHomepageSeoCopy()
 
-  assert.match(copy.title, /^AI SEO Agent/i)
-  assert.match(copy.h1, /^AI SEO Agent/i)
-  assert.match(copy.description, /AI SEO agent software/i)
+  assert.match(copy.title, /^AI Growth Operator/i)
+  assert.match(copy.h1, /^Deploy an AI Growth Operator/i)
+  assert.match(copy.description, /AI Growth Operator/i)
 })
 
 test("groupPostsByCluster groups related SEO content under explicit clusters", () => {

@@ -10,6 +10,7 @@ const links = [
   { label: "Operator Loop", href: "#operator-loop" },
   { label: "Modules", href: "#modules" },
   { label: "Pricing", href: "#pricing" },
+  { label: "Integrations", href: "/integrations" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
