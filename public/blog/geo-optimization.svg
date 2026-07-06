@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgW" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1110"/>
+      <stop offset="100%" style="stop-color:#0F1814"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bgW)"/>
+  <pattern id="gW" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1A2420" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#gW)" opacity="0.4"/>
+
+  <!-- Main definition box -->
+  <rect x="120" y="155" width="960" height="200" rx="20" fill="#141A17" stroke="#22C55E" stroke-width="1.5" stroke-opacity="0.5"/>
+  <rect x="120" y="155" width="960" height="5" rx="2" fill="#22C55E"/>
+
+  <!-- Definition label -->
+  <text x="150" y="198" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="700" fill="#22C55E" letter-spacing="2">DEFINITION</text>
+
+  <text x="150" y="235" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="700" fill="#F5F2EE">GEO (Generative Engine Optimization)</text>
+  <text x="150" y="263" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" fill="#94A3A0">is the practice of structuring content so AI-powered search engines —</text>
+  <text x="150" y="286" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" fill="#94A3A0">Google AI Overviews, Perplexity, ChatGPT, Gemini — cite it in generated answers.</text>
+  <text x="150" y="317" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#6B8C7A">Unlike traditional SEO which optimizes for ranking position, GEO optimizes for citation frequency.</text>
+  <text x="150" y="338" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#6B8C7A">You don't just want to rank. You want to be the answer.</text>
+
+  <!-- Three comparison boxes -->
+  <rect x="120" y="385" width="290" height="110" rx="14" fill="#141A17" stroke="#2A3530" stroke-width="1"/>
+  <text x="265" y="415" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#94A3A0" text-anchor="middle">SEO Goal</text>
+  <text x="265" y="440" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="800" fill="#F5F2EE" text-anchor="middle">Rank #1</text>
+  <text x="265" y="462" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#6B8C7A" text-anchor="middle">on Google blue links</text>
+  <text x="265" y="482" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#6B8C7A" text-anchor="middle">Measure: CTR &amp; position</text>
+
+  <!-- Arrow -->
+  <text x="435" y="445" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="36" fill="#22C55E" text-anchor="middle" fill-opacity="0.6">+</text>
+
+  <rect x="455" y="385" width="290" height="110" rx="14" fill="#141A17" stroke="#22C55E" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="600" y="415" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#22C55E" text-anchor="middle">GEO Goal</text>
+  <text x="600" y="440" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="800" fill="#22C55E" text-anchor="middle">Get Cited</text>
+  <text x="600" y="462" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#6B8C7A" text-anchor="middle">in AI-generated answers</text>
+  <text x="600" y="482" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#6B8C7A" text-anchor="middle">Measure: citation frequency</text>
+
+  <!-- = -->
+  <text x="770" y="445" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="36" fill="#22C55E" text-anchor="middle" fill-opacity="0.6">=</text>
+
+  <rect x="790" y="385" width="290" height="110" rx="14" fill="#141A17" stroke="#22C55E" stroke-width="1.5"/>
+  <text x="935" y="415" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#22C55E" text-anchor="middle">2026 Strategy</text>
+  <text x="935" y="440" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="800" fill="#F5F2EE" text-anchor="middle">Do Both</text>
+  <text x="935" y="462" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#6B8C7A" text-anchor="middle">SEO + GEO together</text>
+  <text x="935" y="482" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#22C55E" text-anchor="middle">Compound growth</text>
+
+  <!-- Header -->
+  <text x="600" y="58" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="40" font-weight="800" fill="#F5F2EE" text-anchor="middle">What is GEO Optimization?</text>
+  <text x="600" y="93" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="17" fill="#6B8C7A" text-anchor="middle">Generative Engine Optimization Explained · serpstrategists.com</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="600" width="1200" height="30" fill="#0A0F0D"/>
+  <text x="600" y="620" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#6B8C7A" text-anchor="middle">serpstrategists.com · GEO Optimization Explained 2026</text>
+
+  <circle cx="80" cy="100" r="90" fill="#22C55E" fill-opacity="0.04"/>
+  <circle cx="1120" cy="530" r="70" fill="#22C55E" fill-opacity="0.04"/>
+</svg>

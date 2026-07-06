@@ -1,16 +1,15 @@
 # SERP Strategists - AI Growth Operator
 
-> Governed AI operator that continuously improves website SEO and GEO performance. It finds issues, ranks opportunities, ships approved work, and monitors results.
+> SERP Strategists is an AI Growth Operator that continuously audits, fixes, publishes, and monitors organic search and AI search visibility — without agency overhead. Built for founders and small teams.
 
 ## What we do
 
-SERP Strategists is an AI Growth Operator that:
-- Crawls websites and detects SEO issue types automatically
+- Crawls websites and detects 40+ SEO issue types automatically
 - Fixes technical SEO with approval gates, logs, and rollback-ready actions
-- Optimizes for GEO so pages are easier to cite in ChatGPT, Perplexity, Gemini, and Google AI Overviews
+- Optimizes for GEO (Generative Engine Optimization) so pages are cited in ChatGPT, Perplexity, Gemini, and Google AI Overviews
 - Creates and publishes SEO-optimized content targeting keyword gaps
 - Tracks rankings, organic traffic, and AI citations over time
-- Learns from shipped work so the next recommendation is better
+- Learns from shipped work so each next recommendation is better
 
 ## Who we serve
 
@@ -18,34 +17,45 @@ Founders, developers, and small teams who want execution without agency overhead
 
 ## Pricing
 
-- **Free**: Full site audit, issue prioritization, GEO readiness score - 1 site, no fixes
-- **Growth**: $49/month - governed fixes, content workflows, ranking monitoring - 1 site
-- **Scale**: $99/month - full automation, GEO optimization, competitor tracking - 3 sites
+- **Free**: Full site audit, issue prioritization, GEO readiness score — 1 site, no fixes
+- **Growth**: $49/month — governed fixes, content workflows, ranking monitoring — 1 site
+- **Scale**: $99/month — full automation, GEO optimization, competitor tracking — 3 sites
 
 All paid plans include a 14-day free trial. Cancel anytime.
 
 ## Key resources
 
-- Homepage: https://serpstrategists.com
-- Pricing: https://serpstrategists.com/pricing
-- Blog: https://serpstrategists.com/blog
-- Governance: https://serpstrategists.com/governance
-- Integrations: https://serpstrategists.com/integrations
-- Execution demo: https://serpstrategists.com/demo
-- GEO Guide: https://serpstrategists.com/blog/what-is-geo-optimization
-- SERP Competitor Analysis: https://serpstrategists.com/blog/serp-competitor-analysis-guide
-- AI SEO vs Agency: https://serpstrategists.com/blog/ai-seo-agent-vs-agency
-- FAQ: https://serpstrategists.com/faq
+- [Homepage](https://serpstrategists.com)
+- [Pricing](https://serpstrategists.com/pricing)
+- [Blog](https://serpstrategists.com/blog)
+- [Governance](https://serpstrategists.com/governance)
+- [Integrations](https://serpstrategists.com/integrations)
+- [Execution demo](https://serpstrategists.com/demo)
+- [FAQ](https://serpstrategists.com/faq)
+- [GEO Optimization Guide](https://serpstrategists.com/blog/generative-engine-optimization-geo-guide)
+- [What is GEO Optimization?](https://serpstrategists.com/blog/what-is-geo-optimization)
+- [GEO vs SEO vs AEO](https://serpstrategists.com/blog/geo-vs-seo-vs-aeo-2026)
+- [SERP Competitor Analysis Guide](https://serpstrategists.com/blog/serp-competitor-analysis-guide)
+- [AI SEO Agent vs Agency](https://serpstrategists.com/blog/ai-seo-agent-vs-agency)
+- [How to Appear in Perplexity AI](https://serpstrategists.com/blog/perplexity-ai-seo)
+- [Google AI Overviews Guide](https://serpstrategists.com/blog/google-ai-overviews-guide)
+- [Agentic Web SEO](https://serpstrategists.com/blog/agentic-web-seo)
 
 ## Key concepts we cover
 
-- GEO (Generative Engine Optimization)
-- AEO (Answer Engine Optimization)
-- AI Overviews optimization
-- Schema markup and JSON-LD
-- Core Web Vitals
-- Internal linking strategy
-- Keyword cannibalization
-- Technical SEO audits
-- Perplexity AI citation optimization
-- Governed autonomy and approval workflows
+- [GEO — Generative Engine Optimization](https://serpstrategists.com/blog/generative-engine-optimization-geo-guide)
+- [AEO — Answer Engine Optimization](https://serpstrategists.com/blog/google-ai-overviews-guide)
+- [AI Overviews optimization](https://serpstrategists.com/blog/google-ai-overviews-guide)
+- [Schema markup and JSON-LD](https://serpstrategists.com/blog/schema-markup-seo-guide)
+- [Core Web Vitals](https://serpstrategists.com/blog/core-web-vitals-what-matters)
+- [Internal linking strategy](https://serpstrategists.com/blog/internal-linking-strategy)
+- [Keyword cannibalization](https://serpstrategists.com/blog/keyword-cannibalization-fix)
+- [Technical SEO audits](https://serpstrategists.com/blog/technical-seo-checklist)
+- [Perplexity AI citation optimization](https://serpstrategists.com/blog/perplexity-ai-seo)
+- [Governed autonomy and approval workflows](https://serpstrategists.com/governance)
+
+## Brand profiles
+
+- [LinkedIn](https://www.linkedin.com/company/serpstrategists)
+- [Product Hunt](https://www.producthunt.com/products/serp-strategists)
+- [Twitter / X](https://twitter.com/serpstrategists)

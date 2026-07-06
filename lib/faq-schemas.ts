@@ -7,6 +7,34 @@ import { FAQItem, getFAQSchema } from "./schema"
 
 // Define FAQs for specific pages
 const faqDatabase: Record<string, FAQItem[]> = {
+  "seo-ranking-tool-guide-what-actually-matters": [
+    {
+      question: "What is the best SEO ranking tool?",
+      answer:
+        "The best SEO ranking tool depends on the job. Use Google Search Console for first-party Google performance, a dedicated rank tracker for focused daily keyword monitoring, and a broad suite such as Semrush or Ahrefs when you also need competitor, link, audit, and research workflows.",
+    },
+    {
+      question: "Why do ranking tools show different positions?",
+      answer:
+        "Ranking tools may use different locations, devices, collection times, result definitions, and data-processing methods. Align those settings first, then compare trends over time instead of relying on a single daily position.",
+    },
+    {
+      question: "How often should keyword rankings be checked?",
+      answer:
+        "Daily collection is useful for active SEO programs, launches, and volatile markets, but most decisions should use multi-day or weekly trends. Match the collection frequency to how often the team can review and act on the data.",
+    },
+    {
+      question: "Can rank trackers measure AI Overviews and LLM visibility?",
+      answer:
+        "Some platforms track AI Overviews, AI Mode, ChatGPT Search, or other answer engines. Coverage and methodology vary, so verify which surfaces are measured, how prompts are selected, how often samples run, and whether mentions are separated from citations.",
+    },
+    {
+      question: "Is Google Search Console accurate for rankings?",
+      answer:
+        "Search Console provides authoritative first-party data for how a verified property appeared in Google Search, but average position is aggregated. Interpret it by query, page, country, device, date, and search appearance rather than treating it as a universal live rank.",
+    },
+  ],
+
   "generative-engine-optimization-geo-guide": [
     {
       question: "What is Generative Engine Optimization?",

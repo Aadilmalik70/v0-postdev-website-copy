@@ -4,7 +4,7 @@
 
 const https = require('https');
 
-const SERPAPI_KEY = 'c367d5503be1fc1754434786abb252611119a0c1fc10efaaa9713ac83cd82770';
+const SERPAPI_KEY = '218bcc0de5f9cd0d90f8d075f0e928d9e79e59203ffab886764744c203d36e48';
 const TEST_QUERY = 'what is geo';
 
 const params = new URLSearchParams({

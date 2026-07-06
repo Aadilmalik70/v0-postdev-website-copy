@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1110"/>
+      <stop offset="100%" style="stop-color:#111A16"/>
+    </linearGradient>
+    <linearGradient id="cardLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#141A17"/>
+      <stop offset="100%" style="stop-color:#111510"/>
+    </linearGradient>
+    <linearGradient id="cardRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#15181A"/>
+      <stop offset="100%" style="stop-color:#121416"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1A2420" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.4"/>
+
+  <!-- Left card — AI Agent -->
+  <rect x="55" y="140" width="490" height="350" rx="18" fill="url(#cardLeft)" stroke="#22C55E" stroke-width="1" stroke-opacity="0.3"/>
+  <!-- AI Agent glow -->
+  <rect x="55" y="140" width="490" height="350" rx="18" fill="none" stroke="#22C55E" stroke-width="1" stroke-opacity="0.15"/>
+
+  <!-- Robot icon — left card -->
+  <circle cx="170" cy="220" r="32" fill="#22C55E" fill-opacity="0.12" stroke="#22C55E" stroke-width="1.5"/>
+  <rect x="156" y="208" width="28" height="24" rx="4" fill="none" stroke="#22C55E" stroke-width="1.5"/>
+  <circle cx="163" cy="217" r="3" fill="#22C55E"/>
+  <circle cx="177" cy="217" r="3" fill="#22C55E"/>
+  <line x1="163" y1="225" x2="177" y2="225" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="160" y1="208" x2="160" y2="203" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="170" y1="208" x2="170" y2="201" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="180" y1="208" x2="180" y2="203" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/>
+
+  <text x="214" y="213" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="700" fill="#F5F2EE">AI SEO Agent</text>
+  <text x="214" y="236" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#22C55E">Autonomous · Continuous · Governed</text>
+
+  <!-- Left metrics -->
+  <text x="90" y="285" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#6B8C7A" font-weight="500">COST / MO</text>
+  <text x="90" y="308" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700" fill="#22C55E">$99–$299</text>
+
+  <text x="310" y="285" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#6B8C7A" font-weight="500">EXECUTION SPEED</text>
+  <text x="310" y="308" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700" fill="#22C55E">Minutes</text>
+
+  <!-- Left feature list -->
+  <text x="90" y="355" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">✓  Continuous site-wide auditing</text>
+  <text x="90" y="378" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">✓  Schema + metadata updates</text>
+  <text x="90" y="401" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">✓  GEO &amp; AI citation tracking</text>
+  <text x="90" y="424" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">✓  Content refresh workflows</text>
+  <text x="90" y="447" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">✓  Approval-gated execution</text>
+
+  <!-- VS badge -->
+  <circle cx="600" cy="315" r="46" fill="#0D1110" stroke="#22C55E" stroke-width="2"/>
+  <circle cx="600" cy="315" r="38" fill="#22C55E"/>
+  <text x="600" y="324" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="800" fill="#0D1110" text-anchor="middle">VS</text>
+
+  <!-- Right card — Agency -->
+  <rect x="655" y="140" width="490" height="350" rx="18" fill="url(#cardRight)" stroke="#94A3A0" stroke-width="1" stroke-opacity="0.2"/>
+
+  <!-- Building icon — right card -->
+  <circle cx="770" cy="220" r="32" fill="#94A3A0" fill-opacity="0.1" stroke="#94A3A0" stroke-width="1.5"/>
+  <rect x="758" y="210" width="24" height="20" rx="2" fill="none" stroke="#94A3A0" stroke-width="1.5"/>
+  <rect x="762" y="206" width="16" height="4" rx="1" fill="none" stroke="#94A3A0" stroke-width="1.5"/>
+  <line x1="758" y1="230" x2="782" y2="230" stroke="#94A3A0" stroke-width="1.5"/>
+  <rect x="763" y="217" width="5" height="7" rx="1" fill="none" stroke="#94A3A0" stroke-width="1"/>
+  <rect x="772" y="217" width="5" height="7" rx="1" fill="none" stroke="#94A3A0" stroke-width="1"/>
+
+  <text x="814" y="213" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="700" fill="#F5F2EE">SEO Agency</text>
+  <text x="814" y="236" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#94A3A0">Strategic · Human-led · Periodic</text>
+
+  <!-- Right metrics -->
+  <text x="690" y="285" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#6B8C7A" font-weight="500">COST / MO</text>
+  <text x="690" y="308" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700" fill="#F5F2EE">$2k–$10k+</text>
+
+  <text x="910" y="285" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#6B8C7A" font-weight="500">EXECUTION SPEED</text>
+  <text x="910" y="308" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700" fill="#F5F2EE">Days–Weeks</text>
+
+  <!-- Right feature list -->
+  <text x="690" y="355" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">✓  Brand strategy &amp; positioning</text>
+  <text x="690" y="378" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">✓  Link building &amp; outreach</text>
+  <text x="690" y="401" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">✓  Stakeholder management</text>
+  <text x="690" y="424" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">✓  Monthly strategy reports</text>
+  <text x="690" y="447" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#6B8C7A">✗  Sampled (not site-wide) audits</text>
+
+  <!-- Header -->
+  <text x="600" y="60" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="38" font-weight="800" fill="#F5F2EE" text-anchor="middle">AI SEO Agent vs SEO Agency</text>
+  <text x="600" y="95" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="17" fill="#6B8C7A" text-anchor="middle">Full 2026 Comparison — Cost, Speed, Coverage &amp; ROI</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="600" width="1200" height="30" fill="#111510"/>
+  <text x="600" y="620" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#6B8C7A" text-anchor="middle">serpstrategists.com</text>
+
+  <!-- Corner accent -->
+  <circle cx="1150" cy="80" r="80" fill="#22C55E" fill-opacity="0.04"/>
+  <circle cx="50" cy="560" r="60" fill="#22C55E" fill-opacity="0.04"/>
+</svg>

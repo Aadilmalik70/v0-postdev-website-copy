@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ChevronDownIcon } from "lucide-react";
 import Script from "next/script";
+import { combineSchemas, getBreadcrumbSchema } from "@/lib/schema";
 
 const faqs = [
   {
@@ -65,18 +66,24 @@ const faqs = [
   },
 ];
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
+const faqJsonLd = combineSchemas(
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  },
+  getBreadcrumbSchema([
+    { name: "Home", url: "https://serpstrategists.com" },
+    { name: "FAQ", url: "https://serpstrategists.com/faq" },
+  ])
+);
 
 export function FAQClientPage() {
   return (

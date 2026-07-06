@@ -11,7 +11,7 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-const SERPAPI_KEY = '7v62ByY9p5fM8p2PvmBXucSm';
+const SERPAPI_KEY = process.env.SERPAPI_KEY || '218bcc0de5f9cd0d90f8d075f0e928d9e79e59203ffab886764744c203d36e48';
 
 // Priority keywords from GSC analysis
 const KEYWORDS = [

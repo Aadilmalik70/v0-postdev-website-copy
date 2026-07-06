@@ -1,9 +1,11 @@
 import { getPostBySlug, getAllSlugs, getRelatedPosts } from "@/lib/blog"
 import { notFound } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import type { Metadata } from "next"
 import { MDXContent } from "./mdx-content"
 import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
 import { buildMarketingMetadata, buildCanonicalUrl } from "@/lib/site-seo"
 import { getArticleSchema, getBreadcrumbSchema, combineSchemas } from "@/lib/schema"
 import { getFAQSchemaForPost } from "@/lib/faq-schemas"
@@ -18,6 +20,42 @@ function formatBlogDate(value: string) {
     month: "long",
     day: "numeric",
   }).format(new Date(value))
+}
+
+interface TableOfContentsItem {
+  title: string
+  href: string
+}
+
+function getTableOfContents(content: string): TableOfContentsItem[] {
+  const seenSlugs = new Map<string, number>()
+
+  return content.split(/\r?\n/).flatMap((line) => {
+    const match = line.match(/^##\s+(.+)$/)
+    if (!match) return []
+
+    const title = match[1]
+      .replace(/\[([^\]]+)]\([^)]+\)/g, "$1")
+      .replace(/[*_`~]/g, "")
+      .trim()
+
+    const baseSlug = title
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^\w\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+
+    if (!baseSlug) return []
+
+    const occurrence = seenSlugs.get(baseSlug) ?? 0
+    seenSlugs.set(baseSlug, occurrence + 1)
+    const slug = occurrence === 0 ? baseSlug : `${baseSlug}-${occurrence}`
+
+    return [{ title, href: `#${slug}` }]
+  })
 }
 
 export async function generateStaticParams() {
@@ -49,7 +87,15 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound()
 
   const relatedPosts = getRelatedPosts(slug, post.tags, 3)
+  const tableOfContents = getTableOfContents(post.content)
   const postUrl = buildCanonicalUrl(`/blog/${slug}`)
+  const authorInitials = post.author
+    .split(/\s+/)
+    .map((part) => part[0])
+    .filter(Boolean)
+    .join("")
+    .slice(0, 2)
+    .toUpperCase()
 
   const articleSchema = getArticleSchema({
     headline: post.title,
@@ -132,10 +178,60 @@ export default async function BlogPostPage({ params }: Props) {
               ))}
             </div>
           </div>
+
+          <div className="mt-5 flex items-start gap-4 rounded-2xl border border-line bg-surface px-4 py-4">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-mono font-semibold tracking-[0.14em] text-warmwhite">
+              {authorInitials || "SS"}
+            </div>
+            <div className="min-w-0">
+              <p className="text-sm font-medium text-ink">Written by {post.author}</p>
+              <p className="mt-1 text-sm leading-6 text-neutral-600">
+                Editorial coverage from the SERP Strategists team. Read the{" "}
+                <Link href="/about" className="text-signal underline underline-offset-4">
+                  about page
+                </Link>{" "}
+                for more on the product and the people behind it.
+              </p>
+            </div>
+          </div>
         </header>
 
+        {post.image && (
+          <div className="mb-8 overflow-hidden rounded-[24px] border border-line">
+            <Image
+              src={post.image}
+              alt={post.title}
+              width={1200}
+              height={630}
+              className="w-full h-auto"
+              priority
+            />
+          </div>
+        )}
+
+        {tableOfContents.length >= 3 ? (
+          <nav
+            aria-label="Table of contents"
+            className="mb-8 rounded-[24px] border border-line bg-surface px-5 py-6 md:px-8 md:py-7"
+          >
+            <p className="eyebrow mb-4">In this guide</p>
+            <ol className="grid gap-x-10 gap-y-3 md:grid-cols-2">
+              {tableOfContents.map((item, index) => (
+                <li key={item.href} className="flex gap-3 text-sm leading-6 text-neutral-700">
+                  <span className="font-mono text-xs text-neutral-500" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <a href={item.href} className="hover:text-signal hover:underline underline-offset-4">
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        ) : null}
+
         <section className="rounded-[28px] border border-line bg-card px-5 py-8 md:px-10 md:py-12 shadow-[0_24px_80px_-48px_rgba(13,17,16,0.28)]">
-          <div className="prose prose-neutral max-w-none prose-lg prose-headings:font-display prose-headings:text-ink prose-headings:tracking-tight prose-headings:leading-tight prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-p:text-neutral-700 prose-p:leading-8 prose-li:text-neutral-700 prose-li:marker:text-neutral-400 prose-a:text-signal prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-strong:text-ink prose-code:text-ink prose-code:bg-surface prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-graphite-950 prose-pre:text-warmwhite prose-pre:border prose-pre:border-graphite-line prose-pre:shadow-[0_18px_50px_-30px_rgba(13,17,16,0.55)] prose-blockquote:border-l-signal prose-blockquote:bg-surface prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-2xl prose-blockquote:text-neutral-700 prose-hr:border-line">
+          <div className="prose prose-neutral max-w-none prose-lg prose-headings:font-display prose-headings:text-ink prose-headings:tracking-tight prose-headings:leading-tight prose-h2:scroll-mt-28 prose-h2:border-t prose-h2:border-line prose-h2:pt-10 prose-h2:text-3xl prose-h3:scroll-mt-28 prose-h3:text-2xl prose-h4:text-xl prose-p:text-neutral-700 prose-p:leading-8 prose-li:text-neutral-700 prose-li:marker:text-signal prose-a:text-signal prose-a:font-medium prose-a:underline prose-a:decoration-signal/30 prose-a:underline-offset-4 hover:prose-a:decoration-signal prose-strong:text-ink prose-img:mx-auto prose-img:rounded-2xl prose-img:border prose-img:border-line prose-img:shadow-[0_18px_50px_-30px_rgba(13,17,16,0.32)] prose-table:my-8 prose-table:block prose-table:w-full prose-table:overflow-x-auto prose-table:whitespace-normal prose-th:border prose-th:border-line prose-th:bg-surface prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:text-sm prose-th:text-ink prose-td:border prose-td:border-line prose-td:px-4 prose-td:py-3 prose-td:align-top prose-td:text-sm prose-code:text-ink prose-code:bg-surface prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-graphite-950 prose-pre:text-warmwhite prose-pre:border prose-pre:border-graphite-line prose-pre:shadow-[0_18px_50px_-30px_rgba(13,17,16,0.55)] prose-blockquote:not-italic prose-blockquote:border-l-signal prose-blockquote:bg-surface prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-2xl prose-blockquote:text-neutral-700 prose-hr:border-line">
             <MDXContent source={post.content} />
           </div>
         </section>
@@ -190,6 +286,7 @@ export default async function BlogPostPage({ params }: Props) {
           </section>
         )}
       </article>
+      <Footer />
     </main>
   )
 }

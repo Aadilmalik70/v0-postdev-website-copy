@@ -40,22 +40,8 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "SERP Strategists",
-    url: "https://serpstrategists.com",
-    description: homepageSeoCopy.description,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://serpstrategists.com/blog?q={search_term_string}",
-      "query-input": "required name=search_term_string",
-    },
-  }
-
   return (
     <main className="min-h-screen bg-paper">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <HeroSection />
       <LogoCloudSection />

@@ -3,10 +3,10 @@
 import { Reveal, Counter } from "./gsap-fx"
 
 const queueItems = [
-  { action: "Shipped", detail: "Canonical mismatch fixed on /pricing", meta: "Auto-approved · Logged · Rollback available", time: "12 min ago", dot: "bg-signal-bright", text: "text-signal-bright" },
-  { action: "Awaiting review", detail: "Refresh /integrations page for AI answer coverage", meta: "Impact 8.4 · Confidence high · Effort low", time: "26 min ago", dot: "bg-opportunity-bright", text: "text-opportunity-bright" },
-  { action: "Planned", detail: "Build internal link cluster across 14 orphan pages", meta: "Impact 7.1 · Plan ready for approval", time: "48 min ago", dot: "bg-opviolet-bright", text: "text-opviolet-bright" },
-  { action: "Observed", detail: "Competitor cited above you in 3 Perplexity prompts", meta: "Source gap identified · Action queued", time: "2 hr ago", dot: "bg-coral-bright", text: "text-coral-bright" },
+  { action: "Shipped", detail: "Canonical mismatch fixed on /pricing", meta: "Auto-approved | Logged | Rollback available", time: "12 min ago", dot: "bg-signal-bright", text: "text-signal-bright" },
+  { action: "Awaiting review", detail: "Refresh /integrations page for AI answer coverage", meta: "Impact 8.4 | Confidence high | Effort low", time: "26 min ago", dot: "bg-opportunity-bright", text: "text-opportunity-bright" },
+  { action: "Planned", detail: "Build internal link cluster across 14 orphan pages", meta: "Impact 7.1 | Plan ready for approval", time: "48 min ago", dot: "bg-opviolet-bright", text: "text-opviolet-bright" },
+  { action: "Observed", detail: "Competitor cited above you in 3 Perplexity prompts", meta: "Source gap identified | Action queued", time: "2 hr ago", dot: "bg-coral-bright", text: "text-coral-bright" },
 ]
 
 export function ProductDemoSection() {
@@ -21,31 +21,31 @@ export function ProductDemoSection() {
               <h2 className="font-display text-3xl sm:text-4xl md:text-[44px] font-semibold text-warmwhite leading-[1.12] mb-5">
                 See what changed, why, and what happened next.
               </h2>
-              <p className="text-neutral-400 text-base md:text-lg leading-relaxed">
-                Not another dashboard — an action queue. Every action is scored, approved, logged,
+              <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
+                Not another dashboard - an action queue. Every action is scored, approved, logged,
                 reviewable, and measurable.
               </p>
             </div>
 
             <Reveal selector="[data-stat]" stagger={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
               {[
-                { value: 47, suffix: "", label: "Opportunities observed", change: "ranked by impact × confidence ÷ effort", color: "text-systeal-bright" },
+                { value: 47, suffix: "", label: "Opportunities observed", change: "ranked by impact x confidence / effort", color: "text-systeal-bright" },
                 { value: 38, suffix: "", label: "Actions shipped", change: "logged, reviewable, reversible", color: "text-signal-bright" },
                 { value: 23, prefix: "+", suffix: "%", label: "Visibility movement", change: "organic clicks and AI citations, 30 days", color: "text-warmwhite" },
               ].map((stat) => (
                 <div key={stat.label} data-stat className="p-5 rounded-xl bg-graphite-900 border border-graphite-line">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-600 mb-2">{stat.label}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-300 mb-2">{stat.label}</p>
                   <p className={`font-mono text-3xl font-medium ${stat.color}`}>
                     <Counter to={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                   </p>
-                  <p className="text-[10px] text-neutral-600 mt-1.5">{stat.change}</p>
+                  <p className="text-[10px] text-neutral-400 mt-1.5">{stat.change}</p>
                 </div>
               ))}
             </Reveal>
 
             <div className="rounded-xl bg-graphite-900 border border-graphite-line overflow-hidden">
               <div className="relative px-5 py-3.5 border-b border-graphite-line flex items-center justify-between overflow-hidden">
-                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-400">Action queue</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-300">Action queue</span>
                 <span className="inline-flex items-center gap-1.5 text-[10px] px-2.5 py-0.5 rounded-full bg-signal-bright/10 text-signal-bright border border-signal-bright/20">
                   <span className="status-pulse w-1 h-1 rounded-full bg-signal-bright" />
                   Operating
@@ -61,9 +61,9 @@ export function ProductDemoSection() {
                         <span className={`font-mono text-[10px] uppercase tracking-wide ${item.text}`}>{item.action}</span>
                         <span className="text-[13px] text-neutral-200">{item.detail}</span>
                       </div>
-                      <p className="font-mono text-[10px] text-neutral-600 mt-1">{item.meta}</p>
+                      <p className="font-mono text-[10px] text-neutral-400 mt-1">{item.meta}</p>
                     </div>
-                    <span className="text-[10px] text-neutral-600 whitespace-nowrap">{item.time}</span>
+                    <span className="text-[10px] text-neutral-400 whitespace-nowrap">{item.time}</span>
                   </div>
                 ))}
               </Reveal>

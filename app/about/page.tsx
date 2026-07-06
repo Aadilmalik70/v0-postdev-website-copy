@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { buildMarketingMetadata } from "@/lib/site-seo";
+import { combineSchemas, getBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMarketingMetadata({
   title: "About SERP Strategists | AI Growth Operator",
@@ -11,7 +12,13 @@ export const metadata: Metadata = buildMarketingMetadata({
   pathname: "/about",
 });
 
-const jsonLd = {"@context":"https://schema.org","@type":"AboutPage","name":"About SERP Strategists","description":"Learn about our mission to make autonomous SEO accessible to everyone.","url":"https://serpstrategists.com/about","mainEntity":{"@type":"Organization","name":"SERP Strategists","url":"https://serpstrategists.com"}};
+const jsonLd = combineSchemas(
+  {"@context":"https://schema.org","@type":"AboutPage","name":"About SERP Strategists","description":"Learn about our mission to make autonomous SEO accessible to everyone.","url":"https://serpstrategists.com/about","mainEntity":{"@type":"Organization","name":"SERP Strategists","url":"https://serpstrategists.com"}},
+  getBreadcrumbSchema([
+    { name: "Home", url: "https://serpstrategists.com" },
+    { name: "About", url: "https://serpstrategists.com/about" },
+  ])
+);
 
 export default function AboutPage() {
   return (

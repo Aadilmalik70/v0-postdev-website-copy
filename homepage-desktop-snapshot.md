@@ -1,0 +1,26 @@
+- generic [active] [ref=e1] [box=0,0,1425,14128]:
+  - main [ref=e2] [box=0,0,1425,14128]:
+    - navigation [ref=e5] [box=160,16,1104,56]:
+      - generic [ref=e6] [box=181,26,1062,36]
+    - generic [ref=e24] [box=136,176,1152,499]:
+      - generic [ref=e25] [box=160,176,631,499]
+      - generic [ref=e38] [box=823,232,441,386]
+    - generic [ref=e86] [box=136,844,1152,71]:
+      - paragraph [ref=e87] [box=160,844,1104,17]: Executes safely in the stack you already run
+      - generic [ref=e89] [box=-1054,892,2624,22]
+    - generic [ref=e152] [box=136,1099,672,252]:
+      - paragraph [ref=e153] [box=136,1108,120,17]: The problem
+      - heading "Visibility work that stops at a dashboard." [level=2] [ref=e154] [box=136,1144,672,99]
+      - paragraph [ref=e155] [box=136,1263,672,88]: Reports do not grow traffic. Rankings do not improve themselves. AI citations are not won by watching graphs. Most teams have enough search data — what they are missing is the capacity to turn it into shipped work.
+    - img [ref=e387] [box=711,6458,1,1743]
+    - generic [ref=e763] [box=136,13624,1152,504]:
+      - generic [ref=e764] [box=160,13688,1104,275]
+      - generic [ref=e807] [box=160,14019,1104,45]
+    - generic [ref=e812] [box=513,1534,399,46]:
+      - generic [ref=e815] [box=547,1549,101,16]: Early access open
+      - generic [ref=e816] [box=661,1545,3,24]: ·
+      - generic [ref=e817] [box=676,1549,168,16]: Founding pricing from $49/mo
+      - link "See pricing" [ref=e818] [cursor=pointer] [box=856,1549,10,16]:
+        - /url: "#pricing"
+      - button "Dismiss" [ref=e819] [box=881,1549,10,16]: ✕
+  - alert [ref=e810] [box=-1,14127,1,1]

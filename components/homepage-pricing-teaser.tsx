@@ -63,7 +63,7 @@ export function HomepagePricingTeaser() {
               <h3 className="font-display text-lg font-semibold text-ink">{tier.name}</h3>
               <p className="mt-3 mb-1">
                 <span className="font-mono text-4xl font-medium text-ink">{tier.price}</span>
-                {tier.period && <span className="text-sm text-neutral-400">{tier.period}</span>}
+                {tier.period && <span className="text-sm text-neutral-600">{tier.period}</span>}
               </p>
               <p className="text-sm text-neutral-600 mb-6">{tier.description}</p>
               <ul className="space-y-2.5 mb-7 flex-1">
@@ -85,9 +85,9 @@ export function HomepagePricingTeaser() {
         </Reveal>
 
         <Reveal className="text-center mt-10 space-y-3">
-          <p className="text-xs text-neutral-400">14-day free trial on paid plans · Cancel anytime · No contracts</p>
+          <p className="text-xs text-neutral-600">14-day free trial on paid plans | Cancel anytime | No contracts</p>
           <Link href="/pricing" className="link-underline text-sm text-ink font-medium">
-            See full plan details on the pricing page →
+            See full plan details on the pricing page &rarr;
           </Link>
         </Reveal>
       </div>

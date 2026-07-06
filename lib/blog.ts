@@ -38,13 +38,14 @@ export function getPostBySlug(slug: string): BlogPost | null {
   const fileContent = fs.readFileSync(filePath, "utf-8")
   const { data, content } = matter(fileContent)
   const stats = readingTime(content)
+  const fileModified = fs.statSync(filePath).mtime.toISOString()
 
   return {
     slug,
     title: data.title || slug,
     description: data.description || "",
     date: data.date || new Date().toISOString(),
-    dateModified: data.dateModified || undefined,
+    dateModified: data.dateModified || fileModified,
     author: data.author || "SERP Strategists",
     tags: data.tags || [],
     readingTime: stats.text,

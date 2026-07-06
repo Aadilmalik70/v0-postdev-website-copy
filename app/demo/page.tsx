@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { buildMarketingMetadata } from "@/lib/site-seo"
+import { combineSchemas, getBreadcrumbSchema } from "@/lib/schema"
 
 export const metadata: Metadata = buildMarketingMetadata({
   title: "Execution Demo | SERP Strategists",
@@ -53,9 +54,17 @@ const sampleQueue = [
 ]
 
 export default function DemoPage() {
+  const breadcrumbJsonLd = combineSchemas(
+    getBreadcrumbSchema([
+      { name: "Home", url: "https://serpstrategists.com" },
+      { name: "Demo", url: "https://serpstrategists.com/demo" },
+    ])
+  )
+
   return (
     <main className="min-h-screen bg-paper">
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <div className="max-w-6xl mx-auto px-6 py-32">
         <Link href="/" className="text-signal hover:text-signal text-sm mb-8 inline-block">
           Back to home

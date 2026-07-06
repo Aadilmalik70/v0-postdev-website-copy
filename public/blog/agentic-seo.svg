@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1110"/>
+      <stop offset="100%" style="stop-color:#0F1A16"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#22C55E" stop-opacity="0.12"/>
+      <stop offset="100%" style="stop-color:#22C55E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg4)"/>
+  <pattern id="g4" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1A2420" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#g4)" opacity="0.35"/>
+
+  <!-- Central glow background -->
+  <circle cx="600" cy="315" r="260" fill="url(#centerGlow)"/>
+
+  <!-- Agent node connections -->
+  <!-- Central hub -->
+  <circle cx="600" cy="315" r="52" fill="#141A17" stroke="#22C55E" stroke-width="2"/>
+  <text x="600" y="308" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="700" fill="#22C55E" text-anchor="middle">AGENTIC</text>
+  <text x="600" y="325" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="700" fill="#22C55E" text-anchor="middle">SEO CORE</text>
+
+  <!-- Connection lines -->
+  <line x1="560" y1="285" x2="430" y2="195" stroke="#22C55E" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="4 4"/>
+  <line x1="640" y1="285" x2="770" y2="195" stroke="#22C55E" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="4 4"/>
+  <line x1="548" y1="315" x2="350" y2="315" stroke="#22C55E" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="4 4"/>
+  <line x1="652" y1="315" x2="850" y2="315" stroke="#22C55E" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="4 4"/>
+  <line x1="560" y1="345" x2="430" y2="435" stroke="#22C55E" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="4 4"/>
+  <line x1="640" y1="345" x2="770" y2="435" stroke="#22C55E" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="4 4"/>
+
+  <!-- Satellite nodes -->
+  <!-- Audit -->
+  <circle cx="390" cy="175" r="40" fill="#141A17" stroke="#22C55E" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="390" y="171" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" fill="#22C55E" text-anchor="middle">AUDIT</text>
+  <text x="390" y="186" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#6B8C7A" text-anchor="middle">24/7 crawl</text>
+
+  <!-- Rank -->
+  <circle cx="810" cy="175" r="40" fill="#141A17" stroke="#22C55E" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="810" y="171" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" fill="#22C55E" text-anchor="middle">RANK</text>
+  <text x="810" y="186" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#6B8C7A" text-anchor="middle">track &amp; score</text>
+
+  <!-- Execute -->
+  <circle cx="300" cy="315" r="40" fill="#141A17" stroke="#22C55E" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="300" y="311" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" fill="#22C55E" text-anchor="middle">FIX</text>
+  <text x="300" y="326" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#6B8C7A" text-anchor="middle">auto-apply</text>
+
+  <!-- GEO -->
+  <circle cx="900" cy="315" r="40" fill="#141A17" stroke="#22C55E" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="900" y="311" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" fill="#22C55E" text-anchor="middle">GEO</text>
+  <text x="900" y="326" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#6B8C7A" text-anchor="middle">AI citations</text>
+
+  <!-- Content -->
+  <circle cx="390" cy="455" r="40" fill="#141A17" stroke="#22C55E" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="390" y="451" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" fill="#22C55E" text-anchor="middle">PUBLISH</text>
+  <text x="390" y="466" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#6B8C7A" text-anchor="middle">content loop</text>
+
+  <!-- Monitor -->
+  <circle cx="810" cy="455" r="40" fill="#141A17" stroke="#22C55E" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="810" y="451" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" fill="#22C55E" text-anchor="middle">MONITOR</text>
+  <text x="810" y="466" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#6B8C7A" text-anchor="middle">iterate</text>
+
+  <!-- Human approval indicator -->
+  <rect x="990" y="240" width="160" height="60" rx="12" fill="#141A17" stroke="#22C55E" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="1070" y="268" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="600" fill="#22C55E" text-anchor="middle">Human approves</text>
+  <text x="1070" y="287" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#6B8C7A" text-anchor="middle">Agent executes</text>
+
+  <!-- Left definition box -->
+  <rect x="50" y="390" width="200" height="80" rx="12" fill="#141A17" stroke="#2A3530" stroke-width="1"/>
+  <text x="150" y="418" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#6B8C7A" text-anchor="middle">Traditional SEO</text>
+  <text x="150" y="438" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#94A3A0" text-anchor="middle">Manual → Periodic</text>
+  <text x="150" y="457" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#6B8C7A" text-anchor="middle">Human executes each step</text>
+
+  <!-- Arrow showing transition -->
+  <text x="270" y="435" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="24" fill="#22C55E" text-anchor="middle">→</text>
+
+  <!-- Header -->
+  <text x="600" y="58" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="40" font-weight="800" fill="#F5F2EE" text-anchor="middle">Agentic SEO: The Autonomous Growth Loop</text>
+  <text x="600" y="93" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="17" fill="#6B8C7A" text-anchor="middle">How AI agents replace manual SEO execution · serpstrategists.com</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="600" width="1200" height="30" fill="#0A0F0D"/>
+  <text x="600" y="620" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#6B8C7A" text-anchor="middle">serpstrategists.com · Agentic SEO Explained 2026</text>
+</svg>

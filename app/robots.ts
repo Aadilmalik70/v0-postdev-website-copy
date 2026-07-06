@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: [
           "/admin/",
-          "/blog?*",
+          "/blog?q=*",
         ]
       },
       { userAgent: "GPTBot", allow: "/" },

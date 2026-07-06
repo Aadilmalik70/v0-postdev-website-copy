@@ -17,7 +17,7 @@ export function LogoCloudSection() {
   return (
     <section className="py-14 border-y border-line bg-surface/50">
       <div className="max-w-6xl mx-auto px-5 md:px-6">
-        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-400 text-center mb-8">
+        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-600 text-center mb-8">
           Executes safely in the stack you already run
         </p>
         <div className="marquee-mask overflow-hidden">

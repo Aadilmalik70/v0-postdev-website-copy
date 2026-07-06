@@ -2,9 +2,9 @@ import Link from "next/link"
 
 const footerLinks = {
   Product: [
-    { label: "Modules", href: "#modules" },
-    { label: "Operator Loop", href: "#operator-loop" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Modules", href: "/#modules" },
+    { label: "Operator Loop", href: "/#operator-loop" },
+    { label: "Pricing", href: "/#pricing" },
     { label: "Integrations", href: "/integrations" },
     { label: "Execution demo", href: "/demo" },
     { label: "Blog", href: "/blog" },
@@ -40,7 +40,9 @@ export function Footer() {
 
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-400 mb-5">{category}</h4>
+              <h3 className="font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-600 mb-5">
+                {category}
+              </h3>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.href}>
@@ -56,8 +58,8 @@ export function Footer() {
 
         <div className="border-t border-line mt-14 pt-7 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-xs text-neutral-400">&copy; {new Date().getFullYear()} SERP Strategists. All rights reserved.</p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-neutral-400">
-            Governed autonomy · Full logs · Human approval where it matters
+          <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-neutral-500">
+            Governed autonomy | Full logs | Human approval where it matters
           </p>
         </div>
       </div>

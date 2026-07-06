@@ -5,6 +5,7 @@ import { PricingSection } from "@/components/pricing-section"
 import { FaqSection } from "@/components/faq-section"
 import { Footer } from "@/components/footer"
 import { buildMarketingMetadata } from "@/lib/site-seo"
+import { combineSchemas, getBreadcrumbSchema, getFAQSchema } from "@/lib/schema"
 
 export const metadata: Metadata = buildMarketingMetadata({
   title: "AI Growth Operator Pricing | SERP Strategists",
@@ -13,17 +14,47 @@ export const metadata: Metadata = buildMarketingMetadata({
   pathname: "/pricing",
 })
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "SERP Strategists",
-  description: "AI Growth Operator for organic search",
-  offers: [
-    { "@type": "Offer", name: "Audit", price: "0", priceCurrency: "USD" },
-    { "@type": "Offer", name: "Growth", price: "49", priceCurrency: "USD", billingIncrement: "P1M" },
-    { "@type": "Offer", name: "Scale", price: "99", priceCurrency: "USD", billingIncrement: "P1M" },
-  ],
-}
+const pricingFaqs = [
+  {
+    question: "What is included in the free Audit plan?",
+    answer:
+      "The Audit plan gives you a full site review, an impact-ranked opportunity queue, and an AI visibility readiness score with no payment required.",
+  },
+  {
+    question: "What happens on the Growth plan?",
+    answer:
+      "Growth adds governed execution, approved fixes, content workflows, monitoring, and recurring reporting for one site.",
+  },
+  {
+    question: "Can I cancel anytime?",
+    answer:
+      "Yes. There are no contracts, and you can cancel your plan whenever you want.",
+  },
+  {
+    question: "Do you support multiple websites?",
+    answer:
+      "Yes. The Scale plan is designed for up to three sites, while the lower plans are scoped to a single site.",
+  },
+]
+
+const jsonLd = combineSchemas(
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "SERP Strategists",
+    description: "AI Growth Operator for organic search",
+    offers: [
+      { "@type": "Offer", name: "Audit", price: "0", priceCurrency: "USD" },
+      { "@type": "Offer", name: "Growth", price: "49", priceCurrency: "USD", billingIncrement: "P1M" },
+      { "@type": "Offer", name: "Scale", price: "99", priceCurrency: "USD", billingIncrement: "P1M" },
+    ],
+  },
+  getBreadcrumbSchema([
+    { name: "Home", url: "https://serpstrategists.com" },
+    { name: "Pricing", url: "https://serpstrategists.com/pricing" },
+  ]),
+  getFAQSchema(pricingFaqs)
+)
 
 export default function PricingPage() {
   return (

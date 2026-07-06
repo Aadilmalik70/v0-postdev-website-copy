@@ -2,6 +2,7 @@ import { getAllPosts } from "@/lib/blog"
 import Link from "next/link"
 import type { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
 import { groupPostsByCluster } from "@/lib/blog-taxonomy"
 import { buildMarketingMetadata } from "@/lib/site-seo"
 
@@ -32,7 +33,7 @@ export default function BlogPage() {
       <div className="max-w-4xl mx-auto px-6 py-32">
         <div className="mb-16">
           <Link href="/" className="text-[#00d084] text-sm font-mono mb-4 inline-block hover:underline">
-            ← Back to home
+            &larr; Back to home
           </Link>
           <h1 className="font-serif text-5xl md:text-7xl font-normal text-ink mb-4 tracking-[-0.02em]">
             AI SEO and GEO Blog
@@ -61,6 +62,9 @@ export default function BlogPage() {
             Start with the broad tools comparison, then move into the narrower SERP analyzer, pricing, and methodology guides if you are building a commercial SEO software stack.
           </p>
           <div className="flex flex-wrap gap-3">
+            <Link href="/blog/seo-ranking-tool-guide-what-actually-matters" className="text-sm font-mono px-4 py-2 rounded-full border border-[#00d084]/30 bg-surface text-ink hover:bg-paper">
+              SEO ranking tool guide
+            </Link>
             <Link href="/blog/top-seo-analysis-tools-2025-best-seo-ai-tool" className="text-sm font-mono px-4 py-2 rounded-full border border-[#00d084]/30 text-ink hover:bg-surface">
               Top AI SEO analysis tools
             </Link>
@@ -158,6 +162,7 @@ export default function BlogPage() {
           </div>
         )}
       </div>
+      <Footer />
     </main>
   )
 }

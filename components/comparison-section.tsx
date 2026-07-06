@@ -37,7 +37,7 @@ export function ComparisonSection() {
 
         <Reveal selector="[data-panel]" stagger={0.12} className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div data-panel className="rounded-2xl border border-line bg-card p-7 md:p-9">
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-400 mb-7">The manual operating model</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-600 mb-7">The manual operating model</p>
             <ul className="space-y-4">
               {oldWorld.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-neutral-600">

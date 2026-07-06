@@ -1,0 +1,701 @@
+- main [ref=e2]:
+  - navigation [ref=e5]:
+    - generic [ref=e6]:
+      - link "SERP Strategists" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]: SERP Strategists
+      - generic [ref=e12]:
+        - link "Operator Loop" [ref=e13] [cursor=pointer]:
+          - /url: "#operator-loop"
+        - link "Modules" [ref=e14] [cursor=pointer]:
+          - /url: "#modules"
+        - link "Pricing" [ref=e15] [cursor=pointer]:
+          - /url: "#pricing"
+        - link "Integrations" [ref=e16] [cursor=pointer]:
+          - /url: /integrations
+        - link "Blog" [ref=e17] [cursor=pointer]:
+          - /url: /blog
+        - link "About" [ref=e18] [cursor=pointer]:
+          - /url: /about
+        - link "FAQ" [ref=e19] [cursor=pointer]:
+          - /url: /faq
+      - button "Run Free Growth Audit" [ref=e21]: Run Free Growth Audit
+  - generic [ref=e24]:
+    - generic [ref=e25]:
+      - paragraph [ref=e26]: AI Growth Operator · Autonomous search operations
+      - heading "Deploy an AI Growth Operator for organic search." [level=1] [ref=e27]
+      - paragraph [ref=e28]: It observes your search performance, finds the highest-impact opportunities, executes approved SEO and GEO actions, and improves visibility across Google, ChatGPT, Perplexity, Gemini, and beyond.
+      - generic [ref=e29]:
+        - button "Run Free Growth Audit" [ref=e30]:
+          - text: Run Free Growth Audit
+          - img [ref=e31]
+        - link "See the Operator Loop" [ref=e33] [cursor=pointer]:
+          - /url: "#operator-loop"
+      - paragraph [ref=e34]:
+        - img [ref=e35]
+        - text: Governed autonomy. Full logs. Human approval where it matters.
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]: Action queue
+          - generic [ref=e42]: Operating
+        - generic [ref=e45]:
+          - generic [ref=e48]:
+            - generic [ref=e49]:
+              - generic [ref=e50]: Shipped
+              - generic [ref=e51]: Fixed canonical on /pricing
+            - paragraph [ref=e52]: Auto-approved · Logged · Rollback ready
+          - generic [ref=e55]:
+            - generic [ref=e56]:
+              - generic [ref=e57]: Review
+              - generic [ref=e58]: Refresh /integrations for AI answers
+            - paragraph [ref=e59]: Impact 8.4 · Confidence high · Effort low
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - generic [ref=e64]: Planned
+              - generic [ref=e65]: Internal links for 14 orphan pages
+            - paragraph [ref=e66]: Impact 7.1 · Plan ready for approval
+          - generic [ref=e69]:
+            - generic [ref=e70]:
+              - generic [ref=e71]: Observed
+              - generic [ref=e72]: Competitor in 3 Perplexity prompts
+            - paragraph [ref=e73]: Source gap found · Action queued
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - paragraph [ref=e76]: "47"
+            - paragraph [ref=e77]: observed
+          - generic [ref=e78]:
+            - paragraph [ref=e79]: "38"
+            - paragraph [ref=e80]: shipped
+          - generic [ref=e81]:
+            - paragraph [ref=e82]: +23%
+            - paragraph [ref=e83]: visibility
+      - paragraph [ref=e84]: Live view · app.serpstrategists.com/operator
+  - generic [ref=e86]:
+    - paragraph [ref=e87]: Executes safely in the stack you already run
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - img "WordPress" [ref=e91]
+        - generic [ref=e92]: WordPress
+      - generic [ref=e93]:
+        - img "Shopify" [ref=e94]
+        - generic [ref=e95]: Shopify
+      - generic [ref=e96]:
+        - img "Next.js" [ref=e97]
+        - generic [ref=e98]: Next.js
+      - generic [ref=e99]:
+        - img "Webflow" [ref=e100]
+        - generic [ref=e101]: Webflow
+      - generic [ref=e102]:
+        - img "Ghost" [ref=e103]
+        - generic [ref=e104]: Ghost
+      - generic [ref=e105]:
+        - img "Wix" [ref=e106]
+        - generic [ref=e107]: Wix
+      - generic [ref=e108]:
+        - img "Sanity" [ref=e109]
+        - generic [ref=e110]: Sanity
+      - generic [ref=e111]:
+        - img "Vercel" [ref=e112]
+        - generic [ref=e113]: Vercel
+      - generic [ref=e114]:
+        - img "Netlify" [ref=e115]
+        - generic [ref=e116]: Netlify
+      - generic [ref=e117]:
+        - img "GitHub" [ref=e118]
+        - generic [ref=e119]: GitHub
+      - generic [ref=e120]:
+        - img "WordPress" [ref=e121]
+        - generic [ref=e122]: WordPress
+      - generic [ref=e123]:
+        - img "Shopify" [ref=e124]
+        - generic [ref=e125]: Shopify
+      - generic [ref=e126]:
+        - img "Next.js" [ref=e127]
+        - generic [ref=e128]: Next.js
+      - generic [ref=e129]:
+        - img "Webflow" [ref=e130]
+        - generic [ref=e131]: Webflow
+      - generic [ref=e132]:
+        - img "Ghost" [ref=e133]
+        - generic [ref=e134]: Ghost
+      - generic [ref=e135]:
+        - img "Wix" [ref=e136]
+        - generic [ref=e137]: Wix
+      - generic [ref=e138]:
+        - img "Sanity" [ref=e139]
+        - generic [ref=e140]: Sanity
+      - generic [ref=e141]:
+        - img "Vercel" [ref=e142]
+        - generic [ref=e143]: Vercel
+      - generic [ref=e144]:
+        - img "Netlify" [ref=e145]
+        - generic [ref=e146]: Netlify
+      - generic [ref=e147]:
+        - img "GitHub" [ref=e148]
+        - generic [ref=e149]: GitHub
+  - generic [ref=e151]:
+    - generic [ref=e152]:
+      - paragraph [ref=e153]: The problem
+      - heading "Visibility work that stops at a dashboard." [level=2] [ref=e154]
+      - paragraph [ref=e155]: Reports do not grow traffic. Rankings do not improve themselves. AI citations are not won by watching graphs. Most teams have enough search data — what they are missing is the capacity to turn it into shipped work.
+    - generic [ref=e156]:
+      - generic [ref=e157]:
+        - generic:
+          - generic "47"
+        - paragraph [ref=e158]: Issues found, ranked, reported
+        - paragraph [ref=e159]: Then left waiting in a backlog no one owns
+      - generic [ref=e160]:
+        - generic:
+          - generic "15hrs"
+        - paragraph [ref=e161]: Weekly manual search operations
+        - paragraph [ref=e162]: Research, briefs, fixes, reporting cycles
+      - generic [ref=e163]:
+        - generic:
+          - generic "60%"
+        - paragraph [ref=e164]: Searches end without a click
+        - paragraph [ref=e165]: AI answers decide who gets seen
+      - generic [ref=e166]:
+        - generic:
+          - generic "$5K+"
+        - paragraph [ref=e167]: Monthly agency retainer
+        - paragraph [ref=e168]: Mostly spent producing more reports
+  - generic [ref=e172]:
+    - generic [ref=e173]:
+      - paragraph [ref=e174]: The Operator Console
+      - heading "See what changed, why, and what happened next." [level=2] [ref=e175]
+      - paragraph [ref=e176]: Not another dashboard — an action queue. Every action is scored, approved, logged, reviewable, and measurable.
+    - generic [ref=e177]:
+      - generic [ref=e178]:
+        - paragraph [ref=e179]: Opportunities observed
+        - paragraph:
+          - generic "47"
+        - paragraph [ref=e180]: ranked by impact × confidence ÷ effort
+      - generic [ref=e181]:
+        - paragraph [ref=e182]: Actions shipped
+        - paragraph:
+          - generic "38"
+        - paragraph [ref=e183]: logged, reviewable, reversible
+      - generic [ref=e184]:
+        - paragraph [ref=e185]: Visibility movement
+        - paragraph:
+          - generic "+23%"
+        - paragraph [ref=e186]: organic clicks and AI citations, 30 days
+    - generic [ref=e187]:
+      - generic [ref=e188]:
+        - generic [ref=e189]: Action queue
+        - generic [ref=e190]: Operating
+      - generic [ref=e193]:
+        - generic [ref=e194]:
+          - generic [ref=e196]:
+            - generic [ref=e197]:
+              - generic [ref=e198]: Shipped
+              - generic [ref=e199]: Canonical mismatch fixed on /pricing
+            - paragraph [ref=e200]: Auto-approved · Logged · Rollback available
+          - generic [ref=e201]: 12 min ago
+        - generic [ref=e202]:
+          - generic [ref=e204]:
+            - generic [ref=e205]:
+              - generic [ref=e206]: Awaiting review
+              - generic [ref=e207]: Refresh /integrations page for AI answer coverage
+            - paragraph [ref=e208]: Impact 8.4 · Confidence high · Effort low
+          - generic [ref=e209]: 26 min ago
+        - generic [ref=e210]:
+          - generic [ref=e212]:
+            - generic [ref=e213]:
+              - generic [ref=e214]: Planned
+              - generic [ref=e215]: Build internal link cluster across 14 orphan pages
+            - paragraph [ref=e216]: Impact 7.1 · Plan ready for approval
+          - generic [ref=e217]: 48 min ago
+        - generic [ref=e218]:
+          - generic [ref=e220]:
+            - generic [ref=e221]:
+              - generic [ref=e222]: Observed
+              - generic [ref=e223]: Competitor cited above you in 3 Perplexity prompts
+            - paragraph [ref=e224]: Source gap identified · Action queued
+          - generic [ref=e225]: 2 hr ago
+  - generic [ref=e227]:
+    - generic [ref=e228]:
+      - paragraph [ref=e229]: Outcomes
+      - heading "Work shipped, not rankings watched." [level=2] [ref=e230]
+      - paragraph [ref=e231]: Every shipped fix makes the next one easier. Every measured outcome sharpens the next decision. The system compounds week after week instead of drifting in place.
+    - generic [ref=e232]:
+      - generic [ref=e233]:
+        - paragraph [ref=e234]:
+          - generic "3"
+          - text: –
+          - generic "5"
+          - text: x
+        - paragraph [ref=e235]: Organic traffic growth
+        - paragraph [ref=e236]: early customer cohort, within 90 days
+      - generic [ref=e237]:
+        - paragraph [ref=e238]:
+          - generic "38"
+          - text: /wk
+        - paragraph [ref=e239]: Actions shipped per site
+        - paragraph [ref=e240]: logged, reviewable, reversible
+      - generic [ref=e241]:
+        - paragraph [ref=e242]:
+          - text: <$
+          - generic "2"
+          - text: /day
+        - paragraph [ref=e243]: Operating cost
+        - paragraph [ref=e244]: vs $200/day for an agency retainer
+    - generic [ref=e245]:
+      - figure "SK Sarah K. Founder, SaaS Startup" [ref=e246]:
+        - blockquote [ref=e247]: “Our organic traffic tripled in 2 months. The operator surfaced issues we'd missed for years — and shipped the fixes.”
+        - generic [ref=e248]:
+          - generic [ref=e249]: SK
+          - generic [ref=e250]:
+            - generic [ref=e251]: Sarah K.
+            - generic [ref=e252]: Founder, SaaS Startup
+      - figure "MT Mike T. E-commerce Owner" [ref=e253]:
+        - blockquote [ref=e254]: “We replaced our $4K/month agency. Now I approve a queue once a week instead of chasing reports.”
+        - generic [ref=e255]:
+          - generic [ref=e256]: MT
+          - generic [ref=e257]:
+            - generic [ref=e258]: Mike T.
+            - generic [ref=e259]: E-commerce Owner
+      - figure "AR Alex R. Content Lead" [ref=e260]:
+        - blockquote [ref=e261]: “The citation work got us referenced in Perplexity within weeks. We can see exactly which actions did it.”
+        - generic [ref=e262]:
+          - generic [ref=e263]: AR
+          - generic [ref=e264]:
+            - generic [ref=e265]: Alex R.
+            - generic [ref=e266]: Content Lead
+      - figure "JL James L. Indie Hacker" [ref=e267]:
+        - blockquote [ref=e268]: “Setup took minutes. The first approved fixes shipped within the hour — every one logged.”
+        - generic [ref=e269]:
+          - generic [ref=e270]: JL
+          - generic [ref=e271]:
+            - generic [ref=e272]: James L.
+            - generic [ref=e273]: Indie Hacker
+  - generic [ref=e275]:
+    - generic [ref=e276]:
+      - paragraph [ref=e277]: The shift
+      - heading "Stop operating tools. Deploy an operator." [level=2] [ref=e278]
+      - paragraph [ref=e279]: The old model sold tools to specialists. The operator model ships outcomes for teams.
+    - generic [ref=e280]:
+      - generic [ref=e281]:
+        - paragraph [ref=e282]: The manual operating model
+        - list [ref=e283]:
+          - listitem [ref=e284]:
+            - img [ref=e285]
+            - text: Buy tools, then stitch them together
+          - listitem [ref=e288]:
+            - img [ref=e289]
+            - text: Pull reports and build spreadsheets
+          - listitem [ref=e292]:
+            - img [ref=e293]
+            - text: Write briefs and assign the work
+          - listitem [ref=e296]:
+            - img [ref=e297]
+            - text: Wait on developers and writers
+          - listitem [ref=e300]:
+            - img [ref=e301]
+            - text: Check rankings weeks later
+          - listitem [ref=e304]:
+            - img [ref=e305]
+            - text: Repeat the cycle every quarter
+      - generic [ref=e308]:
+        - generic [ref=e309]: With SERP Operator
+        - paragraph [ref=e310]: The operating layer
+        - list [ref=e311]:
+          - listitem [ref=e312]:
+            - img [ref=e313]
+            - text: Deploy the operator and connect your site
+          - listitem [ref=e315]:
+            - img [ref=e316]
+            - text: Opportunities arrive ranked by impact
+          - listitem [ref=e318]:
+            - img [ref=e319]
+            - text: Approve high-impact actions in one queue
+          - listitem [ref=e321]:
+            - img [ref=e322]
+            - text: Fixes and content ship into your CMS or repo
+          - listitem [ref=e324]:
+            - img [ref=e325]
+            - text: Every action is measured against outcomes
+          - listitem [ref=e327]:
+            - img [ref=e328]
+            - text: The loop learns and improves each week
+  - generic [ref=e331]:
+    - generic [ref=e332]:
+      - paragraph [ref=e333]: Modules
+      - heading "One operator. Six modules. One loop." [level=2] [ref=e334]
+      - paragraph [ref=e335]: Each module handles one job in the loop — together they replace the stitched-up stack of tools, spreadsheets, and reporting cycles.
+    - generic [ref=e336]:
+      - generic [ref=e337]:
+        - img [ref=e339]
+        - heading "SERP Intelligence" [level=3] [ref=e342]
+        - paragraph [ref=e343]: Performance, rankings, AI visibility, and competitor signals across Google, ChatGPT, Perplexity, and Gemini — one source graph.
+      - generic [ref=e344]:
+        - img [ref=e346]
+        - heading "SERP Control" [level=3] [ref=e349]
+        - paragraph [ref=e350]: "Governed autonomy: permissions, approval gates, audit logs, and rollback. Safe fixes ship automatically, sensitive changes route to you."
+      - generic [ref=e351]:
+        - img [ref=e353]
+        - heading "SERP Planner" [level=3] [ref=e356]
+        - paragraph [ref=e357]: Every opportunity scored by impact, confidence, and effort — so the queue starts with what moves traffic.
+      - generic [ref=e358]:
+        - img [ref=e360]
+        - heading "SERP Executor" [level=3] [ref=e362]
+        - paragraph [ref=e363]: Ships technical fixes, schema, canonicals, metadata, and internal links into your CMS or codebase.
+      - generic [ref=e364]:
+        - img [ref=e366]
+        - heading "SERP Content" [level=3] [ref=e369]
+        - paragraph [ref=e370]: Briefs, refreshes, and publishing workflows governed by your brand voice — built for usefulness, not volume.
+      - generic [ref=e371]:
+        - img [ref=e373]
+        - heading "SERP Citations" [level=3] [ref=e378]
+        - paragraph [ref=e379]: Tracks how AI systems cite your brand, finds source gaps, and recommends the work that wins answer coverage.
+  - generic [ref=e381]:
+    - generic [ref=e382]:
+      - paragraph [ref=e383]: The Operator Loop
+      - heading "Observe. Prioritize. Plan. Execute. Measure. Improve." [level=2] [ref=e384]
+      - paragraph [ref=e385]: Search is not a campaign — it is a compounding system. The Operator Loop runs continuously, with your approvals where they matter.
+    - generic [ref=e386]:
+      - img [ref=e387]
+      - generic [ref=e388]:
+        - generic [ref=e393]:
+          - generic [ref=e394]:
+            - img [ref=e396]
+            - generic [ref=e399]: 01 / 06
+          - heading "Observe" [level=3] [ref=e400]
+          - paragraph [ref=e401]: The operator monitors rankings, traffic, AI answers, citations, and competitor movement across every search surface.
+          - text: Google · ChatGPT · Perplexity · Gemini
+        - generic [ref=e406]:
+          - generic [ref=e407]:
+            - img [ref=e409]
+            - generic [ref=e412]: 02 / 06
+          - heading "Prioritize" [level=3] [ref=e413]
+          - paragraph [ref=e414]: Opportunities are scored by traffic impact, confidence, and effort — so the queue starts with what matters.
+          - text: Impact-ranked queue
+        - generic [ref=e419]:
+          - generic [ref=e420]:
+            - img [ref=e422]
+            - generic [ref=e426]: 03 / 06
+          - heading "Plan" [level=3] [ref=e427]
+          - paragraph [ref=e428]: "Each opportunity becomes an execution plan: the change, the reasoning, and the expected outcome."
+          - text: Transparent reasoning
+        - generic [ref=e433]:
+          - generic [ref=e434]:
+            - img [ref=e436]
+            - generic [ref=e438]: 04 / 06
+          - heading "Execute" [level=3] [ref=e439]
+          - paragraph [ref=e440]: Approved fixes, schema, internal links, and content updates ship into your CMS or codebase.
+          - text: Approval gates · Rollback
+        - generic [ref=e445]:
+          - generic [ref=e446]:
+            - img [ref=e448]
+            - generic [ref=e450]: 05 / 06
+          - heading "Measure" [level=3] [ref=e451]
+          - paragraph [ref=e452]: Every shipped action is tracked against rankings, traffic, and citation coverage.
+          - text: Outcome per action
+        - generic [ref=e457]:
+          - generic [ref=e458]:
+            - img [ref=e460]
+            - generic [ref=e465]: 06 / 06
+          - heading "Improve" [level=3] [ref=e466]
+          - paragraph [ref=e467]: Results feed back into prioritization, so the operator learns which work creates growth.
+          - text: Compounding system
+      - paragraph [ref=e469]: ↻ Improve feeds Observe. The loop never stops compounding.
+  - generic [ref=e471]:
+    - generic [ref=e472]:
+      - paragraph [ref=e473]: Who it's for
+      - heading "Built for teams without enough specialist capacity." [level=2] [ref=e474]
+    - generic [ref=e475]:
+      - generic [ref=e476]:
+        - img [ref=e478]
+        - generic [ref=e483]:
+          - heading "Founders" [level=3] [ref=e484]
+          - paragraph [ref=e485]: who need a dependable organic channel without hiring an SEO specialist
+      - generic [ref=e486]:
+        - img [ref=e488]
+        - generic [ref=e491]:
+          - heading "Startup growth teams" [level=3] [ref=e492]
+          - paragraph [ref=e493]: who want compounding search leverage without adding headcount
+      - generic [ref=e494]:
+        - img [ref=e496]
+        - generic [ref=e499]:
+          - heading "Agencies" [level=3] [ref=e500]
+          - paragraph [ref=e501]: who want to ship more client work per operator, with logs to prove it
+      - generic [ref=e502]:
+        - img [ref=e504]
+        - generic [ref=e508]:
+          - heading "Marketing leads" [level=3] [ref=e509]
+          - paragraph [ref=e510]: who need AI search visibility before competitors own the answers
+    - figure "This is the operating layer for that gap." [ref=e512]:
+      - paragraph [ref=e513]: "If your team has ever said:"
+      - blockquote [ref=e514]: “We know what's wrong — the work just never ships .”
+      - generic [ref=e515]: This is the operating layer for that gap.
+  - generic [ref=e517]:
+    - generic [ref=e518]:
+      - paragraph [ref=e519]: What it operates
+      - heading "The full search workflow, run as one loop." [level=2] [ref=e520]
+      - paragraph [ref=e521]: Classic Google SEO and AI-era visibility in one operator — every capability named for the job it does, every action logged and reversible.
+      - paragraph [ref=e522]: Connect your site once. Approve the work that matters. Watch the loop compound.
+    - generic [ref=e523]:
+      - generic [ref=e524]:
+        - img [ref=e526]
+        - generic [ref=e528]: Audit Site
+        - generic [ref=e530]: every page, 40+ issue types
+      - generic [ref=e531]:
+        - img [ref=e533]
+        - generic [ref=e535]: Score Opportunity
+        - generic [ref=e537]: impact × confidence ÷ effort
+      - generic [ref=e538]:
+        - img [ref=e540]
+        - generic [ref=e542]: Approve Fix
+        - generic [ref=e544]: gates for sensitive changes
+      - generic [ref=e545]:
+        - img [ref=e547]
+        - generic [ref=e549]: Ship Schema
+        - generic [ref=e551]: entities, FAQ, JSON-LD
+      - generic [ref=e552]:
+        - img [ref=e554]
+        - generic [ref=e556]: Refresh Page
+        - generic [ref=e558]: content updates that hold rankings
+      - generic [ref=e559]:
+        - img [ref=e561]
+        - generic [ref=e563]: Build Cluster
+        - generic [ref=e565]: internal links and orphan rescue
+      - generic [ref=e566]:
+        - img [ref=e568]
+        - generic [ref=e570]: Track Citation
+        - generic [ref=e572]: ChatGPT, Perplexity, Gemini coverage
+      - generic [ref=e573]:
+        - img [ref=e575]
+        - generic [ref=e577]: Monitor Prompt
+        - generic [ref=e579]: how AI answers describe your category
+      - generic [ref=e580]:
+        - img [ref=e582]
+        - generic [ref=e584]: Compare Competitors
+        - generic [ref=e586]: movement, content, source graphs
+      - generic [ref=e587]:
+        - img [ref=e589]
+        - generic [ref=e591]: Roll Back Action
+        - generic [ref=e593]: every change is reversible
+  - generic [ref=e595]:
+    - generic [ref=e596]:
+      - paragraph [ref=e597]: Pricing
+      - heading "Operator pricing, far below agency overhead." [level=2] [ref=e598]
+      - paragraph [ref=e599]: Start with a free audit, then turn on governed execution when you have seen the queue.
+    - generic [ref=e600]:
+      - generic [ref=e601]:
+        - heading "Audit" [level=3] [ref=e602]
+        - paragraph [ref=e603]: $0
+        - paragraph [ref=e604]: See what the operator would do first.
+        - list [ref=e605]:
+          - listitem [ref=e606]:
+            - img [ref=e607]
+            - text: Full site and GEO audit
+          - listitem [ref=e609]:
+            - img [ref=e610]
+            - text: Impact-ranked opportunity queue
+          - listitem [ref=e612]:
+            - img [ref=e613]
+            - text: AI visibility readiness score
+          - listitem [ref=e615]:
+            - img [ref=e616]
+            - text: 1 site
+        - link "Run Free Growth Audit" [ref=e618] [cursor=pointer]:
+          - /url: /pricing
+      - generic [ref=e619]:
+        - generic [ref=e620]: Most popular
+        - heading "Growth" [level=3] [ref=e621]
+        - paragraph [ref=e622]: $49/mo
+        - paragraph [ref=e623]: Let the operator execute approved work.
+        - list [ref=e624]:
+          - listitem [ref=e625]:
+            - img [ref=e626]
+            - text: Everything in Audit
+          - listitem [ref=e628]:
+            - img [ref=e629]
+            - text: Governed fixes with approval gates
+          - listitem [ref=e631]:
+            - img [ref=e632]
+            - text: Content briefs and publishing
+          - listitem [ref=e634]:
+            - img [ref=e635]
+            - text: Daily monitoring and action logs
+        - link "Get early access" [ref=e637] [cursor=pointer]:
+          - /url: /pricing
+      - generic [ref=e638]:
+        - heading "Scale" [level=3] [ref=e639]
+        - paragraph [ref=e640]: $99/mo
+        - paragraph [ref=e641]: Run the loop across more pages and sites.
+        - list [ref=e642]:
+          - listitem [ref=e643]:
+            - img [ref=e644]
+            - text: Everything in Growth
+          - listitem [ref=e646]:
+            - img [ref=e647]
+            - text: AI citation and prompt tracking
+          - listitem [ref=e649]:
+            - img [ref=e650]
+            - text: Competitor source-graph monitoring
+          - listitem [ref=e652]:
+            - img [ref=e653]
+            - text: Multi-site operations
+        - link "Compare plans" [ref=e655] [cursor=pointer]:
+          - /url: /pricing
+    - generic [ref=e656]:
+      - paragraph [ref=e657]: 14-day free trial on paid plans · Cancel anytime · No contracts
+      - link "See full plan details on the pricing page →" [ref=e658] [cursor=pointer]:
+        - /url: /pricing
+  - generic [ref=e660]:
+    - generic [ref=e661]:
+      - paragraph [ref=e662]: FAQ
+      - heading "The questions every buyer asks first." [level=2] [ref=e663]
+      - paragraph [ref=e664]: Straight answers on autonomy, control, and proof.
+    - generic [ref=e665]:
+      - generic [ref=e666]:
+        - button "What does the operator actually do?" [expanded] [ref=e667]:
+          - generic [ref=e668]: What does the operator actually do?
+          - img [ref=e669]
+        - paragraph [ref=e674]: "It runs the Operator Loop on your site: observes rankings, traffic, and AI citations; prioritizes opportunities by impact; plans the work; executes approved fixes and content; measures outcomes; and improves what it does next."
+      - generic [ref=e675]:
+        - button "How is this different from Ahrefs or Semrush plus ChatGPT?" [ref=e676]:
+          - generic [ref=e677]: How is this different from Ahrefs or Semrush plus ChatGPT?
+          - img [ref=e678]
+        - paragraph [ref=e679]: "Those tools give you data and drafts — your team still operates the workflow. SERP Strategists is the operating layer: the data becomes a ranked action queue, and approved work ships into your CMS or codebase."
+      - generic [ref=e680]:
+        - button "What happens if it makes the wrong change?" [ref=e681]:
+          - generic [ref=e682]: What happens if it makes the wrong change?
+          - img [ref=e683]
+        - paragraph [ref=e684]: Governance is built in. Safe fixes can ship automatically, sensitive changes route through approval gates, every action is logged, and any change can be rolled back.
+      - generic [ref=e685]:
+        - button "How fast will I see proof?" [ref=e686]:
+          - generic [ref=e687]: How fast will I see proof?
+          - img [ref=e688]
+        - paragraph [ref=e689]: Technical fixes ship within days of approval, content effects show in weeks, and larger organic and citation gains typically compound over 60 to 90 days — with every shipped action measured against outcomes.
+    - link "Read the full FAQ →" [ref=e691] [cursor=pointer]:
+      - /url: /faq
+  - generic [ref=e693]:
+    - generic [ref=e694]:
+      - paragraph [ref=e695]: Before you decide
+      - heading "See how the operator works before you commit." [level=2] [ref=e696]
+      - paragraph [ref=e697]: Review setup, execution, and controls so you can judge fit quickly and understand what happens after the first audit.
+    - generic [ref=e698]:
+      - link "Setup and integrations See where the operator fits into your CMS, repository, analytics, and review workflow. Open page" [ref=e699] [cursor=pointer]:
+        - /url: /integrations
+        - generic [ref=e700]:
+          - img [ref=e702]
+          - generic [ref=e706]:
+            - heading "Setup and integrations" [level=3] [ref=e707]
+            - paragraph [ref=e708]: See where the operator fits into your CMS, repository, analytics, and review workflow.
+            - generic [ref=e709]:
+              - text: Open page
+              - img [ref=e710]
+      - link "Execution demo Walk through a sample queue, the approval step, and the before and after execution loop. Open page" [ref=e712] [cursor=pointer]:
+        - /url: /demo
+        - generic [ref=e713]:
+          - img [ref=e715]
+          - generic [ref=e718]:
+            - heading "Execution demo" [level=3] [ref=e719]
+            - paragraph [ref=e720]: Walk through a sample queue, the approval step, and the before and after execution loop.
+            - generic [ref=e721]:
+              - text: Open page
+              - img [ref=e722]
+      - link "Trust and governance Review approvals, logs, rollback, and data boundaries that keep the operator controlled. Open page" [ref=e724] [cursor=pointer]:
+        - /url: /governance
+        - generic [ref=e725]:
+          - img [ref=e727]
+          - generic [ref=e730]:
+            - heading "Trust and governance" [level=3] [ref=e731]
+            - paragraph [ref=e732]: Review approvals, logs, rollback, and data boundaries that keep the operator controlled.
+            - generic [ref=e733]:
+              - text: Open page
+              - img [ref=e734]
+      - link "SERP analysis guide Learn the method behind finding the competitors that matter and the gaps worth fixing. Open page" [ref=e736] [cursor=pointer]:
+        - /url: /blog/serp-competitor-analysis-guide
+        - generic [ref=e737]:
+          - img [ref=e739]
+          - generic [ref=e741]:
+            - heading "SERP analysis guide" [level=3] [ref=e742]
+            - paragraph [ref=e743]: Learn the method behind finding the competitors that matter and the gaps worth fixing.
+            - generic [ref=e744]:
+              - text: Open page
+              - img [ref=e745]
+  - generic [ref=e750]:
+    - paragraph [ref=e752]: Early access open
+    - heading "Deploy your growth operator." [level=2] [ref=e753]
+    - paragraph [ref=e754]: Connect your site and let the operator run its first audit. You will see every opportunity ranked by impact — and exactly what it would ship first, pending your approval.
+    - button "Run Free Growth Audit" [ref=e755]:
+      - text: Run Free Growth Audit
+      - img [ref=e756]
+    - paragraph [ref=e758]:
+      - img [ref=e759]
+      - text: Free on the Audit tier · No credit card · Every action logged and reversible
+  - generic [ref=e763]:
+    - generic [ref=e764]:
+      - generic [ref=e765]:
+        - link "SERP Strategists" [ref=e766] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e767]: SERP Strategists
+        - paragraph [ref=e769]: The AI Growth Operator for organic search. From opportunity to executed action.
+      - generic [ref=e770]:
+        - heading "Product" [level=4] [ref=e771]
+        - list [ref=e772]:
+          - listitem [ref=e773]:
+            - link "Modules" [ref=e774] [cursor=pointer]:
+              - /url: "#modules"
+          - listitem [ref=e775]:
+            - link "Operator Loop" [ref=e776] [cursor=pointer]:
+              - /url: "#operator-loop"
+          - listitem [ref=e777]:
+            - link "Pricing" [ref=e778] [cursor=pointer]:
+              - /url: "#pricing"
+          - listitem [ref=e779]:
+            - link "Integrations" [ref=e780] [cursor=pointer]:
+              - /url: /integrations
+          - listitem [ref=e781]:
+            - link "Execution demo" [ref=e782] [cursor=pointer]:
+              - /url: /demo
+          - listitem [ref=e783]:
+            - link "Blog" [ref=e784] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e785]:
+            - link "FAQ" [ref=e786] [cursor=pointer]:
+              - /url: /faq
+      - generic [ref=e787]:
+        - heading "Company" [level=4] [ref=e788]
+        - list [ref=e789]:
+          - listitem [ref=e790]:
+            - link "About" [ref=e791] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e792]:
+            - link "Governance" [ref=e793] [cursor=pointer]:
+              - /url: /governance
+          - listitem [ref=e794]:
+            - link "Contact" [ref=e795] [cursor=pointer]:
+              - /url: /contact
+      - generic [ref=e796]:
+        - heading "Legal" [level=4] [ref=e797]
+        - list [ref=e798]:
+          - listitem [ref=e799]:
+            - link "Privacy Policy" [ref=e800] [cursor=pointer]:
+              - /url: /privacy
+          - listitem [ref=e801]:
+            - link "Terms & Conditions" [ref=e802] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e803]:
+            - link "Cookie Policy" [ref=e804] [cursor=pointer]:
+              - /url: /cookies
+          - listitem [ref=e805]:
+            - link "Disclaimer" [ref=e806] [cursor=pointer]:
+              - /url: /disclaimer
+    - generic [ref=e807]:
+      - paragraph [ref=e808]: © 2026 SERP Strategists. All rights reserved.
+      - paragraph [ref=e809]: Governed autonomy · Full logs · Human approval where it matters
+  - generic:
+    - generic:
+      - generic:
+        - generic: Early access open
+      - generic: ·
+      - generic: Founding pricing from $49/mo
+      - link "See pricing":
+        - /url: "#pricing"
+        - text: →
+      - button "Dismiss": ✕

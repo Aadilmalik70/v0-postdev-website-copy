@@ -35,9 +35,9 @@ export function getOrganizationSchema() {
     description:
       "SERP Strategists is the AI Growth Operator that observes your search performance, executes approved SEO and GEO actions, and improves visibility across Google and AI search engines.",
     sameAs: [
-      // Add your social media profiles here
-      // "https://twitter.com/serpstrategists",
-      // "https://www.linkedin.com/company/serpstrategists",
+      "https://www.linkedin.com/company/serpstrategists",
+      "https://twitter.com/serpstrategists",
+      "https://www.producthunt.com/products/serp-strategists",
     ],
     contactPoint: {
       "@type": "ContactPoint",

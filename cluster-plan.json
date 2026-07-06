@@ -1,0 +1,150 @@
+{
+  "version": "2.0.0",
+  "seed_keyword": "AI SEO automation guide",
+  "source_url": "https://serpstrategists.com/",
+  "created_at": "2026-07-05T17:45:00Z",
+  "market": {"country": "US", "language": "en"},
+  "positioning": "Build authority as a practitioner-led AI SEO knowledge hub that publishes reproducible automation tutorials, tested workflows, honest limitations, and measured outcomes.",
+  "editorial_promise": "Every tutorial shows the input data, exact workflow, human quality gates, expected output, failure modes, and measurement method. No unsupported ranking claims or one-click autopilot promises.",
+  "pillar": {
+    "id": "pillar",
+    "title": "AI SEO Automation: Practical Workflows, Tutorials, and Results",
+    "keyword": "AI SEO automation guide",
+    "secondaryKeywords": ["AI SEO automation", "automate SEO with AI", "AI SEO workflow"],
+    "volume": null,
+    "template": "ultimate-guide",
+    "wordCount": 3500,
+    "url": "/blog/ai-seo-automation-guide",
+    "status": "planned",
+    "priority": 1
+  },
+  "clusters": [
+    {
+      "name": "AI SEO Foundations",
+      "color": "#2563eb",
+      "posts": [
+        {"id":"cluster-0-post-0","title":"What Is AI SEO? A Practical Guide for 2026","keyword":"what is AI SEO","secondaryKeywords":["AI SEO explained","how AI is used in SEO"],"volume":null,"template":"explainer","wordCount":1600,"url":"/blog/what-is-ai-seo","status":"planned","priority":2},
+        {"id":"cluster-0-post-1","title":"AI SEO Agent vs SEO Agency: Cost, ROI and Control","keyword":"AI SEO agent vs agency","secondaryKeywords":["AI SEO agent","AI SEO agency"],"volume":null,"template":"comparison","wordCount":1700,"url":"/blog/ai-seo-agent-vs-agency","status":"written","priority":10},
+        {"id":"cluster-0-post-2","title":"GEO vs SEO vs AEO: What Changes and What Does Not","keyword":"GEO vs SEO vs AEO","secondaryKeywords":["AI SEO vs traditional SEO","AEO vs SEO"],"volume":null,"template":"comparison","wordCount":1700,"url":"/blog/geo-vs-seo-vs-aeo-2026","status":"written","priority":11}
+      ]
+    },
+    {
+      "name": "Content Automation Tutorials",
+      "color": "#7c3aed",
+      "posts": [
+        {"id":"cluster-1-post-0","title":"AI Keyword Research Automation: From GSC Data to Topic Clusters","keyword":"AI keyword research automation","secondaryKeywords":["automated keyword research","AI keyword clustering"],"volume":null,"template":"how-to","wordCount":1700,"url":"/blog/ai-keyword-research-automation","status":"planned","priority":3},
+        {"id":"cluster-1-post-1","title":"AI SEO Content Workflow: Research, Draft, Verify, Publish, Measure","keyword":"AI SEO content workflow","secondaryKeywords":["AI content automation for SEO","AI SEO writing workflow"],"volume":null,"template":"how-to","wordCount":1800,"url":"/blog/ai-seo-content-workflow","status":"planned","priority":4},
+        {"id":"cluster-1-post-2","title":"AI Internal Linking Automation: Build Links Without Creating Spam","keyword":"AI internal linking automation","secondaryKeywords":["automated internal linking","AI internal link suggestions"],"volume":null,"template":"how-to","wordCount":1600,"url":"/blog/ai-internal-linking-automation","status":"planned","priority":5}
+      ]
+    },
+    {
+      "name": "Technical and Data Automation",
+      "color": "#0891b2",
+      "posts": [
+        {"id":"cluster-2-post-0","title":"AI Technical SEO Audit: A Repeatable Crawl-to-Fix Workflow","keyword":"AI technical SEO audit","secondaryKeywords":["AI SEO audit automation","automated technical SEO audit"],"volume":null,"template":"how-to","wordCount":1800,"url":"/blog/ai-technical-seo-audit","status":"planned","priority":6},
+        {"id":"cluster-2-post-1","title":"Google Search Console Automation With AI: Reports, Alerts, and Actions","keyword":"Google Search Console automation","secondaryKeywords":["AI GSC analysis","automated SEO reporting"],"volume":null,"template":"how-to","wordCount":1700,"url":"/blog/google-search-console-ai-automation","status":"planned","priority":7},
+        {"id":"cluster-2-post-2","title":"Schema Markup Automation With AI: Generate, Validate, and Monitor JSON-LD","keyword":"schema markup automation","secondaryKeywords":["AI schema generator workflow","automated structured data"],"volume":null,"template":"how-to","wordCount":1600,"url":"/blog/ai-schema-markup-automation","status":"planned","priority":8}
+      ]
+    },
+    {
+      "name": "AI SEO Tools and Agents",
+      "color": "#ea580c",
+      "posts": [
+        {"id":"cluster-3-post-0","title":"12 Best AI SEO Tools for 2026: Tested and Ranked","keyword":"best AI SEO tools","secondaryKeywords":["AI SEO software","AI SEO tools comparison"],"volume":null,"gscImpressions":309,"template":"best-of","wordCount":1800,"url":"/blog/top-seo-analysis-tools-2025-best-seo-ai-tool","status":"written","priority":9},
+        {"id":"cluster-3-post-1","title":"AI SEO Tools Pricing Comparison in 2026","keyword":"AI SEO tools pricing","secondaryKeywords":["AI SEO software pricing","AI SEO tools cost"],"volume":null,"template":"comparison","wordCount":1700,"url":"/blog/ai-seo-tools-pricing-comparison-2026","status":"written","priority":14},
+        {"id":"cluster-3-post-2","title":"The Agentic Web Is Here: What AI Agents Change for SEO","keyword":"agentic SEO","secondaryKeywords":["AI agents for SEO","agentic web SEO"],"volume":null,"template":"explainer","wordCount":1700,"url":"/blog/agentic-web-seo","status":"written","priority":15}
+      ]
+    },
+    {
+      "name": "AI Search Authority and Proof",
+      "color": "#16a34a",
+      "posts": [
+        {"id":"cluster-4-post-0","title":"Generative Engine Optimization: The Complete 2026 Guide","keyword":"generative engine optimization","secondaryKeywords":["GEO optimization","AI search optimization"],"volume":null,"template":"ultimate-guide","wordCount":2600,"url":"/blog/generative-engine-optimization-geo-guide","status":"written","priority":12},
+        {"id":"cluster-4-post-1","title":"How to Measure AI Search Visibility in 2026","keyword":"measure AI search visibility","secondaryKeywords":["AI search tracking","AI visibility metrics"],"volume":null,"template":"how-to","wordCount":1700,"url":"/blog/how-to-measure-ai-search-visibility-2026","status":"written","priority":13},
+        {"id":"cluster-4-post-2","title":"E-E-A-T SEO: Build Trust Signals AI Systems Can Verify","keyword":"E-E-A-T SEO","secondaryKeywords":["AI search authority","verifiable expertise signals"],"volume":null,"template":"how-to","wordCount":1700,"url":"/blog/eeat-practical-guide","status":"written","priority":16},
+        {"id":"cluster-4-post-3","title":"AI SEO Case Studies: Experiments, Failures, and Measured Results","keyword":"AI SEO case studies","secondaryKeywords":["AI SEO results","AI SEO experiments"],"volume":null,"template":"case-study","wordCount":1800,"url":"/blog/ai-seo-case-studies","status":"planned","priority":17}
+      ]
+    }
+  ],
+  "keyword_candidates": [
+    {"target":"pillar","intent":"informational","keywords":["AI SEO automation guide","AI SEO automation","automate SEO with AI","AI SEO workflow"]},
+    {"target":"cluster-0-post-0","intent":"informational","keywords":["what is AI SEO","AI SEO explained","how AI is used in SEO"]},
+    {"target":"cluster-0-post-1","intent":"commercial","keywords":["AI SEO agent vs agency","AI SEO agent","AI SEO agency"]},
+    {"target":"cluster-0-post-2","intent":"informational","keywords":["GEO vs SEO vs AEO","AI SEO vs traditional SEO","AEO vs SEO"]},
+    {"target":"cluster-1-post-0","intent":"informational","keywords":["AI keyword research automation","automated keyword research","AI keyword clustering"]},
+    {"target":"cluster-1-post-1","intent":"informational","keywords":["AI SEO content workflow","AI content automation for SEO","AI SEO writing workflow"]},
+    {"target":"cluster-1-post-2","intent":"informational","keywords":["AI internal linking automation","automated internal linking","AI internal link suggestions"]},
+    {"target":"cluster-2-post-0","intent":"informational","keywords":["AI technical SEO audit","AI SEO audit automation","automated technical SEO audit"]},
+    {"target":"cluster-2-post-1","intent":"informational","keywords":["Google Search Console automation","AI GSC analysis","automated SEO reporting"]},
+    {"target":"cluster-2-post-2","intent":"informational","keywords":["schema markup automation","AI schema generator workflow","automated structured data"]},
+    {"target":"cluster-3-post-0","intent":"commercial","keywords":["best AI SEO tools","AI SEO software","AI SEO tools comparison"]},
+    {"target":"cluster-3-post-1","intent":"commercial","keywords":["AI SEO tools pricing","AI SEO software pricing","AI SEO tools cost"]},
+    {"target":"cluster-3-post-2","intent":"informational","keywords":["agentic SEO","AI agents for SEO","agentic web SEO"]},
+    {"target":"cluster-4-post-0","intent":"informational","keywords":["generative engine optimization","GEO optimization","AI search optimization"]},
+    {"target":"cluster-4-post-1","intent":"informational","keywords":["measure AI search visibility","AI search tracking","AI visibility metrics"]},
+    {"target":"cluster-4-post-2","intent":"informational","keywords":["E-E-A-T SEO","AI search authority","verifiable expertise signals"]},
+    {"target":"cluster-4-post-3","intent":"informational","keywords":["AI SEO case studies","AI SEO results","AI SEO experiments"]}
+  ],
+  "excluded_navigational_keywords": ["ChatGPT SEO login","Writesonic login","Surfer SEO login","Semrush AI tools login"],
+  "content_standards": [
+    "Use first-hand screenshots, code, prompts, datasets, or before-and-after evidence where available.",
+    "Name the human decision points and tasks that must not be automated.",
+    "Include a reproducible workflow with inputs, steps, outputs, validation, and rollback.",
+    "Cite current primary sources for platform, search, or policy claims.",
+    "Publish author and reviewer credentials, dateModified, methodology, and a visible changelog.",
+    "Report failures and limitations alongside successful outcomes.",
+    "Measure outcomes with GSC, GA4, crawl data, rankings, citations, or conversion metrics rather than word count."
+  ],
+  "links": [
+    {"from":"pillar","to":"cluster-0-post-0","type":"mandatory","anchor":"what AI SEO means"},{"from":"cluster-0-post-0","to":"pillar","type":"mandatory","anchor":"AI SEO automation guide"},
+    {"from":"pillar","to":"cluster-0-post-1","type":"mandatory","anchor":"AI SEO agent vs agency"},{"from":"cluster-0-post-1","to":"pillar","type":"mandatory","anchor":"AI SEO automation workflows"},
+    {"from":"pillar","to":"cluster-0-post-2","type":"mandatory","anchor":"GEO vs SEO vs AEO"},{"from":"cluster-0-post-2","to":"pillar","type":"mandatory","anchor":"AI SEO automation guide"},
+    {"from":"pillar","to":"cluster-1-post-0","type":"mandatory","anchor":"AI keyword research automation"},{"from":"cluster-1-post-0","to":"pillar","type":"mandatory","anchor":"automate SEO with AI"},
+    {"from":"pillar","to":"cluster-1-post-1","type":"mandatory","anchor":"AI SEO content workflow"},{"from":"cluster-1-post-1","to":"pillar","type":"mandatory","anchor":"AI SEO automation"},
+    {"from":"pillar","to":"cluster-1-post-2","type":"mandatory","anchor":"AI internal linking automation"},{"from":"cluster-1-post-2","to":"pillar","type":"mandatory","anchor":"AI SEO workflow"},
+    {"from":"pillar","to":"cluster-2-post-0","type":"mandatory","anchor":"AI technical SEO audit"},{"from":"cluster-2-post-0","to":"pillar","type":"mandatory","anchor":"AI SEO automation guide"},
+    {"from":"pillar","to":"cluster-2-post-1","type":"mandatory","anchor":"Google Search Console automation"},{"from":"cluster-2-post-1","to":"pillar","type":"mandatory","anchor":"automated SEO workflow"},
+    {"from":"pillar","to":"cluster-2-post-2","type":"mandatory","anchor":"schema markup automation"},{"from":"cluster-2-post-2","to":"pillar","type":"mandatory","anchor":"AI SEO automation"},
+    {"from":"pillar","to":"cluster-3-post-0","type":"mandatory","anchor":"best AI SEO tools"},{"from":"cluster-3-post-0","to":"pillar","type":"mandatory","anchor":"AI SEO automation guide"},
+    {"from":"pillar","to":"cluster-3-post-1","type":"mandatory","anchor":"AI SEO tools pricing"},{"from":"cluster-3-post-1","to":"pillar","type":"mandatory","anchor":"AI SEO workflows"},
+    {"from":"pillar","to":"cluster-3-post-2","type":"mandatory","anchor":"agentic SEO"},{"from":"cluster-3-post-2","to":"pillar","type":"mandatory","anchor":"AI SEO automation"},
+    {"from":"pillar","to":"cluster-4-post-0","type":"mandatory","anchor":"generative engine optimization"},{"from":"cluster-4-post-0","to":"pillar","type":"mandatory","anchor":"AI SEO automation guide"},
+    {"from":"pillar","to":"cluster-4-post-1","type":"mandatory","anchor":"measure AI search visibility"},{"from":"cluster-4-post-1","to":"pillar","type":"mandatory","anchor":"AI SEO automation"},
+    {"from":"pillar","to":"cluster-4-post-2","type":"mandatory","anchor":"E-E-A-T for AI search"},{"from":"cluster-4-post-2","to":"pillar","type":"mandatory","anchor":"AI SEO workflows"},
+    {"from":"pillar","to":"cluster-4-post-3","type":"mandatory","anchor":"AI SEO case studies"},{"from":"cluster-4-post-3","to":"pillar","type":"mandatory","anchor":"AI SEO automation results"},
+    {"from":"cluster-0-post-0","to":"cluster-0-post-1","type":"within-cluster","anchor":"AI SEO agents"},{"from":"cluster-0-post-1","to":"cluster-0-post-0","type":"within-cluster","anchor":"what AI SEO is"},
+    {"from":"cluster-0-post-0","to":"cluster-0-post-2","type":"within-cluster","anchor":"GEO SEO and AEO"},{"from":"cluster-0-post-2","to":"cluster-0-post-0","type":"within-cluster","anchor":"AI SEO explained"},
+    {"from":"cluster-0-post-1","to":"cluster-0-post-2","type":"within-cluster","anchor":"AI search optimization models"},{"from":"cluster-0-post-2","to":"cluster-0-post-1","type":"within-cluster","anchor":"AI agent versus agency"},
+    {"from":"cluster-1-post-0","to":"cluster-1-post-1","type":"within-cluster","anchor":"AI SEO content workflow"},{"from":"cluster-1-post-1","to":"cluster-1-post-0","type":"within-cluster","anchor":"automated keyword research"},
+    {"from":"cluster-1-post-0","to":"cluster-1-post-2","type":"within-cluster","anchor":"internal linking automation"},{"from":"cluster-1-post-2","to":"cluster-1-post-0","type":"within-cluster","anchor":"AI keyword clustering"},
+    {"from":"cluster-1-post-1","to":"cluster-1-post-2","type":"within-cluster","anchor":"automated internal links"},{"from":"cluster-1-post-2","to":"cluster-1-post-1","type":"within-cluster","anchor":"AI content quality workflow"},
+    {"from":"cluster-2-post-0","to":"cluster-2-post-1","type":"within-cluster","anchor":"GSC automation"},{"from":"cluster-2-post-1","to":"cluster-2-post-0","type":"within-cluster","anchor":"AI technical audit"},
+    {"from":"cluster-2-post-0","to":"cluster-2-post-2","type":"within-cluster","anchor":"schema validation automation"},{"from":"cluster-2-post-2","to":"cluster-2-post-0","type":"within-cluster","anchor":"technical SEO audit automation"},
+    {"from":"cluster-2-post-1","to":"cluster-2-post-2","type":"within-cluster","anchor":"structured data alerts"},{"from":"cluster-2-post-2","to":"cluster-2-post-1","type":"within-cluster","anchor":"Search Console reporting"},
+    {"from":"cluster-3-post-0","to":"cluster-3-post-1","type":"within-cluster","anchor":"AI SEO tool pricing"},{"from":"cluster-3-post-1","to":"cluster-3-post-0","type":"within-cluster","anchor":"best AI SEO tools"},
+    {"from":"cluster-3-post-0","to":"cluster-3-post-2","type":"within-cluster","anchor":"AI agents for SEO"},{"from":"cluster-3-post-2","to":"cluster-3-post-0","type":"within-cluster","anchor":"AI SEO tool stack"},
+    {"from":"cluster-3-post-1","to":"cluster-3-post-2","type":"within-cluster","anchor":"agentic SEO platforms"},{"from":"cluster-3-post-2","to":"cluster-3-post-1","type":"within-cluster","anchor":"AI SEO software cost"},
+    {"from":"cluster-4-post-0","to":"cluster-4-post-1","type":"within-cluster","anchor":"AI search visibility measurement"},{"from":"cluster-4-post-1","to":"cluster-4-post-0","type":"within-cluster","anchor":"generative engine optimization"},
+    {"from":"cluster-4-post-1","to":"cluster-4-post-2","type":"within-cluster","anchor":"verifiable expertise signals"},{"from":"cluster-4-post-2","to":"cluster-4-post-1","type":"within-cluster","anchor":"measure AI search visibility"},
+    {"from":"cluster-4-post-2","to":"cluster-4-post-3","type":"within-cluster","anchor":"AI SEO evidence and results"},{"from":"cluster-4-post-3","to":"cluster-4-post-2","type":"within-cluster","anchor":"E-E-A-T trust signals"},
+    {"from":"cluster-4-post-3","to":"cluster-4-post-0","type":"within-cluster","anchor":"GEO experiments"},{"from":"cluster-4-post-0","to":"cluster-4-post-3","type":"within-cluster","anchor":"AI SEO case studies"}
+  ],
+  "serp_matrix": {
+    "keywords": ["AI SEO automation guide", "AI SEO audit automation", "AI SEO content workflow"],
+    "scores": [[10,0,1],[0,10,0],[1,0,10]],
+    "method": "Exact URL overlap among the first 10 organic WebSearch results collected for each representative query on 2026-07-05. The low overlap supports separate guide, technical-audit, and content-workflow pages."
+  },
+  "adjacent_existing_pages": [
+    "/blog/google-ai-overviews-guide",
+    "/blog/perplexity-ai-seo",
+    "/blog/schema-markup-seo-guide",
+    "/blog/internal-linking-strategy",
+    "/blog/best-serp-analyzer-tools-2026"
+  ],
+  "scorecard": {"coverage":47.1,"plannedPosts":9,"writtenPosts":8,"totalPosts":17,"linkDensity":3.8,"orphanPages":0,"cannibalization":0,"contentGaps":9,"estimatedWordsRemaining":17100},
+  "limitations": [
+    "Monthly keyword volume and difficulty data were unavailable.",
+    "WebSearch was used instead of DataForSEO; overlap is a current search proxy.",
+    "The plan defines content and links but does not create or publish the planned articles."
+  ]
+}

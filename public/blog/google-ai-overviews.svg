@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0C1012"/>
+      <stop offset="100%" style="stop-color:#0F1614"/>
+    </linearGradient>
+    <linearGradient id="aiBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6" stop-opacity="0.15"/>
+      <stop offset="100%" style="stop-color:#22C55E" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bgG)"/>
+  <pattern id="g3" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1A2020" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#g3)" opacity="0.4"/>
+
+  <!-- Central glow -->
+  <ellipse cx="600" cy="280" rx="350" ry="180" fill="url(#aiBlue)"/>
+
+  <!-- Google AI Overview mockup -->
+  <rect x="160" y="140" width="880" height="300" rx="16" fill="#141A17" stroke="#2A3530" stroke-width="1"/>
+
+  <!-- Google AI indicator -->
+  <rect x="160" y="140" width="880" height="52" rx="16" fill="#16201D"/>
+  <rect x="160" y="172" width="880" height="20" fill="#16201D"/>
+
+  <!-- AI sparkle icon -->
+  <polygon points="205,156 208,163 215,166 208,169 205,176 202,169 195,166 202,163" fill="#22C55E" fill-opacity="0.8"/>
+  <text x="230" y="171" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#F5F2EE">AI Overview</text>
+  <text x="960" y="171" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#6B8C7A" text-anchor="end">Powered by Gemini</text>
+
+  <!-- AI Overview content -->
+  <text x="195" y="230" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="700" fill="#F5F2EE">How to appear in Google AI Overviews:</text>
+  <text x="195" y="258" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">1. Write a direct answer in the first paragraph</text>
+  <text x="195" y="278" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">2. Use question-format H2 headings</text>
+  <text x="195" y="298" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">3. Add FAQ schema with matching PAA questions</text>
+  <text x="195" y="318" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">4. Support claims with sourced statistics</text>
+  <text x="195" y="338" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#94A3A0">5. Maintain semantic completeness — answer follow-ups too</text>
+
+  <!-- Citation sources -->
+  <rect x="195" y="360" width="820" height="64" rx="10" fill="#0F1512" stroke="#1E2820" stroke-width="1"/>
+  <text x="220" y="382" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#6B8C7A">Sources</text>
+  <rect x="260" y="370" width="130" height="44" rx="8" fill="#141A17" stroke="#22C55E" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="325" y="392" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#22C55E" text-anchor="middle" font-weight="600">serpstrategists.com</text>
+  <text x="325" y="406" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#6B8C7A" text-anchor="middle">AI Overviews Guide</text>
+  <rect x="405" y="370" width="130" height="44" rx="8" fill="#141A17" stroke="#2A3530" stroke-width="1"/>
+  <text x="470" y="392" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#94A3A0" text-anchor="middle">developers.google.com</text>
+  <text x="470" y="406" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#6B8C7A" text-anchor="middle">Official Docs</text>
+  <rect x="550" y="370" width="130" height="44" rx="8" fill="#141A17" stroke="#2A3530" stroke-width="1"/>
+  <text x="615" y="392" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#94A3A0" text-anchor="middle">search.google.com</text>
+  <text x="615" y="406" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#6B8C7A" text-anchor="middle">Search Console</text>
+
+  <!-- Stats row -->
+  <rect x="160" y="465" width="270" height="80" rx="12" fill="#141A17" stroke="#2A3530" stroke-width="1"/>
+  <text x="295" y="498" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="30" font-weight="800" fill="#22C55E" text-anchor="middle">45%</text>
+  <text x="295" y="522" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#6B8C7A" text-anchor="middle">searches trigger AI Overviews</text>
+
+  <rect x="460" y="465" width="270" height="80" rx="12" fill="#141A17" stroke="#2A3530" stroke-width="1"/>
+  <text x="595" y="498" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="30" font-weight="800" fill="#22C55E" text-anchor="middle">−58%</text>
+  <text x="595" y="522" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#6B8C7A" text-anchor="middle">organic clicks when cited out</text>
+
+  <rect x="760" y="465" width="280" height="80" rx="12" fill="#141A17" stroke="#2A3530" stroke-width="1"/>
+  <text x="900" y="498" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="30" font-weight="800" fill="#22C55E" text-anchor="middle">6.5×</text>
+  <text x="900" y="522" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#6B8C7A" text-anchor="middle">more citations via 3rd-party sources</text>
+
+  <!-- Header -->
+  <text x="600" y="58" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="40" font-weight="800" fill="#F5F2EE" text-anchor="middle">How to Rank in Google AI Overviews</text>
+  <text x="600" y="92" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="17" fill="#6B8C7A" text-anchor="middle">Checklist-format guide · 2026 · serpstrategists.com</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="600" width="1200" height="30" fill="#0A0F0D"/>
+  <text x="600" y="620" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#6B8C7A" text-anchor="middle">serpstrategists.com · Google AI Overviews Guide 2026</text>
+
+  <circle cx="80" cy="100" r="90" fill="#3B82F6" fill-opacity="0.04"/>
+  <circle cx="1120" cy="520" r="80" fill="#22C55E" fill-opacity="0.04"/>
+</svg>

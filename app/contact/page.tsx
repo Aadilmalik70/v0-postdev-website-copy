@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { buildMarketingMetadata } from "@/lib/site-seo";
+import { combineSchemas, getBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMarketingMetadata({
   title: "Contact SERP Strategists | AI SEO Agent Team",
@@ -11,7 +12,13 @@ export const metadata: Metadata = buildMarketingMetadata({
   pathname: "/contact",
 });
 
-const jsonLd = {"@context":"https://schema.org","@type":"ContactPage","name":"Contact SERP Strategists","url":"https://serpstrategists.com/contact","mainEntity":{"@type":"Organization","name":"SERP Strategists","email":"hello@serpstrategists.com"}};
+const jsonLd = combineSchemas(
+  {"@context":"https://schema.org","@type":"ContactPage","name":"Contact SERP Strategists","url":"https://serpstrategists.com/contact","mainEntity":{"@type":"Organization","name":"SERP Strategists","email":"hello@serpstrategists.com"}},
+  getBreadcrumbSchema([
+    { name: "Home", url: "https://serpstrategists.com" },
+    { name: "Contact", url: "https://serpstrategists.com/contact" },
+  ])
+);
 
 export default function ContactPage() {
   return (

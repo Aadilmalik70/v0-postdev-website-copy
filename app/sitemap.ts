@@ -1,5 +1,16 @@
+import fs from "fs"
+import path from "path"
 import { getAllPosts } from "@/lib/blog"
 import type { MetadataRoute } from "next"
+
+function getLastModified(relativePath: string) {
+  const fullPath = path.join(process.cwd(), relativePath)
+  if (!fs.existsSync(fullPath)) {
+    return new Date()
+  }
+
+  return fs.statSync(fullPath).mtime
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts()
@@ -7,88 +18,60 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogUrls = posts.map((post) => ({
     url: `https://serpstrategists.com/blog/${post.slug}`,
     lastModified: new Date(post.date),
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
   }))
 
   return [
     {
       url: "https://serpstrategists.com",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
+      lastModified: getLastModified("app/page.tsx"),
     },
     {
       url: "https://serpstrategists.com/blog",
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
+      lastModified: getLastModified("app/blog/page.tsx"),
     },
     {
       url: "https://serpstrategists.com/about",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
+      lastModified: getLastModified("app/about/page.tsx"),
     },
     {
       url: "https://serpstrategists.com/pricing",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
+      lastModified: getLastModified("app/pricing/page.tsx"),
     },
     {
       url: "https://serpstrategists.com/governance",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
+      lastModified: getLastModified("app/governance/page.tsx"),
     },
     {
       url: "https://serpstrategists.com/integrations",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
+      lastModified: getLastModified("app/integrations/page.tsx"),
     },
     {
       url: "https://serpstrategists.com/demo",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
+      lastModified: getLastModified("app/demo/page.tsx"),
     },
     {
       url: "https://serpstrategists.com/contact",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.5,
+      lastModified: getLastModified("app/contact/page.tsx"),
     },
     {
       url: "https://serpstrategists.com/faq",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
+      lastModified: getLastModified("app/faq/page.tsx"),
     },
     {
       url: "https://serpstrategists.com/privacy",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
+      lastModified: getLastModified("app/privacy/page.tsx"),
     },
     {
       url: "https://serpstrategists.com/terms",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
+      lastModified: getLastModified("app/terms/page.tsx"),
     },
     {
       url: "https://serpstrategists.com/cookies",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
+      lastModified: getLastModified("app/cookies/page.tsx"),
     },
     {
       url: "https://serpstrategists.com/disclaimer",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
+      lastModified: getLastModified("app/disclaimer/page.tsx"),
     },
     ...blogUrls,
   ]
