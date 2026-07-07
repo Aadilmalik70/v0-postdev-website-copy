@@ -1,108 +1,132 @@
-# Google SEO API Report: serpstrategists.com
+# Google Search Console and GA4 Analysis: serpstrategists.com
 
-Analyzed: 2026-07-05 (Asia/Calcutta)  
-Target: https://serpstrategists.com/  
-Credential tier: Tier 2 (PageSpeed, CrUX, Search Console, URL Inspection, Sitemaps, and GA4)
+Analyzed: 2026-07-07 17:51 IST  
+Credential tier: Tier 2 (GSC and GA4 available)  
+GSC period: 2026-06-07 to 2026-07-04  
+GA4 period: 2026-06-09 to 2026-07-06
 
 ## Executive summary
 
-The apex homepage is indexed, crawlable, canonically correct, and served successfully from Vercel. Search visibility expanded sharply in the latest comparable GSC period, but it is mostly low-ranking discovery traffic: 4,576 impressions produced only 2 clicks (0.04% CTR), with an impression-weighted average position of 65.8. The immediate objective is to convert the new visibility into page-one rankings and clicks rather than publish more broad, overlapping content.
+Google is discovering substantially more of the site, but the visibility is not yet translating into traffic. GSC recorded 4,693 impressions and 2 clicks (0.043% CTR) in the latest 28 days. Impressions increased 1,475% against the preceding 28 days, while the weighted query position moved from 33.7 to 67.0 because the new visibility is concentrated deep in the results.
 
-Current infrastructure is materially healthier than the older monitor evidence: `www` now permanently redirects to the apex, and `robots.txt` allows crawling. Historical `www` URLs and a stale `www` sitemap still appear in GSC and should be consolidated operationally.
+The latest trend is negative: impressions fell 43.7% week over week, from 1,498 to 843. The decline is not a CTR problem alone; most important pages rank between positions 41 and 76 and therefore receive almost no click opportunity.
 
-## Google Search Console
+GA4 recorded 116 sessions across all channels, but 20 sessions were on localhost, 127.0.0.1, or Vercel preview hosts. Organic Search contributed 29 sessions and 41 pageviews, with an 86.2% bounce rate and no configured key events. Conversion performance cannot be assessed until production-only filtering and meaningful key events are configured.
 
-Data freshness: Search Analytics through 2026-07-02 (normal 2-3 day lag).
+## Search Console performance
 
-| Metric | 2026-06-07 to 2026-07-02 | 2026-05-10 to 2026-06-06 | Change |
+| Metric | Latest 28 days | Previous 28 days | Change |
 |---|---:|---:|---:|
 | Clicks | 2 | 0 | +2 |
-| Impressions | 4,576 | 298 | +4,278 (+1,436%) |
-| CTR | 0.04% | 0.00% | +0.04 pp |
-| Weighted average position | 65.8 | 33.7 | 32.1 positions worse |
+| Impressions | 4,693 | 298 | +4,395 (+1,474.8%) |
+| CTR | 0.043% | 0.000% | +0.043 pp |
+| Weighted query position | 67.0 | 33.7 | 33.3 positions worse |
 
-The impression increase is real, but it comes from many newly discovered queries ranking deep in the results. Query-level rows omit anonymized queries, so their aggregate (4,352 impressions and 0 clicks) is lower than the date-level total above.
+The position decline reflects broader low-ranking discovery, not a simple loss of existing rankings. Query-level rows cover 4,463 of the 4,693 impressions; the remaining impressions are anonymized by GSC.
+
+### Recent trajectory
+
+| Window | Impressions | Clicks | Weighted position |
+|---|---:|---:|---:|
+| 2026-06-14 to 2026-06-20 | 1,754 | 0 | 67.8 |
+| 2026-06-21 to 2026-06-27 | 1,498 | 0 | 70.0 |
+| 2026-06-28 to 2026-07-04 | 843 | 0 | 64.2 |
+
+The latest week ranked slightly better but appeared in search 43.7% less often. This indicates shrinking query coverage or reprocessing, not a ranking improvement large enough to drive traffic.
 
 ### Highest-impression queries
 
 | Query | Impressions | Position | Clicks |
 |---|---:|---:|---:|
-| serp analyzer | 277 | 68.7 | 0 |
+| serp analyzer | 290 | 68.1 | 0 |
 | serp competitors | 235 | 79.2 | 0 |
 | schema seo | 210 | 78.0 | 0 |
-| tools voor serp | 149 | 65.0 | 0 |
+| tools voor serp | 161 | 65.3 | 0 |
 | serps rankings seo software | 148 | 68.5 | 0 |
-| geo optimization | 141 | 55.0 | 0 |
+| geo optimization | 143 | 54.8 | 0 |
 | serp competitors ranking | 120 | 83.7 | 0 |
 | serp analysis tool | 117 | 77.1 | 0 |
 | schema markup seo | 108 | 77.1 | 0 |
-| what is geo | 95 | 59.6 | 0 |
+| generative engine optimization | 81 | 34.8 | 0 |
+
+There are no meaningful query-level quick wins yet. The position 4-15 rows have very low volume and are dominated by branded or long search-operator queries. Fifteen automated-looking query rows account for only 61 impressions (1.4%), so they are noise but do not explain the overall visibility increase.
 
 ### Highest-impression pages
 
 | Page | Impressions | Position | Clicks |
 |---|---:|---:|---:|
-| `/blog/best-serp-analyzer-tools-2026` | 2,139 | 74.0 | 0 |
+| `/blog/best-serp-analyzer-tools-2026` | 2,193 | 73.8 | 0 |
 | `/blog/schema-markup-seo-guide` | 849 | 76.4 | 0 |
 | `/blog/what-is-geo-optimization` | 442 | 54.4 | 0 |
-| `/blog/generative-engine-optimization-geo-guide` | 328 | 41.3 | 0 |
-| `/blog/top-seo-analysis-tools-2025-best-seo-ai-tool` | 309 | 41.9 | 0 |
+| `/blog/top-seo-analysis-tools-2025-best-seo-ai-tool` | 350 | 44.1 | 0 |
+| `/blog/generative-engine-optimization-geo-guide` | 344 | 41.4 | 0 |
 
-The only page-level clicks in the period were attributed to the historical `www` version of the GEO guide (2 clicks from 214 impressions). The current redirect and canonical are correct, so this is a lagging consolidation signal rather than proof of a current redirect defect.
+These five apex pages generate 86.1% of page-level impressions. They are the correct optimization targets; publishing more overlapping SERP, schema, or GEO articles would dilute relevance.
 
-## Indexation and sitemap status
+Historical `www` URLs still account for 490 impressions and both GSC clicks, while apex URLs account for 4,363 impressions and no clicks. The redirect/canonical migration is progressing, but GSC has not fully consolidated historical `www` signals.
 
-- Apex URL Inspection: PASS; "Submitted and indexed"; robots allowed; fetch successful; crawled as mobile on 2026-07-03; Google and user canonical both `https://serpstrategists.com/`.
-- `www` URL Inspection: "Page with redirect"; Google canonical is the apex and matches the declared canonical.
-- Live HTTP: apex returns 200; `www` returns 308 to the apex; sitemap returns 200 XML.
-- Live `robots.txt`: allows `/`, disallows `/admin/` and `/blog?*`, and references the apex sitemap.
-- GSC lists the apex sitemap submitted on 2026-07-05 with 36 submitted URLs, 0 warnings, and 0 errors.
-- GSC also retains an older `www` sitemap with 28 submitted URLs.
-- Both sitemap records report 0 indexed URLs. This is inconsistent with URL Inspection and live GSC impressions, so treat it as sitemap-report lag or a reporting inconsistency, not evidence that the site has zero indexed pages.
+### Device and geography
 
-## GA4 organic traffic
+- Desktop: 3,720 impressions, 2 clicks, position 64.7.
+- Mobile: 909 impressions, 0 clicks, position 70.0.
+- United States: 2,966 impressions (63.2% of total) and 1 click.
+- United Kingdom: 496 impressions and 1 click.
+- Netherlands: 254 impressions and no clicks, partly consistent with Dutch-language query discovery.
 
-Data freshness: 2026-06-07 through 2026-07-04.
+## GA4 analytics
 
-- 24 organic sessions, 20 users, and 26 pageviews.
-- Homepage: 10 sessions, 14 pageviews, 90% bounce rate, 10% engagement rate.
-- GEO guide: 3 sessions, 3 pageviews, 100% bounce rate.
-- Four sessions used landing page `(not set)`, indicating attribution or tagging cleanup is needed.
-- The sample is small; bounce and engagement percentages should not drive major decisions yet.
+### All traffic
 
-## PageSpeed and Core Web Vitals
+| Metric | Value |
+|---|---:|
+| Sessions | 116 |
+| Users | 84 |
+| Pageviews | 235 |
+| Engagement rate | 27.6% |
+| Bounce rate | 72.4% |
+| Average session duration | 155 seconds |
+| Key events | 0 |
 
-CrUX and CrUX History have insufficient eligible Chrome traffic, so no field LCP, INP, or CLS conclusion is available. The values below are Lighthouse lab measurements from 2026-07-05 and can vary between runs.
+Channel mix:
 
-| Strategy | Performance | Accessibility | Best Practices | SEO | FCP | LCP | TBT | CLS |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| Mobile | 94 | 94 | 100 | 100 | 0.91s | 2.71s | 160ms | 0 |
-| Desktop | 75 | 94 | 100 | 100 | 0.32s | 0.60s | 616ms | 0 |
+| Channel | Sessions | Users | Pageviews | Engagement rate |
+|---|---:|---:|---:|---:|
+| Direct | 75 | 60 | 162 | 29.3% |
+| Organic Search | 29 | 22 | 41 | 13.8% |
+| Referral | 9 | 2 | 32 | 66.7% |
+| Unassigned | 3 | 3 | 0 | 0.0% |
 
-Repeat lab runs showed material TBT variance (mobile 160-370ms; desktop 160-616ms), so use several runs or CI medians before accepting a performance regression. Stable actionable audits were:
+Traffic quality is not clean enough for business decisions:
 
-- roughly 99 KiB of unused JavaScript;
-- render-blocking requests (about 150ms estimated mobile savings);
-- forced reflow and network dependency-chain findings;
-- about 14 KiB of legacy JavaScript;
-- insufficient color contrast;
-- non-sequential heading order.
+- 13 sessions came from `localhost`, 2 from `127.0.0.1`, and 5 from Vercel preview hosts.
+- `vercel.com / referral` contributed 9 sessions from only 2 users, consistent with internal or preview activity.
+- `search.google.com / referral` contributed 7 sessions and should not be treated as organic acquisition.
+- No event is marked as a key event. GA4 only records basic events such as page views, scrolls, and user engagement.
 
-INP is not available from Lighthouse lab data, and CrUX lacks enough traffic to report it.
+### Organic traffic
+
+- 29 sessions, 22 unique users, and 41 pageviews.
+- 26 sessions landed on the apex hostname and 3 on `www`.
+- All organic sessions were classified as desktop, which is unusual and warrants validation against consent/tag behavior.
+- Organic bounce rate was 86.2%; engagement rate was 13.8%.
+- Homepage: 11 sessions and 27 pageviews, with 18.2% engagement.
+- GEO guide: 3 sessions, 3 pageviews, and 0% engagement.
+- `(not set)`: 6 sessions and 0 pageviews, indicating attribution or session instrumentation problems.
+
+GA4 reports 22 `google / organic` sessions, while GSC reports only 2 clicks across the closely aligned period. Sessions can exceed clicks, and the date ranges differ by two days, but an 11x gap is too large to accept without validating tagging, attribution, consent mode, and internal traffic. Do not use GA4 organic sessions as the authoritative search-performance KPI until reconciled with GSC.
 
 ## Prioritized actions
 
-1. Consolidate GSC configuration: keep the apex sitemap and remove the obsolete `www` sitemap after confirming redirects remain stable.
-2. Recheck the apex sitemap in 7-14 days. Escalate only if its indexed count remains zero while URL Inspection continues to pass.
-3. Refresh the three high-impression pages around one primary intent each: SERP analyzer tools, schema SEO, and GEO optimization. Improve title/snippet fit, internal links, and unique evidence; avoid creating overlapping new pages.
-4. Investigate the 99 KiB unused-JavaScript payload and forced reflow. Measure at least three mobile and desktop runs after each change.
-5. Fix homepage color contrast and heading order; these are deterministic accessibility failures.
-6. Audit GA4 landing-page attribution causing `(not set)` and verify key conversion events before optimizing against engagement metrics.
+1. Configure GA4 production data hygiene: exclude internal traffic, create a production-hostname comparison/filter, and keep localhost and preview deployments out of reporting.
+2. Mark business outcomes as key events, such as qualified contact submissions, demo requests, pricing CTA completions, or product sign-ups. No conversion analysis is possible today.
+3. Reconcile the GA4/GSC mismatch by validating the GA tag once per page, checking referral exclusions and consent behavior, and comparing `google / organic` sessions by date and landing page with GSC clicks.
+4. Consolidate historical `www` signals. Keep the apex redirect and canonicals stable, retain only the apex sitemap in GSC, and monitor the `www` impression share weekly.
+5. Refresh the five pages responsible for 86.1% of impressions. Tighten each page around one intent, improve titles/snippets, add original evidence, and strengthen internal links from relevant authority pages.
+6. Track the latest-seven-day GSC decline. Escalate if impressions continue falling after another complete GSC week; Search Analytics has a normal 2-3 day lag.
 
-## Tool limitations
+## Limitations
 
-- Search Analytics is delayed through 2026-07-02.
-- CrUX has insufficient traffic for field data.
-- The bundled PageSpeed parser raised `KeyError: audit_details`; PageSpeed was queried directly through the same Google API instead.
-- Lighthouse is lab data and varied between repeated runs.
-- No Indexing API submission or production mutation was performed.
+- GSC data ends on 2026-07-04 because Search Analytics is delayed.
+- GA4 has no recorded data before 2026-06-09, so a clean preceding-period comparison is unavailable.
+- Low traffic makes landing-page engagement rates volatile.
+- No production mutation, indexing request, or analytics configuration change was made.

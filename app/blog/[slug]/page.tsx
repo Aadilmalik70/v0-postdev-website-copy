@@ -9,6 +9,45 @@ import { Footer } from "@/components/footer"
 import { buildMarketingMetadata, buildCanonicalUrl } from "@/lib/site-seo"
 import { getArticleSchema, getBreadcrumbSchema, combineSchemas } from "@/lib/schema"
 import { getFAQSchemaForPost } from "@/lib/faq-schemas"
+import { BlogCta } from "@/components/blog-cta"
+
+function splitContentAtFirstSection(content: string): { firstPart: string; secondPart: string | null } {
+  const normalized = content.replace(/\r\n/g, "\n")
+  const headings = [...normalized.matchAll(/\n##\s+/g)]
+  
+  if (headings.length <= 1) {
+    return { firstPart: content, secondPart: null }
+  }
+  
+  const secondHeadingIndex = headings[1].index
+  if (secondHeadingIndex === undefined) {
+    return { firstPart: content, secondPart: null }
+  }
+  
+  const firstPart = content.slice(0, secondHeadingIndex)
+  const secondPart = content.slice(secondHeadingIndex)
+  
+  return { firstPart, secondPart }
+}
+
+const proseClasses = 
+  "prose prose-neutral max-w-none prose-lg " +
+  "prose-headings:font-display prose-headings:text-ink prose-headings:tracking-tight prose-headings:leading-tight " +
+  "prose-h2:scroll-mt-28 prose-h2:border-t prose-h2:border-line prose-h2:pt-10 prose-h2:text-3xl " +
+  "prose-h3:scroll-mt-28 prose-h3:text-2xl prose-h4:text-xl " +
+  "prose-p:text-neutral-700 prose-p:leading-8 " +
+  "prose-li:text-neutral-700 prose-li:marker:text-signal " +
+  "prose-a:text-signal prose-a:font-medium prose-a:underline prose-a:decoration-signal/30 prose-a:underline-offset-4 hover:prose-a:decoration-signal " +
+  "prose-strong:text-ink " +
+  "prose-img:mx-auto prose-img:rounded-2xl prose-img:border prose-img:border-line prose-img:shadow-[0_18px_50px_-30px_rgba(13,17,16,0.32)] " +
+  "prose-table:my-8 prose-table:block prose-table:w-full prose-table:overflow-x-auto prose-table:whitespace-normal " +
+  "prose-th:border prose-th:border-line prose-th:bg-surface prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:text-sm prose-th:text-ink " +
+  "prose-td:border prose-td:border-line prose-td:px-4 prose-td:py-3 prose-td:align-top prose-td:text-sm " +
+  "prose-code:text-ink prose-code:bg-surface prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded " +
+  "prose-pre:bg-graphite-950 prose-pre:text-warmwhite prose-pre:border prose-pre:border-graphite-line prose-pre:shadow-[0_18px_50px_-30px_rgba(13,17,16,0.55)] " +
+  "[&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:rounded-none [&_pre_code]:text-neutral-300 " +
+  "prose-blockquote:not-italic prose-blockquote:border-l-signal prose-blockquote:bg-surface prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-2xl prose-blockquote:text-neutral-700 " +
+  "prose-hr:border-line"
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -86,6 +125,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound()
 
+  const { firstPart, secondPart } = splitContentAtFirstSection(post.content)
   const relatedPosts = getRelatedPosts(slug, post.tags, 3)
   const tableOfContents = getTableOfContents(post.content)
   const postUrl = buildCanonicalUrl(`/blog/${slug}`)
@@ -231,9 +271,20 @@ export default async function BlogPostPage({ params }: Props) {
         ) : null}
 
         <section className="rounded-[28px] border border-line bg-card px-5 py-8 md:px-10 md:py-12 shadow-[0_24px_80px_-48px_rgba(13,17,16,0.28)]">
-          <div className="prose prose-neutral max-w-none prose-lg prose-headings:font-display prose-headings:text-ink prose-headings:tracking-tight prose-headings:leading-tight prose-h2:scroll-mt-28 prose-h2:border-t prose-h2:border-line prose-h2:pt-10 prose-h2:text-3xl prose-h3:scroll-mt-28 prose-h3:text-2xl prose-h4:text-xl prose-p:text-neutral-700 prose-p:leading-8 prose-li:text-neutral-700 prose-li:marker:text-signal prose-a:text-signal prose-a:font-medium prose-a:underline prose-a:decoration-signal/30 prose-a:underline-offset-4 hover:prose-a:decoration-signal prose-strong:text-ink prose-img:mx-auto prose-img:rounded-2xl prose-img:border prose-img:border-line prose-img:shadow-[0_18px_50px_-30px_rgba(13,17,16,0.32)] prose-table:my-8 prose-table:block prose-table:w-full prose-table:overflow-x-auto prose-table:whitespace-normal prose-th:border prose-th:border-line prose-th:bg-surface prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:text-sm prose-th:text-ink prose-td:border prose-td:border-line prose-td:px-4 prose-td:py-3 prose-td:align-top prose-td:text-sm prose-code:text-ink prose-code:bg-surface prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-graphite-950 prose-pre:text-warmwhite prose-pre:border prose-pre:border-graphite-line prose-pre:shadow-[0_18px_50px_-30px_rgba(13,17,16,0.55)] prose-blockquote:not-italic prose-blockquote:border-l-signal prose-blockquote:bg-surface prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-2xl prose-blockquote:text-neutral-700 prose-hr:border-line">
-            <MDXContent source={post.content} />
+          <div className={proseClasses}>
+            <MDXContent source={firstPart} />
           </div>
+
+          <BlogCta tags={post.tags} slug={post.slug} placement="middle" />
+
+          {secondPart ? (
+            <>
+              <div className={`mt-8 ${proseClasses}`}>
+                <MDXContent source={secondPart} />
+              </div>
+              <BlogCta tags={post.tags} slug={post.slug} placement="end" />
+            </>
+          ) : null}
         </section>
 
         {relatedPosts.length > 0 && (

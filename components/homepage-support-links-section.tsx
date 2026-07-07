@@ -24,10 +24,10 @@ const supportLinks = [
     body: "Review approvals, logs, rollback, and data boundaries that keep the operator controlled.",
   },
   {
-    href: "/blog/serp-competitor-analysis-guide",
+    href: "/blog/top-seo-analysis-tools-2025-best-seo-ai-tool",
     icon: BookOpenText,
-    title: "SERP analysis guide",
-    body: "Learn the method behind finding the competitors that matter and the gaps worth fixing.",
+    title: "AI SEO tools comparison",
+    body: "Compare Ahrefs, Semrush, Surfer SEO, and autonomous agents to choose the best SEO stack for 2026.",
   },
 ]
 

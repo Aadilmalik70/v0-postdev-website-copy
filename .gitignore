@@ -39,3 +39,6 @@ htmlcov/
 *.log
 *.pdf
 .seo-cache/
+
+# Saved data
+data/

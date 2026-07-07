@@ -8,9 +8,22 @@ import { submitEarlyAccess } from "@/app/actions"
 interface EarlyAccessModalProps {
   isOpen: boolean
   onClose: () => void
+  title?: string
+  description?: string
+  submitText?: string
+  leadSource?: string
+  onSuccess?: () => void
 }
 
-export function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalProps) {
+export function EarlyAccessModal({
+  isOpen,
+  onClose,
+  title = "Deploy your operator",
+  description = "Your free growth audit runs on signup — every opportunity ranked by impact, with the first actions queued for your approval.",
+  submitText = "Get Free Audit →",
+  leadSource = "early_access_modal",
+  onSuccess,
+}: EarlyAccessModalProps) {
   const [email, setEmail] = useState("")
   const [website, setWebsite] = useState("")
   const [submitted, setSubmitted] = useState(false)
@@ -22,8 +35,18 @@ export function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalProps) {
     e.preventDefault()
     setLoading(true)
     try {
-      await submitEarlyAccess({ email, website })
-      setSubmitted(true)
+      const res = await submitEarlyAccess({ email, website })
+      if (res && res.success) {
+        setSubmitted(true)
+        if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+          ;(window as any).gtag("event", "generate_lead", {
+            lead_source: leadSource,
+          })
+        }
+        if (onSuccess) {
+          onSuccess()
+        }
+      }
     } catch {
       // silently fail for now
     } finally {
@@ -55,9 +78,9 @@ export function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalProps) {
           </div>
         ) : (
           <>
-            <h3 className="font-display text-2xl md:text-3xl font-semibold text-ink mb-2">Deploy your operator</h3>
+            <h3 className="font-display text-2xl md:text-3xl font-semibold text-ink mb-2">{title}</h3>
             <p className="text-neutral-600 text-sm mb-8">
-              Your free growth audit runs on signup — every opportunity ranked by impact, with the first actions queued for your approval.
+              {description}
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -95,7 +118,7 @@ export function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalProps) {
                 disabled={loading}
                 className="w-full btn-ink justify-center w-full h-12 text-sm mt-4"
               >
-                {loading ? "Submitting..." : "Get Free Audit →"}
+                {loading ? "Submitting..." : submitText}
               </Button>
             </form>
 
