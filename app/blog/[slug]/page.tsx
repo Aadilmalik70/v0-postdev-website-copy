@@ -11,6 +11,27 @@ import { getArticleSchema, getBreadcrumbSchema, combineSchemas } from "@/lib/sch
 import { getFAQSchemaForPost } from "@/lib/faq-schemas"
 import { BlogCta } from "@/components/blog-cta"
 
+const AUTHOR_PROFILES: Record<string, { name: string; role: string; avatarUrl: string; bio: string }> = {
+  "Aadil Khan": {
+    name: "Aadil Khan",
+    role: "Founder & Organic growth operator",
+    avatarUrl: "/blog/authors/aadil-khan.png",
+    bio: "Aadil Khan is the founder of SERP Strategists. As an organic growth operator, he works with B2B SaaS and startup teams to scale search visibility using semantic engineering and data-driven GEO. Follow his experiments on LinkedIn or read our about page to see how we build."
+  },
+  "SERP Strategists": {
+    name: "Aadil Khan",
+    role: "Founder & Organic growth operator",
+    avatarUrl: "/blog/authors/aadil-khan.png",
+    bio: "Aadil Khan is the founder of SERP Strategists. As an organic growth operator, he works with B2B SaaS and startup teams to scale search visibility using semantic engineering and data-driven GEO. Follow his experiments on LinkedIn or read our about page to see how we build."
+  },
+  "SERP Strategists Editorial Team": {
+    name: "Aadil Khan",
+    role: "Founder & Organic growth operator",
+    avatarUrl: "/blog/authors/aadil-khan.png",
+    bio: "Aadil Khan is the founder of SERP Strategists. As an organic growth operator, he works with B2B SaaS and startup teams to scale search visibility using semantic engineering and data-driven GEO. Follow his experiments on LinkedIn or read our about page to see how we build."
+  }
+}
+
 function splitContentAtFirstSection(content: string): { firstPart: string; secondPart: string | null } {
   const normalized = content.replace(/\r\n/g, "\n")
   const headings = [...normalized.matchAll(/\n##\s+/g)]
@@ -137,6 +158,13 @@ export default async function BlogPostPage({ params }: Props) {
     .slice(0, 2)
     .toUpperCase()
 
+  const authorProfile = AUTHOR_PROFILES[post.author] || {
+    name: post.author,
+    role: "Editorial Team",
+    avatarUrl: null,
+    bio: `Editorial coverage from the ${post.author} team.`
+  }
+
   const articleSchema = getArticleSchema({
     headline: post.title,
     description: post.description,
@@ -219,18 +247,29 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </div>
 
-          <div className="mt-5 flex items-start gap-4 rounded-2xl border border-line bg-surface px-4 py-4">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-mono font-semibold tracking-[0.14em] text-warmwhite">
-              {authorInitials || "SS"}
-            </div>
+          <div className="mt-5 flex items-center gap-4 rounded-2xl border border-line bg-surface px-5 py-4">
+            {authorProfile.avatarUrl ? (
+              <Image
+                src={authorProfile.avatarUrl}
+                alt={authorProfile.name}
+                width={48}
+                height={48}
+                className="h-12 w-12 rounded-full border border-line shrink-0 object-cover"
+              />
+            ) : (
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-mono font-semibold tracking-[0.14em] text-warmwhite">
+                {authorInitials || "SS"}
+              </div>
+            )}
             <div className="min-w-0">
-              <p className="text-sm font-medium text-ink">Written by {post.author}</p>
-              <p className="mt-1 text-sm leading-6 text-neutral-600">
-                Editorial coverage from the SERP Strategists team. Read the{" "}
-                <Link href="/about" className="text-signal underline underline-offset-4">
-                  about page
-                </Link>{" "}
-                for more on the product and the people behind it.
+              <div className="flex items-baseline gap-2">
+                <p className="text-sm font-bold text-ink">Written by {authorProfile.name}</p>
+                <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">
+                  &bull; {authorProfile.role}
+                </span>
+              </div>
+              <p className="mt-1 text-xs sm:text-sm leading-relaxed text-neutral-600">
+                {authorProfile.bio}
               </p>
             </div>
           </div>

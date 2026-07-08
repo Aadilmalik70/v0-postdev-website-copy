@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: [
           "/admin/",
-          "/blog?q=*",
+          "/blog?",
         ]
       },
       { userAgent: "GPTBot", allow: "/" },
@@ -19,6 +19,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Google-Extended", allow: "/" },
       { userAgent: "Bingbot", allow: "/" },
     ],
+    host: "https://serpstrategists.com",
     sitemap: "https://serpstrategists.com/sitemap.xml",
   }
 }
