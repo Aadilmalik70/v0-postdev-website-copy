@@ -1,0 +1,12 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">SERP Strategists logo mark</title>
+  <desc id="desc">Minimal operator-loop logo mark for SERP Strategists.</desc>
+  <rect width="1024" height="1024" rx="224" fill="#050505"/>
+  <path d="M300 318C354 244 435 204 530 204C669 204 782 317 782 456C782 514 762 567 729 610" stroke="#FFFFFF" stroke-width="62" stroke-linecap="round"/>
+  <path d="M724 370L782 456L868 398" stroke="#FFFFFF" stroke-width="62" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M724 706C670 780 589 820 494 820C355 820 242 707 242 568C242 510 262 457 295 414" stroke="#FFFFFF" stroke-width="62" stroke-linecap="round"/>
+  <path d="M300 654L242 568L156 626" stroke="#FFFFFF" stroke-width="62" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M382 430H648" stroke="#FFFFFF" stroke-width="58" stroke-linecap="round"/>
+  <path d="M382 594H648" stroke="#FFFFFF" stroke-width="58" stroke-linecap="round"/>
+  <circle cx="512" cy="512" r="44" fill="#FFFFFF"/>
+</svg>
