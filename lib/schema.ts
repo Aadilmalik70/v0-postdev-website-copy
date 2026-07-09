@@ -16,6 +16,8 @@ export interface HowToStep {
   url?: string
 }
 
+const LOGO_MARK_URL = `${SITE_URL}/serp-strategists-logo-mark.svg`
+
 /**
  * Organization Schema - Use on homepage and as publisher reference
  */
@@ -28,9 +30,9 @@ export function getOrganizationSchema() {
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/logo.png`,
-      width: 512,
-      height: 512,
+      url: LOGO_MARK_URL,
+      width: 1024,
+      height: 1024,
     },
     description:
       "SERP Strategists is the AI Growth Operator that observes your search performance, executes approved SEO and GEO actions, and improves visibility across Google and AI search engines.",
@@ -116,7 +118,7 @@ export function getArticleSchema({
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/logo.png`,
+        url: LOGO_MARK_URL,
       },
     },
     image: image
@@ -175,102 +177,5 @@ export function getHowToSchema({
       text: step.text,
       url: step.url,
     })),
-  }
-}
-
-/**
- * DefinedTerm Schema - Use for glossary/definition pages
- */
-export function getDefinedTermSchema({
-  term,
-  description,
-  url,
-}: {
-  term: string
-  description: string
-  url: string
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "DefinedTerm",
-    "@id": url,
-    name: term,
-    description,
-    inDefinedTermSet: `${SITE_URL}/glossary`,
-  }
-}
-
-/**
- * TechArticle Schema - Use for technical guides
- */
-export function getTechArticleSchema({
-  headline,
-  description,
-  url,
-  datePublished,
-  dateModified,
-  dependencies,
-  proficiencyLevel,
-}: {
-  headline: string
-  description: string
-  url: string
-  datePublished: string
-  dateModified?: string
-  dependencies?: string
-  proficiencyLevel?: string
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "TechArticle",
-    "@id": `${url}#techarticle`,
-    headline,
-    description,
-    url,
-    datePublished,
-    dateModified: dateModified || datePublished,
-    author: {
-      "@type": "Organization",
-      name: SITE_NAME,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/logo.png`,
-      },
-    },
-    dependencies,
-    proficiencyLevel,
-  }
-}
-
-/**
- * BreadcrumbList Schema - Use for navigation breadcrumbs
- */
-export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: item.url,
-    })),
-  }
-}
-
-/**
- * Helper to combine multiple schemas into one script
- */
-export function combineSchemas(...schemas: object[]) {
-  return {
-    "@context": "https://schema.org",
-    "@graph": schemas.map((schema) => {
-      const { "@context": _, ...rest } = schema as any
-      return rest
-    }),
   }
 }
