@@ -22,6 +22,9 @@ export const metadata: Metadata = {
     "AI visibility",
     "AI citation tracking",
   ],
+  icons: {
+    icon: [{ url: "/serp-strategists-logo-mark.svg", type: "image/svg+xml" }],
+  },
   alternates: {
     canonical: SITE_URL,
   },
