@@ -16,6 +16,8 @@ export interface HowToStep {
   url?: string
 }
 
+const LOGO_MARK_URL = `${SITE_URL}/serp-strategists-logo-mark.svg`
+
 /**
  * Organization Schema - Use on homepage and as publisher reference
  */
@@ -28,9 +30,9 @@ export function getOrganizationSchema() {
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/logo.png`,
-      width: 512,
-      height: 512,
+      url: LOGO_MARK_URL,
+      width: 1024,
+      height: 1024,
     },
     description:
       "SERP Strategists is the AI Growth Operator that observes your search performance, executes approved SEO and GEO actions, and improves visibility across Google and AI search engines.",
@@ -116,7 +118,7 @@ export function getArticleSchema({
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/logo.png`,
+        url: LOGO_MARK_URL,
       },
     },
     image: image
@@ -238,7 +240,7 @@ export function getTechArticleSchema({
       name: SITE_NAME,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/logo.png`,
+        url: LOGO_MARK_URL,
       },
     },
     dependencies,

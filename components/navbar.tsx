@@ -24,13 +24,14 @@ export function Navbar() {
     <>
       <FloatingNavbar>
         <div className="flex items-center justify-between w-full gap-4">
-          {/* Signal Dot wordmark */}
-          <Link href="/" className="flex items-baseline gap-2 shrink-0">
+          <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="SERP Strategists home">
+            <img
+              src="/serp-strategists-logo-mark.svg"
+              alt=""
+              aria-hidden="true"
+              className="h-7 w-7 rounded-lg"
+            />
             <span className="font-display text-[15px] font-semibold text-ink">SERP Strategists</span>
-            <span className="relative flex h-1.5 w-1.5 -translate-y-px">
-              <span className="status-pulse absolute inline-flex h-full w-full rounded-full bg-signal-bright" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-signal-bright" />
-            </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-7">
