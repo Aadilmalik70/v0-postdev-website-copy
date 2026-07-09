@@ -2,7 +2,7 @@
 title: "Keyword Cannibalization: The Hidden Reason Your Pages Won't Rank"
 description: "If you have multiple pages targeting the same keyword, they're fighting each other. Here's how to find keyword cannibalization issues and fix them without losing traffic."
 date: "2026-05-22"
-dateModified: "2026-07-05"
+dateModified: "2026-07-09"
 author: "SERP Strategists"
 tags: ["Keyword Strategy", "SEO Issues", "Rankings"]
 ---
@@ -76,6 +76,33 @@ When you need to consolidate:
 5. **Update internal links** — Find all internal links that pointed to the old URLs and update them.
 6. **Wait** — Give Google a few weeks to process the changes. Rankings should improve.
 
+## The Search Console proof test
+
+Before merging pages, prove the overlap with data.
+
+Export the query, page, clicks, impressions, CTR, and position data. Then look for:
+
+| Pattern | What it means | Action |
+|---|---|---|
+| Same query, two URLs, both weak | Google cannot identify the best answer | Merge or strongly differentiate |
+| Same query, one URL strong and one weak | The weaker page is leaking relevance | Add canonical internal links to the stronger page |
+| Different queries, similar titles | The pages may serve different intent but look duplicated | Rewrite titles and intros |
+| URL keeps changing for one query | Google is testing alternatives | Choose a canonical page and reinforce links |
+
+This avoids destructive cleanup. You only merge when the query data shows overlap and neither page is winning.
+
+## Merge map template
+
+Use a simple merge map before touching URLs:
+
+| Keep URL | Absorb from | Redirect? | Internal link updates |
+|---|---|---|---|
+| Strongest page by links, clicks, or intent fit | Weaker overlapping article | Yes, if the old URL has no separate intent | Replace old anchors with the keep URL |
+| Pillar page | Thin definition or duplicate guide | Sometimes | Link related posts back to the pillar |
+| Commercial comparison | Informational post with buyer intent | Usually no | Differentiate intent and link both ways |
+
+The important part is preserving any unique information gain from the old page before redirecting it.
+
 ## Prevention: how to avoid cannibalization in the first place
 
 **Maintain a keyword map.** Before writing any new content, check what you've already published on that topic. A simple spreadsheet works:
@@ -110,6 +137,8 @@ Same content (mostly). Just consolidated into one powerful page instead of 8 wea
 Not every instance of multiple pages for similar keywords is cannibalization. If the pages serve genuinely different intents and both rank well — leave them alone. Don't fix what isn't broken.
 
 The key signal: if your rankings for a keyword are stagnant or declining despite good content, check for cannibalization first. It's one of the most fixable SEO problems there is.
+
+Related guides: [Internal Linking: The Most Underrated SEO Tactic](/blog/internal-linking-strategy), [Why Your Content Isn't Ranking in 2026](/blog/why-content-not-ranking), and [How to Do SEO Competitive Benchmarking in 2026](/blog/how-to-do-seo-competitive-benchmarking-2026).
 
 ---
 
