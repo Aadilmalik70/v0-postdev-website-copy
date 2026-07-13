@@ -2,6 +2,7 @@ import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 import readingTime from "reading-time"
+import { getBlogOverride } from "@/lib/blog-overrides"
 
 const BLOG_DIR = path.join(process.cwd(), "content/blog")
 
@@ -37,19 +38,23 @@ export function getPostBySlug(slug: string): BlogPost | null {
 
   const fileContent = fs.readFileSync(filePath, "utf-8")
   const { data, content } = matter(fileContent)
-  const stats = readingTime(content)
+  const override = getBlogOverride(slug)
+  const resolvedContent = [override?.contentPrefix, content, override?.contentSuffix]
+    .filter((part): part is string => Boolean(part?.trim()))
+    .join("\n\n")
+  const stats = readingTime(resolvedContent)
   const fileModified = fs.statSync(filePath).mtime.toISOString()
 
   return {
     slug,
-    title: data.title || slug,
-    description: data.description || "",
+    title: override?.title || data.title || slug,
+    description: override?.description || data.description || "",
     date: data.date || new Date().toISOString(),
-    dateModified: data.dateModified || fileModified,
+    dateModified: override?.dateModified || data.dateModified || fileModified,
     author: data.author || "SERP Strategists",
     tags: data.tags || [],
     readingTime: stats.text,
-    content,
+    content: resolvedContent,
     image: data.image || undefined,
   }
 }
