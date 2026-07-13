@@ -8,6 +8,19 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Consolidate every www URL at the framework edge before rendering.
+      // The proxy keeps a 301 fallback for hosts where redirect rules are bypassed.
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.serpstrategists.com',
+          },
+        ],
+        destination: 'https://serpstrategists.com/:path*',
+        permanent: true,
+      },
       // 404 pages — redirect to relevant content
       {
         source: '/blog/top-content-marketing-tools-seo-2025-guide',
