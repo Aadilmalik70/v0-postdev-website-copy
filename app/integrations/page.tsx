@@ -6,9 +6,9 @@ import { buildMarketingMetadata } from "@/lib/site-seo"
 import { combineSchemas, getBreadcrumbSchema } from "@/lib/schema"
 
 export const metadata: Metadata = buildMarketingMetadata({
-  title: "Integrations and Developer Docs | SERP Strategists",
+  title: "AI SEO Integrations: CMS, GSC & GitHub",
   description:
-    "See how SERP Strategists fits into your CMS, repository, analytics, and review workflow without turning the site into a black box.",
+    "Connect an AI SEO operator to Google Search Console, analytics, GitHub, CMS platforms, crawl data, approvals, validation, and rollback workflows.",
   pathname: "/integrations",
 })
 
