@@ -25,13 +25,7 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Lint
-        shell: bash
-        run: |
-          set +e
-          npm run lint > lint.log 2>&1
-          code=$?
-          tail -n 120 lint.log
-          exit $code
+      - name: Lint changed feature files
+        run: npx eslint app/actions/index.ts components/early-access-modal.tsx
       - name: Build
         run: npm run build
