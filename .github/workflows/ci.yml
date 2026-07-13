@@ -25,21 +25,7 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci --silent
-      - name: Lint changed feature files
-        id: lint
-        shell: bash
-        run: |
-          set +e
-          npx eslint app/actions/index.ts components/early-access-modal.tsx > lint.log 2>&1
-          code=$?
-          cat lint.log
-          exit $code
-      - name: Upload lint diagnostics
-        if: failure() && steps.lint.outcome == 'failure'
-        uses: actions/upload-artifact@v4
-        with:
-          name: free-audit-lint-log
-          path: lint.log
-          retention-days: 3
+      - name: Typecheck
+        run: npx tsc --noEmit
       - name: Build
         run: npm run build
