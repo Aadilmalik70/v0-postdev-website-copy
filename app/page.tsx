@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
 import { LogoCloudSection } from "@/components/logo-cloud-section"
+import { AiGrowthOperatorDefinitionSection } from "@/components/ai-growth-operator-definition-section"
 import { ProblemSection } from "@/components/problem-section"
 import { ProductDemoSection } from "@/components/product-demo-section"
 import { OutcomesSection } from "@/components/outcomes-section"
@@ -39,12 +40,48 @@ export const metadata: Metadata = {
   },
 }
 
+const homepageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": `${buildCanonicalUrl("/")}#software`,
+  name: "SERP Strategists",
+  alternateName: "SERP Strategists AI Growth Operator",
+  applicationCategory: "BusinessApplication",
+  applicationSubCategory: "SEO and organic search operations",
+  operatingSystem: "Web",
+  url: buildCanonicalUrl("/"),
+  description:
+    "A governed AI Growth Operator that turns search data into prioritized, approved, shipped, and measured SEO and GEO actions.",
+  featureList: [
+    "Technical SEO audits",
+    "Google Search Console opportunity analysis",
+    "AI citation and visibility monitoring",
+    "Impact-ranked action queues",
+    "Approval gates and execution logs",
+    "CMS and repository execution workflows",
+    "Validation, rollback, and outcome measurement",
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    lowPrice: "0",
+    highPrice: "99",
+    priceCurrency: "USD",
+    offerCount: "3",
+    url: buildCanonicalUrl("/pricing"),
+  },
+  publisher: {
+    "@id": `${buildCanonicalUrl("/")}#organization`,
+  },
+}
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-paper">
       <Navbar />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }} />
       <HeroSection />
       <LogoCloudSection />
+      <AiGrowthOperatorDefinitionSection />
       <ProblemSection />
       <ProductDemoSection />
       <OutcomesSection />
