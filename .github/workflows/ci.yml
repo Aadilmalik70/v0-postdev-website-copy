@@ -26,6 +26,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Lint
-        run: npm run lint
+        shell: bash
+        run: |
+          set +e
+          npm run lint > lint.log 2>&1
+          code=$?
+          tail -n 120 lint.log
+          exit $code
       - name: Build
         run: npm run build
