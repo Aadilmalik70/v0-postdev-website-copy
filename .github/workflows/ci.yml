@@ -24,7 +24,7 @@ jobs:
           node-version: "22.13.0"
           cache: npm
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --silent
       - name: Lint changed feature files
         run: npx eslint app/actions/index.ts components/early-access-modal.tsx
       - name: Build
