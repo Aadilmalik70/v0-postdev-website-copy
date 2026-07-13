@@ -19,12 +19,15 @@ const redirects: Record<string, string> = {
 
 export function proxy(request: NextRequest) {
   const { nextUrl, headers } = request
-  const host = headers.get("host") ?? nextUrl.host
+  const forwardedHost = headers.get("x-forwarded-host")
+  const rawHost = forwardedHost ?? headers.get("host") ?? nextUrl.host
+  const host = rawHost.split(",")[0].trim().split(":")[0].toLowerCase()
   const pathname = nextUrl.pathname
 
-  // WWW to non-WWW redirect
+  // WWW to non-WWW redirect. This is a 301 fallback in addition to the
+  // framework-level permanent redirect in next.config.mjs.
   if (host === "www.serpstrategists.com") {
-    const redirectUrl = new URL(nextUrl.pathname + nextUrl.search + nextUrl.hash, "https://serpstrategists.com")
+    const redirectUrl = new URL(`${nextUrl.pathname}${nextUrl.search}`, "https://serpstrategists.com")
     return NextResponse.redirect(redirectUrl, 301)
   }
 
