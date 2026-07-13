@@ -6,9 +6,9 @@ import { buildMarketingMetadata } from "@/lib/site-seo"
 import { combineSchemas, getBreadcrumbSchema } from "@/lib/schema"
 
 export const metadata: Metadata = buildMarketingMetadata({
-  title: "Execution Demo | SERP Strategists",
+  title: "AI SEO Operator Demo & Action Queue",
   description:
-    "Walk through a sample SERP Strategists queue to see how observe, prioritize, plan, execute, and measure works in practice.",
+    "See an AI SEO operator turn search data into a prioritized action queue with evidence, approvals, execution logs, validation, rollback, and measurement.",
   pathname: "/demo",
 })
 
