@@ -8,9 +8,9 @@ import { buildMarketingMetadata } from "@/lib/site-seo"
 import { combineSchemas, getBreadcrumbSchema, getFAQSchema } from "@/lib/schema"
 
 export const metadata: Metadata = buildMarketingMetadata({
-  title: "AI Growth Operator Pricing | SERP Strategists",
+  title: "SERP Strategists Pricing — AI SEO Operator from $49/mo",
   description:
-    "Compare AI Growth Operator plans: free growth audits, governed execution, GEO, and AI citation tracking - priced far below agency overhead.",
+    "Run a free SEO and GEO audit, then deploy governed execution with approvals, action logs, content workflows, and rollback. Plans start at $49 per month.",
   pathname: "/pricing",
 })
 
@@ -72,7 +72,7 @@ export default function PricingPage() {
               Start with a free growth audit, then turn on governed execution, content workflows, and AI citation tracking as the loop matures.
             </p>
             <p className="text-sm text-neutral-500 mt-4">
-              Need the trust model first? Read our <Link href="/governance" className="text-ink underline underline-offset-4">governance page</Link>. Evaluating other options? See our review of the <Link href="/blog/top-seo-analysis-tools-2025-best-seo-ai-tool" className="text-ink underline underline-offset-4">12 Best AI SEO Tools for 2026</Link>.
+              Need the trust model first? Read our <Link href="/governance" className="text-ink underline underline-offset-4">governance page</Link>. Evaluating other options? See our review of the <Link href="/blog/top-seo-analysis-tools-2025-best-seo-ai-tool" className="text-ink underline underline-offset-4">Best AI SEO Tools for 2026</Link>.
             </p>
           </div>
         </section>
