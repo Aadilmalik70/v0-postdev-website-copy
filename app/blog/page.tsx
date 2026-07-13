@@ -7,9 +7,9 @@ import { groupPostsByCluster } from "@/lib/blog-taxonomy"
 import { buildMarketingMetadata } from "@/lib/site-seo"
 
 export const metadata: Metadata = buildMarketingMetadata({
-  title: "AI SEO and GEO Blog | SERP Strategists",
+  title: "AI SEO & GEO Guides for Search Growth",
   description:
-    "Browse clustered guides on GEO, AI search visibility, technical SEO systems, and content strategy for compounding organic growth.",
+    "Practical AI SEO, GEO, technical SEO, content, and AI visibility guides for founders and growth teams building compounding organic search systems.",
   pathname: "/blog",
 })
 
@@ -62,11 +62,11 @@ export default function BlogPage() {
             Start with the broad tools comparison, then move into the narrower SERP analyzer, pricing, and methodology guides if you are building a commercial SEO software stack.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/blog/seo-ranking-tool-guide-what-actually-matters" className="text-sm font-mono px-4 py-2 rounded-full border border-[#00d084]/30 bg-surface text-ink hover:bg-paper">
-              SEO ranking tool guide
+            <Link href="/blog/top-seo-analysis-tools-2025-best-seo-ai-tool" className="text-sm font-mono px-4 py-2 rounded-full border border-[#00d084]/30 bg-surface text-ink hover:bg-paper">
+              Best AI SEO tools 2026
             </Link>
-            <Link href="/blog/top-seo-analysis-tools-2025-best-seo-ai-tool" className="text-sm font-mono px-4 py-2 rounded-full border border-[#00d084]/30 text-ink hover:bg-surface">
-              Top AI SEO analysis tools
+            <Link href="/blog/seo-ranking-tool-guide-what-actually-matters" className="text-sm font-mono px-4 py-2 rounded-full border border-[#00d084]/30 text-ink hover:bg-surface">
+              SEO ranking tool guide
             </Link>
             <Link href="/blog/best-serp-analyzer-tools-2026" className="text-sm font-mono px-4 py-2 rounded-full border border-line text-neutral-600 hover:border-[#00d084]/30 hover:text-ink">
               Best SERP analyzer tools
