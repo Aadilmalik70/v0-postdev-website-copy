@@ -29,7 +29,7 @@ export const BLOG_OVERRIDES: Record<string, BlogOverride> = {
 
 The best AI SEO software depends on the bottleneck. Choose Semrush or SE Ranking for a broad SEO and AI-visibility suite, Ahrefs for competitor and backlink intelligence, Surfer or Clearscope for content optimization, Screaming Frog for technical crawling, and SERP Strategists when the missing layer is prioritizing, approving, shipping, and measuring SEO actions.
 
-## AI SEO tools comparison: price model, best fit, and limitation
+### AI SEO tools comparison: price model, best fit, and limitation
 
 | Tool | Best fit | Pricing model | Main limitation |
 |---|---|---|---|
