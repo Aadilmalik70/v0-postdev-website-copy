@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "feature/**"
+
+concurrency:
+  group: landing-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  landing:
+    runs-on: ubuntu-latest
+    env:
+      OPERATOR_API_URL: http://localhost:8000
+      NEXT_PUBLIC_OPERATOR_URL: http://localhost:3000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.13.0"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --silent
+      - name: Typecheck
+        id: typecheck
+        shell: bash
+        run: |
+          set +e
+          npx tsc --noEmit > typecheck.log 2>&1
+          code=$?
+          cat typecheck.log
+          exit $code
+      - name: Upload TypeScript diagnostics
+        if: failure() && steps.typecheck.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: free-audit-typecheck-log
+          path: typecheck.log
+          retention-days: 3
+      - name: Build
+        run: npm run build

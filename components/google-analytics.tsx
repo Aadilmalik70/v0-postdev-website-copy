@@ -19,11 +19,11 @@ export function GoogleAnalytics() {
         hostname === "0.0.0.0" ||
         hostname.endsWith(".local")
       const isVercelPreview = hostname.endsWith(".vercel.app")
-      
+
       const disableTracking = isLocalhost || isVercelPreview
-      
+
       if (disableTracking) {
-        window[`ga-disable-${gaId}`] = true
+        Reflect.set(window, `ga-disable-${gaId}`, true)
         console.log(`[GA4] Tracking disabled for host: ${hostname}`)
       } else {
         setShouldTrack(true)
