@@ -6,9 +6,9 @@ import { buildMarketingMetadata } from "@/lib/site-seo"
 import { combineSchemas, getBreadcrumbSchema } from "@/lib/schema"
 
 export const metadata: Metadata = buildMarketingMetadata({
-  title: "Trust and Governance | SERP Strategists",
+  title: "AI SEO Governance: Approvals & Rollback",
   description:
-    "Learn how SERP Strategists keeps autonomous SEO work governed with approval gates, logs, rollback, and clear data boundaries.",
+    "See how governed AI SEO execution uses approval gates, action logs, validation, permissions, data boundaries, and rollback for safer automated changes.",
   pathname: "/governance",
 })
 
