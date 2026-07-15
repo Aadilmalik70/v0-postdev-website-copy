@@ -17,6 +17,24 @@ export interface HowToStep {
 }
 
 const LOGO_MARK_URL = `${SITE_URL}/serp-strategists-logo-mark.svg`
+const FOUNDER_NAME = "Aadil Khan"
+const FOUNDER_URL = `${SITE_URL}/about#aadil-khan`
+const FOUNDER_ID = `${SITE_URL}/#aadil-khan`
+
+function resolveArticleAuthor(author: string) {
+  const normalized = author.trim().toLowerCase()
+  const isEditorialAlias = [
+    "serp strategists",
+    "serp strategist",
+    "serp strategists editorial team",
+  ].includes(normalized)
+
+  return {
+    name: isEditorialAlias ? FOUNDER_NAME : author,
+    url: isEditorialAlias ? FOUNDER_URL : undefined,
+    id: isEditorialAlias ? FOUNDER_ID : undefined,
+  }
+}
 
 /**
  * Organization Schema - Use on homepage and as publisher reference
@@ -49,7 +67,14 @@ export function getOrganizationSchema() {
     },
     founder: {
       "@type": "Person",
-      name: "SERP Strategists Team",
+      "@id": FOUNDER_ID,
+      name: FOUNDER_NAME,
+      url: FOUNDER_URL,
+      jobTitle: "Founder",
+      sameAs: ["https://github.com/Aadilmalik70"],
+      worksFor: {
+        "@id": `${SITE_URL}#organization`,
+      },
     },
   }
 }
@@ -94,6 +119,8 @@ export function getArticleSchema({
   image?: string
   tags?: string[]
 }) {
+  const resolvedAuthor = resolveArticleAuthor(author)
+
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -108,9 +135,10 @@ export function getArticleSchema({
     datePublished,
     dateModified: dateModified || datePublished,
     author: {
-      "@type": "Organization",
-      name: author,
-      url: SITE_URL,
+      "@type": "Person",
+      "@id": resolvedAuthor.id,
+      name: resolvedAuthor.name,
+      url: resolvedAuthor.url,
     },
     publisher: {
       "@type": "Organization",
