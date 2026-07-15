@@ -34,7 +34,7 @@ export function buildSeoTitle(title: string, suffix = SITE_NAME): string {
     return truncateAtWordBoundary(normalizedTitle, SEO_TITLE_MAX)
   }
 
-   if (normalizedTitle.toLowerCase().includes(normalizedSuffix.toLowerCase())) {
+  if (normalizedTitle.toLowerCase().includes(normalizedSuffix.toLowerCase())) {
     return truncateAtWordBoundary(normalizedTitle, SEO_TITLE_MAX)
   }
 
@@ -63,16 +63,16 @@ export function getHomepageSeoCopy() {
   return {
     title: "AI Growth Operator for Organic Search | SERP Strategists",
     description:
-      "SERP Strategists is an AI Growth Operator that audits your site, prioritizes fixes, ships approved SEO and GEO work, and tracks organic growth across Google and AI search.",
+      "SERP Strategists is an AI Growth Operator that turns search data into prioritized, approved, shipped, and measured SEO and GEO actions.",
     h1: "Deploy an AI Growth Operator for organic search.",
     subtitle:
       "It observes search performance, ranks the highest-impact opportunities, executes approved work, and improves visibility without agency overhead.",
     openGraphTitle: "AI Growth Operator for Organic Search",
     openGraphDescription:
-      "SERP Strategists observes search performance, prioritizes the highest-impact opportunities, ships approved SEO and GEO work, and improves visibility across Google and AI search.",
+      "A governed AI Growth Operator that turns search data into prioritized, approved, shipped, and measured SEO and GEO actions.",
     twitterTitle: "AI Growth Operator for Organic Search",
     twitterDescription:
-      "Deploy an AI Growth Operator that audits, prioritizes, ships, and measures SEO and GEO work for organic growth.",
+      "Turn search data into prioritized, approved, shipped, and measured SEO and GEO actions with a governed AI Growth Operator.",
   }
 }
 
