@@ -6,10 +6,10 @@ import { EarlyAccessModal } from "./early-access-modal"
 import { gsap, useGSAP, reducedMotion, EASE } from "./gsap-fx"
 
 const queue = [
-  { tag: "Shipped", detail: "Fixed canonical on /pricing", meta: "Auto-approved | Logged | Rollback ready", dot: "bg-signal-bright", text: "text-signal-bright" },
-  { tag: "Review", detail: "Refresh /integrations for AI answers", meta: "Impact 8.4 | Confidence high | Effort low", dot: "bg-opportunity-bright", text: "text-opportunity-bright" },
-  { tag: "Planned", detail: "Internal links for 14 orphan pages", meta: "Impact 7.1 | Plan ready for approval", dot: "bg-opviolet-bright", text: "text-opviolet-bright" },
-  { tag: "Observed", detail: "Competitor in 3 Perplexity prompts", meta: "Source gap found | Action queued", dot: "bg-coral-bright", text: "text-coral-bright" },
+  { tag: "Shipped", detail: "Fixed canonical on /pricing", meta: "Example policy: auto-approved | Logged | Rollback ready", dot: "bg-signal-bright", text: "text-signal-bright" },
+  { tag: "Review", detail: "Refresh /integrations for AI answers", meta: "Example score: impact 8.4 | Confidence high | Effort low", dot: "bg-opportunity-bright", text: "text-opportunity-bright" },
+  { tag: "Planned", detail: "Internal links for 14 orphan pages", meta: "Example score: impact 7.1 | Plan ready for approval", dot: "bg-opviolet-bright", text: "text-opviolet-bright" },
+  { tag: "Observed", detail: "Competitor in 3 Perplexity prompts", meta: "Example signal: source gap found | Action queued", dot: "bg-coral-bright", text: "text-coral-bright" },
 ]
 
 const operatorStages = [
