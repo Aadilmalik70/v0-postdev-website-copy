@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import {
   AlertTriangle,
   ArrowRight,
@@ -17,6 +17,7 @@ import {
   type FreeAudit,
   type FreeAuditFinding,
 } from "@/app/actions"
+import { trackEvent } from "@/lib/analytics"
 
 interface EarlyAccessModalProps {
   isOpen: boolean
@@ -25,6 +26,9 @@ interface EarlyAccessModalProps {
   description?: string
   submitText?: string
   leadSource?: string
+  ctaPlacement?: string
+  articleSlug?: string
+  planName?: string
   onSuccess?: () => void
 }
 
@@ -37,12 +41,6 @@ const severityStyle: Record<string, string> = {
   high: "bg-orange-500/10 text-orange-700 border-orange-200",
   medium: "bg-amber-500/10 text-amber-800 border-amber-200",
   low: "bg-neutral-100 text-neutral-600 border-neutral-200",
-}
-
-function track(event: string, params: Record<string, string | number>) {
-  if (typeof window === "undefined") return
-  const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag
-  gtag?.("event", event, params)
 }
 
 function issueCount(audit: FreeAudit, severity: string) {
@@ -82,6 +80,9 @@ export function EarlyAccessModal({
   description = "We’ll inspect your homepage, indexability, metadata, discovery files, and technical signals—then rank the highest-impact issues.",
   submitText = "Start Free Audit →",
   leadSource = "free_audit_modal",
+  ctaPlacement = "unspecified",
+  articleSlug,
+  planName,
   onSuccess,
 }: EarlyAccessModalProps) {
   const [email, setEmail] = useState("")
@@ -89,9 +90,56 @@ export function EarlyAccessModal({
   const [audit, setAudit] = useState<FreeAudit | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const wasOpenRef = useRef(false)
+  const completionTrackedRef = useRef(false)
+  const failureTrackedRef = useRef(false)
 
   const isProcessing = audit?.status === "queued" || audit?.status === "running"
   const topFindings = useMemo(() => audit?.findings.slice(0, 5) ?? [], [audit?.findings])
+  const analyticsContext = useMemo(
+    () => ({
+      lead_source: leadSource,
+      cta_placement: ctaPlacement,
+      article_slug: articleSlug,
+      plan_name: planName,
+    }),
+    [articleSlug, ctaPlacement, leadSource, planName],
+  )
+
+  const recordFailure = useCallback(
+    (failureStage: "submission" | "polling" | "processing") => {
+      if (failureTrackedRef.current) return
+      failureTrackedRef.current = true
+      trackEvent("free_audit_failed", {
+        ...analyticsContext,
+        failure_stage: failureStage,
+      })
+    },
+    [analyticsContext],
+  )
+
+  const recordOutcome = useCallback(
+    (nextAudit: FreeAudit, failureStage: "submission" | "polling" | "processing") => {
+      if (nextAudit.status === "completed" && !completionTrackedRef.current) {
+        completionTrackedRef.current = true
+        trackEvent("free_audit_complete", {
+          ...analyticsContext,
+          score: nextAudit.score ?? undefined,
+        })
+        onSuccess?.()
+      }
+
+      if (nextAudit.status === "failed") recordFailure(failureStage)
+    },
+    [analyticsContext, onSuccess, recordFailure],
+  )
+
+  useEffect(() => {
+    if (isOpen && !wasOpenRef.current) {
+      trackEvent("audit_modal_open", analyticsContext)
+    }
+    wasOpenRef.current = isOpen
+  }, [analyticsContext, isOpen])
 
   useEffect(() => {
     if (!audit || !isProcessing) return
@@ -102,22 +150,17 @@ export function EarlyAccessModal({
       if (!active) return
       if (result.success) {
         setAudit(result.audit)
-        if (result.audit.status === "completed") {
-          track("free_audit_complete", {
-            lead_source: leadSource,
-            score: result.audit.score ?? 0,
-          })
-          onSuccess?.()
-        }
+        recordOutcome(result.audit, "processing")
       } else {
         setError(result.error)
+        recordFailure("polling")
       }
     }, delay)
     return () => {
       active = false
       window.clearTimeout(timer)
     }
-  }, [audit, isProcessing, leadSource, onSuccess])
+  }, [audit, isProcessing, recordFailure, recordOutcome])
 
   if (!isOpen) return null
 
@@ -125,13 +168,17 @@ export function EarlyAccessModal({
     event.preventDefault()
     setLoading(true)
     setError("")
+    completionTrackedRef.current = false
+    failureTrackedRef.current = false
+
     const result = await submitFreeAudit({ email, website })
     if (result.success) {
       setAudit(result.audit)
-      track("free_audit_started", { lead_source: leadSource })
-      if (result.audit.status === "completed") onSuccess?.()
+      trackEvent("free_audit_started", analyticsContext)
+      recordOutcome(result.audit, "processing")
     } else {
       setError(result.error)
+      recordFailure("submission")
     }
     setLoading(false)
   }
@@ -139,6 +186,8 @@ export function EarlyAccessModal({
   function reset() {
     setAudit(null)
     setError("")
+    completionTrackedRef.current = false
+    failureTrackedRef.current = false
   }
 
   function close() {
@@ -328,6 +377,12 @@ export function EarlyAccessModal({
 
               <a
                 href={`${operatorUrl}/register?audit=${encodeURIComponent(audit.token)}&site=${encodeURIComponent(audit.domain)}`}
+                onClick={() =>
+                  trackEvent("full_audit_unlock_click", {
+                    ...analyticsContext,
+                    score: audit.score ?? undefined,
+                  })
+                }
                 className="btn-ink mt-7 flex h-12 w-full items-center justify-center gap-2 text-sm"
               >
                 Unlock the full site audit
