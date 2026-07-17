@@ -55,6 +55,8 @@ export function HomepagePricingTeaser() {
               </ul>
               <Link
                 href="/pricing"
+                data-analytics-placement="homepage_pricing_card"
+                data-analytics-plan-name={tier.name}
                 className={tier.featured ? "btn-ink justify-center h-11 text-sm" : "btn-quiet justify-center h-11 text-sm"}
               >
                 {tier.name === "Audit" ? "Run free audit" : "View early-access details"}
@@ -65,7 +67,12 @@ export function HomepagePricingTeaser() {
 
         <Reveal className="text-center mt-10 space-y-3">
           <p className="text-xs text-neutral-600">No paid-plan trial, annual discount, or automatic overage pricing is currently published.</p>
-          <Link href="/pricing" className="link-underline text-sm text-ink font-medium">
+          <Link
+            href="/pricing"
+            data-analytics-placement="homepage_pricing_footer"
+            data-analytics-plan-name="all_plans"
+            className="link-underline text-sm text-ink font-medium"
+          >
             See availability, limits, and billing notes &rarr;
           </Link>
         </Reveal>
