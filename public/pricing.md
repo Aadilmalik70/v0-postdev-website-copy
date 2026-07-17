@@ -1,34 +1,56 @@
 # Pricing - SERP Strategists
 
-## Free
-- Price: $0/month
-- Limits: 1 site
-- Features: Complete SEO audit, issue prioritization, GEO readiness score
-- Fixes included: None (audit only)
+Last updated: July 17, 2026
+
+## Availability
+
+- The free Growth Audit is available now.
+- Growth and Scale prices are early-access targets for approved accounts.
+- Joining early access does not start a subscription or charge a card.
+- Final scope, activation date, included limits, and billing start are confirmed before activation.
+- No paid-plan free trial, annual discount, or automatic overage pricing is currently published.
+
+## Audit
+
+- Price: $0
+- Availability: Available now
+- Scope: 1 submitted website
+- Includes:
+  - Technical SEO and GEO readiness review
+  - Impact-ranked opportunity queue
+  - No automated fixes or paid subscription
 
 ## Growth
-- Price: $49/month (billed monthly)
-- Limits: 1 site
-- Features: Everything in Free, plus:
-  - Governed SEO fixes
-  - 4 blog posts per month
-  - Daily keyword ranking monitoring
-  - Email reports
-- Trial: 14-day free trial
 
-## Pro
-- Price: $99/month (billed monthly)
-- Limits: 3 sites
-- Features: Everything in Growth, plus:
-  - GEO optimization for ChatGPT, Perplexity, and Gemini citations
-  - 12 blog posts per month
-  - Competitor keyword tracking
-  - Priority support
-- Trial: 14-day free trial
+- Target price: $49/month
+- Availability: Early access
+- Planned scope: 1 connected site
+- Planned included capacity:
+  - Everything in Audit
+  - Approval-gated technical and content actions
+  - Up to 4 content actions per month
+  - Monitoring, action logs, and outcome windows
+  - Email summaries
+
+## Scale
+
+- Target price: $99/month
+- Availability: Early access
+- Planned scope: Up to 3 connected sites
+- Planned included capacity:
+  - Everything in Growth
+  - AI citation and prompt monitoring
+  - Up to 12 content actions per month
+  - Competitor source-gap monitoring
+  - Priority onboarding support
+
+## Billing notes
+
+Paid pricing does not activate from the early-access form. Any paid account is confirmed with the customer before billing begins. Additional sites, actions, or monitoring capacity are reviewed before any billing change.
 
 ## Governance
 
-All actions are logged, reviewable, and rollback-ready so teams stay in control.
+All approved actions are logged and reviewable. Sensitive work can require human approval, and execution workflows are designed with validation and rollback in mind.
 
 ## Related docs
 

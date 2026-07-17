@@ -4,29 +4,32 @@
 
 ## What we do
 
-- Crawls websites and detects 40+ SEO issue types automatically
-- Fixes technical SEO with approval gates, logs, and rollback-ready actions
-- Optimizes for GEO (Generative Engine Optimization) so pages are cited in ChatGPT, Perplexity, Gemini, and Google AI Overviews
-- Creates and publishes SEO-optimized content targeting keyword gaps
+- Crawls websites and detects SEO issue types automatically
+- Prepares technical SEO fixes with approval gates, logs, and rollback-aware workflows
+- Supports GEO (Generative Engine Optimization) for visibility across ChatGPT, Perplexity, Gemini, and Google AI Overviews
+- Prepares content actions targeting verified query and content gaps
 - Tracks rankings, organic traffic, and AI citations over time
-- Learns from shipped work so each next recommendation is better
+- Connects shipped work to measurement windows so recommendations can improve
 
 ## Who we serve
 
 Founders, developers, and small teams who want execution without agency overhead.
 
-## Pricing
+## Pricing and availability
 
-- **Free**: Full site audit, issue prioritization, GEO readiness score — 1 site, no fixes
-- **Growth**: $49/month — governed fixes, content workflows, ranking monitoring — 1 site
-- **Scale**: $99/month — full automation, GEO optimization, competitor tracking — 3 sites
+Last updated: July 17, 2026
 
-All paid plans include a 14-day free trial. Cancel anytime.
+- **Audit**: $0 — one submitted website, technical SEO and GEO readiness review, impact-ranked opportunity queue, no automated fixes
+- **Growth**: $49/month early-access target — one connected site, approval-gated execution, up to 4 content actions per month
+- **Scale**: $99/month early-access target — up to 3 connected sites, AI citation monitoring, up to 12 content actions per month
+
+The free audit is available now. Growth and Scale are early-access target prices for approved accounts. Joining early access does not start a subscription or charge a card. Final scope, activation date, limits, and billing start are confirmed before activation. No paid-plan trial, annual discount, or automatic overage pricing is currently published.
 
 ## Key resources
 
 - [Homepage](https://serpstrategists.com)
 - [Pricing](https://serpstrategists.com/pricing)
+- [Pricing reference](https://serpstrategists.com/pricing.md)
 - [Blog](https://serpstrategists.com/blog)
 - [Governance](https://serpstrategists.com/governance)
 - [Integrations](https://serpstrategists.com/integrations)

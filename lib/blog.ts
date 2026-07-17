@@ -9,11 +9,13 @@ const BLOG_DIR = path.join(process.cwd(), "content/blog")
 export interface BlogPost {
   slug: string
   title: string
+  seoTitle?: string
   description: string
   date: string
   dateModified?: string
   author: string
   tags: string[]
+  relatedSlugs?: string[]
   readingTime: string
   content: string
   image?: string
@@ -48,11 +50,15 @@ export function getPostBySlug(slug: string): BlogPost | null {
   return {
     slug,
     title: override?.title || data.title || slug,
+    seoTitle: override?.seoTitle || data.seoTitle || undefined,
     description: override?.description || data.description || "",
     date: data.date || new Date().toISOString(),
     dateModified: override?.dateModified || data.dateModified || fileModified,
     author: data.author || "SERP Strategists",
     tags: data.tags || [],
+    relatedSlugs: override?.relatedSlugs || (Array.isArray(data.relatedSlugs)
+      ? data.relatedSlugs.filter((value): value is string => typeof value === "string")
+      : undefined),
     readingTime: stats.text,
     content: resolvedContent,
     image: data.image || undefined,
@@ -67,38 +73,52 @@ export function getAllSlugs(): string[] {
 }
 
 /**
- * Get related blog posts based on shared tags.
- * @param currentSlug - The slug of the current post to exclude from results
- * @param currentTags - Tags of the current post to match against
- * @param limit - Maximum number of related posts to return
- * @returns Array of related posts, sorted by relevance (tag matches) then date.
- *          Falls back to most recent posts if no tag matches found.
- * @note Depends on getAllPosts() returning date-sorted posts (descending).
+ * Get related blog posts. Explicit frontmatter or override relationships are
+ * returned first, then tag-based matches fill any remaining slots.
  */
-export function getRelatedPosts(currentSlug: string, currentTags: string[], limit = 3): BlogPost[] {
-  // getAllPosts() returns posts sorted by date descending; filter maintains that order
+export function getRelatedPosts(
+  currentSlug: string,
+  currentTags: string[],
+  limit = 3,
+  relatedSlugs: string[] = [],
+): BlogPost[] {
   const allPosts = getAllPosts().filter((post) => post.slug !== currentSlug)
-  
-  // Score posts by number of matching tags
-  const scoredPosts = allPosts.map((post) => {
-    const matchingTags = post.tags.filter((tag) => currentTags.includes(tag)).length
-    return { post, score: matchingTags }
-  })
-  
-  // Filter out posts with no matching tags to ensure relevance
-  const relevantPosts = scoredPosts.filter((item) => item.score > 0)
-  
-  // Sort by score (descending), then by date (descending)
-  relevantPosts.sort((a, b) => {
-    if (b.score !== a.score) return b.score - a.score
-    return new Date(b.post.date).getTime() - new Date(a.post.date).getTime()
-  })
-  
-  // If we have relevant posts, return them; otherwise return recent posts
-  if (relevantPosts.length > 0) {
-    return relevantPosts.slice(0, limit).map((item) => item.post)
-  }
-  
-  // Fallback to most recent posts if no tag matches (getAllPosts() already returns date-sorted posts)
-  return allPosts.slice(0, limit)
+  const postsBySlug = new Map(allPosts.map((post) => [post.slug, post]))
+  const configuredSlugs = relatedSlugs.length > 0
+    ? relatedSlugs
+    : getPostBySlug(currentSlug)?.relatedSlugs ?? []
+
+  const explicitPosts = configuredSlugs
+    .map((slug) => postsBySlug.get(slug))
+    .filter((post): post is BlogPost => Boolean(post))
+    .slice(0, limit)
+
+  if (explicitPosts.length >= limit) return explicitPosts
+
+  const explicitSlugSet = new Set(explicitPosts.map((post) => post.slug))
+  const scoredPosts = allPosts
+    .filter((post) => !explicitSlugSet.has(post.slug))
+    .map((post) => ({
+      post,
+      score: post.tags.filter((tag) => currentTags.includes(tag)).length,
+    }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score
+      return new Date(b.post.date).getTime() - new Date(a.post.date).getTime()
+    })
+
+  const tagMatches = scoredPosts
+    .slice(0, limit - explicitPosts.length)
+    .map((item) => item.post)
+
+  const combined = [...explicitPosts, ...tagMatches]
+  if (combined.length >= limit) return combined
+
+  const selectedSlugs = new Set(combined.map((post) => post.slug))
+  const recentFallback = allPosts
+    .filter((post) => !selectedSlugs.has(post.slug))
+    .slice(0, limit - combined.length)
+
+  return [...combined, ...recentFallback]
 }

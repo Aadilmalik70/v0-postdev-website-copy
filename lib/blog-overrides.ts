@@ -1,7 +1,9 @@
 export interface BlogOverride {
   title?: string
+  seoTitle?: string
   description?: string
   dateModified?: string
+  relatedSlugs?: string[]
   contentPrefix?: string
   contentSuffix?: string
 }
@@ -28,33 +30,11 @@ SEO platforms and AI assistants can surface opportunities, but the work still ne
 
 export const BLOG_OVERRIDES: Record<string, BlogOverride> = {
   "top-seo-analysis-tools-2025-best-seo-ai-tool": {
-    title: "Best AI SEO Tools in 2026: 12 Compared",
-    description:
-      "Compare 12 AI SEO tools by use case, pricing model, strengths, limitations, AI visibility, technical SEO, content optimization, and execution.",
-    dateModified: "2026-07-13",
-    contentPrefix: `> **Updated July 13, 2026:** This guide replaces the older 2025 comparison while keeping the original URL so existing links and search signals are preserved.
-
-## Best AI SEO software in 2026: quick verdict
-
-The best AI SEO software depends on the bottleneck. Choose Semrush or SE Ranking for a broad SEO and AI-visibility suite, Ahrefs for competitor and backlink intelligence, Surfer or Clearscope for content optimization, Screaming Frog for technical crawling, and SERP Strategists when the missing layer is prioritizing, approving, shipping, and measuring SEO actions.
-
-### AI SEO tools comparison: price model, best fit, and limitation
-
-| Tool | Best fit | Pricing model | Main limitation |
-|---|---|---|---|
-| Semrush | Broad SEO, competitor research, and AI visibility | Paid subscription | Powerful, but teams still need to prioritize and execute the work |
-| Ahrefs | Backlinks, authority gaps, and competitor URLs | Paid subscription | Limited content-production and governed execution workflow |
-| Surfer | Content optimization and topical guidance | Paid subscription | Can encourage generic SERP-average content without original insight |
-| SE Ranking | Value-focused all-in-one SEO and GEO stack | Paid subscription | Less depth than specialist enterprise tools in some datasets |
-| Clearscope | Editorial quality and topical coverage | Paid subscription | Not a technical crawler or implementation platform |
-| Frase | Fast briefs, questions, and competitor headings | Paid subscription | Requires human verification and deeper strategic judgment |
-| Screaming Frog | Technical crawling and indexability diagnosis | Free and paid licence | Does not provide a complete content or execution workflow |
-| Google Search Console | First-party clicks, impressions, queries, and indexing | Free | No competitor intelligence or implementation layer |
-| MarketMuse | Enterprise content inventory and planning | Free and paid plans | Can be too heavy for lean teams that need fast execution |
-| ChatGPT / Perplexity | Research synthesis and workflow assistance | Free and paid plans | Not a source of live SEO truth without grounded data and review |
-| SERP Strategists | Prioritized, approved, and measurable SEO execution | Free audit; paid operator plans | Designed to complement specialist data tools, not replace every dataset |
-| Microsoft Clarity | Behaviour and UX validation after acquisition | Free | Does not diagnose rankings or search demand |
-`,
+    relatedSlugs: [
+      "ai-seo-tools-pricing-comparison-2026",
+      "best-serp-analyzer-tools-2026",
+      "how-to-do-seo-competitive-benchmarking-2026",
+    ],
     contentSuffix: operatorCategoryInternalLink,
   },
   "what-is-geo-optimization": {

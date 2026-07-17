@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer"
 import { buildMarketingMetadata, buildCanonicalUrl } from "@/lib/site-seo"
 import { getArticleSchema, getBreadcrumbSchema, combineSchemas } from "@/lib/schema"
 import { getFAQSchemaForPost } from "@/lib/faq-schemas"
+import { getFAQSchemaFromMarkdown } from "@/lib/faq-from-markdown"
 import { BlogCta } from "@/components/blog-cta"
 
 const AUTHOR_PROFILES: Record<string, { name: string; role: string; avatarUrl: string; bio: string }> = {
@@ -129,7 +130,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {}
 
   return buildMarketingMetadata({
-    title: post.title,
+    title: post.seoTitle || post.title,
     description: post.description,
     pathname: `/blog/${slug}`,
     type: "article",
@@ -182,7 +183,7 @@ export default async function BlogPostPage({ params }: Props) {
     { name: post.title, url: postUrl },
   ])
 
-  const faqSchema = getFAQSchemaForPost(slug)
+  const faqSchema = getFAQSchemaFromMarkdown(post.content) ?? getFAQSchemaForPost(slug)
 
   const schemas: object[] = [articleSchema, breadcrumbSchema]
   if (faqSchema) {

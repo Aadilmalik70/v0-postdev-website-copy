@@ -62,11 +62,11 @@ const homepageJsonLd = {
     "Validation, rollback, and outcome measurement",
   ],
   offers: {
-    "@type": "AggregateOffer",
-    lowPrice: "0",
-    highPrice: "99",
+    "@type": "Offer",
+    name: "Free Growth Audit",
+    price: "0",
     priceCurrency: "USD",
-    offerCount: "3",
+    availability: "https://schema.org/InStock",
     url: buildCanonicalUrl("/pricing"),
   },
   publisher: {
