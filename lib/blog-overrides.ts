@@ -19,6 +19,15 @@ const aiToolsInternalLink = `
 Choosing between SEO platforms, content optimizers, AI visibility trackers, and execution tools? Read [Best AI SEO Tools in 2026: 12 Tools Compared](${aiToolsComparisonUrl}) for a use-case comparison covering pricing models, strengths, limitations, and the best fit for SaaS teams.
 `
 
+const aiVisibilityScorecardInternalLink = `
+
+---
+
+## Measure AI visibility with a repeatable scorecard
+
+Do not rely on isolated screenshots or an unexplained visibility percentage. Use the [AI Visibility Scorecard Template](/blog/ai-visibility-scorecard-template) to track a stable prompt panel, mentions, citations, answer accuracy, Google generative-AI impressions, referral outcomes, and the exact changes shipped between measurement periods. The guide includes three downloadable CSV templates.
+`
+
 const operatorCategoryInternalLink = `
 
 ---
@@ -63,6 +72,12 @@ export const BLOG_OVERRIDES: Record<string, BlogOverride> = {
     title: "Google AI Overviews SEO Guide",
     description:
       "Learn how to improve eligibility and visibility in Google AI Overviews using crawlable pages, helpful content, internal links, entities, and trusted sources.",
+    relatedSlugs: [
+      "ai-visibility-scorecard-template",
+      "generative-engine-optimization-geo-guide",
+      "perplexity-ai-seo",
+    ],
+    contentSuffix: aiVisibilityScorecardInternalLink,
   },
   "best-serp-analyzer-tools-2026": {
     contentSuffix: `${aiToolsInternalLink}${operatorCategoryInternalLink}`,
@@ -74,10 +89,20 @@ export const BLOG_OVERRIDES: Record<string, BlogOverride> = {
     contentSuffix: `${aiToolsInternalLink}${operatorCategoryInternalLink}`,
   },
   "generative-engine-optimization-geo-guide": {
-    contentSuffix: operatorCategoryInternalLink,
+    relatedSlugs: [
+      "ai-visibility-scorecard-template",
+      "google-ai-overviews-guide",
+      "perplexity-ai-seo",
+    ],
+    contentSuffix: `${aiVisibilityScorecardInternalLink}${operatorCategoryInternalLink}`,
   },
   "perplexity-ai-seo": {
-    contentSuffix: operatorCategoryInternalLink,
+    relatedSlugs: [
+      "ai-visibility-scorecard-template",
+      "generative-engine-optimization-geo-guide",
+      "google-ai-overviews-guide",
+    ],
+    contentSuffix: `${aiVisibilityScorecardInternalLink}${operatorCategoryInternalLink}`,
   },
 }
 
