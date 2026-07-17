@@ -35,9 +35,14 @@ export function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center gap-7">
-            {links.map((l) => (
-              <Link key={l.href} href={l.href} className="link-underline text-[13px] text-neutral-600 hover:text-ink transition-colors">
-                {l.label}
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                data-analytics-placement={link.label === "Pricing" ? "desktop_navigation" : undefined}
+                className="link-underline text-[13px] text-neutral-600 hover:text-ink transition-colors"
+              >
+                {link.label}
               </Link>
             ))}
           </div>
@@ -52,7 +57,7 @@ export function Navbar() {
             </button>
             <button
               className="md:hidden p-2 text-ink"
-              onClick={() => setMobileOpen((v) => !v)}
+              onClick={() => setMobileOpen((value) => !value)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -61,27 +66,32 @@ export function Navbar() {
         </div>
       </FloatingNavbar>
 
-      {/* Mobile sheet */}
       <div
         className={`md:hidden fixed inset-x-0 top-[72px] z-40 px-5 transition-all duration-300 ${
           mobileOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
         <div className="rounded-2xl border border-line bg-paper/95 backdrop-blur-md shadow-[0_18px_40px_-20px_rgba(13,17,16,0.3)] p-3">
-          {links.map((l) => (
+          {links.map((link) => (
             <Link
-              key={l.href}
-              href={l.href}
+              key={link.href}
+              href={link.href}
+              data-analytics-placement={link.label === "Pricing" ? "mobile_navigation" : undefined}
               onClick={() => setMobileOpen(false)}
               className="block px-3 py-2.5 rounded-xl text-sm text-neutral-600 hover:text-ink hover:bg-surface transition-colors"
             >
-              {l.label}
+              {link.label}
             </Link>
           ))}
         </div>
       </div>
 
-      <EarlyAccessModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <EarlyAccessModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        leadSource="navbar"
+        ctaPlacement="navbar"
+      />
     </>
   )
 }
