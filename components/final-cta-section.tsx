@@ -43,7 +43,12 @@ export function FinalCtaSection() {
         </div>
       </section>
 
-      <EarlyAccessModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <EarlyAccessModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        leadSource="homepage_final_cta"
+        ctaPlacement="homepage_final_cta"
+      />
     </>
   )
 }
