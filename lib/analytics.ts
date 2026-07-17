@@ -99,7 +99,7 @@ export function trackEvent<EventName extends AnalyticsEventName>(
   const payload = sanitizeParams({
     ...params,
     page_path: window.location.pathname,
-    debug_mode: debugMode,
+    ...(debugMode ? { debug_mode: true } : {}),
   })
 
   const analyticsWindow = window as AnalyticsWindow
