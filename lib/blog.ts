@@ -9,6 +9,7 @@ const BLOG_DIR = path.join(process.cwd(), "content/blog")
 export interface BlogPost {
   slug: string
   title: string
+  seoTitle?: string
   description: string
   date: string
   dateModified?: string
@@ -48,6 +49,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
   return {
     slug,
     title: override?.title || data.title || slug,
+    seoTitle: override?.seoTitle || data.seoTitle || undefined,
     description: override?.description || data.description || "",
     date: data.date || new Date().toISOString(),
     dateModified: override?.dateModified || data.dateModified || fileModified,
