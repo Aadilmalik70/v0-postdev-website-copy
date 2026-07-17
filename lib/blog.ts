@@ -56,9 +56,9 @@ export function getPostBySlug(slug: string): BlogPost | null {
     dateModified: override?.dateModified || data.dateModified || fileModified,
     author: data.author || "SERP Strategists",
     tags: data.tags || [],
-    relatedSlugs: Array.isArray(data.relatedSlugs)
+    relatedSlugs: override?.relatedSlugs || (Array.isArray(data.relatedSlugs)
       ? data.relatedSlugs.filter((value): value is string => typeof value === "string")
-      : undefined,
+      : undefined),
     readingTime: stats.text,
     content: resolvedContent,
     image: data.image || undefined,
@@ -73,8 +73,8 @@ export function getAllSlugs(): string[] {
 }
 
 /**
- * Get related blog posts. Explicit frontmatter relationships are returned first,
- * then tag-based matches fill any remaining slots.
+ * Get related blog posts. Explicit frontmatter or override relationships are
+ * returned first, then tag-based matches fill any remaining slots.
  */
 export function getRelatedPosts(
   currentSlug: string,
@@ -84,8 +84,11 @@ export function getRelatedPosts(
 ): BlogPost[] {
   const allPosts = getAllPosts().filter((post) => post.slug !== currentSlug)
   const postsBySlug = new Map(allPosts.map((post) => [post.slug, post]))
+  const configuredSlugs = relatedSlugs.length > 0
+    ? relatedSlugs
+    : getPostBySlug(currentSlug)?.relatedSlugs ?? []
 
-  const explicitPosts = relatedSlugs
+  const explicitPosts = configuredSlugs
     .map((slug) => postsBySlug.get(slug))
     .filter((post): post is BlogPost => Boolean(post))
     .slice(0, limit)
