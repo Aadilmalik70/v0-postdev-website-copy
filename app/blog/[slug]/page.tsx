@@ -130,7 +130,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {}
 
   return buildMarketingMetadata({
-    title: post.title,
+    title: post.seoTitle || post.title,
     description: post.description,
     pathname: `/blog/${slug}`,
     type: "article",
