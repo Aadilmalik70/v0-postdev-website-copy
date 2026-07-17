@@ -7,8 +7,8 @@ export function UrgencyBanner() {
   const [dismissed, setDismissed] = useState(false)
 
   useEffect(() => {
-    const t = setTimeout(() => setShow(true), 2500)
-    return () => clearTimeout(t)
+    const timer = setTimeout(() => setShow(true), 2500)
+    return () => clearTimeout(timer)
   }, [])
 
   if (dismissed) return null
@@ -25,8 +25,14 @@ export function UrgencyBanner() {
           <span className="text-xs font-medium text-ink">Early access open</span>
         </span>
         <span className="text-neutral-200">·</span>
-        <span className="text-xs text-neutral-600">Founding pricing from $49/mo</span>
-        <a href="#pricing" className="text-xs font-medium text-signal-deep hover:text-ink transition-colors" aria-label="See pricing">
+        <span className="text-xs text-neutral-600">Early-access targets from $49/mo</span>
+        <a
+          href="#pricing"
+          data-analytics-placement="sticky_pricing_banner"
+          data-analytics-plan-name="all_plans"
+          className="text-xs font-medium text-signal-deep hover:text-ink transition-colors"
+          aria-label="See early-access pricing"
+        >
           →
         </a>
         <button onClick={() => setDismissed(true)} className="text-neutral-400 hover:text-ink transition-colors text-xs ml-1" aria-label="Dismiss">
