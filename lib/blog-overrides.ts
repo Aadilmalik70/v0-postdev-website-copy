@@ -1,5 +1,6 @@
 export interface BlogOverride {
   title?: string
+  seoTitle?: string
   description?: string
   dateModified?: string
   contentPrefix?: string
@@ -28,7 +29,7 @@ SEO platforms and AI assistants can surface opportunities, but the work still ne
 
 export const BLOG_OVERRIDES: Record<string, BlogOverride> = {
   "top-seo-analysis-tools-2025-best-seo-ai-tool": {
-    title: "Best AI SEO Tools in 2026: 12 Compared",
+    seoTitle: "Best AI SEO Tools in 2026: 12 Compared",
     description:
       "Compare 12 AI SEO tools by use case, pricing model, strengths, limitations, AI visibility, technical SEO, content optimization, and execution.",
     dateModified: "2026-07-17",
