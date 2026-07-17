@@ -1,0 +1,429 @@
+---
+title: "AI Visibility Scorecard: Template and Measurement Framework"
+seoTitle: "AI Visibility Scorecard Template (2026)"
+description: "Measure AI-search visibility with a repeatable scorecard covering prompt panels, citations, answer accuracy, Google generative-AI impressions, referrals, conversions, and shipped changes."
+date: "2026-07-17"
+dateModified: "2026-07-17"
+author: "SERP Strategists"
+tags: ["AI Visibility", "GEO Measurement", "AI Search", "Analytics"]
+relatedSlugs: ["generative-engine-optimization-geo-guide", "google-ai-overviews-guide", "perplexity-ai-seo"]
+---
+
+AI visibility is easy to discuss and surprisingly easy to measure badly.
+
+A single screenshot proves only that one answer appeared once. A vendor-generated percentage can hide the prompts, countries, pages, sources, and scoring rules behind it. Referral traffic alone misses answers that mention or cite a brand without producing a click.
+
+A useful AI visibility scorecard must preserve the underlying evidence.
+
+> **Last verified: July 17, 2026.** Google is rolling out a dedicated Generative AI performance report in Search Console to a subset of eligible properties. The report includes impressions from AI Overviews and AI Mode, with page, country, date, and device views. Other AI-answer systems may require a controlled prompt panel, citation log, and analytics data rather than one complete first-party publisher report.
+
+## Download the templates
+
+Use these files as separate layers of one measurement system:
+
+1. [AI visibility scorecard CSV](/templates/ai-visibility-scorecard.csv) — period-level outcome summary.
+2. [AI visibility prompt panel CSV](/templates/ai-visibility-prompt-panel.csv) — the prompts, personas, markets, platforms, and target pages you test repeatedly.
+3. [AI visibility change log CSV](/templates/ai-visibility-change-log.csv) — every shipped change, hypothesis, baseline, measurement window, and rollback reference.
+
+Do not combine all three into one sheet. The prompt panel defines what was tested. The scorecard summarizes what happened. The change log explains what changed between measurement periods.
+
+---
+
+## Quick answer: what should an AI visibility scorecard measure?
+
+Track four evidence layers:
+
+| Layer | Core question | Primary evidence |
+|---|---|---|
+| Presence | Did the brand appear for the prompts that matter? | Repeatable prompt-panel observations |
+| Citation quality | Was the brand supported by a useful, attributable source? | Cited URL, source owner, citation context |
+| Answer accuracy | Was the answer about the brand materially correct? | Required answer elements and manual review |
+| Business evidence | Did visibility create measurable discovery or demand? | Google generative-AI impressions/clicks, referral sessions, assisted conversions |
+
+Then connect those results to a change log. Without that final layer, the team knows visibility moved but cannot reliably explain why.
+
+---
+
+## What this scorecard does not claim
+
+This framework does **not** claim to measure total market-wide AI visibility.
+
+It measures performance inside a defined observation set:
+
+- selected prompts
+- selected platforms
+- selected countries and languages
+- a documented testing cadence
+- a defined set of owned target pages
+- available first-party search and analytics data
+
+The score is useful for comparison across your own periods. It should not be presented as an absolute share of every possible AI answer unless the underlying dataset genuinely supports that claim.
+
+---
+
+## Step 1: build a stable prompt panel
+
+The prompt panel is the denominator for your measurement.
+
+Start with 20 to 50 prompts grouped by business intent. A small stable panel is more useful than hundreds of prompts that change every week.
+
+Recommended prompt groups:
+
+| Prompt group | Example intent | What it tests |
+|---|---|---|
+| Category discovery | Find a tool or provider for a problem | Unbranded market visibility |
+| Comparison | Compare two approaches or products | Competitive positioning |
+| Problem diagnosis | Explain why an outcome is failing | Expertise and educational coverage |
+| Implementation | How to complete a specific task | Practical authority |
+| Alternatives | Alternatives to a known product or method | Consideration-stage inclusion |
+| Brand validation | Is this company suitable for a use case? | Accuracy and trust |
+
+For each prompt, store:
+
+- a permanent prompt ID
+- cluster and buyer stage
+- exact wording
+- persona
+- country and language
+- platforms to test
+- expected answer elements
+- preferred target URL
+- owner and review cadence
+
+### Prompt-panel rules
+
+1. Keep at least 70% of the panel unchanged between measurement periods.
+2. Record materially different follow-up prompts separately.
+3. Do not rewrite a prompt after seeing an unfavorable result.
+4. Mark blocked, failed, or unusable answers instead of silently deleting them.
+5. Test the same market and language when comparing periods.
+
+---
+
+## Step 2: log answer-level observations
+
+For every valid answer, record the observable result rather than only the final score.
+
+Minimum fields:
+
+- platform
+- prompt ID
+- test date
+- brand mentioned: yes/no
+- brand cited: yes/no
+- cited URL
+- owned or third-party source
+- competitor mentioned or cited
+- answer materially accurate: yes/no/partial
+- required answer elements present
+- screenshot or evidence reference when your workflow permits it
+- reviewer notes
+
+### Mention rate
+
+```text
+Mention rate = answers mentioning the brand / valid answers tested
+```
+
+### Citation rate
+
+```text
+Citation rate = answers citing an attributable brand-related source / valid answers tested
+```
+
+### Owned-source citation rate
+
+```text
+Owned-source citation rate = answers citing an owned URL / valid answers tested
+```
+
+A mention and a citation are not equivalent. A brand may be named without evidence, and a third-party page may be cited instead of the brand's own site. Preserve that distinction.
+
+---
+
+## Step 3: score answer accuracy
+
+Visibility is not automatically positive when the answer is wrong.
+
+Before testing a brand-validation or product prompt, define the answer elements that must be correct. Examples:
+
+- current product category
+- supported workflow
+- availability status
+- pricing status
+- target customer
+- integration status
+- important limitation
+
+Use three states:
+
+| State | Definition |
+|---|---|
+| Accurate | All material required elements are correct |
+| Partial | Core answer is useful but one or more material details are missing or outdated |
+| Inaccurate | A material claim is wrong, misleading, or attributed to the wrong entity |
+
+### Accuracy rate
+
+```text
+Accuracy rate = accurate answers / answers reviewed for accuracy
+```
+
+Keep `partial` and `unverifiable` answers visible in the raw data. Do not force uncertain observations into a positive score.
+
+---
+
+## Step 4: use Google Search Console's generative-AI report when available
+
+Google's dedicated Generative AI performance report includes impressions for AI Overviews and AI Mode. Google says the report is rolling out to a subset of properties and may not appear when access has not reached the property or the site lacks enough qualifying impressions.
+
+Useful dimensions include:
+
+- page
+- country
+- date
+- device
+
+Google also documents how clicks, impressions, and position are counted for AI Overviews and AI Mode. An AI Overview link generally needs to be scrolled or expanded into view to count as an impression, while an external-page click counts as a click.
+
+Official references:
+
+- [Generative AI performance report](https://support.google.com/webmasters/answer/16984139?hl=en)
+- [How AI Overview and AI Mode impressions and clicks are counted](https://support.google.com/webmasters/answer/7042828?hl=en)
+- [Search Console data limitations and discrepancies](https://support.google.com/webmasters/answer/96568?hl=en)
+
+### Record these fields by page and period
+
+- generative-AI impressions
+- generative-AI clicks
+- click-through rate when meaningful
+- country and device shifts
+- newly appearing pages
+- pages losing visibility
+
+Do not treat a zero in an exported file as proof that no visibility occurred. Google notes that unavailable values displayed as `~` or `-` can export as zero, and Search Console reports have sampling, privacy, row, and processing limitations.
+
+---
+
+## Step 5: connect AI referrals and conversions
+
+Create a separate analytics segment for identifiable AI referrals. Preserve the raw source and medium before grouping domains into a reporting category.
+
+Track:
+
+- referral sessions
+- engaged sessions
+- landing pages
+- signup or lead events
+- assisted conversions
+- revenue only when attribution is defensible
+
+AI answers can influence discovery without producing a direct referral. That is why referral traffic belongs beside prompt observations and Search Console data, not in place of them.
+
+---
+
+## The 20-point operational score
+
+The downloadable scorecard uses four transparent 0-to-5 subscores. This is a triage index, not a universal market-share metric.
+
+| Subscore | 0 | 1 | 3 | 5 |
+|---|---|---|---|---|
+| Presence | No valid tests | Mentioned rarely | Mentioned in a meaningful share of priority prompts | Consistent presence across priority clusters and markets |
+| Citation quality | No attributable citations | Weak or irrelevant citations | Useful citations with mixed owned/third-party sources | Consistent, relevant citations to strong owned and third-party sources |
+| Answer accuracy | Materially wrong | Frequently incomplete or outdated | Mostly correct with identifiable gaps | Materially correct across priority prompts |
+| Business evidence | No measurable evidence | Isolated unqualified visits | Repeatable impressions, referrals, or assisted outcomes | Sustained evidence connected to priority pages and conversion events |
+
+```text
+Operational AI visibility score = presence + citation quality + answer accuracy + business evidence
+```
+
+Maximum: 20.
+
+Always publish the four components beside the total. A score of 14 caused by strong mentions and weak accuracy is not equivalent to a score of 14 caused by modest presence and strong business outcomes.
+
+---
+
+## How to set the 0-to-5 thresholds
+
+Do not copy another company's percentage thresholds.
+
+Set internal thresholds after collecting at least two valid baseline periods. Recommended process:
+
+1. Run the same panel weekly for four weeks.
+2. Calculate the median and range for each metric.
+3. Define `1` as weak but observable performance.
+4. Define `3` as repeatable performance in priority clusters.
+5. Define `5` as the target state your current market and data can realistically support.
+6. Document every threshold in the scorecard notes.
+
+This keeps the index stable while allowing the raw metrics to remain comparable.
+
+---
+
+## Step 6: connect every optimization to a measurement window
+
+A content update without a change log creates attribution debt.
+
+For every shipped action, record:
+
+- target URL
+- change type
+- hypothesis
+- supporting evidence
+- exact ship date
+- baseline period
+- measurement period
+- primary metric
+- guardrail metric
+- owner
+- rollback reference
+
+### Recommended windows
+
+| Change type | Initial observation | More stable review |
+|---|---|---|
+| Factual correction | Next prompt-panel run | Two to four consistent runs |
+| Definition or answer block | One to two weeks | Four to eight weeks |
+| Internal-link improvement | After recrawl and reprocessing | Four to eight weeks |
+| New supporting source or original evidence | Two to four weeks | Eight to twelve weeks |
+| Title or snippet change | After reprocessing | Two to six weeks |
+
+These are observation windows, not guaranteed result timelines. Record external events and major platform changes that may affect interpretation.
+
+---
+
+## Weekly operating cadence
+
+### Monday: collect
+
+- export available Google generative-AI data
+- run the stable prompt panel
+- capture citations and answer accuracy
+- export AI referral and conversion segments
+
+### Tuesday: diagnose
+
+- identify prompt clusters losing presence
+- identify inaccurate or outdated answers
+- identify cited third-party sources that could be strengthened
+- identify owned pages receiving impressions but weak clicks or conversions
+
+### Wednesday: prioritize
+
+Use a simple action score:
+
+```text
+Priority = expected impact × confidence / effort
+```
+
+Keep the inputs visible. Avoid presenting the result as scientific precision.
+
+### Thursday: ship
+
+- update one answer block
+- add or improve one source
+- fix one factual inconsistency
+- strengthen one internal-link path
+- record the exact change
+
+### Friday: annotate
+
+- add the ship date to the change log
+- set the baseline and review windows
+- note any platform or measurement anomalies
+
+---
+
+## Interpretation matrix
+
+| Observation | Likely diagnosis | First action |
+|---|---|---|
+| Mentions rising, citations flat | Brand is known but sources are weak or not selected | Improve attributable evidence and source clarity |
+| Citations rising, accuracy weak | Sources are found but facts are inconsistent or outdated | Reconcile product, pricing, entity, and availability statements |
+| Google generative impressions rising, clicks flat | Visibility increased without stronger click motivation | Review query/page intent, titles, and destination usefulness |
+| Referrals rising, conversions flat | Landing page does not match the AI answer's promise | Align page message, proof, and CTA with referring intent |
+| One platform improves, others do not | Platform-specific retrieval or source behavior differs | Diagnose by platform instead of averaging everything together |
+| Score improves after many simultaneous changes | Attribution is unclear | Reduce batch size and use the change log rigorously |
+
+---
+
+## Common measurement mistakes
+
+### Changing the prompt panel every week
+
+This destroys the denominator and makes period comparisons unreliable.
+
+### Counting every mention as a citation
+
+A mention has lower evidentiary value than a visible attributable source.
+
+### Ignoring wrong answers
+
+An inaccurate recommendation can be more damaging than no recommendation.
+
+### Averaging countries and languages together
+
+Visibility can differ materially by market. Keep dimensions separate before creating a global summary.
+
+### Claiming causality from timing alone
+
+A change followed by an improvement is evidence worth investigating, not automatic proof that the change caused the result.
+
+### Publishing a score without the method
+
+Always disclose the prompt count, platform set, market, period, formulas, and unavailable data.
+
+---
+
+## Minimum viable scorecard for a small team
+
+A founder or lean team can begin with:
+
+- 20 stable prompts
+- three platforms
+- one country and language
+- weekly observations
+- one scorecard row per platform
+- one shared change log
+- Google generative-AI data when available
+- an analytics segment for identifiable AI referrals
+
+That is enough to create an operating baseline without pretending to measure the entire AI-search market.
+
+---
+
+## FAQ
+
+### What is an AI visibility scorecard?
+
+An AI visibility scorecard is a repeatable measurement framework for tracking whether a brand appears in priority AI-answer prompts, whether it is cited by attributable sources, whether the answer is accurate, and whether visibility creates measurable search or business evidence.
+
+### How many prompts should I track?
+
+Start with 20 to 50 stable prompts grouped by buyer intent. Consistency matters more than volume. Keep most prompts unchanged between periods and record new prompts separately.
+
+### Is AI referral traffic enough to measure visibility?
+
+No. Referral traffic measures identifiable visits, while many AI answers create mentions, citations, or discovery without a click. Combine referrals with controlled prompt observations and available first-party search data.
+
+### Can Search Console measure AI Overview and AI Mode visibility?
+
+Google has introduced a dedicated Generative AI performance report for a subset of Search Console properties. It includes impressions from AI Overviews and AI Mode and supports page, country, date, and device analysis. Access and qualifying data may vary by property.
+
+### Should I publish one AI visibility percentage?
+
+Only when the denominator and scoring method are disclosed. For operational use, publish raw mention, citation, accuracy, impression, referral, and conversion metrics beside any composite score.
+
+---
+
+## Final takeaway
+
+The purpose of an AI visibility scorecard is not to create a more impressive dashboard. It is to make the observation loop reproducible:
+
+1. define the prompts
+2. collect the evidence
+3. separate mentions, citations, accuracy, and outcomes
+4. ship one attributable change
+5. measure the next window
+
+That is how AI-search visibility becomes an operating system rather than a collection of screenshots.
