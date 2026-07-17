@@ -3,10 +3,10 @@
 import { Reveal } from "./gsap-fx"
 
 const queueItems = [
-  { action: "Shipped", detail: "Canonical mismatch fixed on /pricing", meta: "Auto-approved | Logged | Rollback available", dot: "bg-signal-bright", text: "text-signal-bright" },
-  { action: "Awaiting review", detail: "Refresh /integrations page for AI answer coverage", meta: "Impact 8.4 | Confidence high | Effort low", dot: "bg-opportunity-bright", text: "text-opportunity-bright" },
-  { action: "Planned", detail: "Build internal link cluster across 14 orphan pages", meta: "Impact 7.1 | Plan ready for approval", dot: "bg-opviolet-bright", text: "text-opviolet-bright" },
-  { action: "Observed", detail: "Competitor cited above you in 3 Perplexity prompts", meta: "Source gap identified | Action queued", dot: "bg-coral-bright", text: "text-coral-bright" },
+  { action: "Shipped", detail: "Canonical mismatch fixed on /pricing", meta: "Example policy: auto-approved | Logged | Rollback available", dot: "bg-signal-bright", text: "text-signal-bright" },
+  { action: "Awaiting review", detail: "Refresh /integrations page for AI answer coverage", meta: "Example score: impact 8.4 | Confidence high | Effort low", dot: "bg-opportunity-bright", text: "text-opportunity-bright" },
+  { action: "Planned", detail: "Build internal link cluster across 14 orphan pages", meta: "Example score: impact 7.1 | Plan ready for approval", dot: "bg-opviolet-bright", text: "text-opviolet-bright" },
+  { action: "Observed", detail: "Competitor cited above you in 3 Perplexity prompts", meta: "Example signal: source gap identified | Action queued", dot: "bg-coral-bright", text: "text-coral-bright" },
 ]
 
 const proofStages = [
