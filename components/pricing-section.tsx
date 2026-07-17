@@ -6,9 +6,20 @@ import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
 import { EarlyAccessModal } from "./early-access-modal"
 import { pricingStatus, pricingTiers } from "@/lib/pricing"
+import { trackEvent } from "@/lib/analytics"
 
 export function PricingSection() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedPlan, setSelectedPlan] = useState<string>()
+
+  function openPlan(planName: string) {
+    setSelectedPlan(planName)
+    trackEvent("pricing_interest", {
+      cta_placement: "pricing_page_card",
+      plan_name: planName,
+    })
+    setIsModalOpen(true)
+  }
 
   return (
     <>
@@ -77,7 +88,7 @@ export function PricingSection() {
                 </ul>
 
                 <Button
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={() => openPlan(tier.name)}
                   className={`w-full rounded-full py-5 text-sm font-medium ${
                     tier.featured
                       ? "bg-signal hover:bg-signal text-black"
@@ -97,7 +108,13 @@ export function PricingSection() {
         </div>
       </section>
 
-      <EarlyAccessModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <EarlyAccessModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        leadSource="pricing_page"
+        ctaPlacement="pricing_page_card"
+        planName={selectedPlan}
+      />
     </>
   )
 }
