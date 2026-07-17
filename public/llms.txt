@@ -35,6 +35,10 @@ The free audit is available now. Growth and Scale are early-access target prices
 - [Integrations](https://serpstrategists.com/integrations)
 - [Execution demo](https://serpstrategists.com/demo)
 - [FAQ](https://serpstrategists.com/faq)
+- [AI Visibility Scorecard Template](https://serpstrategists.com/blog/ai-visibility-scorecard-template)
+- [AI visibility scorecard CSV](https://serpstrategists.com/templates/ai-visibility-scorecard.csv)
+- [AI visibility prompt panel CSV](https://serpstrategists.com/templates/ai-visibility-prompt-panel.csv)
+- [AI visibility change log CSV](https://serpstrategists.com/templates/ai-visibility-change-log.csv)
 - [GEO Optimization Guide](https://serpstrategists.com/blog/generative-engine-optimization-geo-guide)
 - [What is GEO Optimization?](https://serpstrategists.com/blog/what-is-geo-optimization)
 - [GEO vs SEO vs AEO](https://serpstrategists.com/blog/geo-vs-seo-vs-aeo-2026)
@@ -46,6 +50,7 @@ The free audit is available now. Growth and Scale are early-access target prices
 
 ## Key concepts we cover
 
+- [AI visibility measurement](https://serpstrategists.com/blog/ai-visibility-scorecard-template)
 - [GEO — Generative Engine Optimization](https://serpstrategists.com/blog/generative-engine-optimization-geo-guide)
 - [AEO — Answer Engine Optimization](https://serpstrategists.com/blog/google-ai-overviews-guide)
 - [AI Overviews optimization](https://serpstrategists.com/blog/google-ai-overviews-guide)
