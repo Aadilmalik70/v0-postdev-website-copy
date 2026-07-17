@@ -2,11 +2,13 @@
 
 import Script from "next/script"
 import { useEffect, useState } from "react"
+import { isAnalyticsDebugEnabled } from "@/lib/analytics"
 
 export function GoogleAnalytics() {
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
   const [shouldTrack, setShouldTrack] = useState(false)
   const [checked, setChecked] = useState(false)
+  const [debugMode, setDebugMode] = useState(false)
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -19,12 +21,15 @@ export function GoogleAnalytics() {
         hostname === "0.0.0.0" ||
         hostname.endsWith(".local")
       const isVercelPreview = hostname.endsWith(".vercel.app")
+      const analyticsDebug = isAnalyticsDebugEnabled()
+
+      setDebugMode(analyticsDebug)
 
       const disableTracking = isLocalhost || isVercelPreview
 
       if (disableTracking) {
         Reflect.set(window, `ga-disable-${gaId}`, true)
-        console.log(`[GA4] Tracking disabled for host: ${hostname}`)
+        if (analyticsDebug) console.info(`[analytics] GA4 delivery disabled for host: ${hostname}`)
       } else {
         setShouldTrack(true)
       }
@@ -58,7 +63,7 @@ export function GoogleAnalytics() {
           window.dataLayer = window.dataLayer || [];
           window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
           window.gtag('js', new Date());
-          window.gtag('config', '${gaId}');
+          window.gtag('config', '${gaId}', { debug_mode: ${debugMode ? "true" : "false"} });
         `,
         }}
       />
