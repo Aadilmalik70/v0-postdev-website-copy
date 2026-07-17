@@ -12,6 +12,12 @@ const queue = [
   { tag: "Observed", detail: "Competitor in 3 Perplexity prompts", meta: "Source gap found | Action queued", dot: "bg-coral-bright", text: "text-coral-bright" },
 ]
 
+const operatorStages = [
+  { value: "Observe", label: "collect evidence", color: "text-systeal-bright" },
+  { value: "Approve", label: "apply policy", color: "text-signal-bright" },
+  { value: "Measure", label: "track outcomes", color: "text-warmwhite" },
+]
+
 export function HeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const scope = useRef<HTMLDivElement>(null)
@@ -74,14 +80,14 @@ export function HeroSection() {
             </p>
           </div>
 
-          {/* Console card - the dark instrument on the warm page */}
+          {/* Console card - illustrative product workflow */}
           <div data-hero className="lg:col-span-5">
             <div className="rounded-2xl bg-graphite-950 border border-graphite-line shadow-[0_30px_70px_-30px_rgba(13,17,16,0.5)] overflow-hidden">
               <div className="relative flex items-center justify-between px-5 py-3.5 border-b border-graphite-line overflow-hidden">
                 <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-300">Action queue</span>
                 <span className="inline-flex items-center gap-1.5 text-[10px] px-2.5 py-0.5 rounded-full bg-signal-bright/10 text-signal-bright border border-signal-bright/20">
-                  <span className="status-pulse w-1 h-1 rounded-full bg-signal-bright" />
-                  Operating
+                  <span className="w-1 h-1 rounded-full bg-signal-bright" />
+                  Example workflow
                 </span>
                 <span className="operator-scanline absolute bottom-0 left-0 h-px w-1/5 bg-signal-bright/50" />
               </div>
@@ -102,20 +108,16 @@ export function HeroSection() {
               </div>
 
               <div className="grid grid-cols-3 divide-x divide-graphite-line border-t border-graphite-line">
-                {[
-                  { v: "47", l: "observed", c: "text-systeal-bright" },
-                  { v: "38", l: "shipped", c: "text-signal-bright" },
-                  { v: "+23%", l: "visibility", c: "text-warmwhite" },
-                ].map((s) => (
-                  <div key={s.l} className="px-4 py-3.5">
-                    <p className={`font-mono text-lg font-medium ${s.c}`}>{s.v}</p>
-                    <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-neutral-400">{s.l}</p>
+                {operatorStages.map((stage) => (
+                  <div key={stage.value} className="px-4 py-3.5">
+                    <p className={`font-mono text-sm font-medium ${stage.color}`}>{stage.value}</p>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-neutral-400">{stage.label}</p>
                   </div>
                 ))}
               </div>
             </div>
             <p className="font-mono text-[10px] text-neutral-600 text-center mt-3">
-              Live view | app.serpstrategists.com/operator
+              Illustrative product preview | Example data, not customer results
             </p>
           </div>
         </div>
