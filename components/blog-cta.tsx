@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { ArrowRight, CheckCircle } from "lucide-react"
 import { EarlyAccessModal } from "./early-access-modal"
+import { trackEvent } from "@/lib/analytics"
 
 interface BlogCtaProps {
   tags: string[]
@@ -14,10 +15,8 @@ interface BlogCtaProps {
 export function BlogCta({ tags, slug, placement = "middle" }: BlogCtaProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  // Normalize tags for matching
-  const normalizedTags = tags.map((t) => t.toLowerCase())
+  const normalizedTags = tags.map((tag) => tag.toLowerCase())
 
-  // Determine variant based on article tags
   let variant: "geo" | "technical" | "strategy" = "strategy"
 
   if (
@@ -36,7 +35,6 @@ export function BlogCta({ tags, slug, placement = "middle" }: BlogCtaProps) {
     variant = "technical"
   }
 
-  // Define dynamic content based on variant
   const content = {
     geo: {
       badge: "AI Search Visibility",
@@ -45,6 +43,7 @@ export function BlogCta({ tags, slug, placement = "middle" }: BlogCtaProps) {
       primaryText: "Request GEO Assessment",
       secondaryText: "See Product Demo",
       secondaryHref: "/demo",
+      secondaryDestination: "demo" as const,
       points: [
         "Live citation share report (ChatGPT, Claude, Perplexity)",
         "Content formatting audit for LLM extraction",
@@ -58,6 +57,7 @@ export function BlogCta({ tags, slug, placement = "middle" }: BlogCtaProps) {
       primaryText: "Request Technical Audit",
       secondaryText: "View Integrations",
       secondaryHref: "/integrations",
+      secondaryDestination: "integrations" as const,
       points: [
         "Full JSON-LD schema validation scan",
         "Indexation barrier identification report",
@@ -71,6 +71,7 @@ export function BlogCta({ tags, slug, placement = "middle" }: BlogCtaProps) {
       primaryText: "Request SEO Assessment",
       secondaryText: "View Pricing & Plans",
       secondaryHref: "/pricing",
+      secondaryDestination: "pricing" as const,
       points: [
         "Keyword gap audit vs. top 3 competitors",
         "Estimated traffic opportunity calculation",
@@ -79,29 +80,26 @@ export function BlogCta({ tags, slug, placement = "middle" }: BlogCtaProps) {
     },
   }[variant]
 
-  // Tweak title for the end of the article to feel like a logical next step
   const displayTitle =
     placement === "end"
       ? `Done reading? ${content.title.charAt(0).toLowerCase()}${content.title.slice(1)}`
       : content.title
 
-  const handlePrimaryClick = () => {
+  function handlePrimaryClick() {
+    trackEvent("blog_product_cta_click", {
+      article_slug: slug,
+      cta_placement: placement,
+      cta_variant: variant,
+      destination_type: "audit_modal",
+    })
     setIsModalOpen(true)
-    if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
-      ;(window as any).gtag("event", "cta_click", {
-        cta_placement: placement,
-        cta_variant: variant,
-        cta_text: content.primaryText,
-        article_slug: slug,
-      })
-    }
   }
 
   return (
     <>
       <div className="my-10 rounded-2xl bg-graphite-950 border border-graphite-line p-6 md:p-8 text-left relative overflow-hidden shadow-xl not-prose">
         <span className="operator-scanline absolute top-0 left-0 h-px w-1/4 bg-signal-bright/40" />
-        
+
         <span className="font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-signal-bright mb-4 inline-block px-2.5 py-1 rounded border border-signal-bright/20 bg-signal-bright/5">
           {content.badge}
         </span>
@@ -131,9 +129,18 @@ export function BlogCta({ tags, slug, placement = "middle" }: BlogCtaProps) {
             {content.primaryText}
             <ArrowRight className="w-4 h-4" />
           </button>
-          
+
           <Link
             href={content.secondaryHref}
+            data-analytics-handled="true"
+            onClick={() =>
+              trackEvent("blog_product_cta_click", {
+                article_slug: slug,
+                cta_placement: placement,
+                cta_variant: variant,
+                destination_type: content.secondaryDestination,
+              })
+            }
             className="inline-flex items-center gap-1 text-xs font-mono uppercase tracking-[0.14em] text-neutral-400 hover:text-warmwhite transition-colors"
           >
             {content.secondaryText}
@@ -142,7 +149,13 @@ export function BlogCta({ tags, slug, placement = "middle" }: BlogCtaProps) {
         </div>
       </div>
 
-      <EarlyAccessModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <EarlyAccessModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        leadSource={`blog_${variant}`}
+        ctaPlacement={`blog_${placement}`}
+        articleSlug={slug}
+      />
     </>
   )
 }

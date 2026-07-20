@@ -6,6 +6,7 @@ import "@fontsource/instrument-sans/600.css"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { GoogleAnalytics } from "@/components/google-analytics"
+import { AnalyticsListener } from "@/components/analytics-listener"
 import { SITE_NAME, SITE_URL } from "@/lib/site-seo"
 import { getOrganizationSchema, getWebSiteSchema, combineSchemas } from "@/lib/schema"
 
@@ -73,6 +74,7 @@ export default function RootLayout({
       </head>
       <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`} suppressHydrationWarning>
         <GoogleAnalytics />
+        <AnalyticsListener />
         <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
           {children}
         </ThemeProvider>

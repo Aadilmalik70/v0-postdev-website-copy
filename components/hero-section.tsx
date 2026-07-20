@@ -43,11 +43,9 @@ export function HeroSection() {
   return (
     <>
       <section ref={scope} className="relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
-        {/* Quiet dot grid, fading out downward */}
         <div className="absolute inset-x-0 top-0 h-[520px] dot-grid [mask-image:linear-gradient(to_bottom,black,transparent)] pointer-events-none" />
 
         <div className="relative max-w-6xl mx-auto px-5 md:px-6 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Editorial column */}
           <div className="lg:col-span-7">
             <p data-hero className="eyebrow mb-6">AI Growth Operator · Autonomous search operations</p>
 
@@ -80,7 +78,6 @@ export function HeroSection() {
             </p>
           </div>
 
-          {/* Console card - illustrative product workflow */}
           <div data-hero className="lg:col-span-5">
             <div className="rounded-2xl bg-graphite-950 border border-graphite-line shadow-[0_30px_70px_-30px_rgba(13,17,16,0.5)] overflow-hidden">
               <div className="relative flex items-center justify-between px-5 py-3.5 border-b border-graphite-line overflow-hidden">
@@ -123,7 +120,12 @@ export function HeroSection() {
         </div>
       </section>
 
-      <EarlyAccessModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <EarlyAccessModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        leadSource="homepage_hero"
+        ctaPlacement="homepage_hero"
+      />
     </>
   )
 }
