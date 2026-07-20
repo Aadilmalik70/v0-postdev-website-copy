@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer";
 import { buildMarketingMetadata } from "@/lib/site-seo";
 
 export const metadata: Metadata = buildMarketingMetadata({
-  title: "X",
+  title: "",
   description:
     "Review the terms and conditions governing your use of the SERP Strategists AI SEO agent platform.",
   pathname: "/terms",
