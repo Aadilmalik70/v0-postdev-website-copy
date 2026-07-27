@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { PricingSection } from "@/components/pricing-section"
+import { PricingAuditCta } from "@/components/pricing-audit-cta"
 import { FaqSection, type FaqItem } from "@/components/faq-section"
 import { Footer } from "@/components/footer"
 import { buildMarketingMetadata, buildCanonicalUrl } from "@/lib/site-seo"
@@ -500,7 +501,7 @@ export default function PricingPage() {
               <h2 className="font-display text-3xl md:text-5xl font-semibold text-warmwhite mb-4">See which search opportunities deserve attention first.</h2>
               <p className="text-neutral-300 leading-7">Run the free Growth Audit to inspect your first opportunity queue. Use it to decide whether an AI Growth Operator belongs in your SEO workflow.</p>
             </div>
-            <Link href="/#free-audit" className="shrink-0 inline-flex items-center justify-center rounded-full bg-signal-bright px-6 py-3 text-sm font-semibold text-black hover:bg-signal-bright/90 transition-colors">Run Free Growth Audit</Link>
+            <PricingAuditCta />
           </div>
         </section>
 
