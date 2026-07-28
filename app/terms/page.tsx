@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer";
 import { buildMarketingMetadata } from "@/lib/site-seo";
 
 export const metadata: Metadata = buildMarketingMetadata({
-  title: "",
+  title: "SERP Strategists Terms and Conditions",
   description:
     "Review the terms and conditions governing your use of the SERP Strategists AI SEO agent platform.",
   pathname: "/terms",
@@ -39,9 +39,9 @@ export default function TermsPage() {
               1. Service Description
             </h2>
             <p className="text-neutral-600 leading-relaxed">
-              SERP Strategists (&ldquo;the Service&rdquo;) is an AI-powered SEO
-              platform operated by SERP Strategists (&ldquo;we&rdquo;,
-              &ldquo;us&rdquo;, &ldquo;our&rdquo;). The Service provides
+              SERP Strategists ("the Service") is an AI-powered SEO
+              platform operated by SERP Strategists ("we",
+              "us", "our"). The Service provides
               automated website crawling, SEO analysis, issue detection, fix
               planning, and — with user approval — automated implementation of
               optimizations. By creating an account, you agree to these terms.
@@ -112,7 +112,7 @@ export default function TermsPage() {
                 You authorize us to charge your payment method on file
               </li>
               <li>
-                Prices may change with 30 days&apos; notice before your next
+                Prices may change with 30 days' notice before your next
                 billing cycle
               </li>
               <li>
@@ -148,8 +148,7 @@ export default function TermsPage() {
             </p>
             <ul className="list-disc list-inside text-neutral-600 leading-relaxed space-y-2 ml-2">
               <li>
-                The Service is provided &ldquo;as is&rdquo; without warranties of
-                any kind, express or implied
+                The Service is provided "as is" without warranties of any kind, express or implied
               </li>
               <li>
                 We do not guarantee specific SEO results, rankings, or traffic
@@ -232,7 +231,7 @@ export default function TermsPage() {
               11. Contact
             </h2>
             <p className="text-neutral-600 leading-relaxed">
-              For questions about these terms, contact us at{" "}
+              For questions about these terms, contact us at
               <a
                 href="mailto:hello@serpstrategists.com"
                 className="text-signal hover:text-signal"
