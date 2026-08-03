@@ -49,12 +49,51 @@ test("groupPostsByCluster groups related SEO content under explicit clusters", (
       readingTime: "5 min read",
       content: "",
     },
+    {
+      slug: "serp-competitor-analysis-guide",
+      title: "How to Do SERP Competitor Analysis in 2026",
+      description: "",
+      date: "2026-07-05",
+      author: "SERP Strategists",
+      tags: ["SERP Competitor Analysis", "SERP Analysis"],
+      readingTime: "11 min read",
+      content: "",
+    },
   ])
 
-  assert.equal(grouped.length, 3)
-  assert.equal(grouped[0]?.id, "ai-seo-tools-and-serp-strategy")
+  assert.equal(grouped.length, 4)
+  assert.equal(grouped[0]?.id, "ai-seo-tools")
   assert.equal(grouped[0]?.posts.length, 1)
-  assert.equal(grouped[1]?.id, "geo-and-ai-search")
-  assert.equal(grouped[0]?.posts.length, 1)
-  assert.equal(grouped[2]?.id, "technical-seo-systems")
+  assert.equal(grouped[1]?.id, "serp-intelligence")
+  assert.equal(grouped[1]?.pillarSlug, "serp-competitor-analysis-guide")
+  assert.equal(grouped[2]?.id, "geo-and-ai-search")
+  assert.equal(grouped[3]?.id, "technical-seo-systems")
+})
+
+test("featured clusters place the pillar before supporting guides", () => {
+  const grouped = groupPostsByCluster([
+    {
+      slug: "ai-seo-tools-pricing-comparison-2026",
+      title: "AI SEO Tools Pricing Comparison in 2026",
+      description: "",
+      date: "2026-08-03",
+      author: "SERP Strategists",
+      tags: ["AI SEO Tools"],
+      readingTime: "10 min read",
+      content: "",
+    },
+    {
+      slug: "top-seo-analysis-tools-2025-best-seo-ai-tool",
+      title: "12 Best AI SEO Tools for SEO Teams in 2026",
+      description: "",
+      date: "2026-06-10",
+      author: "SERP Strategists",
+      tags: ["AI SEO Tools"],
+      readingTime: "14 min read",
+      content: "",
+    },
+  ])
+
+  assert.equal(grouped[0]?.posts[0]?.slug, "top-seo-analysis-tools-2025-best-seo-ai-tool")
+  assert.equal(grouped[0]?.posts[1]?.slug, "ai-seo-tools-pricing-comparison-2026")
 })
