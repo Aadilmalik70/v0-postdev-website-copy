@@ -3,7 +3,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { groupPostsByCluster } from "@/lib/blog-taxonomy"
+import { groupPostsByCluster, isFeaturedBlogCluster } from "@/lib/blog-taxonomy"
 import { buildMarketingMetadata } from "@/lib/site-seo"
 
 export const metadata: Metadata = buildMarketingMetadata({
@@ -25,7 +25,9 @@ function formatBlogDate(date: string) {
 
 export default function BlogPage() {
   const posts = getAllPosts()
-  const clusters = groupPostsByCluster(posts)
+  const allClusters = groupPostsByCluster(posts)
+  const featuredClusters = allClusters.filter(isFeaturedBlogCluster)
+  const clusters = allClusters.filter((cluster) => !isFeaturedBlogCluster(cluster))
 
   return (
     <main className="min-h-screen bg-paper">
@@ -40,14 +42,12 @@ export default function BlogPage() {
           </h1>
           <div className="text-neutral-600 text-lg space-y-4 max-w-3xl">
             <p>
-              Deep dives into AI search optimization, technical SEO systems, and content strategy for compounding organic growth.
-              Every article is written from hands-on experience building and scaling search visibility across Google, ChatGPT, Perplexity, and emerging AI search engines.
+              Evidence-led guides to AI SEO tools, SERP intelligence, technical SEO systems, and search visibility.
+              Each article separates verified observations, official documentation, practical frameworks, and product limitations.
             </p>
             <p>
-              Posts are organized into strategic clusters covering GEO (Generative Engine Optimization), technical SEO implementation,
-              AI search visibility measurement, competitive analysis methodologies, and the evolving landscape of zero-click searches.
-              Whether you're a founder building your first SEO system or a practitioner optimizing for AI citations, you'll find actionable
-              frameworks backed by real data.
+              Start with one of the two priority knowledge paths below. AI SEO Tools helps you choose the right software and operating model.
+              SERP Intelligence helps you inspect a result page, interpret the competition, and turn the evidence into a measurable action.
             </p>
             <p className="text-lg">
               Browse the latest posts from each cluster below, or jump to a specific topic using the cluster navigation.
@@ -55,31 +55,62 @@ export default function BlogPage() {
           </div>
         </div>
 
-        <section className="mb-12 border border-line rounded-2xl p-8 bg-card">
-          <p className="text-[#00d084] text-xs font-mono uppercase tracking-[0.2em] mb-3">Featured cluster</p>
-          <h2 className="text-2xl md:text-3xl font-medium text-ink mb-3">AI SEO tools and competitive benchmarking</h2>
-          <p className="text-neutral-600 text-base leading-relaxed mb-5 max-w-3xl">
-            Start with the broad tools comparison, then move into the narrower SERP analyzer, pricing, and methodology guides if you are building a commercial SEO software stack.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/blog/top-seo-analysis-tools-2025-best-seo-ai-tool" className="text-sm font-mono px-4 py-2 rounded-full border border-[#00d084]/30 bg-surface text-ink hover:bg-paper">
-              Best AI SEO tools 2026
-            </Link>
-            <Link href="/blog/seo-ranking-tool-guide-what-actually-matters" className="text-sm font-mono px-4 py-2 rounded-full border border-[#00d084]/30 text-ink hover:bg-surface">
-              SEO ranking tool guide
-            </Link>
-            <Link href="/blog/best-serp-analyzer-tools-2026" className="text-sm font-mono px-4 py-2 rounded-full border border-line text-neutral-600 hover:border-[#00d084]/30 hover:text-ink">
-              Best SERP analyzer tools
-            </Link>
-            <Link href="/blog/serp-competitor-analysis-guide" className="text-sm font-mono px-4 py-2 rounded-full border border-line text-neutral-600 hover:border-[#00d084]/30 hover:text-ink">
-              SERP competitor analysis
-            </Link>
-            <Link href="/blog/ai-seo-tools-pricing-comparison-2026" className="text-sm font-mono px-4 py-2 rounded-full border border-line text-neutral-600 hover:border-[#00d084]/30 hover:text-ink">
-              Pricing comparison
-            </Link>
-            <Link href="/blog/how-to-do-seo-competitive-benchmarking-2026" className="text-sm font-mono px-4 py-2 rounded-full border border-line text-neutral-600 hover:border-[#00d084]/30 hover:text-ink">
-              Benchmarking method
-            </Link>
+        <section className="mb-16" aria-labelledby="priority-clusters">
+          <div className="mb-6">
+            <p className="text-[#00d084] text-xs font-mono uppercase tracking-[0.2em] mb-3">Priority knowledge paths</p>
+            <h2 id="priority-clusters" className="text-2xl md:text-3xl font-medium text-ink mb-2">
+              Begin with the pillar, then answer the next decision
+            </h2>
+            <p className="text-neutral-600 text-base max-w-3xl">
+              Each supporting guide has one distinct intent and links back to its pillar. Cross-cluster links appear only where the workflow genuinely hands off.
+            </p>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            {featuredClusters.map((cluster) => {
+              const pillar = cluster.posts.find((post) => post.slug === cluster.pillarSlug)
+              const supportingPosts = cluster.posts.filter((post) => post.slug !== cluster.pillarSlug)
+
+              if (!pillar) return null
+
+              return (
+                <article key={cluster.id} className="border border-line rounded-2xl p-8 bg-card">
+                  <p className="text-[#00d084] text-xs font-mono uppercase tracking-[0.2em] mb-3">
+                    {cluster.title} pillar
+                  </p>
+                  <h3 className="text-2xl font-medium text-ink mb-3">
+                    <Link href={`/blog/${pillar.slug}`} className="hover:text-[#00d084] transition-colors">
+                      {pillar.title}
+                    </Link>
+                  </h3>
+                  <p className="text-neutral-600 text-base leading-relaxed mb-5">{cluster.description}</p>
+                  <Link
+                    href={`/blog/${pillar.slug}`}
+                    className="inline-flex text-sm font-mono px-4 py-2 rounded-full border border-[#00d084]/30 bg-surface text-ink hover:bg-paper"
+                  >
+                    Read the pillar
+                  </Link>
+
+                  <div className="mt-7 pt-6 border-t border-line">
+                    <p className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-600 mb-3">
+                      {supportingPosts.length} supporting guides
+                    </p>
+                    <ul className="space-y-3">
+                      {supportingPosts.map((post) => (
+                        <li key={post.slug}>
+                          <Link
+                            href={`/blog/${post.slug}`}
+                            className="text-sm text-ink hover:text-[#00d084] transition-colors"
+                          >
+                            {post.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              )
+            })}
           </div>
         </section>
 
