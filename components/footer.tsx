@@ -2,6 +2,7 @@ import Link from "next/link"
 
 const footerLinks = {
   Product: [
+    { label: "AI SEO Automation", href: "/ai-seo-automation" },
     { label: "Modules", href: "/#modules" },
     { label: "Operator Loop", href: "/#operator-loop" },
     { label: "Pricing", href: "/#pricing" },

@@ -1,0 +1,280 @@
+---
+title: "SEO Approval Workflow: How to Govern Automated Changes"
+seoTitle: "SEO Approval Workflow for Automation"
+description: "Build an SEO approval workflow with evidence, risk tiers, roles, protected paths, validation, rollback, and measurement for AI-assisted and automated changes."
+date: "2026-08-03"
+dateModified: "2026-08-03"
+author: "SERP Strategists"
+tags: ["AI SEO Automation", "SEO Governance", "Approval Workflow", "SEO Operations"]
+relatedSlugs: ["seo-automation-risks", "what-seo-tasks-can-be-automated", "agentic-web-seo", "operationalizing-seo-saas-autonomous-growth"]
+---
+
+An SEO approval workflow decides whether a proposed change can proceed, who must review it, what evidence they need, and what happens after approval. The [AI SEO automation guide](/ai-seo-automation) covers the complete operating loop. This page focuses on the control surface between a recommendation and any external change.
+
+Approval is not a single button. It is a policy-backed state transition with an accountable person, a defined target, and a validation contract.
+
+## The minimum viable action record
+
+Do not ask someone to approve “improve SEO.” Every proposal should contain:
+
+| Field | Question it answers |
+|---|---|
+| Target | Which exact site, page, template, or file changes? |
+| Problem | What observed condition needs attention? |
+| Evidence | Which sources, rows, dates, URLs, or snapshots support it? |
+| Intent owner | Which page and audience job should remain primary? |
+| Proposed change | What will be added, removed, or replaced? |
+| Impact | What useful outcome could this influence? |
+| Confidence | How strong is the diagnosis and evidence? |
+| Effort | What work is required to prepare and implement it? |
+| Risk | What could break, and how large is the blast radius? |
+| Approver | Which role can accept this risk? |
+| Validation | Which immediate checks prove the intended state? |
+| Rollback | Which snapshot, inverse patch, or instruction restores the prior state? |
+| Measurement | Which metric, baseline, and date window evaluate the outcome? |
+
+Keep impact, confidence, effort, and risk separate. One combined score hides why a high-impact action is still too uncertain or dangerous to execute.
+
+## Recommended action states
+
+```text
+draft
+→ policy evaluation
+→ approved | needs approval | blocked
+→ queued
+→ running
+→ validating
+→ succeeded | failed | cancelled
+→ measuring
+→ measured
+```
+
+Rejection and cancellation are different:
+
+- **Rejected:** an approver decided the action should not proceed.
+- **Cancelled:** a previously valid action should stop because context, priority, or state changed.
+- **Blocked:** policy prevents the action regardless of a routine approval—for example, a protected path or unavailable adapter.
+
+Do not mark a job “succeeded” before validation completes.
+
+## Risk tiers
+
+### Low risk: prepare automatically, approve lightly
+
+Typical examples:
+
+- read-only data collection
+- reporting and alerts
+- duplicate suppression
+- draft descriptions or briefs
+- internal-link candidates
+- non-destructive validation
+
+Low risk does not automatically mean live write access. It can mean the system creates a ready-to-review draft.
+
+### Medium risk: named approval required
+
+Typical examples:
+
+- title or heading edits
+- anchor-text changes
+- existing page sections
+- new content
+- structured data changes
+- commercial comparison updates
+- bulk changes with a small individual impact but a large combined scope
+
+The approver should understand the page’s search intent, brand role, and measurement history.
+
+### High risk: owner approval plus stronger controls
+
+Typical examples:
+
+- redirects
+- canonical changes
+- robots.txt
+- `noindex` or indexing directives
+- URL deletion and pruning
+- template-level changes
+- pricing, legal, authentication, checkout, or account pages
+- sitewide publishing
+
+Require a preview or simulation, limited scope, explicit rollback, and production validation.
+
+## Role matrix
+
+| Role | Typical authority |
+|---|---|
+| Viewer | Read evidence and history |
+| SEO operator | Create actions, edit plans, approve bounded content or metadata work within policy |
+| Editor or brand owner | Approve public claims, positioning, and editorial changes |
+| Developer | Approve code, templates, redirects, canonicals, and technical validation |
+| Workspace admin | Manage integrations, policies, and medium-risk approvals |
+| Owner | Approve protected or high-risk actions and change governance rules |
+
+Use the smallest sufficient permission. Connecting a repository does not mean every workflow should receive write access to every branch.
+
+## Protected targets
+
+Define protected paths before the first external write:
+
+- pricing
+- legal and policy pages
+- authentication and account flows
+- checkout
+- global layout and navigation
+- robots and sitemap generation
+- redirect configuration
+- environment and deployment files
+- default or production branches
+
+A policy can allow analysis and draft creation while blocking direct execution against these targets.
+
+## The review screen should answer six questions
+
+### 1. Why now?
+
+Show the trigger, evidence window, page history, and cooldown state. A page changed yesterday should not receive another major rewrite because a 90-day aggregate still includes older behavior.
+
+### 2. Why this page?
+
+Show the query cluster, competing URLs, canonical state, and intended owner. Do not use “review first” as if it means “make this the winner.”
+
+### 3. What exactly changes?
+
+Use a structured plan or diff. The reviewer should not approve an opaque prompt that will generate the final change later.
+
+### 4. What could break?
+
+Name the blast radius, protected dependencies, and known uncertainty. A canonical can affect indexation; an anchor can change page context; a title can affect CTR and positioning.
+
+### 5. How will the system validate it?
+
+List the checks before approval. If validation is invented after a failure, the action contract was incomplete.
+
+### 6. How will the outcome be measured?
+
+Declare the baseline and wait for a complete outcome window. Search Console reporting lag and ranking volatility make instant causal claims unreliable.
+
+## Policy evaluation example
+
+```text
+IF target is protected
+  THEN block direct execution and require owner review
+
+ELSE IF action changes indexation or traffic routing
+  THEN require owner + developer approval, preview, validation, and rollback
+
+ELSE IF action changes public content or anchor text
+  THEN require editor or SEO owner approval
+
+ELSE IF action is read-only or draft-only
+  THEN allow within data, rate, and budget limits
+```
+
+Policies should be deterministic where possible. A model can explain the action; it should not secretly redefine who is authorized to approve it.
+
+## Optimistic version checks
+
+The target may change while an action waits for approval. Preserve a version or checksum when the proposal is created.
+
+Before execution:
+
+1. Fetch the current target.
+2. Compare it with the version used to create the proposal.
+3. Stop if the relevant state changed.
+4. Ask for a rebase or fresh review.
+
+This prevents an approved diff from overwriting later work.
+
+## Validation contract
+
+Use three layers:
+
+### Structural validation
+
+- expected file, field, or page value exists
+- output parses
+- required metadata is present
+- internal links are crawlable
+- no unexpected target changed
+
+### Build and runtime validation
+
+- typechecking and tests pass
+- production build succeeds
+- target route returns the intended status
+- rendered content is present
+- logs do not show a new error
+
+### SEO-specific validation
+
+- canonical and index directives agree
+- redirect status and destination are correct
+- sitemap host and URL are consistent
+- structured data matches visible content
+- page ownership and internal links remain coherent
+
+The long-term ranking or click outcome belongs to measurement, not immediate validation.
+
+## Rollback contract
+
+A rollback plan needs:
+
+- before snapshot
+- after snapshot
+- immutable action and execution IDs
+- checksum or version
+- rollback actor and approval rule
+- inverse change or restoration instruction
+- post-rollback validation
+
+For content, rollback may restore the prior text. For a redirect or canonical, it may require a new reviewed deployment. “We can probably undo it” is not a plan.
+
+## Measurement contract
+
+Attach:
+
+- primary metric
+- guardrail metrics
+- baseline dates
+- expected measurement start
+- expected measurement end
+- other material changes during the window
+- conclusion status: positive, negative, inconclusive, or not ready
+
+Correlation should be reported as correlation. Google does not guarantee that a compliant page will be crawled, indexed, or served. [Google’s explanation of how Search works](https://developers.google.com/search/docs/fundamentals/how-search-works) is a useful reminder that a technically correct deployment is not a ranking guarantee.
+
+## Current SERP Strategists implementation
+
+The documented product lifecycle includes structured action plans, evidence, separate scores, policy evaluation, approval states, protected-path blocking, tenant isolation, optimistic version checking, and append-only action events.
+
+The durable job layer includes leases, retries, cancellation, idempotency, attempt records, before/after/rollback snapshots, validation, and rollback states.
+
+Simulation is enabled. GitHub and WordPress adapters remain disabled. Therefore the workflow can demonstrate approval and execution-state behavior without claiming it already modifies an external repository or website.
+
+Review [which SEO tasks to automate](/blog/what-seo-tasks-can-be-automated) before assigning risk tiers, and use the [SEO automation risk guide](/blog/seo-automation-risks) to test the policy against real failure modes.
+
+## Frequently asked questions
+
+### Should every SEO change require approval?
+
+No. Read-only collection and bounded draft preparation can usually proceed within policy. Public writes should require the level of approval appropriate to their risk and blast radius.
+
+### Who should approve title changes?
+
+The role that owns both search intent and public messaging—often an SEO lead, editor, product marketer, or founder. High-value commercial pages may need more than one owner.
+
+### Can low-risk SEO fixes auto-deploy?
+
+Only when the adapter is enabled, the policy explicitly allows the action, the target is not protected, the change is version-safe, deterministic validation exists, and rollback is real. Many teams should begin with auto-drafts rather than auto-deploys.
+
+### What happens when an approved target changes?
+
+Execution should stop on version mismatch. Recompute or rebase the proposal, then obtain approval for the new state.
+
+## Final workflow
+
+The approver should see a complete action, not a request to trust the model.
+
+Evidence defines the problem. Policy defines permission. A person accepts material risk. The adapter performs only the enabled write. Validation confirms the immediate state. Measurement evaluates the later outcome.

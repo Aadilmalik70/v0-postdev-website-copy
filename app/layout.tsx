@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     "SERP Strategists is the AI Growth Operator that observes your search performance, executes approved SEO and GEO actions, and improves visibility across Google and AI search.",
   keywords: [
     "AI Growth Operator",
+    "AI SEO automation",
     "autonomous search operations",
     "AI SEO",
     "GEO optimization",

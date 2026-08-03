@@ -6,6 +6,8 @@ export interface BlogCluster {
   description: string
   featured: boolean
   pillarSlug?: string
+  pillarHref?: string
+  pillarTitle?: string
   supportingSlugs: string[]
   posts: BlogPost[]
 }
@@ -42,6 +44,24 @@ const CLUSTERS: BlogClusterDefinition[] = [
       "serp-feature-analysis-guide",
       "competitor-content-gap-analysis",
       "how-to-do-seo-competitive-benchmarking-2026",
+    ],
+  },
+  {
+    id: "ai-seo-automation",
+    title: "AI SEO Automation",
+    description:
+      "Build a governed operating system for evidence, prioritization, approval, safe execution, validation, and measurement.",
+    featured: true,
+    pillarHref: "/ai-seo-automation",
+    pillarTitle: "AI SEO Automation: Tasks, Workflows, and Governance",
+    supportingSlugs: [
+      "what-seo-tasks-can-be-automated",
+      "ai-seo-agent-vs-seo-tools",
+      "seo-automation-cost",
+      "seo-approval-workflow",
+      "seo-automation-risks",
+      "agentic-web-seo",
+      "operationalizing-seo-saas-autonomous-growth",
     ],
   },
   {
@@ -93,6 +113,10 @@ function getClusterId(post: BlogPost): BlogClusterDefinition["id"] {
 
   if (/(serp analyzer|serp analysis|serp competitor|serp feature|search intent|competitive benchmarking|competitor content gap)/.test(haystack)) {
     return "serp-intelligence"
+  }
+
+  if (/(ai seo automation|seo automation|agentic seo|approval workflow|seo governance)/.test(haystack)) {
+    return "ai-seo-automation"
   }
 
   if (/(geo|ai search|perplexity|ai overview|generative engine optimization|chatgpt|gemini)/.test(haystack)) {
