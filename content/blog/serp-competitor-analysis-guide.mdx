@@ -3,7 +3,7 @@ title: "How to Do SERP Competitor Analysis in 2026"
 seoTitle: "SERP Competitor Analysis Guide (2026)"
 description: "Use this practical SERP competitor-analysis workflow to map ranking URLs, SERP features, query overlap, ranking versus CTR gaps, and the next page-level action."
 date: "2026-07-05"
-dateModified: "2026-07-27"
+dateModified: "2026-08-03"
 author: "SERP Strategists"
 tags: ["SERP Competitor Analysis", "SERP Analysis", "SEO Strategy", "Competitive Research"]
 relatedSlugs: ["best-serp-analyzer-tools-2026", "how-to-do-seo-competitive-benchmarking-2026", "top-seo-analysis-tools-2025-best-seo-ai-tool"]
@@ -201,33 +201,87 @@ The goal is not to make the page longer. It is to help the reader make a better 
 
 ---
 
-## Worked example: a SaaS tools article
+## Worked example: improving our AI SEO pricing page
 
-This is an illustrative example.
+This is a real example from SERP Strategists, recorded on August 3, 2026. The target was our [AI SEO tools pricing comparison](/blog/ai-seo-tools-pricing-comparison-2026), not a hypothetical page.
 
-Assume a SaaS site has a page targeting “best AI SEO tools.” It receives impressions but sits around the lower half of page two.
+### 1. Start with first-party page evidence
 
-### What the analyst records
+We isolated the page's Google Search Console totals for July 17–August 1, 2026:
+
+| Page evidence | Result |
+|---|---:|
+| Impressions | 741 |
+| Clicks | 0 |
+| Average position | 18.6 |
+| Window | 16 days |
+
+The page totals are exact for that window. The export stores page totals and query totals separately, so it cannot prove that every site-level query belongs to this URL. That limitation matters: the evidence supports a page-level diagnosis, not a fabricated query-to-page join.
+
+The first conclusion was therefore **not** “rewrite the title for CTR.” At an average position of 18.6, the page first needs stronger evidence and rankings before a CTR test can be interpreted cleanly.
+
+### 2. Capture one reproducible live SERP
+
+We ran the public [AccuRanker Live SERP Checker](https://www.accuranker.com/free-serp-checker/) with these settings:
+
+- query: **ai seo tools pricing**
+- location: **United States — English**
+- device: **desktop**
+- city: **none**
+- session: fresh cloud browser, no signed-in Google account
+- capture date: **August 3, 2026**
+
+![AccuRanker result snapshot for ai seo tools pricing](/blog/evidence/serp-analyzer/accuranker-results-2026-08-03.jpg)
+
+*Evidence snapshot captured August 3, 2026. A live result page can change by time, location, device, and personalization; this is not rank history.*
+
+The first five organic results visible in that snapshot were:
+
+| Position | Result | Page type | Evidence signal visible before opening |
+|---:|---|---|---|
+| 1 | [OneLittleWeb: “I Tested 40+ AI SEO Tools”](https://onelittleweb.com/top-tools/best-ai-seo-tools/) | Tested editorial roundup | First-hand testing claim and a narrowed list |
+| 2 | [Whatagraph: “We Tested the 13 Best”](https://whatagraph.com/blog/articles/ai-seo-tools) | Tested editorial roundup | Testing-led title and curated tool count |
+| 3 | [SEO.ai pricing](https://seo.ai/pricing) | Vendor pricing page | Direct transactional intent |
+| 4 | Reddit discussion about fair AI SEO service prices | Community discussion | Peer pricing and service-buying intent |
+| 5 | [Tim Soulo: “12 Tools, Real Pricing”](https://blog.timsoulo.com/ai-seo-tools-compared-12-tools-real-pricing-and-what-each-does-best/) | Editorial comparison | Pricing-first promise, feature matrix, recommendations |
+
+This SERP was mixed: tested comparisons, a vendor pricing page, a community discussion, and later video/editorial results all appeared. That means the query does not demand one rigid template. It does show a recurring expectation for **real pricing, selection help, and visible proof**.
+
+### 3. Compare the evidence, not the word count
 
 | Observation | Evidence | Diagnosis |
 |---|---|---|
-| Most ranking pages are commercial comparison lists | Repeated page type across the cluster | Intent is correct |
-| Competitors include a table near the top | Visible on most winning pages | Expected decision support |
-| Several competitors cite official pricing and product pages | External references in tool sections | Trust gap |
-| The site's article contains two long benchmarking tutorials | Page review | Topic dilution |
-| The domain is weaker than the leading brands | Authority comparison | Authority gap remains |
-| The article has a distinct execution perspective | Unique product workflow | Defensible information gain |
+| Two leading editorial results foreground first-hand testing | Their titles and page introductions | Trust and experience are competitive requirements |
+| A vendor pricing page ranks alongside editorial lists | SEO.ai in the visible top results | Direct commercial intent is present |
+| Community and video results also appear | Reddit and YouTube in the result page | Buyers want both official facts and independent explanation |
+| Our page averaged position 18.6 with no clicks | Page-level GSC totals | This is primarily a ranking/evidence problem, not a title-only CTR problem |
+| Our broader tool guide already owns general “best tools” intent | Existing site architecture | Keep this page focused on prices, billing, limits, and cost drivers |
+| Public prices change and annual equivalents are easy to misstate | Vendor pricing pages | Verification date and normalization method must be visible |
 
-### Focused improvement set
+### 4. Choose the focused improvement set
 
-1. Keep the page commercial and tool-selection focused.
-2. Add one consistent comparison matrix.
-3. Cite official evidence for each tool.
-4. Move the full benchmarking method to a dedicated guide.
-5. Strengthen internal links from adjacent indexed pages.
-6. Measure impressions, average position, CTR, and query expansion after recrawl.
+The evidence led to six contained changes:
 
-The action is not “write more.” It is “remove intent dilution, improve trust, and reinforce the commercial cluster.”
+1. Recheck public prices, billing cadence, usage units, seats, and add-ons against official vendor pages.
+2. Publish the verification method and state what was **not** tested behind a paid login.
+3. Add dated screenshots of representative pricing models.
+4. Add a feature-and-cost-driver matrix so readers can compare the unit that actually controls spend.
+5. Keep the existing URL and commercial intent instead of turning the page into another generic “best tools” article.
+6. Link the pricing decision to the separate [SERP analyzer comparison](/blog/best-serp-analyzer-tools-2026) and broader [AI SEO tools guide](/blog/top-seo-analysis-tools-2025-best-seo-ai-tool).
+
+The primary gap was **proof**. Authority still matters, so the content update should be paired with relevant internal links and outreach rather than treated as a guaranteed ranking fix.
+
+### 5. Define the measurement window before shipping
+
+We will compare the next complete 14–28 day window after recrawl against the pre-change baseline and record:
+
+- qualified impressions and clicks
+- average position for the page
+- page-one impressions after excluding unrelated navigational and machine-shaped queries
+- query expansion around pricing, billing, limits, and comparisons
+- any change in audit starts from the page
+
+A successful worked example does not end with “we published more content.” It ends with a dated hypothesis, a reversible change, and a defined outcome check.
 
 ---
 
