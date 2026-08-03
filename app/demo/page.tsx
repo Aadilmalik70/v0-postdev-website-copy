@@ -27,7 +27,7 @@ const steps = [
   },
   {
     name: "Execute",
-    body: "Approved changes move into the CMS or codebase with logs and rollback in place.",
+    body: "In a live-enabled workflow, approved changes move through a permissioned adapter. The current early-access workflow simulates this stage.",
   },
   {
     name: "Measure",
@@ -77,8 +77,9 @@ export default function DemoPage() {
           </h1>
           <p className="text-neutral-600 text-lg leading-relaxed">
             This is an illustrative demo, not a customer case study. It shows how a queue moves
-            from observation to approval to shipped changes without turning the site into a manual
-            spreadsheet exercise.
+            from observation to approval to an execution state without turning the site into a manual
+            spreadsheet exercise. The current early-access product uses simulation; live GitHub and
+            WordPress execution adapters remain disabled.
           </p>
         </header>
 

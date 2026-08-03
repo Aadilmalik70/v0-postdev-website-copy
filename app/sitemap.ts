@@ -38,6 +38,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: "https://serpstrategists.com/ai-seo-automation",
+      lastModified: getLastModified("app/ai-seo-automation/page.tsx"),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: "https://serpstrategists.com/about",
       lastModified: getLastModified("app/about/page.tsx"),
       changeFrequency: "monthly",

@@ -1,5 +1,7 @@
 import test from "node:test"
 import assert from "node:assert/strict"
+import fs from "node:fs"
+import path from "node:path"
 
 import { buildCanonicalUrl, getHomepageSeoCopy } from "../lib/site-seo.ts"
 import { groupPostsByCluster } from "../lib/blog-taxonomy.ts"
@@ -96,4 +98,58 @@ test("featured clusters place the pillar before supporting guides", () => {
 
   assert.equal(grouped[0]?.posts[0]?.slug, "top-seo-analysis-tools-2025-best-seo-ai-tool")
   assert.equal(grouped[0]?.posts[1]?.slug, "ai-seo-tools-pricing-comparison-2026")
+})
+
+test("AI SEO automation uses an external commercial pillar and ordered support pages", () => {
+  const grouped = groupPostsByCluster([
+    {
+      slug: "seo-automation-risks",
+      title: "SEO Automation Risks",
+      description: "",
+      date: "2026-08-03",
+      author: "SERP Strategists",
+      tags: ["AI SEO Automation"],
+      readingTime: "8 min read",
+      content: "",
+    },
+    {
+      slug: "what-seo-tasks-can-be-automated",
+      title: "What SEO Tasks Can Be Automated?",
+      description: "",
+      date: "2026-08-03",
+      author: "SERP Strategists",
+      tags: ["AI SEO Automation"],
+      readingTime: "9 min read",
+      content: "",
+    },
+  ])
+
+  const automationCluster = grouped.find((cluster) => cluster.id === "ai-seo-automation")
+  assert.equal(automationCluster?.pillarHref, "/ai-seo-automation")
+  assert.equal(automationCluster?.posts[0]?.slug, "what-seo-tasks-can-be-automated")
+  assert.equal(automationCluster?.posts[1]?.slug, "seo-automation-risks")
+})
+
+test("AI SEO automation pillar and support pages satisfy the internal-link contract", () => {
+  const supportSlugs = [
+    "what-seo-tasks-can-be-automated",
+    "ai-seo-agent-vs-seo-tools",
+    "seo-automation-cost",
+    "seo-approval-workflow",
+    "seo-automation-risks",
+    "agentic-web-seo",
+    "operationalizing-seo-saas-autonomous-growth",
+  ]
+  const pillar = fs.readFileSync(path.join(process.cwd(), "app/ai-seo-automation/page.tsx"), "utf8")
+
+  for (const slug of supportSlugs) {
+    assert.match(pillar, new RegExp(`/blog/${slug}`))
+
+    const article = fs
+      .readFileSync(path.join(process.cwd(), `content/blog/${slug}.mdx`), "utf8")
+      .replace(/^---[\s\S]*?---\s*/, "")
+    const opening = article.split(/\s+/).slice(0, 120).join(" ")
+
+    assert.match(opening, /\]\(\/ai-seo-automation\)/)
+  }
 })

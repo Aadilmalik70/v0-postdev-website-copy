@@ -1,10 +1,16 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, BookOpenText, ShieldCheck, Workflow, PlayCircle } from "lucide-react"
+import { ArrowRight, BarChart3, BookOpenText, Bot, ShieldCheck, Workflow, PlayCircle } from "lucide-react"
 import { Reveal } from "./gsap-fx"
 
 const supportLinks = [
+  {
+    href: "/ai-seo-automation",
+    icon: Bot,
+    title: "AI SEO automation",
+    body: "See which tasks to automate, where approval belongs, and how evidence becomes a measured action.",
+  },
   {
     href: "/integrations",
     icon: Workflow,
@@ -29,6 +35,12 @@ const supportLinks = [
     title: "AI SEO tools comparison",
     body: "Compare Ahrefs, Semrush, Surfer SEO, and autonomous agents to choose the best SEO stack for 2026.",
   },
+  {
+    href: "/blog/serp-competitor-analysis-guide",
+    icon: BarChart3,
+    title: "SERP intelligence",
+    body: "Inspect intent, ranking pages, SERP features, and competitor gaps before choosing an action.",
+  },
 ]
 
 export function HomepageSupportLinksSection() {
@@ -46,7 +58,7 @@ export function HomepageSupportLinksSection() {
           </p>
         </Reveal>
 
-        <Reveal selector="[data-support]" stagger={0.08} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Reveal selector="[data-support]" stagger={0.08} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {supportLinks.map((item) => (
             <Link
               key={item.title}

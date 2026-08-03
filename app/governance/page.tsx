@@ -104,9 +104,9 @@ export default function GovernancePage() {
             </p>
           </Link>
           <Link href="/blog/ai-seo-agent-vs-agency" className="block border border-line rounded-2xl p-6 bg-card hover:border-[#00d084]/30 hover:bg-surface transition-colors">
-            <h2 className="text-lg font-medium text-ink mb-2">Compare with agencies</h2>
+            <h2 className="text-lg font-medium text-ink mb-2">Compare operating models</h2>
             <p className="text-neutral-600 leading-relaxed">
-              See where AI execution wins on speed, coverage, and cost, and where human judgment still matters.
+              Compare software-led, agency-led, and hybrid workflows by cost model, control, judgment, and implementation scope.
             </p>
           </Link>
         </section>

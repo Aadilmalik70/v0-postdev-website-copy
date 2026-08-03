@@ -46,8 +46,8 @@ export default function BlogPage() {
               Each article separates verified observations, official documentation, practical frameworks, and product limitations.
             </p>
             <p>
-              Start with one of the two priority knowledge paths below. AI SEO Tools helps you choose the right software and operating model.
-              SERP Intelligence helps you inspect a result page, interpret the competition, and turn the evidence into a measurable action.
+              Start with one of the three priority knowledge paths below. AI SEO Tools helps you choose software.
+              SERP Intelligence helps you inspect and interpret the result page. AI SEO Automation helps you govern the workflow from evidence to measurement.
             </p>
             <p className="text-lg">
               Browse the latest posts from each cluster below, or jump to a specific topic using the cluster navigation.
@@ -66,12 +66,14 @@ export default function BlogPage() {
             </p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6 lg:grid-cols-3">
             {featuredClusters.map((cluster) => {
               const pillar = cluster.posts.find((post) => post.slug === cluster.pillarSlug)
+              const pillarHref = pillar ? `/blog/${pillar.slug}` : cluster.pillarHref
+              const pillarTitle = pillar?.title ?? cluster.pillarTitle
               const supportingPosts = cluster.posts.filter((post) => post.slug !== cluster.pillarSlug)
 
-              if (!pillar) return null
+              if (!pillarHref || !pillarTitle) return null
 
               return (
                 <article key={cluster.id} className="border border-line rounded-2xl p-8 bg-card">
@@ -79,13 +81,13 @@ export default function BlogPage() {
                     {cluster.title} pillar
                   </p>
                   <h3 className="text-2xl font-medium text-ink mb-3">
-                    <Link href={`/blog/${pillar.slug}`} className="hover:text-[#00d084] transition-colors">
-                      {pillar.title}
+                    <Link href={pillarHref} className="hover:text-[#00d084] transition-colors">
+                      {pillarTitle}
                     </Link>
                   </h3>
                   <p className="text-neutral-600 text-base leading-relaxed mb-5">{cluster.description}</p>
                   <Link
-                    href={`/blog/${pillar.slug}`}
+                    href={pillarHref}
                     className="inline-flex text-sm font-mono px-4 py-2 rounded-full border border-[#00d084]/30 bg-surface text-ink hover:bg-paper"
                   >
                     Read the pillar
