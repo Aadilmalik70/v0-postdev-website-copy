@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import type { Metadata } from "next"
+import GithubSlugger from "github-slugger"
 import { MDXContent } from "./mdx-content"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -11,65 +12,57 @@ import { getArticleSchema, getBreadcrumbSchema, combineSchemas } from "@/lib/sch
 import { getFAQSchemaForPost } from "@/lib/faq-schemas"
 import { getFAQSchemaFromMarkdown } from "@/lib/faq-from-markdown"
 import { BlogCta } from "@/components/blog-cta"
+import { ReadingProgress } from "@/components/blog/reading-progress"
+import { ArticleToc, ArticleTocMobile, type TocItem } from "@/components/blog/article-toc"
+import { ShareRow } from "@/components/blog/share-row"
 
-const AUTHOR_PROFILES: Record<string, { name: string; role: string; avatarUrl: string; bio: string }> = {
-  "Aadil Khan": {
-    name: "Aadil Khan",
-    role: "Founder & Organic growth operator",
-    avatarUrl: "/blog/authors/aadil-khan.png",
-    bio: "Aadil Khan is the founder of SERP Strategists. As an organic growth operator, he works with B2B SaaS and startup teams to scale search visibility using semantic engineering and data-driven GEO. Follow his experiments on LinkedIn or read our about page to see how we build."
-  },
-  "SERP Strategists": {
-    name: "Aadil Khan",
-    role: "Founder & Organic growth operator",
-    avatarUrl: "/blog/authors/aadil-khan.png",
-    bio: "Aadil Khan is the founder of SERP Strategists. As an organic growth operator, he works with B2B SaaS and startup teams to scale search visibility using semantic engineering and data-driven GEO. Follow his experiments on LinkedIn or read our about page to see how we build."
-  },
-  "SERP Strategists Editorial Team": {
-    name: "Aadil Khan",
-    role: "Founder & Organic growth operator",
-    avatarUrl: "/blog/authors/aadil-khan.png",
-    bio: "Aadil Khan is the founder of SERP Strategists. As an organic growth operator, he works with B2B SaaS and startup teams to scale search visibility using semantic engineering and data-driven GEO. Follow his experiments on LinkedIn or read our about page to see how we build."
-  }
+interface AuthorProfile {
+  name: string
+  role: string
+  avatarUrl: string | null
+  bio: string
 }
 
-function splitContentAtFirstSection(content: string): { firstPart: string; secondPart: string | null } {
+const DEFAULT_AUTHOR: AuthorProfile = {
+  name: "Aadil Khan",
+  role: "Founder & Organic growth operator",
+  avatarUrl: "/blog/authors/aadil-khan.png",
+  bio: "Aadil Khan is the founder of SERP Strategists. As an organic growth operator, he works with B2B SaaS and startup teams to scale search visibility using semantic engineering and data-driven GEO. Follow his experiments on LinkedIn or read our about page to see how we build.",
+}
+
+const AUTHOR_PROFILES: Record<string, AuthorProfile> = {
+  "Aadil Khan": DEFAULT_AUTHOR,
+  "SERP Strategists": DEFAULT_AUTHOR,
+  "SERP Strategists Editorial Team": DEFAULT_AUTHOR,
+}
+
+/**
+ * Split the article so the product CTA lands at a natural mid-article break.
+ * We choose the `##` heading nearest the halfway point of the content rather
+ * than the second heading, which on a 3,000-word guide fired far too early.
+ */
+function splitContentAtMidpoint(content: string): { firstPart: string; secondPart: string | null } {
   const normalized = content.replace(/\r\n/g, "\n")
   const headings = [...normalized.matchAll(/\n##\s+/g)]
-  
-  if (headings.length <= 1) {
-    return { firstPart: content, secondPart: null }
-  }
-  
-  const secondHeadingIndex = headings[1].index
-  if (secondHeadingIndex === undefined) {
-    return { firstPart: content, secondPart: null }
-  }
-  
-  const firstPart = content.slice(0, secondHeadingIndex)
-  const secondPart = content.slice(secondHeadingIndex)
-  
-  return { firstPart, secondPart }
-}
+    .map((match) => match.index)
+    .filter((index): index is number => index !== undefined)
 
-const proseClasses = 
-  "prose prose-neutral max-w-none prose-lg " +
-  "prose-headings:font-display prose-headings:text-ink prose-headings:tracking-tight prose-headings:leading-tight " +
-  "prose-h2:scroll-mt-28 prose-h2:border-t prose-h2:border-line prose-h2:pt-10 prose-h2:text-3xl " +
-  "prose-h3:scroll-mt-28 prose-h3:text-2xl prose-h4:text-xl " +
-  "prose-p:text-neutral-700 prose-p:leading-8 " +
-  "prose-li:text-neutral-700 prose-li:marker:text-signal " +
-  "prose-a:text-signal prose-a:font-medium prose-a:underline prose-a:decoration-signal/30 prose-a:underline-offset-4 hover:prose-a:decoration-signal " +
-  "prose-strong:text-ink " +
-  "prose-img:mx-auto prose-img:rounded-2xl prose-img:border prose-img:border-line prose-img:shadow-[0_18px_50px_-30px_rgba(13,17,16,0.32)] " +
-  "prose-table:my-8 prose-table:block prose-table:w-full prose-table:overflow-x-auto prose-table:whitespace-normal " +
-  "prose-th:border prose-th:border-line prose-th:bg-surface prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:text-sm prose-th:text-ink " +
-  "prose-td:border prose-td:border-line prose-td:px-4 prose-td:py-3 prose-td:align-top prose-td:text-sm " +
-  "prose-code:text-ink prose-code:bg-surface prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded " +
-  "prose-pre:bg-graphite-950 prose-pre:text-warmwhite prose-pre:border prose-pre:border-graphite-line prose-pre:shadow-[0_18px_50px_-30px_rgba(13,17,16,0.55)] " +
-  "[&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:rounded-none [&_pre_code]:text-neutral-300 " +
-  "prose-blockquote:not-italic prose-blockquote:border-l-signal prose-blockquote:bg-surface prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-2xl prose-blockquote:text-neutral-700 " +
-  "prose-hr:border-line"
+  // Fewer than three headings leaves no interior break worth using.
+  if (headings.length <= 2) {
+    return { firstPart: content, secondPart: null }
+  }
+
+  const midpoint = normalized.length / 2
+  const interior = headings.slice(1, -1)
+  const breakIndex = interior.reduce((best, index) =>
+    Math.abs(index - midpoint) < Math.abs(best - midpoint) ? index : best,
+  )
+
+  return {
+    firstPart: normalized.slice(0, breakIndex),
+    secondPart: normalized.slice(breakIndex),
+  }
+}
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -78,45 +71,56 @@ interface Props {
 function formatBlogDate(value: string) {
   return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
   }).format(new Date(value))
 }
 
-interface TableOfContentsItem {
-  title: string
-  href: string
+/** Strip inline markdown so the text matches the heading's rendered textContent. */
+function headingTextFromMarkdown(raw: string): string {
+  return raw
+    .replace(/\[([^\]]+)]\([^)]+\)/g, "$1")
+    .replace(/[*_`~]/g, "")
+    .trim()
 }
 
-function getTableOfContents(content: string): TableOfContentsItem[] {
-  const seenSlugs = new Map<string, number>()
+/**
+ * Build the TOC with the same slugger rehype-slug uses, so every anchor
+ * resolves. Two details matter:
+ *  - the article renders as two MDX passes (content is split for the
+ *    mid-article CTA) and rehype-slug starts a fresh slugger per pass, so
+ *    each part gets its own instance;
+ *  - every heading level advances the slugger's duplicate counter, so we
+ *    slug them all and only emit the `##` ones.
+ */
+function getTableOfContents(parts: string[]): TocItem[] {
+  const items: TocItem[] = []
 
-  return content.split(/\r?\n/).flatMap((line) => {
-    const match = line.match(/^##\s+(.+)$/)
-    if (!match) return []
+  for (const part of parts) {
+    const slugger = new GithubSlugger()
+    let inFence = false
 
-    const title = match[1]
-      .replace(/\[([^\]]+)]\([^)]+\)/g, "$1")
-      .replace(/[*_`~]/g, "")
-      .trim()
+    for (const line of part.split(/\r?\n/)) {
+      if (/^\s*(```|~~~)/.test(line)) {
+        inFence = !inFence
+        continue
+      }
+      if (inFence) continue
 
-    const baseSlug = title
-      .toLowerCase()
-      .normalize("NFKD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^\w\s-]/g, "")
-      .trim()
-      .replace(/\s+/g, "-")
-      .replace(/-+/g, "-")
+      const match = line.match(/^(#{1,6})\s+(.+)$/)
+      if (!match) continue
 
-    if (!baseSlug) return []
+      const title = headingTextFromMarkdown(match[2])
+      if (!title) continue
 
-    const occurrence = seenSlugs.get(baseSlug) ?? 0
-    seenSlugs.set(baseSlug, occurrence + 1)
-    const slug = occurrence === 0 ? baseSlug : `${baseSlug}-${occurrence}`
+      const slug = slugger.slug(title)
+      if (match[1].length === 2) {
+        items.push({ title, href: `#${slug}` })
+      }
+    }
+  }
 
-    return [{ title, href: `#${slug}` }]
-  })
+  return items
 }
 
 export async function generateStaticParams() {
@@ -130,7 +134,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {}
 
   return buildMarketingMetadata({
-    title: post.seoTitle || post.title,
+    title: post.title,
     description: post.description,
     pathname: `/blog/${slug}`,
     type: "article",
@@ -147,24 +151,29 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound()
 
-  const { firstPart, secondPart } = splitContentAtFirstSection(post.content)
+  const { firstPart, secondPart } = splitContentAtMidpoint(post.content)
   const relatedPosts = getRelatedPosts(slug, post.tags, 3)
-  const tableOfContents = getTableOfContents(post.content)
+  // Mirror the render: one slugger pass per MDX block.
+  const tableOfContents = getTableOfContents(
+    secondPart ? [firstPart, secondPart] : [firstPart],
+  )
   const postUrl = buildCanonicalUrl(`/blog/${slug}`)
-  const authorInitials = post.author
+  const category = post.tags[0] ?? "Guide"
+
+  const authorProfile: AuthorProfile = AUTHOR_PROFILES[post.author] ?? {
+    name: post.author,
+    role: "Editorial Team",
+    avatarUrl: null,
+    bio: `Editorial coverage from the ${post.author} team.`,
+  }
+  const authorInitials = authorProfile.name
     .split(/\s+/)
     .map((part) => part[0])
     .filter(Boolean)
     .join("")
     .slice(0, 2)
     .toUpperCase()
-
-  const authorProfile = AUTHOR_PROFILES[post.author] || {
-    name: post.author,
-    role: "Editorial Team",
-    avatarUrl: null,
-    bio: `Editorial coverage from the ${post.author} team.`
-  }
+  const isUpdated = Boolean(post.dateModified && post.dateModified !== post.date)
 
   const articleSchema = getArticleSchema({
     headline: post.title,
@@ -194,189 +203,267 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-paper">
       <Navbar />
+      <ReadingProgress targetId="article-body" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(combinedSchema) }}
       />
 
-      <article className="relative max-w-5xl mx-auto px-5 md:px-6 py-24 md:py-28">
-        <div className="mb-8">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] text-neutral-500 hover:text-ink transition-colors"
-          >
-            <span aria-hidden="true">&larr;</span>
-            <span>Back to blog</span>
-          </Link>
-        </div>
+      {/* ————— Hero ————— */}
+      <header className="relative overflow-hidden border-b border-line">
+        <div aria-hidden="true" className="absolute inset-0 dot-grid opacity-70" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(75%_60%_at_50%_-15%,rgba(0,208,132,0.13),transparent_72%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-paper"
+        />
 
-        <header className="mb-12 max-w-4xl">
-          <p className="eyebrow mb-4">Blog / {post.tags[0] ?? "Guide"}</p>
+        <div className="relative mx-auto max-w-6xl px-5 pt-28 pb-14 md:px-6 md:pt-36 md:pb-16 xl:max-w-[78rem]">
+          <nav aria-label="Breadcrumb" className="mb-7">
+            <ol className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-500">
+              <li>
+                <Link href="/" className="transition-colors hover:text-ink">
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden="true" className="text-neutral-400">/</li>
+              <li>
+                <Link href="/blog" className="transition-colors hover:text-ink">
+                  Blog
+                </Link>
+              </li>
+              <li aria-hidden="true" className="text-neutral-400">/</li>
+              <li className="text-signal">{category}</li>
+            </ol>
+          </nav>
 
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[66px] font-semibold tracking-tight leading-[0.98] text-ink text-balance">
+          <h1 className="max-w-4xl font-display text-[clamp(2.125rem,1.15rem+3.3vw,3.5rem)] font-semibold leading-[1.06] tracking-[-0.022em] text-ink text-balance">
             {post.title}
           </h1>
 
-          <p className="mt-6 max-w-3xl text-lg md:text-xl leading-8 text-neutral-600">
+          <p className="mt-6 max-w-2xl text-lg leading-[1.65] text-neutral-600 text-pretty md:text-xl">
             {post.description}
           </p>
 
-          <div className="mt-8 grid gap-5 rounded-3xl border border-line bg-card p-5 md:p-6 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div className="flex flex-wrap items-center gap-3 text-sm text-neutral-600">
-              <span className="inline-flex items-center rounded-full border border-line bg-surface px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-600">
-                Published {formatBlogDate(post.date)}
-              </span>
-              {post.dateModified && post.dateModified !== post.date ? (
-                <span className="inline-flex items-center rounded-full border border-line bg-surface px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-signal">
-                  Updated {formatBlogDate(post.dateModified)}
-                </span>
-              ) : null}
-              <span className="inline-flex items-center rounded-full border border-line bg-surface px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-600">
-                {post.readingTime}
-              </span>
+          {/* Flat meta rail — no card, no nesting */}
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <div className="flex items-center gap-3">
+              {authorProfile.avatarUrl ? (
+                <Image
+                  src={authorProfile.avatarUrl}
+                  alt=""
+                  width={44}
+                  height={44}
+                  className="h-11 w-11 shrink-0 rounded-full object-cover ring-1 ring-line"
+                />
+              ) : (
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink font-mono text-[11px] font-semibold tracking-[0.12em] text-warmwhite">
+                  {authorInitials || "SS"}
+                </div>
+              )}
+              <div className="leading-tight">
+                <p className="text-sm font-semibold text-ink">{authorProfile.name}</p>
+                <p className="mt-0.5 font-mono text-[11px] uppercase tracking-[0.13em] text-neutral-500">
+                  {authorProfile.role}
+                </p>
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <span aria-hidden="true" className="hidden h-9 w-px bg-line sm:block" />
+
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 font-mono text-[11px] uppercase tracking-[0.13em] text-neutral-500">
+              <span>
+                Published{" "}
+                <time dateTime={post.date} className="text-neutral-700">
+                  {formatBlogDate(post.date)}
+                </time>
+              </span>
+              {isUpdated && post.dateModified ? (
+                <>
+                  <span aria-hidden="true" className="text-neutral-300">&bull;</span>
+                  <span className="text-signal">
+                    Updated{" "}
+                    <time dateTime={post.dateModified}>{formatBlogDate(post.dateModified)}</time>
+                  </span>
+                </>
+              ) : null}
+              <span aria-hidden="true" className="text-neutral-300">&bull;</span>
+              <span className="text-neutral-700">{post.readingTime}</span>
+            </div>
+          </div>
+
+          {post.tags.length > 0 ? (
+            <ul className="mt-6 flex flex-wrap gap-2">
               {post.tags.map((tag) => (
-                <span
+                <li
                   key={tag}
-                  className="text-xs font-mono px-2.5 py-1.5 rounded-full bg-paper text-neutral-600 border border-line"
+                  className="rounded-full border border-line bg-card/70 px-3 py-1 font-mono text-[11px] text-neutral-600"
                 >
                   {tag}
-                </span>
+                </li>
               ))}
-            </div>
-          </div>
+            </ul>
+          ) : null}
+        </div>
+      </header>
 
-          <div className="mt-5 flex items-center gap-4 rounded-2xl border border-line bg-surface px-5 py-4">
-            {authorProfile.avatarUrl ? (
-              <Image
-                src={authorProfile.avatarUrl}
-                alt={authorProfile.name}
-                width={48}
-                height={48}
-                className="h-12 w-12 rounded-full border border-line shrink-0 object-cover"
-              />
-            ) : (
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-mono font-semibold tracking-[0.14em] text-warmwhite">
-                {authorInitials || "SS"}
-              </div>
-            )}
-            <div className="min-w-0">
-              <div className="flex items-baseline gap-2">
-                <p className="text-sm font-bold text-ink">Written by {authorProfile.name}</p>
-                <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">
-                  &bull; {authorProfile.role}
-                </span>
-              </div>
-              <p className="mt-1 text-xs sm:text-sm leading-relaxed text-neutral-600">
-                {authorProfile.bio}
-              </p>
-            </div>
-          </div>
-        </header>
-
-        {post.image && (
-          <div className="mb-8 overflow-hidden rounded-[24px] border border-line">
+      {post.image ? (
+        <div className="mx-auto max-w-6xl px-5 md:px-6 xl:max-w-[78rem]">
+          <div className="-mt-2 overflow-hidden rounded-[20px] border border-line md:rounded-[28px]">
             <Image
               src={post.image}
               alt={post.title}
-              width={1200}
-              height={630}
-              className="w-full h-auto"
+              width={1600}
+              height={840}
+              className="h-auto w-full"
               priority
             />
           </div>
-        )}
+        </div>
+      ) : null}
 
-        {tableOfContents.length >= 3 ? (
-          <nav
-            aria-label="Table of contents"
-            className="mb-8 rounded-[24px] border border-line bg-surface px-5 py-6 md:px-8 md:py-7"
-          >
-            <p className="eyebrow mb-4">In this guide</p>
-            <ol className="grid gap-x-10 gap-y-3 md:grid-cols-2">
-              {tableOfContents.map((item, index) => (
-                <li key={item.href} className="flex gap-3 text-sm leading-6 text-neutral-700">
-                  <span className="font-mono text-xs text-neutral-500" aria-hidden="true">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <a href={item.href} className="hover:text-signal hover:underline underline-offset-4">
-                    {item.title}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        ) : null}
+      {/* ————— Body ————— */}
+      <div className="mx-auto max-w-6xl px-5 md:px-6 xl:max-w-[78rem]">
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-16 xl:gap-20">
+          <article id="article-body" className="article-body min-w-0 py-14 md:py-16">
+            <ArticleTocMobile items={tableOfContents} />
 
-        <section className="rounded-[28px] border border-line bg-card px-5 py-8 md:px-10 md:py-12 shadow-[0_24px_80px_-48px_rgba(13,17,16,0.28)]">
-          <div className={proseClasses}>
-            <MDXContent source={firstPart} />
-          </div>
-
-          <BlogCta tags={post.tags} slug={post.slug} placement="middle" />
-
-          {secondPart ? (
-            <>
-              <div className={`mt-8 ${proseClasses}`}>
-                <MDXContent source={secondPart} />
-              </div>
-              <BlogCta tags={post.tags} slug={post.slug} placement="end" />
-            </>
-          ) : null}
-        </section>
-
-        {relatedPosts.length > 0 && (
-          <section className="mt-16 pt-12 border-t border-line">
-            <div className="mb-8">
-              <p className="eyebrow mb-3">Related reading</p>
-              <h2 className="font-display text-2xl md:text-3xl font-semibold text-ink">
-                Continue the cluster
-              </h2>
+            {/* max-w-none: the readable measure is applied per text block in CSS
+                so wide tables and media can use the full column. */}
+            <div className="article-prose prose prose-neutral prose-lg max-w-none">
+              <MDXContent source={firstPart} />
             </div>
-            <div className="grid gap-4">
+
+            <div className="max-w-[45rem]">
+              <BlogCta tags={post.tags} slug={post.slug} placement="middle" />
+            </div>
+
+            {secondPart ? (
+              <>
+                <div className="article-prose prose prose-neutral prose-lg max-w-none">
+                  <MDXContent source={secondPart} />
+                </div>
+                <div className="max-w-[45rem]">
+                  <BlogCta tags={post.tags} slug={post.slug} placement="end" />
+                </div>
+              </>
+            ) : null}
+
+            {/* Author bio — at the end, where it belongs editorially */}
+            <section className="mt-14 max-w-[45rem] rounded-[24px] border border-line bg-card p-6 md:p-8">
+              <p className="eyebrow mb-5">Written by</p>
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+                {authorProfile.avatarUrl ? (
+                  <Image
+                    src={authorProfile.avatarUrl}
+                    alt={authorProfile.name}
+                    width={64}
+                    height={64}
+                    className="h-16 w-16 shrink-0 rounded-full object-cover ring-1 ring-line"
+                  />
+                ) : (
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-ink font-mono text-sm font-semibold tracking-[0.12em] text-warmwhite">
+                    {authorInitials || "SS"}
+                  </div>
+                )}
+                <div className="min-w-0">
+                  <p className="font-display text-lg font-semibold text-ink">{authorProfile.name}</p>
+                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.13em] text-neutral-500">
+                    {authorProfile.role}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-neutral-600">{authorProfile.bio}</p>
+                  <Link
+                    href="/about"
+                    className="mt-4 inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-signal transition-colors hover:text-signal-deep"
+                  >
+                    How we build
+                    <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                </div>
+              </div>
+            </section>
+          </article>
+
+          {/* ————— Sticky rail ————— */}
+          <aside className="hidden py-16 lg:block">
+            {/* Long posts produce a rail taller than the viewport; make it
+                scroll internally so Share and the back link stay reachable. */}
+            <div
+              data-toc-scroll
+              className="toc-scroll sticky top-28 max-h-[calc(100vh-9rem)] space-y-9 overflow-y-auto overscroll-contain pr-1"
+            >
+              <ArticleToc items={tableOfContents} />
+              <div className="border-t border-line pt-7">
+                <ShareRow url={postUrl} title={post.title} />
+              </div>
+              <div className="border-t border-line pt-7">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-500 transition-colors hover:text-ink"
+                >
+                  <span aria-hidden="true">&larr;</span>
+                  All articles
+                </Link>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      {/* ————— Related ————— */}
+      {relatedPosts.length > 0 && (
+        <section className="border-t border-line bg-surface/50">
+          <div className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-20 xl:max-w-[78rem]">
+            <div className="mb-9 flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="eyebrow mb-3">Related reading</p>
+                <h2 className="font-display text-2xl font-semibold tracking-tight text-ink md:text-3xl">
+                  Continue the cluster
+                </h2>
+              </div>
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-600 transition-colors hover:text-ink"
+              >
+                All articles
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-3">
               {relatedPosts.map((relatedPost) => (
                 <Link
                   key={relatedPost.slug}
                   href={`/blog/${relatedPost.slug}`}
-                  className="block group rounded-2xl border border-line bg-card p-6 md:p-7 hover:border-signal/30 hover:bg-surface transition-colors"
+                  className="card-lift group flex flex-col rounded-[20px] border border-line bg-card p-6"
                 >
-                  <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <time className="text-xs font-mono text-neutral-500">
-                      {new Date(relatedPost.date).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </time>
-                    <span className="text-xs font-mono text-neutral-500">{relatedPost.readingTime}</span>
-                  </div>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.13em] text-signal">
+                    {relatedPost.tags[0] ?? "Guide"}
+                  </p>
 
-                  <h3 className="font-display text-xl md:text-2xl font-semibold text-ink group-hover:text-signal transition-colors mb-2">
+                  <h3 className="mt-3 font-display text-lg font-semibold leading-snug text-ink transition-colors group-hover:text-signal">
                     {relatedPost.title}
                   </h3>
 
-                  <p className="text-neutral-600 text-base leading-relaxed mb-4">
+                  <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-neutral-600">
                     {relatedPost.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2">
-                    {relatedPost.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs font-mono px-2.5 py-1 rounded-full bg-surface text-neutral-600 border border-line"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  <div className="mt-5 flex items-center gap-3 border-t border-line pt-4 font-mono text-[11px] text-neutral-500">
+                    <time dateTime={relatedPost.date}>{formatBlogDate(relatedPost.date)}</time>
+                    <span aria-hidden="true" className="text-neutral-300">&bull;</span>
+                    <span>{relatedPost.readingTime}</span>
                   </div>
                 </Link>
               ))}
             </div>
-          </section>
-        )}
-      </article>
+          </div>
+        </section>
+      )}
+
       <Footer />
     </main>
   )

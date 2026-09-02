@@ -313,6 +313,305 @@
   background-size: 26px 26px;
 }
 
+/* Sticky TOC rail — scrolls internally on long posts */
+.toc-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+.toc-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.toc-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.toc-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 999px;
+}
+
+/* ═════════════ Blog article typography ═════════════
+   Layered on top of @tailwindcss/typography. The plugin uses :where() for its
+   element rules (specificity 0-1-0), so `.article-prose <el>` (0-1-1) wins
+   without !important. */
+
+.article-body {
+  counter-reset: h2c;
+}
+
+/* Text blocks hold a readable measure; tables, media and code use the full
+   column so wide comparison tables are not squeezed into a prose width. */
+.article-prose > :is(p, ul, ol, blockquote, h2, h3, h4, h5, h6, hr) {
+  max-width: 45rem;
+}
+
+/* ————— Headings ————— */
+
+.article-prose :is(h2, h3, h4) {
+  scroll-margin-top: 6.5rem;
+}
+
+.article-prose h2 {
+  counter-increment: h2c;
+  margin-top: 3.5rem;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  color: var(--color-ink);
+}
+
+/* Mono section index in signal green — replaces the old full-width rules */
+.article-prose h2::before {
+  content: counter(h2c, decimal-leading-zero);
+  display: block;
+  margin-bottom: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--color-signal);
+}
+
+.article-prose h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.012em;
+  color: var(--color-ink);
+}
+
+.article-prose h4 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.075rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+/* Anchor links injected by rehype-autolink-headings stay invisible but reachable */
+.article-prose :is(h2, h3, h4) > a[href^="#"] {
+  color: inherit;
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+/* ————— Body copy ————— */
+
+.article-prose p {
+  margin-top: 1.15rem;
+  margin-bottom: 1.15rem;
+  font-size: 1.0625rem;
+  line-height: 1.78;
+  color: #3f4a44;
+}
+
+/* Lead-in paragraph on the first block only */
+.article-body > .article-prose:first-of-type > p:first-of-type {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--color-neutral-800);
+}
+
+.article-prose strong {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.article-prose a:not(:is(h2, h3, h4) > a) {
+  color: var(--color-signal-deep);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 155, 99, 0.32);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+.article-prose a:not(:is(h2, h3, h4) > a):hover {
+  color: var(--color-signal);
+  text-decoration-color: var(--color-signal);
+}
+
+/* ————— Lists ————— */
+
+.article-prose :is(ul, ol) {
+  margin-top: 1.15rem;
+  margin-bottom: 1.15rem;
+  padding-left: 1.35rem;
+}
+
+.article-prose li {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  padding-left: 0.3rem;
+  font-size: 1.0625rem;
+  line-height: 1.72;
+  color: #3f4a44;
+}
+
+.article-prose li::marker {
+  color: var(--color-signal);
+  font-weight: 600;
+}
+
+.article-prose ol > li::marker {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+/* ————— Tables ————— */
+
+.article-prose table {
+  display: block;
+  width: 100%;
+  margin: 2.25rem 0;
+  overflow-x: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.875rem;
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.article-prose thead {
+  background: var(--color-surface);
+}
+
+.article-prose th {
+  padding: 0.7rem 0.7rem;
+  border-bottom: 1px solid var(--color-line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+  color: var(--color-ink);
+}
+
+.article-prose td {
+  padding: 0.75rem 0.7rem;
+  border-bottom: 1px solid var(--color-line);
+  vertical-align: top;
+  line-height: 1.6;
+  color: #3f4a44;
+}
+
+.article-prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.article-prose tbody tr:nth-child(even) {
+  background: rgba(241, 242, 237, 0.45);
+}
+
+.article-prose td:first-child {
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+/* ————— Blockquote ————— */
+
+.article-prose blockquote {
+  margin: 2rem 0;
+  padding: 1.15rem 1.5rem;
+  border: none;
+  border-left: 2px solid var(--color-signal);
+  border-radius: 0 14px 14px 0;
+  background: var(--color-surface);
+  font-style: normal;
+  quotes: none;
+}
+
+.article-prose blockquote p {
+  margin: 0.35rem 0;
+  font-size: 1rem;
+  color: var(--color-neutral-800);
+}
+
+.article-prose blockquote p:first-of-type::before,
+.article-prose blockquote p:last-of-type::after {
+  content: none;
+}
+
+/* ————— Media ————— */
+
+.article-prose img {
+  margin: 2.25rem auto;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  box-shadow: 0 20px 48px -32px rgba(13, 17, 16, 0.35);
+}
+
+.article-prose figcaption {
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--color-neutral-400);
+}
+
+/* ————— Code ————— */
+
+.article-prose :not(pre) > code {
+  padding: 0.15em 0.4em;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  background: var(--color-surface);
+  font-size: 0.86em;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+.article-prose :not(pre) > code::before,
+.article-prose :not(pre) > code::after {
+  content: none;
+}
+
+.article-prose pre {
+  margin: 2rem 0;
+  padding: 1.15rem 1.35rem;
+  border: 1px solid var(--color-graphite-line);
+  border-radius: 14px;
+  background: var(--color-graphite-950);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #d6dbd7;
+  overflow-x: auto;
+}
+.article-prose pre code {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ————— Rules ————— */
+
+.article-prose hr {
+  margin: 3rem 0;
+  border: none;
+  border-top: 1px solid var(--color-line);
+}
+
+@media (max-width: 640px) {
+  .article-prose h2 {
+    font-size: 1.6rem;
+    margin-top: 2.75rem;
+  }
+  .article-prose h3 {
+    font-size: 1.175rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .operator-scanline,
   .status-pulse,
